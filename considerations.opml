@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="1.0">
+<head>
+<title>Protocols for Human-AI Effectiveness</title>
+</head>
+<body>
+<outline text="Protocols for Human-AI Effectiveness"><outline text="Hyptheses"><outline text="Humans need to be in the loop"><outline text="Due to human constraints"><outline text="Due to their own (human) lack of clarity about their intentions"></outline>
+<outline text="Due to intentions evolving with evidence"></outline>
+<outline text="Due to their poor ability to communicate intentions"><outline text="Especially through limited means like text and images"></outline>
+</outline>
+</outline>
+<outline text="Due to AI constraints"><outline text="Due to AI lacking intentionality"><outline text="Always true, due to bounded taxonomy"><outline text="Deterministic"></outline>
+<outline text="Stochastic"></outline>
+<outline text="Intentional"></outline>
+</outline>
+</outline>
+<outline text="Due to Ai lacking causal understanding"><outline text="World models may augment this"></outline>
+</outline>
+<outline text="Due to hallucinations"><outline text="Always possible with finite training data"></outline>
+</outline>
+</outline>
+</outline>
+<outline text="Protocols are the interface for humans in the loop"><outline text="To supply intentionality"></outline>
+<outline text="For AI to execute"></outline>
+<outline text="To produce a coherent transhuman experience"><outline text="Human + AI + Protocol &gt; Human + AI &gt; Human"></outline>
+</outline>
+</outline>
+<outline text="Protocols for effective human collaboration extend well to transhuman collaboration"><outline text="Because AI was trained on human data"><outline text="And can’t be self-training on human domains"><outline text="Unlike e.g. well-bounded domains like chess"></outline>
+</outline>
+</outline>
+<outline text="Because the protocols and their results need to be inspectable (predicated on humans need to be in the loop reasoning)"></outline>
+<outline text="Because human constraints are a limiting factor"></outline>
+<outline text="Because humans have access to context that AI will never have without the human"></outline>
+<outline text="Because humans are the final arbiter of success or failure in relation to their intentions"></outline>
+<outline text="Because humans inherit the real-world consequences"><outline text="And will be accountable to other humans in existential ways"></outline>
+</outline>
+</outline>
+</outline>
+<outline text="Relevant Paradigms for Protcols"><outline text="System 3"></outline>
+<outline text="Second-order cybernetics"></outline>
+<outline text="Myriad others from FPTSIG study"></outline>
+</outline>
+<outline text="Human Cogntition"><outline text="Cognitive Sovereignty"></outline>
+<outline text="Cognitive Load"><outline text="Cost of decision"></outline>
+<outline text="Switching cost"></outline>
+</outline>
+<outline text="Cognitive Debt"><outline text="Brainrot"></outline>
+</outline>
+</outline>
+<outline text="Human Baggage"><outline text="Anthropomorphic projection"><outline text="Of intentionality"></outline>
+<outline text="Metaphor failure"></outline>
+</outline>
+<outline text="Colonial guilt"><outline text="Basis of all apocalyptic sci-fi"><outline text="robots"></outline>
+<outline text="aliens"></outline>
+</outline>
+</outline>
+<outline text="Pandemic"><outline text="Amnesia downplays resilience"></outline>
+<outline text="Black swans incoming"></outline>
+<outline text="Basis of zombie apocalypse "></outline>
+</outline>
+</outline>
+<outline text="Transhumanism"><outline text="Humane"><outline text="Cognitively"><outline text="Valuing interpretation"></outline>
+</outline>
+<outline text="Economically"></outline>
+<outline text="Human-centric values"></outline>
+</outline>
+<outline text="Inhumane"><outline text="Economically"><outline text="Devaluation of execution"></outline>
+</outline>
+<outline text="Cognitively"></outline>
+</outline>
+<outline text="Techno-animism"><outline text="Shinto"></outline>
+</outline>
+</outline>
+<outline text="Best practices with human precedent"><outline text="KANBAN"></outline>
+<outline text="GTD"></outline>
+<outline text="Agile"></outline>
+<outline text="Scrum"></outline>
+<outline text="Job Roles"></outline>
+<outline text="Morale"></outline>
+</outline>
+<outline text="Orchestration"><outline text="File sharing"></outline>
+<outline text="Agent roles"></outline>
+<outline text="Human intervention"></outline>
+<outline text="Documentation"><outline text="Decision ledger"></outline>
+<outline text="Project documentation"></outline>
+<outline text="Durable reference"></outline>
+<outline text="Meta-level"></outline>
+<outline text="Constitutions"><outline text="Holacracy"></outline>
+</outline>
+</outline>
+<outline text="Version control"><outline text="Documentation"></outline>
+<outline text="Code"></outline>
+<outline text="Human review"><outline text="Date-based"></outline>
+<outline text="Identifying drift"></outline>
+</outline>
+</outline>
+<outline text="Automated testing"><outline text="Intention-Outcome Alignment Validation"></outline>
+<outline text="Regression testing"></outline>
+</outline>
+<outline text="Being commoditised e.g. Claude Agent Teams"></outline>
+</outline>
+<outline text="AI Constraints"><outline text="Stateless"></outline>
+<outline text="Stochastic"><outline text="Feature and bug"></outline>
+</outline>
+<outline text="Cost"><outline text="Tokens"></outline>
+<outline text="Energy"></outline>
+<outline text="Time"><outline text="Wrong turns"></outline>
+<outline text="Diminishing returns"></outline>
+</outline>
+</outline>
+<outline text="Causality"><outline text="World models"></outline>
+</outline>
+<outline text="Intentionality"><outline text="Alignment"></outline>
+<outline text="Intelligible Inspectability"></outline>
+<outline text="Human expression poor"><outline text="Spinal Tap’s Stonehenge"></outline>
+</outline>
+</outline>
+</outline>
+<outline text="AI Strengths"><outline text="Pattern matching at scale"></outline>
+<outline text="Tirelessness"></outline>
+<outline text="Process intelligence"></outline>
+<outline text="Swarming"></outline>
+<outline text="“Read the internet&quot;"></outline>
+</outline>
+<outline text="Why protocols?"><outline text="Versus habits (individual)"><outline text="Establish consistency"></outline>
+</outline>
+<outline text="Versus rituals / ceremonies (groups)"><outline text="Communicate tangibly"></outline>
+<outline text="Communicate intangibly"></outline>
+<outline text="Prevent drift"></outline>
+</outline>
+<outline text="Versus governance guidelines"></outline>
+<outline text="Encompasses social and technological behaviours"><outline text="i.e. inherently transhuman"></outline>
+</outline>
+</outline>
+<outline text="Why me?"><outline text="Experience"><outline text="GTD and personal effectveness"></outline>
+<outline text="Team effectiveness consulting"></outline>
+<outline text="Engineering team leadership"></outline>
+<outline text="Hands-on coding both professionally and personally"></outline>
+<outline text="Digital Humanities / NLP background"></outline>
+<outline text="Writing, blogging, research"></outline>
+</outline>
+<outline text="Interest"><outline text="Will be exploring this practically for clients anyway"></outline>
+<outline text="Make a contribution to the field"></outline>
+<outline text="Make a contribution to bettering humanity in an inevitable era"></outline>
+</outline>
+<outline text="Abilities"><outline text="IQ"><outline text="Rapid Information Processing &amp; Synthesis"></outline>
+<outline text="Pattern recognition &amp; out-of-the-box thinking"></outline>
+<outline text="Hypercuriosity"></outline>
+</outline>
+<outline text="EQ"><outline text="Meta-awareness / self-awareness / N(0)"></outline>
+<outline text="Empathic projection into wide range of circumstances"></outline>
+<outline text="Growth mindset"></outline>
+</outline>
+<outline text="Interdisciplinary writing"></outline>
+</outline>
+<outline text="Weak suits"><outline text="Formal math experience"></outline>
+<outline text="Scientific research background"></outline>
+</outline>
+</outline>
+</outline>
+</body>
+</opml>

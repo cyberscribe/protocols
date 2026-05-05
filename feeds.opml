@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<opml version="1.0">
+    <head>
+        <title>Robert subscriptions — Human-AI collaboration protocols</title>
+    </head>
+    <body>
+        <!--
+        Companion OPML for the human-AI collaboration protocols research thread.
+        Source of truth: 00-protocols/feeds-config.json.
+        This file lists the RSS-mode sources only — directly importable to Feedly or any OPML-compatible reader.
+
+        Page-diff sources (no RSS feed — handled by the surveillance pipeline against site HTML):
+          - Anthropic — Transformer Circuits (https://transformer-circuits.pub/)
+          - Anthropic — News (https://www.anthropic.com/news)
+          - Anthropic — Alignment (https://alignment.anthropic.com/)
+          - Stanford HAI — News (https://hai.stanford.edu/news)
+          - Ribbonfarm (https://www.ribbonfarm.com/)
+          - Long Now Foundation (https://longnow.org/ideas/)
+          - DataChutney (https://datachutney.io/)
+          - Bret Victor — Worrydream (https://worrydream.com/)
+          - Linus Lee — thesephist (https://thesephist.com/)
+          - METR (https://metr.org/blog)
+          - Apollo Research (https://www.apolloresearch.ai/blog)
+          - Kevin Kelly — The Technium (https://kk.org/thetechnium/)
+          - RadicalxChange / Plurality (https://www.radicalxchange.org/blog/)
+        -->
+        <outline text="AI Practice &amp; Tooling" title="AI Practice &amp; Tooling">
+            <outline type="rss" text="Simon Willison's Weblog" title="Simon Willison's Weblog" xmlUrl="https://simonwillison.net/atom/everything/" htmlUrl="https://simonwillison.net/"/>
+            <outline type="rss" text="Ethan Mollick — One Useful Thing" title="Ethan Mollick — One Useful Thing" xmlUrl="https://www.oneusefulthing.org/feed" htmlUrl="https://www.oneusefulthing.org/"/>
+            <outline type="rss" text="Lenny's Newsletter" title="Lenny's Newsletter" xmlUrl="https://www.lennysnewsletter.com/feed" htmlUrl="https://www.lennysnewsletter.com/"/>
+        </outline>
+        <outline text="Engineering Effectiveness" title="Engineering Effectiveness">
+            <outline type="rss" text="Charity Majors — charity.wtf" title="Charity Majors — charity.wtf" xmlUrl="https://charity.wtf/feed/" htmlUrl="https://charity.wtf/"/>
+            <outline type="rss" text="Will Larson — Irrational Exuberance" title="Will Larson — Irrational Exuberance" xmlUrl="https://lethain.com/feeds/" htmlUrl="https://lethain.com/"/>
+            <outline type="rss" text="Gergely Orosz — Pragmatic Engineer" title="Gergely Orosz — Pragmatic Engineer" xmlUrl="https://newsletter.pragmaticengineer.com/feed" htmlUrl="https://newsletter.pragmaticengineer.com/"/>
+        </outline>
+        <outline text="Protocols &amp; Cognition Critique" title="Protocols &amp; Cognition Critique">
+            <outline type="rss" text="Venkatesh Rao — Contraptions" title="Venkatesh Rao — Contraptions" xmlUrl="https://contraptions.venkateshrao.com/feed" htmlUrl="https://contraptions.venkateshrao.com/"/>
+            <outline type="rss" text="L.M. Sacasas — The Convivial Society" title="L.M. Sacasas — The Convivial Society" xmlUrl="https://theconvivialsociety.substack.com/feed" htmlUrl="https://theconvivialsociety.substack.com/"/>
+            <outline type="rss" text="Drew Austin — Kneeling Bus" title="Drew Austin — Kneeling Bus" xmlUrl="https://kneelingbus.substack.com/feed" htmlUrl="https://kneelingbus.substack.com/"/>
+        </outline>
+        <outline text="Knowledge Work &amp; Tools for Thought" title="Knowledge Work &amp; Tools for Thought">
+            <outline type="rss" text="Maggie Appleton" title="Maggie Appleton" xmlUrl="https://maggieappleton.com/rss.xml" htmlUrl="https://maggieappleton.com/"/>
+            <outline type="rss" text="Andy Matuschak" title="Andy Matuschak" xmlUrl="https://andymatuschak.org/feed.xml" htmlUrl="https://andymatuschak.org/"/>
+            <outline type="rss" text="Cal Newport — Study Hacks" title="Cal Newport — Study Hacks" xmlUrl="https://calnewport.com/feed/" htmlUrl="https://calnewport.com/"/>
+            <outline type="rss" text="John Maeda — How to Speak Machine" title="John Maeda — How to Speak Machine" xmlUrl="https://howtospeakmachine.com/feed/" htmlUrl="https://howtospeakmachine.com/"/>
+            <outline type="rss" text="Tom Critchlow" title="Tom Critchlow" xmlUrl="https://tomcritchlow.com/feed.xml" htmlUrl="https://tomcritchlow.com/"/>
+        </outline>
+        <outline text="Epistemics &amp; Cognition Science" title="Epistemics &amp; Cognition Science">
+            <outline type="rss" text="Erik Hoel — The Intrinsic Perspective" title="Erik Hoel — The Intrinsic Perspective" xmlUrl="https://www.theintrinsicperspective.com/feed" htmlUrl="https://www.theintrinsicperspective.com/"/>
+            <outline type="rss" text="Henrik Karlsson — Escaping Flatland" title="Henrik Karlsson — Escaping Flatland" xmlUrl="https://escapingflatland.substack.com/feed" htmlUrl="https://escapingflatland.substack.com/"/>
+            <outline type="rss" text="Adam Mastroianni — Experimental History" title="Adam Mastroianni — Experimental History" xmlUrl="https://www.experimental-history.com/feed" htmlUrl="https://www.experimental-history.com/"/>
+            <outline type="rss" text="Robin Hanson — Overcoming Bias" title="Robin Hanson — Overcoming Bias" xmlUrl="https://www.overcomingbias.com/feed" htmlUrl="https://www.overcomingbias.com/"/>
+            <outline type="rss" text="Slime Mold Time Mold" title="Slime Mold Time Mold" xmlUrl="https://slimemoldtimemold.com/feed/" htmlUrl="https://slimemoldtimemold.com/"/>
+        </outline>
+        <outline text="Coordination &amp; Plurality" title="Coordination &amp; Plurality">
+            <outline type="rss" text="Vitalik Buterin" title="Vitalik Buterin" xmlUrl="https://vitalik.eth.limo/feed.xml" htmlUrl="https://vitalik.eth.limo/"/>
+        </outline>
+    </body>
+</opml>
