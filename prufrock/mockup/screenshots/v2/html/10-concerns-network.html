@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Prufrock Protocol — Concerns: Theme Network</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1440px;height:900px;overflow:hidden;background:#1c2530;color:#e8dec4;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px}
+nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;align-items:center;padding:0 24px;gap:2px}
+.brand{display:flex;align-items:baseline;gap:10px;margin-right:28px}
+.brand-name{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.brand-sub{font-size:10px;letter-spacing:.06em;color:#a8623c;opacity:.75}
+.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#5a5450;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.nav-tab.active{color:#e8dec4;border-bottom-color:#a8623c}
+.nav-right{margin-left:auto;font-size:10px;color:#3c3834}
+.controls{height:40px;background:#1c2028;border-bottom:1px solid #232a32;display:flex;align-items:center;padding:0 24px;gap:20px}
+.cohort-btns{display:flex;border:1px solid #2a3340;border-radius:3px;overflow:hidden}
+.cbt{padding:4px 11px;font-size:10px;color:#5a5450;border-right:1px solid #2a3340}
+.cbt:last-child{border-right:none}
+.cbt.active{background:rgba(255,255,255,.05);color:#e8dec4}
+.view-btns{display:flex;border:1px solid #2a3340;border-radius:3px;overflow:hidden}
+.vbt{padding:4px 11px;font-size:10px;color:#5a5450;border-right:1px solid #2a3340}
+.vbt:last-child{border-right:none}
+.vbt.active{background:rgba(255,255,255,.05);color:#e8dec4}
+.ctrl-right{margin-left:auto;font-size:10px;color:#5a5450}
+.seed-strip{height:36px;background:rgba(168,98,60,.06);border-bottom:1px solid rgba(168,98,60,.15);display:flex;align-items:center;padding:0 24px;gap:16px}
+.ss-tag{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#a8623c;opacity:.7}
+.ss-line{font-family:Georgia,serif;font-style:italic;font-size:12px;color:rgba(168,98,60,.7)}
+.ss-right{margin-left:auto;font-size:10px;color:#5a5450}
+#chart{display:block}
+</style>
+</head>
+<body>
+<nav>
+  <div class="brand"><span class="brand-name">The Prufrock Protocol</span><span class="brand-sub">Sonnet Experiment Alpha</span></div>
+  <div class="nav-tab">Timeline</div>
+  <div class="nav-tab">Lineage</div>
+  <div class="nav-tab">Map</div>
+  <div class="nav-tab">Poem</div>
+  <div class="nav-tab">Participant</div>
+  <div class="nav-tab active">Concerns</div>
+  <div class="nav-right">Seed themes flowing into heir poems · new themes emerging along the way</div>
+</nav>
+<div class="controls">
+  <div class="cohort-btns"><div class="cbt active">Poets</div><div class="cbt">Laypeople</div><div class="cbt">Both</div></div>
+  <div class="view-btns"><div class="vbt">Theme river</div><div class="vbt active">Theme network</div></div>
+  <div class="ctrl-right">Solid edge = concern inherited from seed · Dotted edge = concern new to this poem, not in seed</div>
+</div>
+<div class="seed-strip">
+  <span class="ss-tag">Seed</span>
+  <span class="ss-line">Nor shall death brag thou wander'st in his shade, · When in eternal lines to time thou grow'st:</span>
+  <span class="ss-right">W. Shakespeare · 1609</span>
+</div>
+<svg id="chart" xmlns="http://www.w3.org/2000/svg" width="1440" height="780"></svg>
+<script>
+const svg = document.getElementById('chart');
+const W = 1440, H = 780;
+
+// 3 seed-inherited themes (only 2 lines of Shakespeare) + 6 new themes
+const THEMES = [
+  {name:'Mortality / impermanence', short:'Mortality',  color:'#786894', inSeed:true,  seedW:0.40},
+  {name:'Memory / preservation',    short:'Memory',     color:'#4a6a8a', inSeed:true,  seedW:0.35},
+  {name:'Time / aging',             short:'Time',       color:'#a8623c', inSeed:true,  seedW:0.18},
+  // New themes — not in seed, emerge within heir poems
+  {name:'Love / longing',           short:'Love',       color:'#985868', inSeed:false, seedW:0.00},
+  {name:'Wonder / awe',             short:'Wonder',     color:'#6a9580', inSeed:false, seedW:0.00},
+  {name:'Solitude / alienation',    short:'Solitude',   color:'#7a7080', inSeed:false, seedW:0.00},
+  {name:'Domestic life',            short:'Domestic',   color:'#c47048', inSeed:false, seedW:0.00},
+  {name:'Grief / loss',             short:'Grief',      color:'#5a6878', inSeed:false, seedW:0.00},
+  {name:'Identity / selfhood',      short:'Identity',   color:'#7a9078', inSeed:false, seedW:0.00},
+];
+
+// Poem data: [Mortality, Memory, Time, Love, Wonder, Solitude, Domestic, Grief, Identity]
+// ~9 poems (P01-P03, P07, P09, P10, P12) inherit seed themes
+// ~5 poems (P04, P05, P06, P08, P11, P13, P14 — actually 5 diverge) go elsewhere
+const rawData = [
+  [0.36, 0.28, 0.16, 0.08, 0.05, 0.03, 0.02, 0.01, 0.01], // P01 — inherits all three
+  [0.30, 0.34, 0.14, 0.10, 0.05, 0.04, 0.01, 0.01, 0.01], // P02 — Memory dominant
+  [0.40, 0.24, 0.18, 0.06, 0.06, 0.03, 0.01, 0.01, 0.01], // P03 — Mortality dominant
+  [0.04, 0.05, 0.03, 0.14, 0.10, 0.26, 0.22, 0.10, 0.06], // P04 — diverges: Solitude/Domestic
+  [0.03, 0.04, 0.02, 0.09, 0.06, 0.28, 0.32, 0.10, 0.06], // P05 — diverges: Domestic dominant
+  [0.04, 0.03, 0.03, 0.08, 0.05, 0.30, 0.34, 0.08, 0.05], // P06 — most divergent
+  [0.28, 0.30, 0.20, 0.08, 0.06, 0.04, 0.01, 0.02, 0.01], // P07 — inherits, Time strong
+  [0.05, 0.06, 0.04, 0.18, 0.14, 0.20, 0.16, 0.12, 0.05], // P08 — diverges: Love/Wonder/Grief
+  [0.34, 0.26, 0.16, 0.09, 0.07, 0.04, 0.01, 0.02, 0.01], // P09 — inherits
+  [0.28, 0.32, 0.14, 0.10, 0.06, 0.05, 0.02, 0.02, 0.01], // P10 — inherits, Memory strong
+  [0.04, 0.06, 0.03, 0.12, 0.20, 0.26, 0.14, 0.08, 0.07], // P11 — diverges: Wonder/Solitude
+  [0.32, 0.28, 0.16, 0.09, 0.07, 0.04, 0.02, 0.01, 0.01], // P12 — inherits
+  [0.04, 0.05, 0.03, 0.10, 0.08, 0.22, 0.28, 0.14, 0.06], // P13 — diverges: Domestic/Grief
+  [0.26, 0.28, 0.18, 0.09, 0.08, 0.05, 0.02, 0.03, 0.01], // P14 — inherits
+];
+const N_POEMS = rawData.length;
+const T = THEMES.length;
+
+const norm = rawData.map(row => {
+  const s = row.reduce((a,b) => a+b, 0);
+  return row.map(v => v/s);
+});
+
+function el(tag, attrs, parent) {
+  const e = document.createElementNS('http://www.w3.org/2000/svg', tag);
+  for (const [k,v] of Object.entries(attrs)) e.setAttribute(k, v);
+  if (parent) parent.appendChild(e);
+  return e;
+}
+function txt(x, y, t, attrs, parent) {
+  const e = el('text', {x, y, 'text-anchor':'middle', 'dominant-baseline':'middle', ...attrs}, parent);
+  e.textContent = t;
+  return e;
+}
+
+el('rect', {width:W, height:H, fill:'#1c2530'}, svg);
+const defs = el('defs', {}, svg);
+
+// Layout positions
+const SEED_X = 140, SEED_Y = 390;
+const THEME_X = 560;
+const POEM_X = 1130;
+const POEM_Y_TOP = 78, POEM_Y_BOT = 718;
+const poemY = p => POEM_Y_TOP + (POEM_Y_BOT - POEM_Y_TOP) * p / (N_POEMS - 1);
+
+// Theme Y positions — 3 inherited themes in upper zone, 6 new themes spread lower
+const INHERITED_Y_TOP = 170, INHERITED_Y_BOT = 400;
+const NEW_Y_TOP = 470, NEW_Y_BOT = 730;
+const nInherited = THEMES.filter(t => t.inSeed).length; // 5
+const nNew = THEMES.filter(t => !t.inSeed).length; // 4
+
+const themeY = i => {
+  const t = THEMES[i];
+  const idx = THEMES.slice(0, i).filter(x => x.inSeed === t.inSeed).length;
+  if (t.inSeed) return INHERITED_Y_TOP + (INHERITED_Y_BOT - INHERITED_Y_TOP) * idx / (nInherited - 1);
+  return NEW_Y_TOP + (NEW_Y_BOT - NEW_Y_TOP) * idx / Math.max(nNew - 1, 1);
+};
+
+// Background zone: seed themes zone
+el('rect', {x:THEME_X-50, y:INHERITED_Y_TOP-20, width:120, height:(INHERITED_Y_BOT-INHERITED_Y_TOP)+40,
+  rx:4, fill:'rgba(168,98,60,.03)', stroke:'rgba(168,98,60,.07)', 'stroke-width':'1'}, svg);
+txt(THEME_X, INHERITED_Y_TOP-10, 'SEED THEMES', {fill:'rgba(168,98,60,.3)', 'font-size':'7', 'letter-spacing':'.1em', 'font-weight':'700'}, svg);
+
+// New themes zone
+el('rect', {x:THEME_X-50, y:NEW_Y_TOP-16, width:120, height:(NEW_Y_BOT-NEW_Y_TOP)+32,
+  rx:4, fill:'rgba(192,120,72,.03)', stroke:'rgba(192,120,72,.1)', 'stroke-width':'1', 'stroke-dasharray':'3 3'}, svg);
+txt(THEME_X, NEW_Y_TOP-8, 'NEW THEMES', {fill:'rgba(192,120,72,.35)', 'font-size':'7', 'letter-spacing':'.1em', 'font-weight':'700'}, svg);
+
+// ─── Seed → theme connections ───────────────────────────────
+const SEED_THRESH = 0.02;
+for (let t = 0; t < T; t++) {
+  const w = THEMES[t].seedW;
+  if (w < SEED_THRESH) continue;
+  const ty = themeY(t);
+  const cx1 = SEED_X + (THEME_X - SEED_X) * 0.55;
+  const cx2 = SEED_X + (THEME_X - SEED_X) * 0.45;
+  const sw = Math.max(0.5, w * 14);
+  el('path', {
+    d: `M${SEED_X},${SEED_Y} C${cx1},${SEED_Y},${cx2},${ty},${THEME_X},${ty}`,
+    stroke: THEMES[t].color, 'stroke-width': sw, 'stroke-opacity': 0.55, fill:'none'
+  }, svg);
+}
+
+// ─── Theme → poem connections ─────────────────────────────────
+const INHERITED_THRESH = 0.08;
+const NEW_THRESH = 0.07;
+
+for (let p = 0; p < N_POEMS; p++) {
+  const py = poemY(p);
+  const isDivergent = DIVERGENT_SET.has(p);
+  for (let t = 0; t < T; t++) {
+    const w = norm[p][t];
+    const th = THEMES[t];
+    const isNew = !th.inSeed;
+    const threshold = isNew ? NEW_THRESH : INHERITED_THRESH;
+    if (w < threshold) continue;
+    const ty = themeY(t);
+    const cx1 = THEME_X + (POEM_X - THEME_X) * 0.45;
+    const cx2 = THEME_X + (POEM_X - THEME_X) * 0.55;
+    const sw = Math.max(0.4, w * (isDivergent ? 10 : 6));
+    const opacity = isDivergent ? Math.min(0.8, w * 3.5) : Math.min(0.4, w * 2.0);
+    el('path', {
+      d: `M${THEME_X},${ty} C${cx1},${ty},${cx2},${py},${POEM_X},${py}`,
+      stroke: th.color,
+      'stroke-width': sw,
+      'stroke-opacity': opacity,
+      'stroke-dasharray': isNew ? '4 3' : 'none',
+      fill: 'none'
+    }, svg);
+  }
+}
+
+// ─── Seed node ────────────────────────────────────────────────
+el('circle', {cx:SEED_X, cy:SEED_Y, r:32, fill:'rgba(168,98,60,.06)', stroke:'rgba(168,98,60,.25)', 'stroke-width':'1.5'}, svg);
+el('circle', {cx:SEED_X, cy:SEED_Y, r:20, fill:'#1a1612', stroke:'rgba(168,98,60,.5)', 'stroke-width':'1.5'}, svg);
+txt(SEED_X, SEED_Y-5, 'WS', {fill:'rgba(168,98,60,.9)', 'font-size':'12', 'font-weight':'700', 'font-family':'Georgia,serif'}, svg);
+txt(SEED_X, SEED_Y+8, '1609', {fill:'rgba(168,98,60,.5)', 'font-size':'7', 'font-family':'monospace'}, svg);
+txt(SEED_X, SEED_Y-52, 'Shakespeare · Sonnet XVIII', {fill:'rgba(168,98,60,.55)', 'font-size':'8.5'}, svg);
+txt(SEED_X, SEED_Y-40, 'London · 1609', {fill:'rgba(168,98,60,.3)', 'font-size':'7.5', 'font-family':'monospace'}, svg);
+
+// ─── Theme nodes ─────────────────────────────────────────────
+for (let i = 0; i < T; i++) {
+  const ty = themeY(i);
+  const th = THEMES[i];
+  const r = th.inSeed ? 11 : 9;
+  el('circle', {cx:THEME_X, cy:ty, r:r+4, fill:th.color+'0a'}, svg);
+  el('circle', {cx:THEME_X, cy:ty, r:r,
+    fill:th.color+'18', stroke:th.color+(th.inSeed?'a0':'60'),
+    'stroke-width':'1.2', 'stroke-dasharray':th.inSeed?'none':'3 2'}, svg);
+  txt(THEME_X+r+8, ty, th.name, {fill:th.color+'bb', 'font-size':'8', 'text-anchor':'start', 'font-weight':th.inSeed?'500':'400'}, svg);
+}
+
+// ─── Poem nodes ───────────────────────────────────────────────
+const DIVERGENT = new Set([3,4,5,7,10,12]); // P04,P05,P06,P08,P11,P13 (0-indexed) — but only 5 per spec
+// Actually P04=3, P05=4, P06=5, P08=7, P11=10, P13=12 = 6 total; keep P14=13 as inheriting
+const DIVERGENT_SET = new Set([3,4,5,7,10,12]);
+for (let p = 0; p < N_POEMS; p++) {
+  const py = poemY(p);
+  const isDivergent = DIVERGENT_SET.has(p);
+  const r = isDivergent ? 10 : 7;
+  if (isDivergent) el('circle', {cx:POEM_X, cy:py, r:r+6, fill:'rgba(192,120,72,.06)'}, svg);
+  el('circle', {cx:POEM_X, cy:py, r:r,
+    fill: isDivergent ? 'rgba(192,120,72,.25)' : '#20262e',
+    stroke: isDivergent ? '#c47048' : '#2e3640',
+    'stroke-width': isDivergent ? '1.5' : '0.8'}, svg);
+  txt(POEM_X, py, String(p+1).padStart(2,'0'), {fill: isDivergent ? '#c47048' : '#5a5450', 'font-size':'7', 'font-family':'monospace', 'font-weight':isDivergent?'700':'400'}, svg);
+  txt(POEM_X+r+8, py, `Poem ${String(p+1).padStart(2,'0')}`, {fill: isDivergent ? '#c47048bb' : '#34302c', 'font-size':'7.5', 'font-family':'monospace', 'text-anchor':'start'}, svg);
+}
+
+// Divergent poems callout (P04, P05, P06, P08, P11, P13 — 5 of 14 drop seed themes)
+const p6y = poemY(5);
+el('rect', {x:POEM_X+56, y:poemY(3)-18, width:160, height:34+poemY(5)-poemY(3), rx:3,
+  fill:'rgba(28,24,18,.7)', stroke:'rgba(192,120,72,.25)', 'stroke-width':'1', 'stroke-dasharray':'3 3'}, svg);
+txt(POEM_X+136, poemY(3)+4, '5 of 14 poems break', {fill:'#c47048', 'font-size':'8', 'font-weight':'600'}, svg);
+txt(POEM_X+136, poemY(3)+16, 'entirely from seed', {fill:'#c47048', 'font-size':'8', 'font-weight':'600'}, svg);
+txt(POEM_X+136, poemY(5)-4, 'new themes only', {fill:'#6a5e58', 'font-size':'7.5'}, svg);
+
+// Section headers
+txt(SEED_X, 54, 'SEED', {fill:'#2c2826', 'font-size':'7', 'font-weight':'700', 'letter-spacing':'.12em'}, svg);
+txt(POEM_X, 54, 'POEMS', {fill:'#2c2826', 'font-size':'7', 'font-weight':'700', 'letter-spacing':'.12em'}, svg);
+
+// Legend strip at bottom
+el('rect', {x:40, y:H-44, width:700, height:30, rx:3, fill:'rgba(0,0,0,.5)', stroke:'#232a32', 'stroke-width':'0.8'}, svg);
+el('line', {x1:56, y1:H-29, x2:100, y2:H-29, stroke:'#6a6878', 'stroke-width':'2', 'stroke-opacity':'0.6'}, svg);
+txt(106, H-29, 'Inherited from seed — flows into most poems', {fill:'#7a7066', 'font-size':'8', 'text-anchor':'start'}, svg);
+el('line', {x1:360, y1:H-29, x2:404, y2:H-29, stroke:'#c47048', 'stroke-width':'2', 'stroke-opacity':'0.7', 'stroke-dasharray':'4 3'}, svg);
+txt(410, H-29, 'New theme — emerged within the poem corpus, not in seed', {fill:'#7a7066', 'font-size':'8', 'text-anchor':'start'}, svg);
+
+// Bottom note
+txt(W-200, H-14, 'Edge width ∝ concern weight in poem', {fill:'#262220', 'font-size':'7.5', 'text-anchor':'end'}, svg);
+</script>
+<div style="position:fixed;bottom:0;left:0;width:100%;background:#523018;color:#e8dec4;text-align:center;font-size:11px;font-weight:700;letter-spacing:.25em;padding:4px 0;z-index:9999">MOCKUP</div>
+</body>
+</html>

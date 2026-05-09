@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Prufrock Protocol — Timeline Day 7</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1440px;height:900px;overflow:hidden;background:#1c2530;color:#e8dec4;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px}
+nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;align-items:center;padding:0 24px;gap:2px}
+.brand{display:flex;align-items:baseline;gap:10px;margin-right:28px}
+.brand-name{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.brand-sub{font-size:10px;letter-spacing:.06em;color:#a8623c;opacity:.75}
+.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#5a5450;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.nav-tab.active{color:#e8dec4;border-bottom-color:#a8623c}
+.nav-right{margin-left:auto;font-size:10px;color:#3c3834}
+.controls{height:40px;background:#1c2028;border-bottom:1px solid #232a32;display:flex;align-items:center;padding:0 24px;gap:20px}
+.cohort-btns{display:flex;border:1px solid #2a3340;border-radius:3px;overflow:hidden}
+.cbt{padding:4px 11px;font-size:10px;color:#5a5450;border-right:1px solid #2a3340}
+.cbt:last-child{border-right:none}
+.cbt.active{background:rgba(255,255,255,.05);color:#e8dec4}
+.slider-group{display:flex;align-items:center;gap:8px;flex:1;max-width:400px}
+.slider-lbl{font-size:10px;color:#5a5450;white-space:nowrap}
+.track{flex:1;height:3px;background:#232a32;border-radius:2px;position:relative}
+.fill{position:absolute;left:0;top:0;height:100%;background:#a8623c;border-radius:2px;width:50%}
+.thumb{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:#a8623c;border:2px solid #1c2530}
+.play{width:22px;height:22px;border-radius:50%;background:#232a32;border:1px solid #2a3340;display:flex;align-items:center;justify-content:center;color:#a8623c;font-size:8px}
+.ctrl-right{margin-left:auto;font-size:10px;color:#5a5450;display:flex;gap:12px;align-items:center}
+.selected-tag{background:rgba(200,120,80,.12);border:1px solid rgba(200,120,80,.3);border-radius:3px;padding:2px 9px;color:#c47048;font-size:9px;font-weight:600;letter-spacing:.04em}
+.seed-strip{height:36px;background:rgba(168,98,60,.06);border-bottom:1px solid rgba(168,98,60,.15);display:flex;align-items:center;padding:0 24px;gap:16px}
+.ss-tag{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#a8623c;opacity:.7}
+.ss-line{font-family:Georgia,serif;font-style:italic;font-size:12px;color:rgba(168,98,60,.7)}
+.ss-right{margin-left:auto;font-size:10px;color:#5a5450}
+.view{height:780px;display:flex;flex-direction:column;padding:12px 0 0}
+.tl-header{display:flex;align-items:center;padding:0 20px 8px 20px}
+.tl-h-spacer{width:128px;flex-shrink:0}
+.tl-days{display:flex;flex:1;gap:2px}
+.day-col{flex:1;text-align:center;font-size:8px;color:#3c3834;letter-spacing:.04em;font-weight:600;text-transform:uppercase;padding-bottom:2px}
+.day-col.past{color:#7a7066}
+.day-col.current{color:#a8623c;font-weight:700}
+.tl-body{flex:1;overflow:hidden;padding:0 20px;display:flex;flex-direction:column;gap:0}
+.cohort-section{margin-bottom:6px}
+.cohort-label{display:flex;align-items:center;gap:8px;padding:5px 0 4px;border-bottom:1px solid #1e2228}
+.cohort-dot{width:7px;height:7px;border-radius:2px}
+.cohort-dot.poet{background:#c47048}
+.cohort-dot.lay{background:#607a92}
+.cohort-name{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5a5450}
+.cohort-note{font-size:9px;color:#2c2826;margin-left:auto}
+.poem-row{display:flex;align-items:center;height:32px;margin-bottom:2px}
+.p-label{width:128px;flex-shrink:0;display:flex;align-items:center;gap:6px;padding-right:8px}
+.p-num{font-size:8px;font-family:monospace;color:#3c3834;white-space:nowrap}
+.cells{display:flex;flex:1;gap:2px;height:26px}
+.cell{flex:1;height:100%;border-radius:2px;display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer;transition:filter .1s}
+.cell.filled{border:none}
+.cell.future{background:#1c2530;border:1px dashed #20262e;opacity:.35}
+.cell-init{font-size:7px;font-weight:700;color:rgba(255,255,255,.5);letter-spacing:0;line-height:1;font-family:monospace}
+.cell.selected-trail{box-shadow:0 0 0 1.5px rgba(200,120,80,.9),0 0 8px rgba(200,120,80,.4);z-index:2}
+.cell.current-col{position:relative}
+/* tooltip */
+.tooltip{position:absolute;z-index:100;width:330px;background:#232a32;border:1px solid #2e3640;border-radius:6px;padding:16px;box-shadow:0 8px 32px rgba(0,0,0,.7);top:230px;left:520px}
+.tt-header{display:flex;align-items:center;gap:8px;margin-bottom:11px}
+.tt-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.tt-name{font-size:12px;color:#e8dec4;font-weight:500}
+.tt-day{font-size:9px;color:#5a5450;margin-left:auto;letter-spacing:.04em}
+.tt-poem{font-size:9px;color:#7a7066;margin-top:-8px;margin-bottom:8px;padding-left:17px}
+.tt-line{font-family:Georgia,serif;font-style:italic;font-size:15px;color:#d4cab2;line-height:1.45;margin-bottom:12px;padding:10px 12px;background:#1c1f26;border-left:3px solid currentColor;border-radius:2px}
+.tt-meta{display:flex;flex-direction:column;gap:5px}
+.tt-row{display:flex;gap:6px;font-size:10px}
+.tt-lbl{color:#3c3834;width:66px;flex-shrink:0}
+.tt-val{color:#8a8278}
+.tt-prompt-section{margin-top:10px;padding-top:10px;border-top:1px solid #2a3340}
+.tt-plbl{font-size:9px;color:#3c3834;letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px}
+.tt-plines{font-family:Georgia,serif;font-style:italic;font-size:11px;color:#7a7066;line-height:1.6}
+</style>
+</head>
+<body>
+<nav>
+  <div class="brand"><span class="brand-name">The Prufrock Protocol</span><span class="brand-sub">Sonnet Experiment Alpha</span></div>
+  <div class="nav-tab active">Timeline</div>
+  <div class="nav-tab">Lineage</div>
+  <div class="nav-tab">Map</div>
+  <div class="nav-tab">Poem</div>
+  <div class="nav-tab">Participant</div>
+  <div class="nav-right">Day 7 of 14 · 98 of 196 lines (poet cohort)</div>
+</nav>
+<div class="controls">
+  <div class="cohort-btns">
+    <div class="cbt active">Poets</div>
+    <div class="cbt">Laypeople</div>
+    <div class="cbt">Both</div>
+  </div>
+  <div class="slider-group">
+    <span class="slider-lbl">Day</span>
+    <div class="track"><div class="fill"></div><div class="thumb"></div></div>
+    <span class="slider-lbl">7 / 14</span>
+    <div class="play">▶</div>
+  </div>
+  <div class="ctrl-right">
+    <div class="selected-tag">● Amara Osei — authorial trail</div>
+    <span style="color:#2c2826">|</span>
+    <span style="color:#3c3834;font-size:9px">✕ Forfeit</span>
+  </div>
+</div>
+<div class="seed-strip">
+  <span class="ss-tag">Seed</span>
+  <span class="ss-line">Nor shall death brag thou wander'st in his shade, · When in eternal lines to time thou grow'st:</span>
+  <span class="ss-right">W. Shakespeare · Sonnet XVIII · 1609 · London</span>
+</div>
+<div class="view">
+  <div class="tl-header">
+    <div class="tl-h-spacer"></div>
+    <div class="tl-days" id="day-headers"></div>
+  </div>
+  <div class="tl-body" id="tl-body"></div>
+</div>
+
+<!-- Tooltip — Amara on Day 7, Poem 07 -->
+<div class="tooltip">
+  <div class="tt-header">
+    <div class="tt-dot" style="background:#c47048"></div>
+    <div class="tt-name">Amara Osei</div>
+    <div class="tt-day">Day 7 · Line 7 of 14</div>
+  </div>
+  <div class="tt-poem" style="color:#c47048cc">Poem 07 · Poets cohort</div>
+  <div class="tt-line" style="border-left-color:#c47048">"What is given cannot be taken, only forgotten"</div>
+  <div class="tt-meta">
+    <div class="tt-row"><span class="tt-lbl">Delivered</span><span class="tt-val">2026-06-07 · 14:23 WAT</span></div>
+    <div class="tt-row"><span class="tt-lbl">Responded</span><span class="tt-val">2026-06-07 · 14:41 WAT · 18 min</span></div>
+    <div class="tt-row"><span class="tt-lbl">Location</span><span class="tt-val">Accra, Ghana · 5.6°N, 0.2°W</span></div>
+    <div class="tt-row"><span class="tt-lbl">Moment</span><span class="tt-val">between student consultations, faculty office</span></div>
+  </div>
+  <div class="tt-prompt-section">
+    <div class="tt-plbl">Prompt received — lines 5–6 of Poem 07</div>
+    <div class="tt-plines">
+      "What burns longest is not the fire but the waiting"<br>
+      "The garden teaches patience to the one who will not learn it"
+    </div>
+  </div>
+</div>
+
+<script>
+const AUTHORS = [
+  {id:'AO',name:'Amara Osei',loc:'Accra',color:'#c47048'},
+  {id:'HT',name:'Hiroshi Tanaka',loc:'Kyoto',color:'#5a5070'},
+  {id:'MF',name:'Marisol Fuentes',loc:'Buenos Aires',color:'#886878'},
+  {id:'SN',name:'Siobhán',loc:'Galway',color:'#5a8870'},
+  {id:'EŞ',name:'Elif Şahin',loc:'Istanbul',color:'#a8623c'},
+  {id:'MP',name:'Meera Pillai',loc:'Kochi',color:'#a85040'},
+  {id:'AD',name:'Antoine Diallo',loc:'Dakar',color:'#547088'},
+  {id:'YN',name:'Yuki Nakamura',loc:'Sapporo',color:'#889060'},
+  {id:'LB',name:'Lena Brandt',loc:'Berlin',color:'#785888'},
+  {id:'CA',name:'Carlos Andrade',loc:'Lisbon',color:'#5a907c'},
+  {id:'ND',name:'Naledi Dlamini',loc:'Johannesburg',color:'#b8703c'},
+  {id:'PL',name:'Pham Thi Lan',loc:'Hanoi',color:'#c47048'},
+  {id:'VG',name:'Valentina Greco',loc:'Naples',color:'#6a7e92'},
+  {id:'BL',name:'Björn Lindqvist',loc:'Stockholm',color:'#889078'},
+];
+
+// Latin square: author_index for poem p (0-13), day d (0-13) = (p - d + 14) % 14
+// Amara (idx 0) writes poem p on day d where p === d
+const SELECTED = 0; // Amara
+const CURRENT_DAY = 7; // 1-indexed
+const N_DAYS = 14;
+const SHOW_POEMS = 7; // per cohort section shown
+
+// Day headers
+const dh = document.getElementById('day-headers');
+for (let d = 1; d <= N_DAYS; d++) {
+  const el = document.createElement('div');
+  el.className = 'day-col' + (d < CURRENT_DAY ? ' past' : d === CURRENT_DAY ? ' current' : '');
+  el.textContent = 'D' + d;
+  dh.appendChild(el);
+}
+
+function makeSection(cohortLabel, cohortClass, cohortNote) {
+  const sec = document.createElement('div');
+  sec.className = 'cohort-section';
+  const lbl = document.createElement('div');
+  lbl.className = 'cohort-label';
+  lbl.innerHTML = `<div class="cohort-dot ${cohortClass}"></div><span class="cohort-name">${cohortLabel}</span><span class="cohort-note">${cohortNote}</span>`;
+  sec.appendChild(lbl);
+  return sec;
+}
+
+function makeRow(poemIdx) {
+  const row = document.createElement('div');
+  row.className = 'poem-row';
+  const lbl = document.createElement('div');
+  lbl.className = 'p-label';
+  lbl.innerHTML = `<span class="p-num">Poem ${String(poemIdx+1).padStart(2,'0')}</span>`;
+  row.appendChild(lbl);
+  const cells = document.createElement('div');
+  cells.className = 'cells';
+  for (let d = 0; d < N_DAYS; d++) {
+    const day1 = d + 1;
+    const cell = document.createElement('div');
+    const authorIdx = (poemIdx - d + 14 * 100) % 14;
+    const author = AUTHORS[authorIdx];
+    const isAmara = authorIdx === SELECTED;
+    const isPast = day1 <= CURRENT_DAY;
+    if (isPast) {
+      cell.className = 'cell filled' + (isAmara ? ' selected-trail' : '');
+      const hex = author.color;
+      const alpha = isAmara ? '0.7' : '0.18';
+      const border = isAmara ? 'none' : 'none';
+      cell.style.background = hex + (isAmara ? 'b0' : '2e');
+      cell.innerHTML = `<span class="cell-init" style="color:${isAmara ? '#fff' : hex}cc">${author.id}</span>`;
+    } else {
+      cell.className = 'cell future';
+    }
+    cells.appendChild(cell);
+  }
+  row.appendChild(cells);
+  return row;
+}
+
+const body = document.getElementById('tl-body');
+
+// Poets cohort
+const poetSec = makeSection('Poets', 'poet', '14 poems · collectively authored · Latin square assignment');
+for (let p = 0; p < SHOW_POEMS; p++) poetSec.appendChild(makeRow(p));
+const moreP = document.createElement('div');
+moreP.style.cssText = 'padding:4px 0;font-size:9px;color:#2c2826;letter-spacing:.06em';
+moreP.textContent = '· · · 7 more poems';
+poetSec.appendChild(moreP);
+body.appendChild(poetSec);
+
+// Laypeople cohort (abbreviated)
+const laySec = makeSection('Laypeople', 'lay', '14 poems · collectively authored · Latin square assignment');
+for (let p = 0; p < 4; p++) laySec.appendChild(makeRow(p));
+const moreL = document.createElement('div');
+moreL.style.cssText = 'padding:4px 0;font-size:9px;color:#2c2826;letter-spacing:.06em';
+moreL.textContent = '· · · 10 more poems';
+laySec.appendChild(moreL);
+body.appendChild(laySec);
+</script>
+<div style="position:fixed;bottom:0;left:0;width:100%;background:#a83a2a;color:#fff;text-align:center;font-size:11px;font-weight:700;letter-spacing:.25em;padding:4px 0;z-index:9999">MOCKUP</div>
+</body>
+</html>

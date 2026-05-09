@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Prufrock Protocol — Concerns: Theme River</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1440px;height:900px;overflow:hidden;background:#1c2530;color:#e8dec4;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px}
+nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;align-items:center;padding:0 24px;gap:2px}
+.brand{display:flex;align-items:baseline;gap:10px;margin-right:28px}
+.brand-name{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.brand-sub{font-size:10px;letter-spacing:.06em;color:#a8623c;opacity:.75}
+.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#5a5450;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.nav-tab.active{color:#e8dec4;border-bottom-color:#a8623c}
+.nav-right{margin-left:auto;font-size:10px;color:#3c3834}
+.controls{height:40px;background:#1c2028;border-bottom:1px solid #232a32;display:flex;align-items:center;padding:0 24px;gap:20px}
+.cohort-btns{display:flex;border:1px solid #2a3340;border-radius:3px;overflow:hidden}
+.cbt{padding:4px 11px;font-size:10px;color:#5a5450;border-right:1px solid #2a3340}
+.cbt:last-child{border-right:none}
+.cbt.active{background:rgba(255,255,255,.05);color:#e8dec4}
+.view-btns{display:flex;border:1px solid #2a3340;border-radius:3px;overflow:hidden}
+.vbt{padding:4px 11px;font-size:10px;color:#5a5450;border-right:1px solid #2a3340}
+.vbt:last-child{border-right:none}
+.vbt.active{background:rgba(255,255,255,.05);color:#e8dec4}
+.ctrl-right{margin-left:auto;font-size:10px;color:#5a5450}
+.seed-strip{height:36px;background:rgba(168,98,60,.06);border-bottom:1px solid rgba(168,98,60,.15);display:flex;align-items:center;padding:0 24px;gap:16px}
+.ss-tag{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#a8623c;opacity:.7}
+.ss-line{font-family:Georgia,serif;font-style:italic;font-size:12px;color:rgba(168,98,60,.7)}
+.ss-right{margin-left:auto;font-size:10px;color:#5a5450}
+#chart{display:block}
+</style>
+</head>
+<body>
+<nav>
+  <div class="brand"><span class="brand-name">The Prufrock Protocol</span><span class="brand-sub">Sonnet Experiment Alpha</span></div>
+  <div class="nav-tab">Timeline</div>
+  <div class="nav-tab">Lineage</div>
+  <div class="nav-tab">Map</div>
+  <div class="nav-tab">Poem</div>
+  <div class="nav-tab">Participant</div>
+  <div class="nav-tab active">Concerns</div>
+  <div class="nav-right">9 universal human concerns · AI-mapped · poets cohort · 14 poems</div>
+</nav>
+<div class="controls">
+  <div class="cohort-btns"><div class="cbt active">Poets</div><div class="cbt">Laypeople</div><div class="cbt">Both</div></div>
+  <div class="view-btns"><div class="vbt active">Theme river</div><div class="vbt">Theme network</div></div>
+  <div class="ctrl-right">Concern weights AI-assigned per completed poem text</div>
+</div>
+<div class="seed-strip">
+  <span class="ss-tag">Seed</span>
+  <span class="ss-line">Nor shall death brag thou wander'st in his shade, · When in eternal lines to time thou grow'st:</span>
+  <span class="ss-right">W. Shakespeare · London · 1609 → spawning 14 collaborative poems</span>
+</div>
+<svg id="chart" xmlns="http://www.w3.org/2000/svg" width="1440" height="780"></svg>
+<script>
+const svg = document.getElementById('chart');
+const W = 1440, H = 780;
+
+const THEMES = [
+  {name:'Mortality / impermanence', short:'Mortality',  color:'#786894'},
+  {name:'Time / aging',             short:'Time',       color:'#a8623c'},
+  {name:'Love / longing',           short:'Love',       color:'#985868'},
+  {name:'Memory / preservation',    short:'Memory',     color:'#4a6a8a'},
+  {name:'Wonder / awe',             short:'Wonder',     color:'#6a9580'},
+  {name:'Solitude / alienation',    short:'Solitude',   color:'#7a7080'},
+  {name:'Domestic life',            short:'Domestic',   color:'#c47048'},
+  {name:'Grief / loss',             short:'Grief',      color:'#5a6878'},
+  {name:'Identity / selfhood',      short:'Identity',   color:'#7a9078'},
+];
+
+// 16 columns: Seed + P01-P14 + Future
+// Each row: [Mortality, Time, Love, Memory, Wonder, Solitude, Domestic, Grief, Identity]
+const rawData = [
+  [0.28, 0.24, 0.20, 0.18, 0.07, 0.02, 0.00, 0.01, 0.00], // Seed
+  [0.26, 0.23, 0.19, 0.18, 0.07, 0.03, 0.01, 0.02, 0.01], // P01
+  [0.25, 0.23, 0.20, 0.19, 0.07, 0.03, 0.01, 0.01, 0.01], // P02
+  [0.26, 0.22, 0.19, 0.20, 0.06, 0.03, 0.02, 0.01, 0.01], // P03
+  [0.24, 0.23, 0.20, 0.19, 0.07, 0.04, 0.01, 0.01, 0.01], // P04
+  [0.22, 0.21, 0.18, 0.18, 0.06, 0.07, 0.04, 0.02, 0.02], // P05
+  [0.11, 0.13, 0.11, 0.13, 0.04, 0.16, 0.22, 0.04, 0.06], // P06 divergent
+  [0.20, 0.19, 0.17, 0.17, 0.06, 0.10, 0.07, 0.02, 0.02], // P07
+  [0.23, 0.21, 0.18, 0.18, 0.07, 0.07, 0.04, 0.01, 0.01], // P08
+  [0.24, 0.22, 0.19, 0.19, 0.07, 0.05, 0.02, 0.01, 0.01], // P09
+  [0.25, 0.22, 0.19, 0.19, 0.07, 0.04, 0.02, 0.01, 0.01], // P10
+  [0.25, 0.23, 0.19, 0.18, 0.07, 0.04, 0.02, 0.01, 0.01], // P11
+  [0.24, 0.23, 0.20, 0.18, 0.07, 0.04, 0.02, 0.01, 0.01], // P12
+  [0.25, 0.22, 0.19, 0.19, 0.08, 0.04, 0.01, 0.01, 0.01], // P13
+  [0.25, 0.23, 0.19, 0.19, 0.07, 0.04, 0.01, 0.01, 0.01], // P14
+  [0.23, 0.21, 0.18, 0.18, 0.08, 0.07, 0.03, 0.01, 0.01], // Future
+];
+
+const COLS = rawData.length;
+const T = THEMES.length;
+
+const norm = rawData.map(row => {
+  const s = row.reduce((a,b) => a+b, 0);
+  return row.map(v => v/s);
+});
+
+// cumulative[col] = [0, cum1, cum2, ..., 1]
+const cum = norm.map(row => {
+  const c = [0];
+  row.forEach(v => c.push(c[c.length-1] + v));
+  return c;
+});
+
+// Chart geometry
+const CL = 96, CR = 1220, CT = 62, CB = 696;
+const CW = CR - CL, CH = CB - CT;
+
+const colX = i => CL + CW * i / (COLS - 1);
+// cumY: y position at boundary t in column col
+// t=0 → CB (bottom), t=T → CT (top)
+const cumY = (col, t) => CB - cum[col][t] * CH;
+
+function el(tag, attrs, parent) {
+  const e = document.createElementNS('http://www.w3.org/2000/svg', tag);
+  for (const [k,v] of Object.entries(attrs)) e.setAttribute(k, v);
+  if (parent) parent.appendChild(e);
+  return e;
+}
+function txt(x, y, t, attrs, parent) {
+  const e = el('text', {x, y, 'text-anchor':'middle', 'dominant-baseline':'middle', ...attrs}, parent);
+  e.textContent = t;
+  return e;
+}
+
+el('rect', {width:W, height:H, fill:'#1c2530'}, svg);
+const defs = el('defs', {}, svg);
+
+// Gradient for seed column highlight
+const seedGrad = el('linearGradient', {id:'seedGlow', x1:'0', x2:'1', y1:'0', y2:'0'}, defs);
+el('stop', {offset:'0%', 'stop-color':'rgba(168,98,60,.08)'}, seedGrad);
+el('stop', {offset:'100%', 'stop-color':'rgba(168,98,60,.0)'}, seedGrad);
+el('rect', {x:colX(0)-10, y:CT-8, width:colX(1)-colX(0)+10, height:CH+24, fill:'url(#seedGlow)'}, svg);
+
+// Future zone (right of the dashed line)
+const futureLineX = (colX(COLS-2) + colX(COLS-1)) / 2;
+el('rect', {x:futureLineX, y:CT-30, width:W-futureLineX, height:CH+60, fill:'rgba(28,37,48,.55)'}, svg);
+el('line', {x1:futureLineX, y1:CT-28, x2:futureLineX, y2:CB+20, stroke:'#2a262c', 'stroke-width':'1', 'stroke-dasharray':'3 4'}, svg);
+txt(futureLineX + 42, CT-20, '→ projected', {fill:'#2c2826', 'font-size':'7.5', 'font-family':'monospace', 'letter-spacing':'.05em'}, svg);
+
+// Ribbons between adjacent columns
+for (let i = 0; i < COLS-1; i++) {
+  const x0 = colX(i), x1 = colX(i+1);
+  const cx = (x0+x1) / 2;
+  const isFuture = (i >= COLS-2);
+  for (let t = 0; t < T; t++) {
+    const bot0 = cumY(i, t),   top0 = cumY(i, t+1);
+    const bot1 = cumY(i+1, t), top1 = cumY(i+1, t+1);
+    const d = `M${x0},${bot0} C${cx},${bot0},${cx},${bot1},${x1},${bot1} L${x1},${top1} C${cx},${top1},${cx},${top0},${x0},${top0} Z`;
+    el('path', {d, fill: THEMES[t].color + (isFuture ? '28' : '96'), stroke: THEMES[t].color + '14', 'stroke-width':'0.4'}, svg);
+  }
+}
+
+// Thin column dividers (excluding seed and future)
+for (let i = 1; i < COLS-1; i++) {
+  el('line', {x1:colX(i), y1:CT, x2:colX(i), y2:CB, stroke:'rgba(0,0,0,.25)', 'stroke-width':'0.4'}, svg);
+}
+
+// Seed column gold border
+el('line', {x1:colX(0), y1:CT, x2:colX(0), y2:CB, stroke:'rgba(168,98,60,.25)', 'stroke-width':'1'}, svg);
+
+// Poem 06 divergence highlight
+const p6x = colX(6);
+el('line', {x1:p6x, y1:CT, x2:p6x, y2:CB, stroke:'rgba(192,120,72,.4)', 'stroke-width':'1.5'}, svg);
+
+// Column labels
+const LABELS = ['Seed','P01','P02','P03','P04','P05','P06','P07','P08','P09','P10','P11','P12','P13','P14','·'];
+for (let i = 0; i < COLS; i++) {
+  const x = colX(i);
+  const isDivergent = (i === 6);
+  const isSeed = (i === 0);
+  txt(x, CB+16, LABELS[i], {
+    fill: isSeed ? 'rgba(168,98,60,.65)' : (isDivergent ? '#c47048dd' : '#3a3632'),
+    'font-size': isDivergent ? '9' : '8',
+    'font-weight': (isDivergent || isSeed) ? '700' : '400',
+    'font-family': 'monospace'
+  }, svg);
+}
+
+// Chart border
+el('rect', {x:CL, y:CT, width:CW, height:CH, fill:'none', stroke:'rgba(255,255,255,.03)', 'stroke-width':'1'}, svg);
+
+// Poem 06 annotation callout
+el('rect', {x:p6x-88, y:CT-50, width:176, height:40, rx:3, fill:'rgba(28,24,18,.95)', stroke:'rgba(192,120,72,.35)', 'stroke-width':'1'}, svg);
+txt(p6x, CT-36, 'Poem 06 — unexpected voice', {fill:'#c47048', 'font-size':'9', 'font-weight':'600'}, svg);
+txt(p6x, CT-21, 'Domestic ↑22%  ·  Solitude ↑16%  ·  Mortality ↓11%', {fill:'#7a7066', 'font-size':'7.5', 'font-family':'monospace'}, svg);
+el('line', {x1:p6x, y1:CT-10, x2:p6x, y2:CT+2, stroke:'rgba(192,120,72,.4)', 'stroke-width':'1'}, svg);
+
+// Legend (right panel)
+const LX = CR + 28;
+txt(LX + 62, CT+4, 'UNIVERSAL CONCERNS', {fill:'#2c2826', 'font-size':'7', 'font-weight':'700', 'letter-spacing':'.1em', 'text-anchor':'middle'}, svg);
+
+const legStep = (CB - CT - 20) / T;
+THEMES.forEach((th, i) => {
+  const ly = CT + 22 + i * legStep + legStep/2;
+  el('rect', {x:LX, y:ly-6, width:10, height:10, rx:2, fill:th.color+'99'}, svg);
+  txt(LX+16, ly, th.name, {fill:'#7a7066', 'font-size':'8', 'text-anchor':'start'}, svg);
+  const seedPct = Math.round(norm[0][i] * 100);
+  txt(LX+16, ly+12, `seed: ${seedPct}%`, {fill:'#322e2a', 'font-size':'6.5', 'font-family':'monospace', 'text-anchor':'start'}, svg);
+});
+
+// Bottom note
+txt(CL + CW/2, H-12, 'Concern proportions AI-assigned from completed poem text · Seed poem anchors the distribution · most poems inherit its dominant themes · divergence marks an independent collective voice',
+  {fill:'#2a2620', 'font-size':'7.5'}, svg);
+</script>
+<div style="position:fixed;bottom:0;left:0;width:100%;background:#a83a2a;color:#fff;text-align:center;font-size:11px;font-weight:700;letter-spacing:.25em;padding:4px 0;z-index:9999">MOCKUP</div>
+</body>
+</html>

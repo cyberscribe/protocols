@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Prufrock Protocol — Lineage: Multi-poem Overview</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1440px;height:900px;overflow:hidden;background:#1c2530;color:#e8dec4;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px}
+nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;align-items:center;padding:0 24px;gap:2px}
+.brand{display:flex;align-items:baseline;gap:10px;margin-right:28px}
+.brand-name{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.brand-sub{font-size:10px;letter-spacing:.06em;color:#a8623c;opacity:.75}
+.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#5a5450;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.nav-tab.active{color:#e8dec4;border-bottom-color:#a8623c}
+.nav-right{margin-left:auto;font-size:10px;color:#3c3834}
+.controls{height:40px;background:#1c2028;border-bottom:1px solid #232a32;display:flex;align-items:center;padding:0 24px;gap:20px}
+.cohort-btns{display:flex;border:1px solid #2a3340;border-radius:3px;overflow:hidden}
+.cbt{padding:4px 11px;font-size:10px;color:#5a5450;border-right:1px solid #2a3340}
+.cbt:last-child{border-right:none}
+.cbt.active{background:rgba(255,255,255,.05);color:#e8dec4}
+.slider-group{display:flex;align-items:center;gap:8px;flex:1;max-width:400px}
+.slider-lbl{font-size:10px;color:#5a5450;white-space:nowrap}
+.track{flex:1;height:3px;background:#232a32;border-radius:2px;position:relative}
+.fill{position:absolute;left:0;top:0;height:100%;background:#a8623c;border-radius:2px;width:100%}
+.thumb{position:absolute;top:50%;left:100%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:#a8623c;border:2px solid #1c2530}
+.ctrl-right{margin-left:auto;font-size:10px;color:#5a5450;display:flex;gap:12px;align-items:center}
+.view-btn{padding:3px 9px;border:1px solid #2a3340;border-radius:3px;font-size:9px;cursor:pointer}
+.view-btn.active{background:rgba(255,255,255,.06);color:#e8dec4;border-color:#2e3640}
+.seed-strip{height:36px;background:rgba(168,98,60,.06);border-bottom:1px solid rgba(168,98,60,.15);display:flex;align-items:center;padding:0 24px;gap:16px}
+.ss-tag{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#a8623c;opacity:.7}
+.ss-line{font-family:Georgia,serif;font-style:italic;font-size:12px;color:rgba(168,98,60,.7)}
+.ss-right{margin-left:auto;font-size:10px;color:#5a5450}
+#tree-svg{display:block}
+</style>
+</head>
+<body>
+<nav>
+  <div class="brand"><span class="brand-name">The Prufrock Protocol</span><span class="brand-sub">Sonnet Experiment Alpha</span></div>
+  <div class="nav-tab">Timeline</div>
+  <div class="nav-tab active">Lineage</div>
+  <div class="nav-tab">Map</div>
+  <div class="nav-tab">Poem</div>
+  <div class="nav-tab">Participant</div>
+  <div class="nav-right">14 poems · 196 contributed lines · each poem: one chain, 14 authors</div>
+</nav>
+<div class="controls">
+  <div class="cohort-btns"><div class="cbt active">Poets</div><div class="cbt">Laypeople</div><div class="cbt">Both</div></div>
+  <div class="slider-group">
+    <span class="slider-lbl">Day</span>
+    <div class="track"><div class="fill"></div><div class="thumb"></div></div>
+    <span class="slider-lbl">14 / 14</span>
+  </div>
+  <div class="ctrl-right">
+    <div class="view-btn active">All poems</div>
+    <div class="view-btn">Single poem</div>
+  </div>
+</div>
+<div class="seed-strip">
+  <span class="ss-tag">Root</span>
+  <span class="ss-line">Nor shall death brag thou wander'st in his shade, · When in eternal lines to time thou grow'st:</span>
+  <span class="ss-right">W. Shakespeare · London · 1609 → 2026 · 14 poems · 14 × 14 Latin square</span>
+</div>
+<svg id="tree-svg" xmlns="http://www.w3.org/2000/svg" width="1440" height="780"></svg>
+<script>
+const svg = document.getElementById('tree-svg');
+const W = 1440, H = 780;
+const N = 14;
+
+const AUTHORS = [
+  {id:'AO',color:'#c47048'},{id:'HT',color:'#5a5070'},{id:'MF',color:'#886878'},
+  {id:'SN',color:'#5a8870'},{id:'EŞ',color:'#a8623c'},{id:'MP',color:'#a85040'},
+  {id:'AD',color:'#547088'},{id:'YN',color:'#889060'},{id:'LB',color:'#785888'},
+  {id:'CA',color:'#5a907c'},{id:'ND',color:'#b8703c'},{id:'PL',color:'#c47048'},
+  {id:'VG',color:'#6a7e92'},{id:'BL',color:'#889078'},
+];
+
+function el(tag, attrs, parent) {
+  const e = document.createElementNS('http://www.w3.org/2000/svg', tag);
+  for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+  if (parent) parent.appendChild(e);
+  return e;
+}
+function txt(x, y, t, attrs, parent) {
+  const e = el('text', {x, y, 'text-anchor': 'middle', 'dominant-baseline': 'middle', ...attrs}, parent);
+  e.textContent = t;
+  return e;
+}
+
+// Background
+el('rect', {width: W, height: H, fill: '#1c2530'}, svg);
+// Subtle gradient
+const defs = el('defs', {}, svg);
+const grad = el('radialGradient', {id:'bg', cx:'50%', cy:'10%', r:'70%'}, defs);
+el('stop', {'offset':'0%', 'stop-color':'#1e2530', 'stop-opacity':'1'}, grad);
+el('stop', {'offset':'100%', 'stop-color':'#1c2530', 'stop-opacity':'1'}, grad);
+el('rect', {width: W, height: H, fill: 'url(#bg)'}, svg);
+
+const glowF = el('filter', {id:'glow'}, defs);
+el('feGaussianBlur', {stdDeviation:'4', result:'blur'}, glowF);
+el('feComposite', {in:'SourceGraphic', in2:'blur', operator:'over'}, glowF);
+
+// Layout: 14 poem columns, centered
+// Left margin to center legends: use full width
+const MARGIN_L = 52, MARGIN_R = 130;
+const USABLE_W = W - MARGIN_L - MARGIN_R;
+const COL_W = USABLE_W / N;
+const colX = p => MARGIN_L + COL_W * p + COL_W / 2;
+
+// Seed gold bar at top
+const SEED_Y = 46;
+const NODE_START_Y = 110;
+const NODE_END_Y = 748;
+const NODE_STEP = (NODE_END_Y - NODE_START_Y) / (N - 1);
+const nodeY = d => NODE_START_Y + NODE_STEP * d;
+const NODE_R = 7;
+
+// Gold seed bar
+el('rect', {x: MARGIN_L - 20, y: SEED_Y - 12, width: USABLE_W + 40, height: 24,
+  rx: 4, fill: 'rgba(168,98,60,.06)', stroke: 'rgba(168,98,60,.2)', 'stroke-width': 1}, svg);
+txt(W / 2, SEED_Y, 'W. Shakespeare · Sonnet XVIII · London 1609 · "Nor shall death brag…When in eternal lines to time thou grow\'st:"',
+  {fill: 'rgba(168,98,60,.6)', 'font-size': '10', 'font-family': 'Georgia,serif', 'font-style': 'italic'}, svg);
+
+// Column labels (poem numbers)
+for (let p = 0; p < N; p++) {
+  txt(colX(p), NODE_START_Y - 26, 'P' + String(p + 1).padStart(2, '0'),
+    {fill: '#3c3834', 'font-size': '8', 'font-family': 'monospace', 'letter-spacing': '.04em'}, svg);
+}
+
+// Seed → day-1 connections (thin gold lines)
+for (let p = 0; p < N; p++) {
+  el('line', {
+    x1: colX(p), y1: SEED_Y + 12, x2: colX(p), y2: nodeY(0) - NODE_R - 1,
+    stroke: 'rgba(168,98,60,.15)', 'stroke-width': '1'
+  }, svg);
+}
+
+// Day labels on left
+for (let d = 0; d < N; d++) {
+  txt(MARGIN_L - 14, nodeY(d), 'D' + (d + 1),
+    {fill: '#2c2826', 'font-size': '7.5', 'font-family': 'monospace', 'text-anchor': 'end'}, svg);
+}
+
+// Within-poem connections (vertical lines between nodes in same poem)
+for (let p = 0; p < N; p++) {
+  for (let d = 0; d < N - 1; d++) {
+    el('line', {
+      x1: colX(p), y1: nodeY(d) + NODE_R,
+      x2: colX(p), y2: nodeY(d + 1) - NODE_R,
+      stroke: 'rgba(80,82,100,.25)', 'stroke-width': '1'
+    }, svg);
+  }
+}
+
+// Nodes: colored by author = (p - d + N*100) % N
+for (let p = 0; p < N; p++) {
+  for (let d = 0; d < N; d++) {
+    const aIdx = (p - d + N * 100) % N;
+    const a = AUTHORS[aIdx];
+    el('circle', {cx: colX(p), cy: nodeY(d), r: NODE_R,
+      fill: a.color + 'c0', stroke: a.color + '60', 'stroke-width': '0.8'}, svg);
+  }
+}
+
+// Author legend (right side)
+const LEG_X = W - MARGIN_R + 16;
+txt(LEG_X + 30, 52, 'Authors', {fill:'#3c3834','font-size':'8','font-weight':'700','letter-spacing':'.1em','text-transform':'uppercase','text-anchor':'middle'}, svg);
+AUTHORS.forEach((a, i) => {
+  const ly = 68 + i * 44;
+  el('circle', {cx: LEG_X + 6, cy: ly, r: 5, fill: a.color + 'c0', stroke: a.color + '60', 'stroke-width': '1'}, svg);
+  txt(LEG_X + 16, ly, a.id, {fill: a.color + 'dd', 'font-size': '8', 'font-family': 'monospace', 'text-anchor': 'start'}, svg);
+});
+
+// Annotation: "each column is one collaborative poem; each row is one day; colour = author"
+txt(MARGIN_L + USABLE_W / 2, H - 14, 'Each column is one collaborative poem · Each row is one day · Colour indicates author · Latin square: each author appears exactly once per poem and once per day',
+  {fill:'#2c2826','font-size':'8','font-family':'sans-serif'}, svg);
+</script>
+</body>
+</html>

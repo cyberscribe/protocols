@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Prufrock Protocol — Sonnet Experiment Alpha</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1440px;height:900px;overflow:hidden;background:#0c0c0f;color:#eae6de;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px;line-height:1.5}
+nav{height:44px;background:#131318;border-bottom:1px solid #1e1e2a;display:flex;align-items:center;padding:0 24px;gap:2px}
+.brand{display:flex;align-items:baseline;gap:10px;margin-right:28px}
+.brand-name{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#eae6de}
+.brand-sub{font-size:10px;letter-spacing:.06em;color:#c8a040;opacity:.75}
+.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#6a6660;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.nav-tab.active{color:#eae6de;border-bottom-color:#c8a040}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:14px;font-size:10px;color:#4a4644}
+.status-dot{width:6px;height:6px;border-radius:50%;background:#3a8a4a;flex-shrink:0}
+.controls{height:40px;background:#0f0f14;border-bottom:1px solid #1a1a26;display:flex;align-items:center;padding:0 24px;gap:20px}
+.cohort-btns{display:flex;border:1px solid #1e1e2a;border-radius:3px;overflow:hidden}
+.cbt{padding:4px 11px;font-size:10px;color:#5a5654;border-right:1px solid #1e1e2a;cursor:pointer}
+.cbt:last-child{border-right:none}
+.cbt.active{background:rgba(255,255,255,.05);color:#eae6de}
+.slider-group{display:flex;align-items:center;gap:8px;flex:1;max-width:380px}
+.slider-lbl{font-size:10px;color:#4a4644;white-space:nowrap}
+.track{flex:1;height:3px;background:#1a1a26;border-radius:2px;position:relative}
+.fill{position:absolute;left:0;top:0;height:100%;background:#c8a040;border-radius:2px;width:0%}
+.thumb{position:absolute;top:50%;left:0%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:#c8a040;border:2px solid #0c0c0f}
+.play{width:22px;height:22px;border-radius:50%;background:#1a1a26;border:1px solid #1e1e2a;display:flex;align-items:center;justify-content:center;color:#5a5654;font-size:7px;cursor:pointer}
+.ctrl-right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.search{height:24px;width:170px;background:#0f0f14;border:1px solid #1a1a26;border-radius:3px;padding:0 8px;font-size:10px;color:#4a4644;display:flex;align-items:center;gap:6px}
+.main{height:816px;display:flex}
+.sonnet-col{width:56%;border-right:1px solid #1a1a26;padding:40px 48px;overflow:hidden;display:flex;flex-direction:column;gap:28px}
+.seed-badge{display:flex;align-items:center;gap:12px}
+.seed-tag{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#c8a040;padding:3px 8px;border:1px solid rgba(200,160,64,.4);border-radius:2px}
+.seed-meta{font-size:10px;color:#5a5654;letter-spacing:.04em}
+.seed-dot{width:4px;height:4px;border-radius:50%;background:#c8a040;opacity:.5}
+.sonnet-header h1{font-family:Georgia,'Times New Roman',serif;font-size:28px;font-weight:400;color:#eae6de;letter-spacing:.01em;margin-bottom:4px}
+.sonnet-header .byline{font-size:12px;color:#7a7674;letter-spacing:.04em}
+.sonnet-header .location{font-size:10px;color:#4a4644;margin-top:2px}
+.divider{height:1px;background:linear-gradient(90deg,#1e1e2a,transparent)}
+.poem{display:flex;flex-direction:column}
+.stanza{margin-bottom:16px}
+.pline{display:flex;align-items:baseline;gap:14px;padding:3px 12px 3px 0;border-left:3px solid transparent;border-radius:1px}
+.pline .ln{font-size:9px;color:#3a3834;width:18px;text-align:right;flex-shrink:0;font-family:monospace}
+.pline .txt{font-family:Georgia,'Times New Roman',serif;font-size:15px;color:#8a8682;font-style:italic;line-height:1.6}
+.pline.seed{background:rgba(200,160,64,.08);border-left-color:#c8a040;padding:4px 12px 4px 0}
+.pline.seed .txt{color:#e8c878;font-weight:500}
+.pline.seed .ln{color:#7a6020}
+.seed-extract-note{display:flex;align-items:center;gap:8px;padding:10px 0;border-top:1px solid #1a1a26;margin-top:4px}
+.extract-arrow{font-size:10px;color:#c8a040;opacity:.7}
+.extract-lbl{font-size:10px;color:#7a7674}
+.extract-chip{font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#c8a040;background:rgba(200,160,64,.1);padding:2px 7px;border-radius:10px}
+.info-col{flex:1;padding:40px 44px;display:flex;flex-direction:column;gap:24px}
+.exp-header h2{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#4a4644;margin-bottom:6px}
+.exp-header h3{font-size:22px;font-weight:300;color:#eae6de;letter-spacing:.01em}
+.exp-header .ver{font-size:10px;color:#4a4644;margin-top:2px}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#1a1a26;border:1px solid #1a1a26;border-radius:4px;overflow:hidden}
+.stat{background:#0f0f14;padding:14px 16px}
+.stat-n{font-size:28px;font-weight:200;color:#eae6de;letter-spacing:-.01em;line-height:1}
+.stat-l{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#4a4644;margin-top:3px}
+.stat-sub{font-size:8px;color:#2e2c28;margin-top:1px}
+.timeline-arrow{border:1px solid #1a1a26;border-radius:4px;padding:14px 18px}
+.ta-label{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#4a4644;margin-bottom:10px}
+.ta-body{display:flex;align-items:center;gap:0}
+.ta-node{background:#0f0f14;border:1px solid #2a2a38;border-radius:3px;padding:8px 12px}
+.ta-year{font-size:18px;font-weight:200;color:#c8a040;line-height:1}
+.ta-place{font-size:10px;color:#7a6020;margin-top:1px}
+.ta-arrow{flex:1;height:1px;background:rgba(200,160,64,.4);position:relative;margin:0 12px}
+.ta-arrow::after{content:'→';position:absolute;right:-6px;top:50%;transform:translateY(-50%);color:rgba(200,160,64,.7);font-size:12px}
+.ta-to{background:#0f0f14;border:1px solid #2a2a38;border-radius:3px;padding:8px 12px}
+.ta-to-year{font-size:18px;font-weight:200;color:#eae6de;line-height:1}
+.ta-to-place{font-size:10px;color:#4a4644;margin-top:1px}
+.seed-lines-display{background:#0f0f14;border:1px solid rgba(200,160,64,.2);border-radius:4px;padding:16px 18px}
+.sdl-label{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#c8a040;margin-bottom:10px;opacity:.7}
+.sdl-line{font-family:Georgia,serif;font-style:italic;font-size:14px;color:#d8b858;line-height:1.7}
+.sdl-note{font-size:9px;color:#4a4644;margin-top:8px;padding-top:8px;border-top:1px solid #1a1a26}
+.invariants{border:1px solid #1a1a26;border-radius:4px;padding:14px 18px}
+.inv-label{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#4a4644;margin-bottom:10px}
+.inv-list{display:flex;flex-wrap:wrap;gap:6px}
+.inv{font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#4a5464;padding:4px 9px;border:1px solid #1e2030;border-radius:10px}
+.inv.on{color:#4a7a9a;border-color:rgba(74,122,154,.4);background:rgba(74,122,154,.06)}
+.ready-bar{display:flex;align-items:center;gap:10px;padding:12px 16px;background:#0f0f14;border:1px solid #1a1a26;border-radius:4px;margin-top:auto}
+.ready-dot{width:7px;height:7px;border-radius:50%;background:#3a8a4a}
+.ready-txt{font-size:11px;color:#4a4644}
+.ready-txt span{color:#eae6de}
+.begin-btn{margin-left:auto;padding:6px 16px;background:rgba(200,160,64,.12);border:1px solid rgba(200,160,64,.4);border-radius:3px;font-size:11px;color:#c8a040;cursor:pointer;letter-spacing:.04em}
+.concerns-panel{border:1px solid #1a1a26;border-radius:4px;padding:12px 16px}
+.cp-label{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#4a4644;margin-bottom:8px}
+.cp-stack{display:flex;height:4px;border-radius:2px;overflow:hidden;margin-bottom:8px;gap:1px}
+.cp-chips{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:5px}
+.cp-chip{display:flex;align-items:center;gap:4px;font-size:9px;color:#5a5654;background:#0f0f14;border:1px solid #1e1e2a;padding:2px 7px;border-radius:10px}
+.cp-chip-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.cp-minor{font-size:8px;color:#282624}
+</style>
+</head>
+<body>
+<nav>
+  <div class="brand">
+    <span class="brand-name">The Prufrock Protocol</span>
+    <span class="brand-sub">Sonnet Experiment Alpha</span>
+  </div>
+  <div class="nav-tab">Timeline</div>
+  <div class="nav-tab">Lineage</div>
+  <div class="nav-tab">Map</div>
+  <div class="nav-tab">Poem</div>
+  <div class="nav-tab">Participant</div>
+  <div class="nav-right">
+    <div class="status-dot"></div>
+    <span>Corpus ready · 2 dossiers loaded</span>
+  </div>
+</nav>
+<div class="controls">
+  <div class="cohort-btns">
+    <div class="cbt">Poets</div>
+    <div class="cbt">Laypeople</div>
+    <div class="cbt active">Both</div>
+  </div>
+  <div class="slider-group">
+    <span class="slider-lbl">Day</span>
+    <div class="track"><div class="fill"></div><div class="thumb"></div></div>
+    <span class="slider-lbl">0 / 14</span>
+    <div class="play">▶</div>
+  </div>
+  <div class="ctrl-right">
+    <div class="search">🔍&nbsp;&nbsp;Search lines…</div>
+  </div>
+</div>
+<div class="main">
+  <div class="sonnet-col">
+    <div class="seed-badge">
+      <div class="seed-tag">Seed Source</div>
+      <div class="seed-dot"></div>
+      <div class="seed-meta">Project Gutenberg · global_pd_confident · extracted: lines 11–12</div>
+    </div>
+    <div class="sonnet-header">
+      <h1>Sonnet XVIII</h1>
+      <div class="byline">William Shakespeare</div>
+      <div class="location">London, England · 51.5°N, 0.1°W · composed c. 1609</div>
+    </div>
+    <div class="divider"></div>
+    <div class="poem">
+      <div class="stanza">
+        <div class="pline"><span class="ln">1</span><span class="txt">Shall I compare thee to a summer's day?</span></div>
+        <div class="pline"><span class="ln">2</span><span class="txt">Thou art more lovely and more temperate:</span></div>
+        <div class="pline"><span class="ln">3</span><span class="txt">Rough winds do shake the darling buds of May,</span></div>
+        <div class="pline"><span class="ln">4</span><span class="txt">And summer's lease hath all too short a date:</span></div>
+      </div>
+      <div class="stanza">
+        <div class="pline"><span class="ln">5</span><span class="txt">Sometime too hot the eye of heaven shines,</span></div>
+        <div class="pline"><span class="ln">6</span><span class="txt">And often is his gold complexion dimm'd;</span></div>
+        <div class="pline"><span class="ln">7</span><span class="txt">And every fair from fair sometime declines,</span></div>
+        <div class="pline"><span class="ln">8</span><span class="txt">By chance, or nature's changing course untrimm'd;</span></div>
+      </div>
+      <div class="stanza">
+        <div class="pline"><span class="ln">9</span><span class="txt">But thy eternal summer shall not fade,</span></div>
+        <div class="pline"><span class="ln">10</span><span class="txt">Nor lose possession of that fair thou ow'st;</span></div>
+        <div class="pline seed"><span class="ln">11</span><span class="txt">Nor shall death brag thou wander'st in his shade,</span></div>
+        <div class="pline seed"><span class="ln">12</span><span class="txt">When in eternal lines to time thou grow'st:</span></div>
+      </div>
+      <div class="stanza">
+        <div class="pline"><span class="ln">13</span><span class="txt">&nbsp;&nbsp;So long as men can breathe, or eyes can see,</span></div>
+        <div class="pline"><span class="ln">14</span><span class="txt">&nbsp;&nbsp;So long lives this, and this gives life to thee.</span></div>
+      </div>
+    </div>
+    <div class="seed-extract-note">
+      <span class="extract-arrow">↳</span>
+      <span class="extract-lbl">Lines 11–12 extracted as the protocol seed</span>
+      <span class="extract-chip">volta extraction</span>
+    </div>
+  </div>
+  <div class="info-col">
+    <div class="exp-header">
+      <h2>Experiment Definition</h2>
+      <h3>Sonnet Experiment Alpha</h3>
+      <div class="ver">sonnet-trial-alpha · v1.0 · random seed: 42</div>
+    </div>
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="stat-n">28</div>
+        <div class="stat-l">Participants</div>
+        <div class="stat-sub">14 poets · 14 laypeople</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">14</div>
+        <div class="stat-l">Days</div>
+        <div class="stat-sub">1 contribution per poet per day</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">28</div>
+        <div class="stat-l">Poems</div>
+        <div class="stat-sub">14 per cohort · collectively authored</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">392</div>
+        <div class="stat-l">Lines</div>
+        <div class="stat-sub">196 per cohort · 14 authors per poem</div>
+      </div>
+    </div>
+    <div class="timeline-arrow">
+      <div class="ta-label">Temporal span</div>
+      <div class="ta-body">
+        <div class="ta-node">
+          <div class="ta-year">1609</div>
+          <div class="ta-place">London, England</div>
+        </div>
+        <div class="ta-arrow"></div>
+        <div class="ta-to">
+          <div class="ta-to-year">2026</div>
+          <div class="ta-to-place">14 countries · 6 continents</div>
+        </div>
+      </div>
+    </div>
+    <div class="seed-lines-display">
+      <div class="sdl-label">Seed prompt — identical Day 1 starting point for all 28 poems</div>
+      <div class="sdl-line">Nor shall death brag thou wander'st in his shade,</div>
+      <div class="sdl-line">When in eternal lines to time thou grow'st:</div>
+      <div class="sdl-note">All 28 poets receive these two lines as their Day 1 prompt. Each writes the next line. Divergence begins immediately — 28 distinct responses to the same seed.</div>
+    </div>
+    <div class="concerns-panel">
+      <div class="cp-label">Seed concern profile · AI-mapped</div>
+      <div class="cp-stack">
+        <div style="width:28%;background:#9070b8"></div>
+        <div style="width:24%;background:#c8a040"></div>
+        <div style="width:20%;background:#c04070"></div>
+        <div style="width:18%;background:#4080c0"></div>
+        <div style="width:7%;background:#50b090"></div>
+        <div style="width:3%;background:#606070"></div>
+      </div>
+      <div class="cp-chips">
+        <div class="cp-chip"><span class="cp-chip-dot" style="background:#9070b8"></span>Mortality 28%</div>
+        <div class="cp-chip"><span class="cp-chip-dot" style="background:#c8a040"></span>Time / aging 24%</div>
+        <div class="cp-chip"><span class="cp-chip-dot" style="background:#c04070"></span>Love / longing 20%</div>
+        <div class="cp-chip"><span class="cp-chip-dot" style="background:#4080c0"></span>Memory 18%</div>
+        <div class="cp-chip"><span class="cp-chip-dot" style="background:#50b090"></span>Wonder 7%</div>
+      </div>
+      <div class="cp-minor">Solitude 2% · Grief 1% · Identity, Domestic — absent from seed; may emerge in heir poems</div>
+    </div>
+    <div class="ready-bar">
+      <div class="ready-dot"></div>
+      <div class="ready-txt">Dossiers loaded · <span>14 poets · 14 laypeople</span> · <span>poem assignment committed (14×14 Latin square)</span></div>
+      <div class="begin-btn">Begin Experiment →</div>
+    </div>
+  </div>
+</div>
+<div style="position:fixed;bottom:0;left:0;width:100%;background:#cc0000;color:#fff;text-align:center;font-size:11px;font-weight:700;letter-spacing:.25em;padding:4px 0;z-index:9999">MOCKUP</div>
+</body>
+</html>

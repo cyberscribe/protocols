@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Prufrock Protocol — Lineage Path: Amara Osei</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1440px;height:900px;overflow:hidden;background:#0c0c0f;color:#eae6de;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px}
+nav{height:44px;background:#131318;border-bottom:1px solid #1e1e2a;display:flex;align-items:center;padding:0 24px;gap:2px}
+.brand{display:flex;align-items:baseline;gap:10px;margin-right:28px}
+.brand-name{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.brand-sub{font-size:10px;letter-spacing:.06em;color:#c8a040;opacity:.75}
+.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#4a4644;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.nav-tab.active{color:#eae6de;border-bottom-color:#c8a040}
+.nav-right{margin-left:auto;font-size:10px;color:#3a3634}
+.controls{height:40px;background:#0f0f14;border-bottom:1px solid #1a1a26;display:flex;align-items:center;padding:0 24px;gap:20px}
+.cohort-btns{display:flex;border:1px solid #1e1e2a;border-radius:3px;overflow:hidden}
+.cbt{padding:4px 11px;font-size:10px;color:#4a4644;border-right:1px solid #1e1e2a}
+.cbt:last-child{border-right:none}
+.cbt.active{background:rgba(200,120,90,.12);color:#c8785a;border-color:rgba(200,120,90,.2)}
+.slider-group{display:flex;align-items:center;gap:8px;flex:1;max-width:400px}
+.slider-lbl{font-size:10px;color:#4a4644;white-space:nowrap}
+.track{flex:1;height:3px;background:#1a1a26;border-radius:2px;position:relative}
+.fill{position:absolute;left:0;top:0;height:100%;background:#c8a040;border-radius:2px;width:100%}
+.thumb{position:absolute;top:50%;left:100%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:#c8a040;border:2px solid #0c0c0f}
+.ctrl-right{margin-left:auto;font-size:10px;color:#4a4644;display:flex;gap:12px;align-items:center}
+.seed-strip{height:36px;background:rgba(200,160,64,.06);border-bottom:1px solid rgba(200,160,64,.15);display:flex;align-items:center;padding:0 24px;gap:16px}
+.ss-tag{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#c8a040;opacity:.7}
+.ss-line{font-family:Georgia,serif;font-style:italic;font-size:12px;color:rgba(200,160,64,.7)}
+.ss-right{margin-left:auto;font-size:10px;color:#4a4644}
+
+.view-body{height:780px;display:flex}
+#tree-panel{flex:1;position:relative}
+#tree-svg{width:100%;height:780px;display:block}
+
+/* Poem sidebar */
+.poem-sidebar{width:300px;flex-shrink:0;background:#111116;border-left:1px solid #1a1a26;display:flex;flex-direction:column;overflow:hidden}
+.ps-header{padding:16px 18px 12px;border-bottom:1px solid #1a1a26}
+.ps-name{font-size:14px;color:#eae6de;font-weight:400}
+.ps-meta{font-size:10px;color:#4a4644;margin-top:2px}
+.ps-cohort{display:inline-block;font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#c8785a;background:rgba(200,120,90,.1);padding:2px 7px;border-radius:10px;margin-top:6px}
+.ps-scroll{flex:1;overflow-y:auto;padding:12px 18px}
+.ps-scroll::-webkit-scrollbar{width:3px}
+.ps-scroll::-webkit-scrollbar-thumb{background:#1e1e2a}
+.ps-poem-line{display:flex;gap:10px;padding:5px 0;border-bottom:1px solid #14141a}
+.ps-poem-line:last-child{border-bottom:none}
+.ps-ln{font-size:8px;color:#2a2826;font-family:monospace;width:16px;flex-shrink:0;padding-top:2px}
+.ps-text{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:11px;color:#a0988e;line-height:1.5}
+.ps-text.highlight{color:#d4c8b0;border-left:2px solid #c8785a;padding-left:6px;margin-left:-8px}
+.ps-day-tag{font-size:7px;font-family:monospace;color:#3a3634;margin-top:1px}
+.ps-footer{padding:10px 18px;border-top:1px solid #1a1a26;font-size:9px;color:#3a3634}
+</style>
+</head>
+<body>
+<nav>
+  <div class="brand"><span class="brand-name">The Prufrock Protocol</span><span class="brand-sub">Sonnet Experiment Alpha</span></div>
+  <div class="nav-tab">Timeline</div>
+  <div class="nav-tab active">Lineage</div>
+  <div class="nav-tab">Map</div>
+  <div class="nav-tab">Poem</div>
+  <div class="nav-tab">Participant</div>
+  <div class="nav-right">Participant path: Amara Osei · poet-01</div>
+</nav>
+<div class="controls">
+  <div class="cohort-btns"><div class="cbt active">Poets</div><div class="cbt">Laypeople</div><div class="cbt">Both</div></div>
+  <div class="slider-group">
+    <span class="slider-lbl">Day</span>
+    <div class="track"><div class="fill"></div><div class="thumb"></div></div>
+    <span class="slider-lbl">14 / 14</span>
+  </div>
+  <div class="ctrl-right">
+    <span style="color:#c8785a">● Amara Osei</span>
+    <span>· path highlighted</span>
+    <span style="opacity:.4">|</span>
+    <span>Click node to select participant</span>
+  </div>
+</div>
+<div class="seed-strip">
+  <span class="ss-tag">Root</span>
+  <span class="ss-line">Nor shall death brag thou wander'st in his shade, · When in eternal lines to time thou grow'st:</span>
+  <span class="ss-right">W. Shakespeare · 1609</span>
+</div>
+<div class="view-body">
+  <div id="tree-panel">
+    <svg id="tree-svg" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feComposite in="SourceGraphic" in2="b" operator="over"/></filter>
+        <filter id="glow2"><feGaussianBlur stdDeviation="2" result="b"/><feComposite in="SourceGraphic" in2="b" operator="over"/></filter>
+        <radialGradient id="bg" cx="50%" cy="0%" r="80%">
+          <stop offset="0%" stop-color="#131320"/>
+          <stop offset="100%" stop-color="#0c0c0f"/>
+        </radialGradient>
+      </defs>
+      <rect width="1140" height="780" fill="url(#bg)"/>
+    </svg>
+  </div>
+
+  <div class="poem-sidebar">
+    <div class="ps-header">
+      <div class="ps-name">Amara Osei</div>
+      <div class="ps-meta">Accra, Ghana · 5.6°N, 0.2°W · GMT+0</div>
+      <div class="ps-cohort">Poet Cohort</div>
+    </div>
+    <div class="ps-scroll">
+      <div class="ps-poem-line">
+        <div class="ps-ln">1</div>
+        <div><div class="ps-text">The summer I remember had no owner</div><div class="ps-day-tag">D1 · 14:23 WAT · from seed</div></div>
+      </div>
+      <div class="ps-poem-line">
+        <div class="ps-ln">2</div>
+        <div><div class="ps-text">What does the grave forget that the soil keeps?</div><div class="ps-day-tag">D2 · 09:41 WAT · from Marisol F.</div></div>
+      </div>
+      <div class="ps-poem-line">
+        <div class="ps-ln">3</div>
+        <div><div class="ps-text highlight">I named my grief and it answered to nothing</div><div class="ps-day-tag">D3 · 15:08 WAT · chosen → D4 prompt ★</div></div>
+      </div>
+      <div class="ps-poem-line">
+        <div class="ps-ln">4</div>
+        <div><div class="ps-text">The words we inherit outlive the mouths that shaped them</div><div class="ps-day-tag">D4 · 11:22 WAT · from Amara (D3) ★</div></div>
+      </div>
+      <div class="ps-poem-line">
+        <div class="ps-ln">5</div>
+        <div><div class="ps-text">Even absence has a temperature in this latitude</div><div class="ps-day-tag">D5 · 16:50 WAT · from Wei Chen</div></div>
+      </div>
+      <div class="ps-poem-line">
+        <div class="ps-ln">6</div>
+        <div><div class="ps-text">She carried the country in her posture, not her speech</div><div class="ps-day-tag">D6 · 13:15 WAT · from Meera P.</div></div>
+      </div>
+      <div class="ps-poem-line">
+        <div class="ps-ln">7</div>
+        <div><div class="ps-text highlight">What is given cannot be taken, only forgotten</div><div class="ps-day-tag">D7 · 14:41 WAT · chosen → D8 prompt ★</div></div>
+      </div>
+      <div class="ps-poem-line">
+        <div class="ps-ln">8</div>
+        <div><div class="ps-text">The body knows the season the mind misremembers</div><div class="ps-day-tag">D8 · 10:33 WAT · from Siobhán N.</div></div>
+      </div>
+      <div class="ps-poem-line">
+        <div class="ps-ln">9</div>
+        <div><div class="ps-text highlight">I have been quiet long enough to hear the city think</div><div class="ps-day-tag">D9 · 15:20 WAT · chosen → D10 prompt ★</div></div>
+      </div>
+      <div class="ps-poem-line">
+        <div class="ps-ln">10</div>
+        <div><div class="ps-text">Distance is a kind of keeping — what travels, remains</div><div class="ps-day-tag">D10 · 12:09 WAT · from Astrid L.</div></div>
+      </div>
+      <div class="ps-poem-line">
+        <div class="ps-ln">11</div>
+        <div><div class="ps-text highlight">The poem I meant to write lives in this one instead</div><div class="ps-day-tag">D11 · 14:58 WAT · chosen → D12 prompt ★</div></div>
+      </div>
+      <div class="ps-poem-line">
+        <div class="ps-ln">12</div>
+        <div><div class="ps-text">Memory is not the past; it is what the past becomes</div><div class="ps-day-tag">D12 · 11:44 WAT · from Elif Ş.</div></div>
+      </div>
+      <div class="ps-poem-line">
+        <div class="ps-ln">13</div>
+        <div><div class="ps-text highlight">To outlast the naming is to become the unnamed thing</div><div class="ps-day-tag">D13 · 15:37 WAT · chosen → D14 prompt ★</div></div>
+      </div>
+      <div class="ps-poem-line">
+        <div class="ps-ln">14</div>
+        <div><div class="ps-text">We were here. The line holds.</div><div class="ps-day-tag">D14 · 14:02 WAT · from Amara (D13) ★</div></div>
+      </div>
+    </div>
+    <div class="ps-footer">★ Chosen as prompt · 6/14 lines used as day's seed · avg latency 21 min</div>
+  </div>
+</div>
+
+<script>
+const svg = document.getElementById('tree-svg');
+const W = 1140, H = 780;
+const poetColor = '#c8785a', layColor = '#5a8fd4', goldColor = '#c8a040';
+const highlightColor = '#e8885a';
+const ROOT = {x: W/2, y: 42};
+
+function poetX(i){ return 40 + i*(1060/13); }
+function layX(i){ return 40 + i*(1060/13); } // same positions, different draw time
+const dayY = [0,110,200,295,382,462,534,598,650,693,727,754,773,785,792];
+
+const spinePoet = [2,6,0,13,8,4,11,1,7,10,5,9,3,12];
+const spineX = spinePoet.map(i => poetX(i));
+
+// Amara is poet index 0 (poet-01)
+const amaraIdx = 0;
+const amaraX = poetX(amaraIdx);
+// Amara's "chosen" days (when her line was chosen): days 3,7,9,11,13 (0-indexed: 2,6,8,10,12)
+const amaraChosenDays = new Set([2,6,8,10,12]);
+
+function addEl(tag,attrs,parent=svg){
+  const el=document.createElementNS('http://www.w3.org/2000/svg',tag);
+  for(const[k,v] of Object.entries(attrs)) el.setAttribute(k,v);
+  parent.appendChild(el);
+  return el;
+}
+function mkPath(x1,y1,x2,y2,cp=.45){
+  const cy1=y1+(y2-y1)*cp, cy2=y2-(y2-y1)*cp;
+  return `M${x1},${y1} C${x1},${cy1} ${x2},${cy2} ${x2},${y2}`;
+}
+function addText(x,y,t,fill='#4a4644',fs=8,anchor='middle'){
+  const el=addEl('text',{x,y,'text-anchor':anchor,'dominant-baseline':'middle',fill,
+    'font-size':fs,'font-family':'-apple-system,sans-serif'});
+  el.textContent=t;
+}
+
+// Background
+addEl('rect',{width:W,height:H,fill:'url(#bg)'});
+
+// Dim: root to all day-1 nodes
+for(let i=0;i<14;i++){
+  const x=poetX(i), isAmara=(i===amaraIdx);
+  addEl('path',{d:mkPath(ROOT.x,ROOT.y,x,dayY[1]),
+    stroke:isAmara?'rgba(232,136,90,.7)':'rgba(200,120,90,.06)',
+    'stroke-width':isAmara?2:.5,fill:'none'});
+}
+
+// From each day's spine node to all day+1 nodes (dimmed)
+for(let d=0;d<13;d++){
+  const sx=spineX[d], sy=dayY[d+1], ty=dayY[d+2];
+  const isAmaraDaySpine=(spinePoet[d]===amaraIdx);
+  for(let i=0;i<14;i++){
+    const x=poetX(i), isAmara=(i===amaraIdx);
+    const stroke = isAmara || isAmaraDaySpine ?
+      'rgba(232,136,90,.5)' : 'rgba(200,120,90,.05)';
+    const sw = isAmara || isAmaraDaySpine ? 1.5 : .4;
+    addEl('path',{d:mkPath(sx,sy,x,ty,.4),stroke,
+      'stroke-width':sw,fill:'none'});
+  }
+}
+
+// Draw spine path (dimmed)
+let spinePath=`M${ROOT.x},${ROOT.y}`;
+for(let d=0;d<14;d++){
+  const x=spineX[d], y=dayY[d+1];
+  const px = d===0?ROOT.x:spineX[d-1], py=dayY[d];
+  spinePath += ` Q${(px+x)/2},${(py+y)/2+8} ${x},${y}`;
+}
+addEl('path',{d:spinePath,stroke:'rgba(200,160,64,.2)','stroke-width':1.5,fill:'none'});
+
+// Amara's path: connects her node at each day level to the spine of that day
+// Amara at day 1 → at day 1 spine (Marisol, poet 2)
+// Then Marisol's line → Amara at day 2, etc.
+// Amara's y positions for her nodes at each day
+let amaraPath = `M${ROOT.x},${ROOT.y} L${amaraX},${dayY[1]}`;
+for(let d=1;d<14;d++){
+  amaraPath += ` L${amaraX},${dayY[d+1]}`;
+}
+addEl('path',{d:amaraPath,stroke:'rgba(232,136,90,.15)','stroke-width':1,fill:'none','stroke-dasharray':'3,4'});
+
+// Day-1 nodes (dimmed)
+for(let i=0;i<14;i++){
+  const x=poetX(i), y=dayY[1], isSpine=(i===spinePoet[0]), isAmara=(i===amaraIdx);
+  const r = isAmara?6:isSpine?4:2.5;
+  const fill = isAmara?highlightColor:isSpine?goldColor:poetColor;
+  const op = isAmara?1:isSpine?.7:.25;
+  addEl('circle',{cx:x,cy:y,r,fill,opacity:op,
+    ...(isAmara||isSpine?{filter:'url(#glow2)'}:{})});
+}
+
+// Days 2-14 nodes
+for(let d=1;d<14;d++){
+  const y=dayY[d+1], spineIdx=spinePoet[d], isAmara=(amaraIdx===0);
+  for(let i=0;i<14;i++){
+    const x=poetX(i), isAmaraNode=(i===amaraIdx), isSpineNode=(i===spineIdx);
+    const r = isAmaraNode?5:isSpineNode?3.5:2;
+    const fill = isAmaraNode?highlightColor:isSpineNode?goldColor:poetColor;
+    const fade = d>7 ? .7 : 1;
+    const op = isAmaraNode?fade:isSpineNode?.5*fade:.15*fade;
+    addEl('circle',{cx:x,cy:y,r,fill,opacity:op,
+      ...(isAmaraNode?{filter:'url(#glow2)'}:{})});
+  }
+}
+
+// Root
+addEl('circle',{cx:ROOT.x,cy:ROOT.y,r:14,fill:'#1a1812',stroke:goldColor,'stroke-width':2,filter:'url(#glow)'});
+addEl('circle',{cx:ROOT.x,cy:ROOT.y,r:8,fill:goldColor,opacity:.9});
+addText(ROOT.x, ROOT.y+26, 'Sonnet XVIII · Shakespeare · 1609', goldColor, 8);
+
+// Amara node labels at key days
+const labelDays = [0,2,6,8,12,13];
+const lineTexts = [
+  'The summer I remember had no owner',
+  'I named my grief and it answered to nothing',
+  'What is given cannot be taken',
+  'I have been quiet long enough',
+  'To outlast the naming…',
+  'We were here. The line holds.'
+];
+for(let idx=0;idx<labelDays.length;idx++){
+  const d=labelDays[idx];
+  const x=amaraX, y=dayY[d+1];
+  const isRight = x < W/2;
+  const tx = isRight ? x+12 : x-12;
+  const anchor = isRight ? 'start' : 'end';
+  const isChosen = amaraChosenDays.has(d);
+  addEl('line',{x1:x,y1:y,x2:tx+(isRight?50:-50),y2:y,stroke:'rgba(232,136,90,.4)','stroke-width':.8});
+  const el=addEl('text',{x:tx+(isRight?50:-50),y:y-7,'text-anchor':anchor,'dominant-baseline':'middle',
+    fill:isChosen?highlightColor:'rgba(232,136,90,.7)','font-size':8,'font-family':'Georgia,serif','font-style':'italic'});
+  el.textContent = '"' + lineTexts[idx] + '"';
+  if(isChosen){
+    const tag=addEl('text',{x:tx+(isRight?52:-52),y:y+6,'text-anchor':anchor,'dominant-baseline':'middle',
+      fill:'rgba(200,160,64,.7)','font-size':7,'font-family':'-apple-system,sans-serif'});
+    tag.textContent = '★ chosen · D'+(d+2)+' prompt';
+  }
+}
+
+// Day number labels
+for(let d=1;d<=14;d++){
+  const y=dayY[d];
+  addText(W-20, y, 'D'+d, '#2e2c28', 8);
+}
+
+// Amara's location tag
+addText(amaraX, H-12, 'AMARA OSEI · Accra, Ghana', highlightColor, 8);
+</script>
+</body>
+</html>

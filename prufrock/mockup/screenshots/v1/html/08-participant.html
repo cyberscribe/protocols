@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Prufrock Protocol — Participant: Amara Osei</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1440px;height:900px;overflow:hidden;background:#0c0c0f;color:#eae6de;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px}
+nav{height:44px;background:#131318;border-bottom:1px solid #1e1e2a;display:flex;align-items:center;padding:0 24px;gap:2px}
+.brand{display:flex;align-items:baseline;gap:10px;margin-right:28px}
+.brand-name{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.brand-sub{font-size:10px;letter-spacing:.06em;color:#c8a040;opacity:.75}
+.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#4a4644;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.nav-tab.active{color:#eae6de;border-bottom-color:#c8a040}
+.nav-right{margin-left:auto;font-size:10px;color:#3a3634}
+.controls{height:40px;background:#0f0f14;border-bottom:1px solid #1a1a26;display:flex;align-items:center;padding:0 24px;gap:20px}
+.cohort-btns{display:flex;border:1px solid #1e1e2a;border-radius:3px;overflow:hidden}
+.cbt{padding:4px 11px;font-size:10px;color:#4a4644;border-right:1px solid #1e1e2a}
+.cbt:last-child{border-right:none}
+.cbt.active{background:rgba(200,120,90,.12);color:#c8785a;border-color:rgba(200,120,90,.2)}
+.slider-group{display:flex;align-items:center;gap:8px;flex:1;max-width:400px}
+.slider-lbl{font-size:10px;color:#4a4644;white-space:nowrap}
+.track{flex:1;height:3px;background:#1a1a26;border-radius:2px;position:relative}
+.fill{position:absolute;left:0;top:0;height:100%;background:#c8a040;border-radius:2px;width:100%}
+.thumb{position:absolute;top:50%;left:100%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:#c8a040;border:2px solid #0c0c0f}
+.ctrl-right{margin-left:auto;font-size:10px;color:#4a4644}
+
+.view-body{height:816px;display:flex}
+
+/* LEFT: Profile column */
+.profile-col{width:340px;flex-shrink:0;border-right:1px solid #1a1a26;display:flex;flex-direction:column;overflow:hidden}
+
+.profile-card{padding:20px;border-bottom:1px solid #1a1a26}
+.pc-top{display:flex;align-items:flex-start;gap:14px;margin-bottom:14px}
+.pc-avatar{width:52px;height:52px;border-radius:50%;background:rgba(200,120,90,.15);border:2px solid rgba(200,120,90,.4);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600;color:#c8785a;flex-shrink:0}
+.pc-name{font-size:17px;font-weight:400;color:#eae6de;margin-bottom:3px}
+.pc-id{font-size:9px;font-family:monospace;color:#4a4644}
+.pc-cohort{display:inline-block;font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#c8785a;background:rgba(200,120,90,.1);padding:2px 7px;border-radius:10px;margin-top:4px}
+.pc-location{font-size:11px;color:#5a5654;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.pc-loc-dot{width:5px;height:5px;border-radius:50%;background:#c8785a;opacity:.6}
+.pc-bio{font-size:11px;color:#6a6462;line-height:1.6;padding:10px 12px;background:#111116;border-radius:4px;border-left:2px solid rgba(200,120,90,.3)}
+.pc-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
+.pc-tag{font-size:8px;color:#4a4644;padding:2px 7px;border:1px solid #1e1e2a;border-radius:10px}
+
+.stats-section{padding:14px 20px;border-bottom:1px solid #1a1a26}
+.section-lbl{font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#3a3634;margin-bottom:10px}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.stat-box{background:#0f0f14;border:1px solid #1a1a26;border-radius:3px;padding:8px 10px}
+.stat-n{font-size:20px;font-weight:200;color:#c8785a;line-height:1}
+.stat-l{font-size:8px;color:#3a3634;margin-top:2px;letter-spacing:.05em}
+
+/* Mini timeline */
+.mini-timeline{padding:14px 20px;border-bottom:1px solid #1a1a26}
+.mt-track{height:32px;display:flex;align-items:center;gap:2px;position:relative}
+.mt-day{flex:1;height:26px;background:#111116;border:1px solid #1a1a26;border-radius:2px;position:relative;cursor:pointer;transition:border-color .15s}
+.mt-day:hover{border-color:#2a2a3a}
+.mt-day.has-line{background:rgba(200,120,90,.1);border-color:rgba(200,120,90,.25)}
+.mt-day.spine{outline:1px solid rgba(200,160,64,.7);outline-offset:-1px;background:rgba(200,160,64,.1)}
+.mt-dot{position:absolute;bottom:4px;left:50%;transform:translateX(-50%);width:4px;height:4px;border-radius:50%;background:#c8785a;opacity:.8}
+.mt-day.spine .mt-dot{background:#c8a040}
+.mt-labels{display:flex;padding:2px 0;gap:2px}
+.mt-lbl{flex:1;text-align:center;font-size:7px;color:#2a2826}
+.mt-lbl.spine{color:#c8a040}
+
+/* Latency chart */
+.latency-chart{padding:14px 20px;border-bottom:1px solid #1a1a26;flex:1}
+.chart-bars{display:flex;align-items:flex-end;gap:3px;height:80px}
+.bar{flex:1;border-radius:2px 2px 0 0;transition:height .3s;min-height:2px;cursor:pointer}
+.bar.poet-bar{background:rgba(200,120,90,.5)}
+.bar.poet-bar:hover{background:rgba(200,120,90,.8)}
+.bar.spine-bar{background:rgba(200,160,64,.6)}
+.chart-axis{display:flex;gap:3px;padding-top:3px;border-top:1px solid #1a1a26}
+.chart-lbl{flex:1;text-align:center;font-size:7px;color:#2a2826}
+.chart-lbl.spine{color:#c8a040}
+.chart-y{display:flex;flex-direction:column;justify-content:space-between;padding-right:4px;height:80px;font-size:7px;color:#2a2826;text-align:right}
+
+.influences{padding:12px 20px}
+.inf-list{display:flex;flex-direction:column;gap:4px}
+.inf-item{font-size:10px;color:#5a5654;display:flex;align-items:center;gap:6px}
+.inf-item::before{content:'';width:3px;height:3px;border-radius:50%;background:#c8785a;opacity:.5;flex-shrink:0}
+
+/* MIDDLE: Poem */
+.poem-col{flex:1;display:flex;flex-direction:column;border-right:1px solid #1a1a26}
+.poem-header{padding:16px 24px 12px;border-bottom:1px solid #1a1a26;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.poem-title{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#4a4644}
+.poem-count{font-size:10px;color:#3a3634}
+.poem-scroll{flex:1;overflow-y:auto;padding:16px 24px}
+.poem-scroll::-webkit-scrollbar{width:3px}
+.poem-scroll::-webkit-scrollbar-thumb{background:#1e1e2a}
+.pl{display:flex;gap:12px;padding:8px 0;border-bottom:1px solid #14141a;align-items:baseline}
+.pl:last-child{border-bottom:none}
+.pl-n{font-size:9px;font-family:monospace;color:#2e2c28;width:16px;text-align:right;flex-shrink:0;padding-top:3px}
+.pl-content{}
+.pl-line{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:15px;color:#a0988e;line-height:1.5}
+.pl.spine .pl-line{color:#c8c0a8}
+.pl.spine{position:relative}
+.pl.spine::before{content:'★';position:absolute;left:-16px;top:10px;font-size:8px;color:rgba(200,160,64,.6)}
+.pl-day{font-size:8px;color:#2e2c28;margin-top:3px;font-family:monospace}
+.pl-moment{font-size:9px;color:#3a3838;font-style:italic;margin-top:2px}
+
+/* RIGHT: Voice consistency + small map */
+.right-col{width:280px;flex-shrink:0;display:flex;flex-direction:column}
+.vc-section{padding:16px 18px;border-bottom:1px solid #1a1a26;flex:1;overflow:hidden}
+.vc-lbl{font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#3a3634;margin-bottom:12px}
+.vc-pair{margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid #14141a}
+.vc-pair:last-child{border-bottom:none}
+.vc-day-lbl{font-size:8px;color:#3a3634;margin-bottom:5px;font-family:monospace}
+.vc-line{font-family:Georgia,serif;font-style:italic;font-size:11px;color:#7a7268;line-height:1.5}
+.vc-line+.vc-line{margin-top:5px;color:#6a6260}
+
+.mini-map{height:200px;background:#0a1018;border-top:1px solid #1a1a26;position:relative;overflow:hidden}
+.mm-label{position:absolute;bottom:8px;left:12px;font-size:8px;color:#2a3038;letter-spacing:.06em}
+</style>
+</head>
+<body>
+<nav>
+  <div class="brand"><span class="brand-name">The Prufrock Protocol</span><span class="brand-sub">Sonnet Experiment Alpha</span></div>
+  <div class="nav-tab">Timeline</div>
+  <div class="nav-tab">Lineage</div>
+  <div class="nav-tab">Map</div>
+  <div class="nav-tab">Poem</div>
+  <div class="nav-tab active">Participant</div>
+  <div class="nav-right">poet-01 · Amara Osei</div>
+</nav>
+<div class="controls">
+  <div class="cohort-btns"><div class="cbt active">Poets</div><div class="cbt">Laypeople</div><div class="cbt">Both</div></div>
+  <div class="slider-group">
+    <span class="slider-lbl">Day</span>
+    <div class="track"><div class="fill"></div><div class="thumb"></div></div>
+    <span class="slider-lbl">14 / 14</span>
+  </div>
+  <div class="ctrl-right">← Previous  ·  Next →  ·  poet-01 of 14</div>
+</div>
+
+<div class="view-body">
+
+  <!-- LEFT: Profile -->
+  <div class="profile-col">
+    <div class="profile-card">
+      <div class="pc-top">
+        <div class="pc-avatar">AO</div>
+        <div>
+          <div class="pc-name">Amara Osei</div>
+          <div class="pc-id">poet-01 · seed 42</div>
+          <div class="pc-cohort">Poet Cohort</div>
+        </div>
+      </div>
+      <div class="pc-location"><div class="pc-loc-dot"></div>Accra, Ghana · 5.6°N, 0.2°W · Africa/Accra (GMT+0)</div>
+      <div class="pc-bio">Published her first collection at 28 through a Ghanaian indie press. Teaches creative writing at the University of Ghana. Her work circles around migration within West Africa — not the diaspora narrative the international market expects.</div>
+      <div class="pc-tags">
+        <span class="pc-tag">age 34</span>
+        <span class="pc-tag">MFA Michigan</span>
+        <span class="pc-tag">terse · deliberate</span>
+        <span class="pc-tag">risk: moderate</span>
+      </div>
+    </div>
+
+    <div class="stats-section">
+      <div class="section-lbl">Experiment performance</div>
+      <div class="stats-grid">
+        <div class="stat-box"><div class="stat-n">14</div><div class="stat-l">Lines written</div></div>
+        <div class="stat-box"><div class="stat-n" style="color:#c8a040">6</div><div class="stat-l">Times chosen ★</div></div>
+        <div class="stat-box"><div class="stat-n">0</div><div class="stat-l">Forfeits</div></div>
+        <div class="stat-box"><div class="stat-n">21<span style="font-size:11px">m</span></div><div class="stat-l">Avg latency</div></div>
+      </div>
+    </div>
+
+    <div class="mini-timeline">
+      <div class="section-lbl">Response timeline</div>
+      <div class="mt-track">
+        <div class="mt-day has-line spine"><div class="mt-dot"></div></div>
+        <div class="mt-day has-line"><div class="mt-dot"></div></div>
+        <div class="mt-day has-line spine"><div class="mt-dot"></div></div>
+        <div class="mt-day has-line spine"><div class="mt-dot"></div></div>
+        <div class="mt-day has-line"><div class="mt-dot"></div></div>
+        <div class="mt-day has-line spine"><div class="mt-dot"></div></div>
+        <div class="mt-day has-line spine"><div class="mt-dot"></div></div>
+        <div class="mt-day has-line"><div class="mt-dot"></div></div>
+        <div class="mt-day has-line spine"><div class="mt-dot"></div></div>
+        <div class="mt-day has-line"><div class="mt-dot"></div></div>
+        <div class="mt-day has-line spine"><div class="mt-dot"></div></div>
+        <div class="mt-day has-line"><div class="mt-dot"></div></div>
+        <div class="mt-day has-line spine"><div class="mt-dot"></div></div>
+        <div class="mt-day has-line"><div class="mt-dot"></div></div>
+      </div>
+      <div class="mt-labels">
+        <div class="mt-lbl spine">1</div><div class="mt-lbl">2</div><div class="mt-lbl spine">3</div>
+        <div class="mt-lbl spine">4</div><div class="mt-lbl">5</div><div class="mt-lbl spine">6</div>
+        <div class="mt-lbl spine">7</div><div class="mt-lbl">8</div><div class="mt-lbl spine">9</div>
+        <div class="mt-lbl">10</div><div class="mt-lbl spine">11</div><div class="mt-lbl">12</div>
+        <div class="mt-lbl spine">13</div><div class="mt-lbl">14</div>
+      </div>
+    </div>
+
+    <div class="latency-chart">
+      <div class="section-lbl">Response latency (minutes)</div>
+      <div style="display:flex;align-items:flex-end;gap:2px">
+        <div class="chart-y"><span>45</span><span>30</span><span>15</span><span>0</span></div>
+        <div style="flex:1">
+          <div class="chart-bars">
+            <!-- Heights proportional to minutes (max ~45min = 80px) -->
+            <div class="bar spine-bar" style="height:40px" title="D1: 18min"></div>
+            <div class="bar poet-bar" style="height:55px" title="D2: 25min"></div>
+            <div class="bar spine-bar" style="height:27px" title="D3: 12min"></div>
+            <div class="bar poet-bar" style="height:49px" title="D4: 22min"></div>
+            <div class="bar poet-bar" style="height:76px" title="D5: 34min"></div>
+            <div class="bar spine-bar" style="height:33px" title="D6: 15min"></div>
+            <div class="bar spine-bar" style="height:40px" title="D7: 18min"></div>
+            <div class="bar poet-bar" style="height:58px" title="D8: 26min"></div>
+            <div class="bar spine-bar" style="height:31px" title="D9: 14min"></div>
+            <div class="bar poet-bar" style="height:60px" title="D10: 27min"></div>
+            <div class="bar spine-bar" style="height:44px" title="D11: 20min"></div>
+            <div class="bar poet-bar" style="height:53px" title="D12: 24min"></div>
+            <div class="bar spine-bar" style="height:80px" title="D13: 36min (closing pressure)"></div>
+            <div class="bar poet-bar" style="height:44px" title="D14: 20min"></div>
+          </div>
+          <div class="chart-axis">
+            <div class="chart-lbl spine">1</div><div class="chart-lbl">2</div>
+            <div class="chart-lbl spine">3</div><div class="chart-lbl spine">4</div>
+            <div class="chart-lbl">5</div><div class="chart-lbl spine">6</div>
+            <div class="chart-lbl spine">7</div><div class="chart-lbl">8</div>
+            <div class="chart-lbl spine">9</div><div class="chart-lbl">10</div>
+            <div class="chart-lbl spine">11</div><div class="chart-lbl">12</div>
+            <div class="chart-lbl spine">13</div><div class="chart-lbl">14</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="influences">
+      <div class="section-lbl">Influences</div>
+      <div class="inf-list">
+        <div class="inf-item">Lucille Clifton</div>
+        <div class="inf-item">Kofi Awoonor</div>
+        <div class="inf-item">Warsan Shire</div>
+        <div class="inf-item">highlife music lyrics</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MIDDLE: Poem -->
+  <div class="poem-col">
+    <div class="poem-header">
+      <div class="poem-title">Complete poem · Amara Osei · poet-01</div>
+      <div class="poem-count">14 lines · 0 forfeits · 6 chosen ★</div>
+    </div>
+    <div class="poem-scroll">
+      <div class="pl spine">
+        <div class="pl-n">1</div>
+        <div class="pl-content">
+          <div class="pl-line">The summer I remember had no owner</div>
+          <div class="pl-day">D1 · 14:23 WAT · prompt: seed (Shakespeare)</div>
+          <div class="pl-moment">office, between student consultations · humid, 31°C, building clouds</div>
+        </div>
+      </div>
+      <div class="pl">
+        <div class="pl-n">2</div>
+        <div class="pl-content">
+          <div class="pl-line">What does the grave forget that the soil keeps?</div>
+          <div class="pl-day">D2 · 09:41 WAT · prompt: Marisol Fuentes (D1)</div>
+          <div class="pl-moment">morning walk to campus · overcast, 26°C</div>
+        </div>
+      </div>
+      <div class="pl spine">
+        <div class="pl-n">3</div>
+        <div class="pl-content">
+          <div class="pl-line">I named my grief and it answered to nothing</div>
+          <div class="pl-day">D3 · 15:08 WAT · prompt: Hiroshi Tanaka (D2) · ★ chosen → D4</div>
+          <div class="pl-moment">office, late afternoon · sun returning after rain</div>
+        </div>
+      </div>
+      <div class="pl spine">
+        <div class="pl-n">4</div>
+        <div class="pl-content">
+          <div class="pl-line">The words we inherit outlive the mouths that shaped them</div>
+          <div class="pl-day">D4 · 11:22 WAT · prompt: Amara Osei (D3 — her own line) · ★ chosen → D5</div>
+          <div class="pl-moment">library, research hour · clear, 28°C</div>
+        </div>
+      </div>
+      <div class="pl">
+        <div class="pl-n">5</div>
+        <div class="pl-content">
+          <div class="pl-line">Even absence has a temperature in this latitude</div>
+          <div class="pl-day">D5 · 16:50 WAT · prompt: Wei Chen (D4)</div>
+          <div class="pl-moment">home, late afternoon · light rain beginning</div>
+        </div>
+      </div>
+      <div class="pl spine">
+        <div class="pl-n">6</div>
+        <div class="pl-content">
+          <div class="pl-line">She carried the country in her posture, not her speech</div>
+          <div class="pl-day">D6 · 13:15 WAT · prompt: Meera Pillai (D5) · ★ chosen → D7</div>
+          <div class="pl-moment">faculty meeting break · hazy sun, 30°C</div>
+        </div>
+      </div>
+      <div class="pl spine">
+        <div class="pl-n">7</div>
+        <div class="pl-content">
+          <div class="pl-line">What is given cannot be taken, only forgotten</div>
+          <div class="pl-day">D7 · 14:41 WAT · prompt: Amara Osei (D6 — her own line) · ★ chosen → D8</div>
+          <div class="pl-moment">office, student consultations done · humid, 31°C</div>
+        </div>
+      </div>
+      <div class="pl">
+        <div class="pl-n">8</div>
+        <div class="pl-content">
+          <div class="pl-line">The body knows the season the mind misremembers</div>
+          <div class="pl-day">D8 · 10:33 WAT · prompt: Siobhán Ní Faoláin (D7)</div>
+          <div class="pl-moment">morning walk · dew on the grass, 24°C</div>
+        </div>
+      </div>
+      <div class="pl spine">
+        <div class="pl-n">9</div>
+        <div class="pl-content">
+          <div class="pl-line">I have been quiet long enough to hear the city think</div>
+          <div class="pl-day">D9 · 15:20 WAT · prompt: Siobhán Ní Faoláin (D8) · ★ chosen → D10</div>
+          <div class="pl-moment">lecture prep · overcast, 29°C</div>
+        </div>
+      </div>
+      <div class="pl">
+        <div class="pl-n">10</div>
+        <div class="pl-content">
+          <div class="pl-line">Distance is a kind of keeping — what travels, remains</div>
+          <div class="pl-day">D10 · 12:09 WAT · prompt: Amara Osei (D9 — her own line)</div>
+          <div class="pl-moment">campus grounds, midday · bright sun, 33°C</div>
+        </div>
+      </div>
+      <div class="pl spine">
+        <div class="pl-n">11</div>
+        <div class="pl-content">
+          <div class="pl-line">The poem I meant to write lives in this one instead</div>
+          <div class="pl-day">D11 · 14:58 WAT · prompt: Astrid Lindqvist (D10) · ★ chosen → D12</div>
+          <div class="pl-moment">office, light afternoon · clear, 30°C</div>
+        </div>
+      </div>
+      <div class="pl">
+        <div class="pl-n">12</div>
+        <div class="pl-content">
+          <div class="pl-line">Memory is not the past; it is what the past becomes</div>
+          <div class="pl-day">D12 · 11:44 WAT · prompt: Amara Osei (D11 — her own line)</div>
+          <div class="pl-moment">after seminar · partly cloudy, 28°C</div>
+        </div>
+      </div>
+      <div class="pl spine">
+        <div class="pl-n">13</div>
+        <div class="pl-content">
+          <div class="pl-line">To outlast the naming is to become the unnamed thing</div>
+          <div class="pl-day">D13 · 15:37 WAT · prompt: Elif Şahin (D12) · ★ chosen → D14</div>
+          <div class="pl-moment">office window, late day · warm, 31°C, crows</div>
+        </div>
+      </div>
+      <div class="pl">
+        <div class="pl-n">14</div>
+        <div class="pl-content">
+          <div class="pl-line">We were here. The line holds.</div>
+          <div class="pl-day">D14 · 14:02 WAT · prompt: Amara Osei (D13 — her own line)</div>
+          <div class="pl-moment">office, experiment final day · bright, 32°C</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: Voice consistency + mini map -->
+  <div class="right-col">
+    <div class="vc-section">
+      <div class="vc-lbl">Voice consistency — adjacent lines</div>
+      <div class="vc-pair">
+        <div class="vc-day-lbl">Lines 1–2</div>
+        <div class="vc-line">The summer I remember had no owner</div>
+        <div class="vc-line">What does the grave forget that the soil keeps?</div>
+      </div>
+      <div class="vc-pair">
+        <div class="vc-day-lbl">Lines 3–4 · consecutive chosen ★</div>
+        <div class="vc-line">I named my grief and it answered to nothing</div>
+        <div class="vc-line">The words we inherit outlive the mouths that shaped them</div>
+      </div>
+      <div class="vc-pair">
+        <div class="vc-day-lbl">Lines 6–7 · back-to-back chosen ★</div>
+        <div class="vc-line">She carried the country in her posture, not her speech</div>
+        <div class="vc-line">What is given cannot be taken, only forgotten</div>
+      </div>
+      <div class="vc-pair">
+        <div class="vc-day-lbl">Lines 13–14 · closing</div>
+        <div class="vc-line">To outlast the naming is to become the unnamed thing</div>
+        <div class="vc-line">We were here. The line holds.</div>
+      </div>
+    </div>
+
+    <div class="mini-map">
+      <svg width="280" height="200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="mmocean" cx="50%" cy="50%" r="70%">
+            <stop offset="0%" stop-color="#0a1828"/>
+            <stop offset="100%" stop-color="#060c14"/>
+          </radialGradient>
+        </defs>
+        <rect width="280" height="200" fill="url(#mmocean)"/>
+        <!-- Simplified Africa blob -->
+        <ellipse cx="148" cy="110" rx="22" ry="28" fill="#1a2830" stroke="rgba(255,255,255,.06)" stroke-width=".8"/>
+        <!-- Europe -->
+        <ellipse cx="138" cy="72" rx="14" ry="12" fill="#1a2830" stroke="rgba(255,255,255,.06)" stroke-width=".8"/>
+        <!-- Asia -->
+        <ellipse cx="195" cy="80" rx="40" ry="22" fill="#1a2830" stroke="rgba(255,255,255,.06)" stroke-width=".8"/>
+        <!-- Americas -->
+        <ellipse cx="60" cy="90" rx="20" ry="30" fill="#1a2830" stroke="rgba(255,255,255,.06)" stroke-width=".8"/>
+        <!-- Australia -->
+        <ellipse cx="230" cy="140" rx="16" ry="10" fill="#1a2830" stroke="rgba(255,255,255,.06)" stroke-width=".8"/>
+
+        <!-- Participant dots and arcs -->
+        <!-- London (seed): ~137,68 -->
+        <circle cx="137" cy="68" r="5" fill="none" stroke="#c8a040" stroke-width="1.5"/>
+        <circle cx="137" cy="68" r="3" fill="#c8a040" opacity=".8"/>
+
+        <!-- Accra (Amara): ~140,108 -->
+        <circle cx="140" cy="108" r="6" fill="#c8785a" opacity=".9"/>
+        <circle cx="140" cy="108" r="10" fill="#c8785a" opacity=".15"/>
+        <!-- Label -->
+        <text x="153" y="108" font-size="7" fill="#c8785a" dominant-baseline="middle" font-family="-apple-system,sans-serif">Accra · Amara Osei</text>
+
+        <!-- Arc: London → Accra -->
+        <path d="M137,68 Q138,85 140,108" fill="none" stroke="rgba(200,160,64,.5)" stroke-width="1.5"/>
+
+        <!-- Other prompt sources (connected to Accra) -->
+        <!-- Kyoto: ~225,82 -->
+        <circle cx="225" cy="82" r="3" fill="#c8785a" opacity=".5"/>
+        <path d="M225,82 Q190,90 140,108" fill="none" stroke="rgba(200,120,90,.25)" stroke-width=".8"/>
+        <!-- Buenos Aires: ~68,148 -->
+        <circle cx="68" cy="148" r="3" fill="#c8785a" opacity=".5"/>
+        <path d="M68,148 Q100,130 140,108" fill="none" stroke="rgba(200,120,90,.25)" stroke-width=".8"/>
+        <!-- Istanbul: ~152,78 -->
+        <circle cx="152" cy="78" r="3" fill="#c8785a" opacity=".5"/>
+        <path d="M152,78 Q148,92 140,108" fill="none" stroke="rgba(200,120,90,.25)" stroke-width=".8"/>
+        <!-- Kochi: ~194,106 -->
+        <circle cx="194" cy="106" r="3" fill="#c8785a" opacity=".5"/>
+        <path d="M194,106 Q170,107 140,108" fill="none" stroke="rgba(200,120,90,.25)" stroke-width=".8"/>
+        <!-- Stockholm: ~141,62 -->
+        <circle cx="141" cy="62" r="3" fill="#c8785a" opacity=".5"/>
+        <path d="M141,62 Q141,84 140,108" fill="none" stroke="rgba(200,120,90,.25)" stroke-width=".8"/>
+      </svg>
+      <div class="mm-label">Prompt sources → Amara Osei, Accra</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

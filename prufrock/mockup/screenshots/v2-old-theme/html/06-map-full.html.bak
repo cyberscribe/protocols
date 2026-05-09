@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Prufrock Protocol — Map View</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1440px;height:900px;overflow:hidden;background:#060a10;color:#eae6de;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px}
+nav{height:44px;background:#0c1018;border-bottom:1px solid #141e2a;display:flex;align-items:center;padding:0 24px;gap:2px}
+.brand{display:flex;align-items:baseline;gap:10px;margin-right:28px}
+.brand-name{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#d0ccc4}
+.brand-sub{font-size:10px;letter-spacing:.06em;color:#c8a040;opacity:.75}
+.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#3a4044;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.nav-tab.active{color:#d0ccc4;border-bottom-color:#c8a040}
+.nav-right{margin-left:auto;font-size:10px;color:#2a3038}
+.controls{height:40px;background:#080c14;border-bottom:1px solid #101820;display:flex;align-items:center;padding:0 24px;gap:20px}
+.cohort-btns{display:flex;border:1px solid #141e2a;border-radius:3px;overflow:hidden}
+.cbt{padding:4px 11px;font-size:10px;color:#3a4044;border-right:1px solid #141e2a}
+.cbt:last-child{border-right:none}
+.cbt.active{background:rgba(255,255,255,.04);color:#d0ccc4}
+.slider-group{display:flex;align-items:center;gap:8px;flex:1;max-width:400px}
+.slider-lbl{font-size:10px;color:#3a4044;white-space:nowrap}
+.track{flex:1;height:3px;background:#101820;border-radius:2px;position:relative}
+.fill{position:absolute;left:0;top:0;height:100%;background:#c8a040;border-radius:2px;width:100%}
+.thumb{position:absolute;top:50%;left:100%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:#c8a040;border:2px solid #060a10}
+.ctrl-right{margin-left:auto;font-size:10px;color:#3a4044;display:flex;gap:14px;align-items:center}
+.seed-strip{height:36px;background:rgba(200,160,64,.05);border-bottom:1px solid rgba(200,160,64,.12);display:flex;align-items:center;padding:0 24px;gap:16px}
+.ss-tag{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#c8a040;opacity:.7}
+.ss-line{font-family:Georgia,serif;font-style:italic;font-size:12px;color:rgba(200,160,64,.65)}
+.ss-right{margin-left:auto;font-size:10px;color:#3a3634}
+#map-svg{display:block;width:1440px;height:780px}
+</style>
+</head>
+<body>
+<nav>
+  <div class="brand"><span class="brand-name">The Prufrock Protocol</span><span class="brand-sub">Sonnet Experiment Alpha</span></div>
+  <div class="nav-tab">Timeline</div>
+  <div class="nav-tab">Lineage</div>
+  <div class="nav-tab active">Map</div>
+  <div class="nav-tab">Poem</div>
+  <div class="nav-tab">Participant</div>
+  <div class="nav-right">Day 14 · All arcs drawn · 14 countries · 6 continents</div>
+</nav>
+<div class="controls">
+  <div class="cohort-btns"><div class="cbt">Poets</div><div class="cbt">Laypeople</div><div class="cbt active">Both</div></div>
+  <div class="slider-group">
+    <span class="slider-lbl">Day</span>
+    <div class="track"><div class="fill"></div><div class="thumb"></div></div>
+    <span class="slider-lbl">14 / 14</span>
+  </div>
+  <div class="ctrl-right">
+    <span style="color:#c8785a">● Poet cohort</span>
+    <span style="color:#5a8fd4">● Layperson cohort</span>
+    <span style="color:#c8a040">★ Seed origin · London · 1609</span>
+  </div>
+</div>
+<div class="seed-strip">
+  <span class="ss-tag">Seed origin</span>
+  <span class="ss-line">London, England · 51.5°N, 0.1°W · 1609</span>
+  <span class="ss-right">Arcs: sequential author handoffs within each poem · Accra → Stockholm → Naples → Hanoi → …</span>
+</div>
+<svg id="map-svg" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feComposite in="SourceGraphic" in2="b" operator="over"/></filter>
+  <filter id="softglow"><feGaussianBlur stdDeviation="2.5" result="b"/><feComposite in="SourceGraphic" in2="b" operator="over"/></filter>
+  <radialGradient id="ocean" cx="50%" cy="40%" r="70%">
+    <stop offset="0%" stop-color="#0a1828"/>
+    <stop offset="100%" stop-color="#060c14"/>
+  </radialGradient>
+</defs>
+<rect width="1440" height="780" fill="url(#ocean)"/>
+</svg>
+<script>
+const svg = document.getElementById('map-svg');
+const W=1440, H=780;
+const MAP_X=20, MAP_Y=30, MAP_W=1400, MAP_H=680;
+function proj(lon,lat){ return [(lon+180)/360*MAP_W+MAP_X, (90-lat)/180*MAP_H+MAP_Y]; }
+
+function addEl(tag,attrs,parent=svg){
+  const el=document.createElementNS('http://www.w3.org/2000/svg',tag);
+  for(const[k,v] of Object.entries(attrs)) el.setAttribute(k,v);
+  parent.appendChild(el);
+  return el;
+}
+function addText(x,y,t,fill='#4a4644',fs=9,anchor='middle'){
+  const el=addEl('text',{x,y,'text-anchor':anchor,'dominant-baseline':'middle',fill,'font-size':fs,'font-family':'-apple-system,sans-serif','letter-spacing':'.04em'});
+  el.textContent=t;
+  return el;
+}
+
+// Grid lines
+for(let lat=-60;lat<=80;lat+=30){
+  const [x1,y1]=proj(-180,lat), [x2,y2]=proj(180,lat);
+  addEl('line',{x1,y1,x2,y2,stroke:'rgba(255,255,255,.04)','stroke-width':.5});
+  addText(MAP_X+4, y1, lat+'°', 'rgba(255,255,255,.1)', 7, 'start');
+}
+for(let lon=-180;lon<=180;lon+=30){
+  const [x1,y1]=proj(lon,85), [x2,y2]=proj(lon,-65);
+  addEl('line',{x1,y1,x2,y2,stroke:'rgba(255,255,255,.04)','stroke-width':.5});
+}
+
+// Continent shapes
+const continents = [
+  {pts:[[-168,72],[-140,72],[-120,74],[-85,73],[-78,72],[-62,47],[-60,46],[-70,43],[-72,40],[-80,25],[-87,15],[-90,15],[-105,20],[-117,32],[-122,37],[-124,46],[-126,50],[-137,60],[-140,60],[-162,65],[-168,72]], fill:'#1a2830'},
+  {pts:[[-75,78],[-20,78],[-18,68],[-25,63],[-45,60],[-55,62],[-68,68],[-75,78]], fill:'#1a2830'},
+  {pts:[[-80,13],[-65,12],[-50,5],[-35,-8],[-35,-15],[-43,-23],[-48,-28],[-52,-34],[-60,-38],[-68,-55],[-74,-52],[-70,-40],[-76,-33],[-77,-10],[-80,-2],[-80,13]], fill:'#1a2830'},
+  {pts:[[-10,36],[0,36],[10,36],[20,37],[28,38],[35,37],[36,42],[40,45],[30,52],[25,55],[20,58],[15,58],[10,58],[5,58],[0,55],[-5,54],[-8,52],[-10,44],[-10,36]], fill:'#1a2830'},
+  {pts:[[5,58],[15,58],[20,58],[30,70],[28,71],[18,70],[14,65],[5,58]], fill:'#1a2830'},
+  {pts:[[-18,16],[-10,5],[0,5],[10,5],[25,5],[40,10],[50,12],[52,4],[40,-5],[35,-12],[35,-25],[30,-34],[18,-35],[15,-29],[10,-17],[0,-10],[-15,-5],[-18,16]], fill:'#1a2830'},
+  {pts:[[35,37],[45,38],[60,24],[55,12],[45,10],[36,22],[35,30],[35,37]], fill:'#1a2830'},
+  {pts:[[35,37],[60,24],[80,27],[90,25],[100,20],[110,18],[120,25],[135,35],[140,45],[145,50],[140,55],[130,65],[110,72],[90,73],[70,68],[50,65],[40,55],[35,47],[35,37]], fill:'#1a2830'},
+  {pts:[[60,24],[80,27],[90,25],[80,8],[68,8],[60,22],[60,24]], fill:'#1a2830'},
+  {pts:[[100,20],[110,18],[120,25],[125,18],[120,10],[105,5],[100,2],[96,3],[100,20]], fill:'#1a2830'},
+  {pts:[[114,-22],[122,-18],[130,-14],[138,-12],[145,-18],[150,-24],[152,-30],[148,-38],[140,-38],[130,-33],[120,-34],[114,-30],[114,-22]], fill:'#1a2830'},
+  {pts:[[130,35],[133,34],[135,35],[138,37],[140,40],[142,42],[140,44],[135,42],[132,38],[130,35]], fill:'#1a2830'},
+];
+continents.forEach(c=>{
+  const pts=c.pts.map(([lon,lat])=>proj(lon,lat).join(',')).join(' ');
+  addEl('polygon',{points:pts,fill:c.fill,stroke:'rgba(255,255,255,.06)','stroke-width':.8});
+});
+
+// Author city locations: [lon, lat, label]
+const POET_CITIES = [
+  [-0.2,5.6,'Accra'],      // AO
+  [135.8,35,'Kyoto'],      // HT
+  [-58.4,-34.6,'B.Aires'], // MF
+  [-9.1,53.3,'Galway'],    // SN
+  [29,41,'Istanbul'],      // EŞ
+  [76.3,10,'Kochi'],       // MP
+  [-17.4,14.7,'Dakar'],    // AD
+  [141.3,43.1,'Sapporo'],  // YN
+  [13.4,52.5,'Berlin'],    // LB
+  [-9.1,38.7,'Lisbon'],    // CA
+  [28.0,-26.2,'J\'burg'],  // ND
+  [105.8,21,'Hanoi'],      // PL
+  [14.3,40.8,'Naples'],    // VG
+  [18.1,59.3,'Stockholm'], // BL
+];
+const LAY_CITIES = [
+  [-83.1,42.3,'Detroit'],
+  [36.8,-1.3,'Nairobi'],
+  [106.6,29.6,'Chongqing'],
+  [80.2,13,'Chennai'],
+  [3.4,6.5,'Lagos'],
+  [-99.1,19.4,'Mex.City'],
+  [-8.5,51.9,'Cork'],
+  [135.5,34.7,'Osaka'],
+  [30.3,59.9,'St.Pete'],
+  [-17.4,14.7,'Dakar(L)'],
+  [-46.6,-23.5,'S.Paulo'],
+  [121.5,31.2,'Shanghai'],
+  [-3.2,55.9,'Edinburgh'],
+  [8.5,47.4,'Zurich'],
+];
+
+const poetColor='#c8785a', layColor='#5a8fd4', seedColor='#c8a040';
+
+// Seed → all participants (Day 1 prompt, same for all)
+const seedPos = proj(-0.1, 51.5);
+[...POET_CITIES, ...LAY_CITIES].forEach(([lon,lat],i)=>{
+  const [x2,y2]=proj(lon,lat);
+  const [x1,y1]=seedPos;
+  const mx=(x1+x2)/2, my=Math.min(y1,y2)-60-Math.abs(x2-x1)*0.04;
+  const color=i<14?'rgba(200,120,90,.14)':'rgba(90,143,212,.14)';
+  addEl('path',{d:`M${x1},${y1} Q${mx},${my} ${x2},${y2}`,fill:'none',stroke:color,'stroke-width':.7});
+});
+
+// Sequential authorial handoffs — arcs connect author of line N to author of line N+1 in same poem
+// Latin square: author of poem p on day d = (p - d + 14) % 14
+// Showing a selection of handoffs across multiple poems (poet cohort)
+// Poem 01: Accra→Stockholm→Naples→Hanoi→Johannesburg→Lisbon→Berlin→…
+const poem01Seq = POET_CITIES.map(([lon,lat])=>proj(lon,lat));
+// handoffs for poem 0: day0→day1: AO(0)→BL(13), day1→2: BL(13)→VG(12), day2→3: VG(12)→PL(11), etc
+// author for poem 0, day d = (0-d+14)%14
+const p01Authors = [0,13,12,11,10,9,8,7,6,5,4,3,2,1]; // indices into POET_CITIES
+for (let d=0; d<13; d++){
+  const [x1,y1]=proj(POET_CITIES[p01Authors[d]][0],POET_CITIES[p01Authors[d]][1]);
+  const [x2,y2]=proj(POET_CITIES[p01Authors[d+1]][0],POET_CITIES[p01Authors[d+1]][1]);
+  const mx=(x1+x2)/2, my=Math.min(y1,y2)-35-d*3;
+  addEl('path',{d:`M${x1},${y1} Q${mx},${my} ${x2},${y2}`,fill:'none',
+    stroke:'rgba(200,120,90,.32)','stroke-width':1.1});
+}
+
+// Poem 07 handoffs: highlight one poem's geographic journey (different colour)
+const p07Authors = [6,5,4,3,2,1,0,13,12,11,10,9,8,7];
+for (let d=0; d<7; d++){
+  const [x1,y1]=proj(POET_CITIES[p07Authors[d]][0],POET_CITIES[p07Authors[d]][1]);
+  const [x2,y2]=proj(POET_CITIES[p07Authors[d+1]][0],POET_CITIES[p07Authors[d+1]][1]);
+  const mx=(x1+x2)/2, my=Math.min(y1,y2)-25-d*4;
+  addEl('path',{d:`M${x1},${y1} Q${mx},${my} ${x2},${y2}`,fill:'none',
+    stroke:'rgba(200,160,64,.28)','stroke-width':1.3});
+}
+
+// Layperson poem handoffs (a few)
+const p01LayAuthors = [0,13,12,11,10,9,8,7,6,5,4,3,2,1];
+for (let d=0; d<9; d++){
+  const [x1,y1]=proj(LAY_CITIES[p01LayAuthors[d]][0],LAY_CITIES[p01LayAuthors[d]][1]);
+  const [x2,y2]=proj(LAY_CITIES[p01LayAuthors[d+1]][0],LAY_CITIES[p01LayAuthors[d+1]][1]);
+  const mx=(x1+x2)/2, my=Math.min(y1,y2)-30-d*2;
+  addEl('path',{d:`M${x1},${y1} Q${mx},${my} ${x2},${y2}`,fill:'none',
+    stroke:'rgba(90,143,212,.28)','stroke-width':1});
+}
+
+// City dots
+POET_CITIES.forEach(([lon,lat,name])=>{
+  const [cx,cy]=proj(lon,lat);
+  addEl('circle',{cx,cy,r:8,fill:poetColor,opacity:.08});
+  addEl('circle',{cx,cy,r:4,fill:poetColor,opacity:.9,filter:'url(#softglow)'});
+  const anchor=cx<W/2?'start':'end';
+  addText(cx<W/2?cx+8:cx-8, cy, name, 'rgba(200,120,90,.6)', 8, anchor);
+});
+LAY_CITIES.forEach(([lon,lat,name])=>{
+  const [cx,cy]=proj(lon,lat);
+  addEl('circle',{cx,cy,r:7,fill:layColor,opacity:.07});
+  addEl('circle',{cx,cy,r:3.5,fill:layColor,opacity:.85,filter:'url(#softglow)'});
+  const anchor=cx<W/2?'start':'end';
+  addText(cx<W/2?cx+7:cx-7, cy, name.replace('(L)',''), 'rgba(90,143,212,.5)', 7, anchor);
+});
+
+// Seed node
+const [sx,sy]=seedPos;
+addEl('circle',{cx:sx,cy:sy,r:18,fill:'none',stroke:seedColor+'33','stroke-width':2});
+addEl('circle',{cx:sx,cy:sy,r:24,fill:'none',stroke:seedColor+'1a','stroke-width':1.5});
+addEl('circle',{cx:sx,cy:sy,r:10,fill:'#1a1810',stroke:seedColor,'stroke-width':2,filter:'url(#glow)'});
+addEl('circle',{cx:sx,cy:sy,r:5,fill:seedColor,opacity:.9});
+addEl('text',{x:sx,y:sy-20,'text-anchor':'middle','dominant-baseline':'middle',fill:seedColor,'font-size':10,'font-family':'sans-serif'}).textContent='★';
+addText(sx, sy+30, 'London · 1609', seedColor, 9);
+
+// Map title
+addText(W/2, H-28, 'ATTENTION ACROSS SPACE AND TIME  ·  London 1609  →  14 Countries · 6 Continents  ·  2026',
+  'rgba(200,160,64,.35)', 10);
+
+// Legend
+addEl('rect',{x:40,y:H-90,width:290,height:70,fill:'rgba(0,0,0,.55)',rx:4,stroke:'rgba(255,255,255,.07)','stroke-width':.8});
+addText(174, H-76, 'ARC TYPES', 'rgba(255,255,255,.25)', 8);
+addEl('line',{x1:52,y1:H-60,x2:105,y2:H-60,stroke:'rgba(200,120,90,.5)','stroke-width':1.5});
+addText(112, H-60, 'Sequential author handoff within poem (poets)', 'rgba(200,120,90,.75)', 8, 'start');
+addEl('line',{x1:52,y1:H-45,x2:105,y2:H-45,stroke:'rgba(90,143,212,.5)','stroke-width':1.2});
+addText(112, H-45, 'Sequential author handoff within poem (laypeople)', 'rgba(90,143,212,.7)', 8, 'start');
+addEl('line',{x1:52,y1:H-30,x2:105,y2:H-30,stroke:'rgba(200,160,64,.45)','stroke-width':1.3,'stroke-dasharray':'none'});
+addText(112, H-30, 'Featured poem journey (Poem 07 · days 1–7)', 'rgba(200,160,64,.65)', 8, 'start');
+</script>
+<div style="position:fixed;bottom:0;left:0;width:100%;background:#cc0000;color:#fff;text-align:center;font-size:11px;font-weight:700;letter-spacing:.25em;padding:4px 0;z-index:9999">MOCKUP</div>
+</body>
+</html>

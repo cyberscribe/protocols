@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Prufrock Protocol — Timeline Complete</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1440px;height:900px;overflow:hidden;background:#0c0c0f;color:#eae6de;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px}
+
+nav{height:44px;background:#131318;border-bottom:1px solid #1e1e2a;display:flex;align-items:center;padding:0 24px;gap:2px}
+.brand{display:flex;align-items:baseline;gap:10px;margin-right:28px}
+.brand-name{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.brand-sub{font-size:10px;letter-spacing:.06em;color:#c8a040;opacity:.75}
+.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#4a4644;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.nav-tab.active{color:#eae6de;border-bottom-color:#c8a040}
+.nav-right{margin-left:auto;font-size:10px;color:#5a5654}
+
+.controls{height:40px;background:#0f0f14;border-bottom:1px solid #1a1a26;display:flex;align-items:center;padding:0 24px;gap:20px}
+.cohort-btns{display:flex;border:1px solid #1e1e2a;border-radius:3px;overflow:hidden}
+.cbt{padding:4px 11px;font-size:10px;color:#4a4644;border-right:1px solid #1e1e2a}
+.cbt:last-child{border-right:none}
+.cbt.active{background:rgba(255,255,255,.05);color:#eae6de}
+.slider-group{display:flex;align-items:center;gap:8px;flex:1;max-width:400px}
+.slider-lbl{font-size:10px;color:#4a4644;white-space:nowrap}
+.track{flex:1;height:3px;background:#1a1a26;border-radius:2px;position:relative}
+.fill{position:absolute;left:0;top:0;height:100%;background:#c8a040;border-radius:2px;width:100%}
+.thumb{position:absolute;top:50%;left:100%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:#c8a040;border:2px solid #0c0c0f}
+.play{width:22px;height:22px;border-radius:50%;background:#1a1a26;border:1px solid #1e1e2a;display:flex;align-items:center;justify-content:center;color:#5a5654;font-size:7px}
+.ctrl-right{margin-left:auto;font-size:10px;color:#4a4644;display:flex;gap:16px;align-items:center}
+.ctrl-legend{display:flex;align-items:center;gap:5px}
+.leg-box{width:8px;height:8px;border-radius:1px}
+
+.seed-strip{height:36px;background:rgba(200,160,64,.06);border-bottom:1px solid rgba(200,160,64,.15);display:flex;align-items:center;padding:0 24px;gap:16px}
+.ss-tag{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#c8a040;opacity:.7}
+.ss-line{font-family:Georgia,serif;font-style:italic;font-size:12px;color:rgba(200,160,64,.7)}
+.ss-sep{color:rgba(200,160,64,.25);margin:0 6px}
+.ss-right{margin-left:auto;font-size:10px;color:#4a4644}
+
+.view{height:780px;display:flex;flex-direction:column;padding:14px 0 0}
+
+.tl-header{display:flex;align-items:center;padding:0 20px 8px}
+.tl-h-spacer{width:148px;flex-shrink:0}
+.tl-days{display:flex;flex:1;gap:1px}
+.day-col{flex:1;text-align:center;font-size:8px;color:#3a3634;letter-spacing:.04em;font-weight:600;text-transform:uppercase}
+.day-col.spine-day{color:#c8a040;font-weight:700}
+
+.tl-scroll{flex:1;overflow-y:auto;padding:0 20px}
+.tl-scroll::-webkit-scrollbar{width:4px}
+.tl-scroll::-webkit-scrollbar-track{background:transparent}
+.tl-scroll::-webkit-scrollbar-thumb{background:#1e1e2a;border-radius:2px}
+
+.cohort-lbl{display:flex;align-items:center;gap:8px;padding:8px 0 5px;border-top:1px solid #1a1a26;margin-top:2px}
+.cohort-lbl:first-child{border-top:none;margin-top:0}
+.c-dot{width:7px;height:7px;border-radius:2px}
+.c-dot.poet{background:#c8785a}
+.c-dot.lay{background:#5a8fd4}
+.c-name{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#4a4644}
+.c-stats{margin-left:auto;font-size:9px;color:#2e2c28}
+
+.p-row{display:flex;align-items:center;height:24px;margin-bottom:1px}
+.p-lbl{width:148px;flex-shrink:0;display:flex;align-items:center;gap:6px}
+.p-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.p-dot.poet{background:#c8785a;opacity:.7}
+.p-dot.lay{background:#5a8fd4;opacity:.7}
+.p-info{display:flex;flex-direction:column}
+.p-name{font-size:9px;color:#5a5654;white-space:nowrap}
+.p-loc{font-size:7px;color:#2a2826}
+.cells{display:flex;flex:1;gap:1px;height:22px}
+.cell{flex:1;border-radius:1px;display:flex;align-items:center;overflow:hidden;position:relative;cursor:pointer;transition:opacity .15s}
+.cell.poet-cell{background:rgba(200,120,90,.1);border:1px solid rgba(200,120,90,.18)}
+.cell.lay-cell{background:rgba(90,143,212,.1);border:1px solid rgba(90,143,212,.18)}
+.cell.spine{outline:1px solid rgba(200,160,64,.8);outline-offset:-1px;background:rgba(200,160,64,.12)}
+.cell.forfeit{background:rgba(255,255,255,.02);border:1px dashed #1a1a20}
+.cell-t{font-family:Georgia,serif;font-size:6px;color:rgba(255,255,255,.35);padding:1px 3px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;width:100%}
+.cell.spine .cell-t{color:rgba(240,216,32,.65)}
+.cell.forfeit .cell-t{color:#2a2826}
+
+/* Summary bar */
+.summary-bar{height:36px;background:#0f0f14;border-top:1px solid #1a1a26;display:flex;align-items:center;padding:0 20px;gap:24px;font-size:10px;color:#4a4644}
+.sb-stat{display:flex;align-items:baseline;gap:5px}
+.sb-n{font-size:16px;font-weight:200;color:#eae6de}
+.sb-l{font-size:9px;letter-spacing:.06em;color:#3a3634;text-transform:uppercase}
+.sb-sep{color:#1e1e26}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand"><span class="brand-name">The Prufrock Protocol</span><span class="brand-sub">Sonnet Experiment Alpha</span></div>
+  <div class="nav-tab active">Timeline</div>
+  <div class="nav-tab">Lineage</div>
+  <div class="nav-tab">Map</div>
+  <div class="nav-tab">Poem</div>
+  <div class="nav-tab">Participant</div>
+  <div class="nav-right">Complete · 14/14 days · 392 responses</div>
+</nav>
+
+<div class="controls">
+  <div class="cohort-btns"><div class="cbt">Poets</div><div class="cbt">Laypeople</div><div class="cbt active">Both</div></div>
+  <div class="slider-group">
+    <span class="slider-lbl">Day</span>
+    <div class="track"><div class="fill"></div><div class="thumb"></div></div>
+    <span class="slider-lbl">14 / 14</span>
+    <div class="play">■</div>
+  </div>
+  <div class="ctrl-right">
+    <div class="ctrl-legend"><div class="leg-box" style="background:rgba(200,160,64,.5);outline:1px solid #c8a040;outline-offset:1px"></div><span>Spine (chosen-poet)</span></div>
+    <div class="ctrl-legend"><div class="leg-box" style="background:rgba(255,255,255,.04);border:1px dashed #333"></div><span>Forfeit</span></div>
+  </div>
+</div>
+
+<div class="seed-strip">
+  <span class="ss-tag">Seed</span>
+  <span class="ss-line">Nor shall death brag thou wander'st in his shade,<span class="ss-sep">·</span>When in eternal lines to time thou grow'st:</span>
+  <span class="ss-right">W. Shakespeare · Sonnet XVIII · 1609</span>
+</div>
+
+<div class="view">
+  <div class="tl-header">
+    <div class="tl-h-spacer"></div>
+    <div class="tl-days">
+      <div class="day-col spine-day">D1</div><div class="day-col">D2</div><div class="day-col spine-day">D3</div>
+      <div class="day-col spine-day">D4</div><div class="day-col">D5</div><div class="day-col spine-day">D6</div>
+      <div class="day-col spine-day">D7</div><div class="day-col">D8</div><div class="day-col spine-day">D9</div>
+      <div class="day-col">D10</div><div class="day-col spine-day">D11</div><div class="day-col">D12</div>
+      <div class="day-col spine-day">D13</div><div class="day-col">D14</div>
+    </div>
+  </div>
+
+  <div class="tl-scroll">
+    <!-- POETS -->
+    <div class="cohort-lbl"><div class="c-dot poet"></div><span class="c-name">Poets</span><span class="c-stats">14 participants · 196 lines · 3 forfeits</span></div>
+
+    <script>
+    const poets = [
+      ['Amara Osei','Accra,GH','poet',[1,'The summer I remember had no owner'],[0,'What does the grave forget that the soil'],[1,'I named my grief and it answered to nothing'],[1,'The words we inherit outlive the mouths'],[0,'Even absence has a temperature'],[1,'She carried the country in her posture'],[1,'What is given cannot be taken'],[0,'The body knows the season the mind misremembers'],[0,'I have been quiet long enough to hear'],[0,'Distance is a kind of keeping'],[1,'The poem I meant to write lives in this one'],[0,'Memory is not the past; it is what it becomes'],[1,'To outlast the naming is to become unnamed'],[0,'We were here. The line holds.']]
+    ];
+    // generate rows via JS
+    </script>
+
+    <div class="p-row">
+      <div class="p-lbl"><div class="p-dot poet"></div><div class="p-info"><div class="p-name">Amara Osei</div><div class="p-loc">Accra, Ghana</div></div></div>
+      <div class="cells">
+        <div class="cell poet-cell spine"><div class="cell-t">The summer I remember had no owner</div></div>
+        <div class="cell poet-cell"><div class="cell-t">What does the grave forget that the soil keeps</div></div>
+        <div class="cell poet-cell spine"><div class="cell-t">I named my grief and it answered to nothing</div></div>
+        <div class="cell poet-cell spine"><div class="cell-t">The words we inherit outlive the mouths</div></div>
+        <div class="cell poet-cell"><div class="cell-t">Even absence has a temperature in this latitude</div></div>
+        <div class="cell poet-cell spine"><div class="cell-t">She carried the country in her posture</div></div>
+        <div class="cell poet-cell spine"><div class="cell-t">What is given cannot be taken, only forgotten</div></div>
+        <div class="cell poet-cell"><div class="cell-t">The body knows the season the mind misremembers</div></div>
+        <div class="cell poet-cell spine"><div class="cell-t">I have been quiet long enough to hear the city</div></div>
+        <div class="cell poet-cell"><div class="cell-t">Distance is a kind of keeping — what travels, remains</div></div>
+        <div class="cell poet-cell spine"><div class="cell-t">The poem I meant to write lives in this one instead</div></div>
+        <div class="cell poet-cell"><div class="cell-t">Memory is not the past; it is what the past becomes</div></div>
+        <div class="cell poet-cell spine"><div class="cell-t">To outlast the naming is to become the unnamed thing</div></div>
+        <div class="cell poet-cell"><div class="cell-t">We were here. The line holds.</div></div>
+      </div>
+    </div>
+
+    <div class="p-row">
+      <div class="p-lbl"><div class="p-dot poet"></div><div class="p-info"><div class="p-name">Hiroshi Tanaka</div><div class="p-loc">Kyoto, Japan</div></div></div>
+      <div class="cells">
+        <div class="cell poet-cell"><div class="cell-t">What the pine writes in shadows, snow erases</div></div>
+        <div class="cell poet-cell spine"><div class="cell-t">The water holds the mountain's shape all winter</div></div>
+        <div class="cell poet-cell"><div class="cell-t">Every ending is a door that faces east</div></div>
+        <div class="cell poet-cell"><div class="cell-t">I write the character for home and recognize nothing</div></div>
+        <div class="cell poet-cell"><div class="cell-t">Silence between notes: that is also music</div></div>
+        <div class="cell poet-cell"><div class="cell-t">The temple bell rings once for the world's grief</div></div>
+        <div class="cell poet-cell"><div class="cell-t">In the garden, the stone does not try to be the stone</div></div>
+        <div class="cell poet-cell spine"><div class="cell-t">What the moon erases, the tide reassembles</div></div>
+        <div class="cell poet-cell"><div class="cell-t">I fold the paper and the crane remembers flying</div></div>
+        <div class="cell poet-cell"><div class="cell-t">The ink dries and the word becomes a fact</div></div>
+        <div class="cell poet-cell"><div class="cell-t">Seven times the blossoms fall and rise</div></div>
+        <div class="cell poet-cell spine"><div class="cell-t">To see the thing fully is to let it go</div></div>
+        <div class="cell poet-cell"><div class="cell-t">What I leave in this poem I cannot carry home</div></div>
+        <div class="cell poet-cell"><div class="cell-t">The empty bowl still holds the shape of what was fed</div></div>
+      </div>
+    </div>
+
+    <div class="p-row">
+      <div class="p-lbl"><div class="p-dot poet"></div><div class="p-info"><div class="p-name">Marisol Fuentes</div><div class="p-loc">Buenos Aires, AR</div></div></div>
+      <div class="cells">
+        <div class="cell poet-cell"><div class="cell-t">I carry what I cannot bury in the common grave</div></div>
+        <div class="cell poet-cell"><div class="cell-t">The tango remembers what the dictator forgot</div></div>
+        <div class="cell poet-cell"><div class="cell-t">My grandmother's name lives in the disappeared</div></div>
+        <div class="cell poet-cell"><div class="cell-t">What survives the burning is not what burns</div></div>
+        <div class="cell poet-cell spine"><div class="cell-t">The river runs between two countries neither owns</div></div>
+        <div class="cell poet-cell"><div class="cell-t">I spell the word for mercy in three languages</div></div>
+        <div class="cell poet-cell"><div class="cell-t">Every child inherits someone else's war</div></div>
+        <div class="cell poet-cell"><div class="cell-t">The pampas remember the horses, not the riders</div></div>
+        <div class="cell poet-cell"><div class="cell-t">I wrote the date and the date became a wound</div></div>
+        <div class="cell poet-cell spine"><div class="cell-t">What the body holds, the mind can never quite release</div></div>
+        <div class="cell poet-cell"><div class="cell-t">I found my voice in the space between two flags</div></div>
+        <div class="cell poet-cell"><div class="cell-t">The disappeared are counted. The count goes on.</div></div>
+        <div class="cell poet-cell"><div class="cell-t">To name the wound is not to close it</div></div>
+        <div class="cell poet-cell"><div class="cell-t">And still the river moves. And still we name it.</div></div>
+      </div>
+    </div>
+
+    <div class="p-row">
+      <div class="p-lbl"><div class="p-dot poet"></div><div class="p-info"><div class="p-name">Siobhán Ní Faoláin</div><div class="p-loc">Galway, IE</div></div></div>
+      <div class="cells">
+        <div class="cell poet-cell"><div class="cell-t">These hands have held what tides forget they moved</div></div>
+        <div class="cell poet-cell"><div class="cell-t">The bog preserves what the land cannot say aloud</div></div>
+        <div class="cell poet-cell"><div class="cell-t">We named the headland after a woman who drowned</div></div>
+        <div class="cell poet-cell"><div class="cell-t">Salt is the oldest word for grief in this language</div></div>
+        <div class="cell poet-cell"><div class="cell-t">The stone wall holds without a single nail</div></div>
+        <div class="cell poet-cell"><div class="cell-t">What was cleared from this hillside still echoes</div></div>
+        <div class="cell poet-cell"><div class="cell-t">The Atlantic does not know it is an edge</div></div>
+        <div class="cell poet-cell"><div class="cell-t">I keep the old words in a drawer with my mother's ring</div></div>
+        <div class="cell poet-cell spine"><div class="cell-t">Rain here is a kind of listening</div></div>
+        <div class="cell poet-cell"><div class="cell-t">The famine road leads somewhere no map shows</div></div>
+        <div class="cell poet-cell"><div class="cell-t">I speak the language of fields to a city that hears nothing</div></div>
+        <div class="cell poet-cell"><div class="cell-t">What we buried comes up in the spring like weeds</div></div>
+        <div class="cell poet-cell"><div class="cell-t">The last speaker of a language becomes a door</div></div>
+        <div class="cell poet-cell"><div class="cell-t">Still: the sea. Still: the stone. Still: this.</div></div>
+      </div>
+    </div>
+
+    <div class="p-row">
+      <div class="p-lbl"><div class="p-dot poet"></div><div class="p-info"><div class="p-name">Elif Şahin</div><div class="p-loc">Istanbul, TR</div></div></div>
+      <div class="cells">
+        <div class="cell poet-cell"><div class="cell-t">Between two empires, I misplace my century</div></div>
+        <div class="cell poet-cell"><div class="cell-t">The Bosphorus is one word for between</div></div>
+        <div class="cell poet-cell"><div class="cell-t">My grandfather prayed in a language the state erased</div></div>
+        <div class="cell poet-cell"><div class="cell-t">The minaret holds its silence like a fist</div></div>
+        <div class="cell poet-cell"><div class="cell-t">In the bazaar, time is sold by the gram</div></div>
+        <div class="cell poet-cell"><div class="cell-t">Two shores, one city: I am the water between</div></div>
+        <div class="cell poet-cell"><div class="cell-t">The word for longing in Turkish has no translation</div></div>
+        <div class="cell poet-cell"><div class="cell-t">What the conqueror renamed the city still remembers</div></div>
+        <div class="cell poet-cell"><div class="cell-t">I am modern in the ruins of three civilisations</div></div>
+        <div class="cell poet-cell spine"><div class="cell-t">Hüzün: the sadness of a place that remembers itself</div></div>
+        <div class="cell poet-cell"><div class="cell-t">Every mosque was once something else</div></div>
+        <div class="cell poet-cell"><div class="cell-t">I write in the alphabet of an empire I was not born into</div></div>
+        <div class="cell poet-cell"><div class="cell-t">The ferry crosses and the city does not choose sides</div></div>
+        <div class="cell poet-cell"><div class="cell-t">Between sunset and prayer: a bird. Nothing more.</div></div>
+      </div>
+    </div>
+
+    <div class="p-row">
+      <div class="p-lbl"><div class="p-dot poet"></div><div class="p-info"><div class="p-name">Meera Pillai</div><div class="p-loc">Kochi, IN</div></div></div>
+      <div class="cells">
+        <div class="cell poet-cell"><div class="cell-t">The monsoon names each year the same: this one</div></div>
+        <div class="cell poet-cell"><div class="cell-t">Every spice is a country that colonised the mouth</div></div>
+        <div class="cell poet-cell"><div class="cell-t">The backwaters hold the sky without possessing it</div></div>
+        <div class="cell poet-cell"><div class="cell-t">My grandmother's sari is a cartography of grief</div></div>
+        <div class="cell poet-cell"><div class="cell-t">Coconut palms bend because the wind keeps asking</div></div>
+        <div class="cell poet-cell"><div class="cell-t">We have forty words for the kind of rain this is</div></div>
+        <div class="cell poet-cell"><div class="cell-t">The Kathakali mask outlasts the face beneath</div></div>
+        <div class="cell poet-cell"><div class="cell-t">I inherit the land and the land inherits the flood</div></div>
+        <div class="cell poet-cell"><div class="cell-t">The temple elephant has learned to wait in the dark</div></div>
+        <div class="cell poet-cell"><div class="cell-t">What the river gives the sea cannot return</div></div>
+        <div class="cell poet-cell spine"><div class="cell-t">My mother's recipe is a language I am forgetting</div></div>
+        <div class="cell poet-cell"><div class="cell-t">The jasmine opens at night because nobody asks it to</div></div>
+        <div class="cell poet-cell"><div class="cell-t">Between Sanskrit and Malayalam, I lost my name</div></div>
+        <div class="cell poet-cell"><div class="cell-t">The monsoon will return. We are not what returns.</div></div>
+      </div>
+    </div>
+
+    <div style="padding:5px 0 5px;font-size:8px;color:#252220;letter-spacing:.06em;text-align:center">— 8 more participants: James Okafor (Lagos) · Benedita Ferreira (Lisbon) · Yaw Darko (Kumasi) · Sasha Volkov (St. Petersburg) · Leila Nasser (Cairo) · Tariq Al-Rashid (Amman) · Astrid Lindqvist (Stockholm) · Wei Chen (Shanghai) —</div>
+
+    <!-- LAYPEOPLE -->
+    <div class="cohort-lbl"><div class="c-dot lay"></div><span class="c-name">Laypeople</span><span class="c-stats">14 participants · 195 lines · 1 forfeit</span></div>
+
+    <div class="p-row">
+      <div class="p-lbl"><div class="p-dot lay"></div><div class="p-info"><div class="p-name">Marcus Webb</div><div class="p-loc">Detroit, USA</div></div></div>
+      <div class="cells">
+        <div class="cell lay-cell spine"><div class="cell-t">The pipe runs through the wall and no one sees it</div></div>
+        <div class="cell lay-cell"><div class="cell-t">Everything load-bearing hides behind the finish</div></div>
+        <div class="cell lay-cell spine"><div class="cell-t">I know this house from the inside of its walls</div></div>
+        <div class="cell lay-cell spine"><div class="cell-t">The work that holds is never what they photograph</div></div>
+        <div class="cell lay-cell"><div class="cell-t">Pressure finds the smallest gap and takes its time</div></div>
+        <div class="cell lay-cell spine"><div class="cell-t">Something leaks for years before anyone notices</div></div>
+        <div class="cell lay-cell spine"><div class="cell-t">I fixed the thing they broke and did not say</div></div>
+        <div class="cell lay-cell"><div class="cell-t">The silence after the wrench is its own kind of proof</div></div>
+        <div class="cell lay-cell spine"><div class="cell-t">Heat moves through metal the way grief moves through families</div></div>
+        <div class="cell lay-cell"><div class="cell-t">I learned from my father who learned from his hands</div></div>
+        <div class="cell lay-cell spine"><div class="cell-t">What rusts together is what was left untended</div></div>
+        <div class="cell lay-cell"><div class="cell-t">The city drains into itself and starts again</div></div>
+        <div class="cell lay-cell spine"><div class="cell-t">Every joint I seal against the dark does hold</div></div>
+        <div class="cell lay-cell"><div class="cell-t">Under the floor, the river still runs.</div></div>
+      </div>
+    </div>
+
+    <div class="p-row">
+      <div class="p-lbl"><div class="p-dot lay"></div><div class="p-info"><div class="p-name">Fatimah Al-Hassan</div><div class="p-loc">Nairobi, KE</div></div></div>
+      <div class="cells">
+        <div class="cell lay-cell"><div class="cell-t">At 3am the ward is quiet and the clocks keep going</div></div>
+        <div class="cell lay-cell spine"><div class="cell-t">The patient's name is a country I'll never visit</div></div>
+        <div class="cell lay-cell"><div class="cell-t">I hold the hand of the one who cannot hold back</div></div>
+        <div class="cell lay-cell"><div class="cell-t">We measure life in doses, in vigils, in charts</div></div>
+        <div class="cell lay-cell"><div class="cell-t">What leaves the body does not disappear entirely</div></div>
+        <div class="cell lay-cell"><div class="cell-t">The night shift ends and the sun has no opinion</div></div>
+        <div class="cell lay-cell"><div class="cell-t">I have learned that presence is the only thing</div></div>
+        <div class="cell lay-cell spine"><div class="cell-t">The dying do not ask for explanation, only company</div></div>
+        <div class="cell lay-cell"><div class="cell-t">My hands know the weight of loss before my mind does</div></div>
+        <div class="cell lay-cell spine"><div class="cell-t">I wrote the time of death and put my name beside it</div></div>
+        <div class="cell lay-cell"><div class="cell-t">What we call miracle is sometimes just more time</div></div>
+        <div class="cell lay-cell"><div class="cell-t">The family waits in a room that knows all families</div></div>
+        <div class="cell lay-cell"><div class="cell-t">I carry the faces home and set them on the table</div></div>
+        <div class="cell lay-cell"><div class="cell-t">Tomorrow the ward fills up and we begin again.</div></div>
+      </div>
+    </div>
+
+    <div class="p-row">
+      <div class="p-lbl"><div class="p-dot lay"></div><div class="p-info"><div class="p-name">Guo Mei</div><div class="p-loc">Chongqing, CN</div></div></div>
+      <div class="cells">
+        <div class="cell lay-cell"><div class="cell-t">The machine remembers every shift I work and forget</div></div>
+        <div class="cell lay-cell"><div class="cell-t">The quota is a number that has no interest in me</div></div>
+        <div class="cell lay-cell"><div class="cell-t">My hands know the weight before the number reads</div></div>
+        <div class="cell lay-cell"><div class="cell-t">I sent money home and called it love in a different tongue</div></div>
+        <div class="cell lay-cell spine"><div class="cell-t">The factory bell: my body knows it before my mind</div></div>
+        <div class="cell lay-cell"><div class="cell-t">On my lunch break I watched a sparrow stand still</div></div>
+        <div class="cell lay-cell"><div class="cell-t">What the river takes from the mountain it gives to the sea</div></div>
+        <div class="cell lay-cell"><div class="cell-t">I am far from home in a city I know very well</div></div>
+        <div class="cell lay-cell"><div class="cell-t">The dormitory holds forty women. Each is alone.</div></div>
+        <div class="cell lay-cell"><div class="cell-t">My daughter will not do this work. I am sure of nothing else.</div></div>
+        <div class="cell lay-cell"><div class="cell-t">The conveyor runs. The count increases. I am one of the count.</div></div>
+        <div class="cell lay-cell spine"><div class="cell-t">Today I saw my reflection in the machine and looked away</div></div>
+        <div class="cell lay-cell"><div class="cell-t">What is assembled here will be taken apart somewhere else</div></div>
+        <div class="cell lay-cell"><div class="cell-t">The shift ends. The river does not end. I end.</div></div>
+      </div>
+    </div>
+
+    <div style="padding:5px 0 5px;font-size:8px;color:#252220;letter-spacing:.06em;text-align:center">— 11 more participants: Isabelle Moreau (Lyon) · Kofi Mensah (Kumasi) · Priya Sharma (Mumbai) · Diego Ramírez (Bogotá) · Anna Kowalski (Warsaw) · Kenji Watanabe (Osaka) · Aisha Omondi (Mombasa) · Roberto Costa (São Paulo) · Elena Popescu (Bucharest) · Thomas Müller (Munich) · Grace Obi (Port Harcourt) —</div>
+  </div>
+
+  <div class="summary-bar">
+    <div class="sb-stat"><span class="sb-n">392</span><span class="sb-l">Lines composed</span></div>
+    <div class="sb-sep">|</div>
+    <div class="sb-stat"><span class="sb-n">14</span><span class="sb-l">Chosen-poet rotations</span></div>
+    <div class="sb-sep">|</div>
+    <div class="sb-stat"><span class="sb-n">4</span><span class="sb-l">Forfeits</span></div>
+    <div class="sb-sep">|</div>
+    <div class="sb-stat"><span class="sb-n">6</span><span class="sb-l">Continents</span></div>
+    <div class="sb-sep">|</div>
+    <div class="sb-stat"><span class="sb-n">14</span><span class="sb-l">Countries</span></div>
+    <div class="sb-sep">|</div>
+    <span style="margin-left:auto;color:#3a3634">Experiment complete · 2026-06-14</span>
+  </div>
+</div>
+
+</body>
+</html>

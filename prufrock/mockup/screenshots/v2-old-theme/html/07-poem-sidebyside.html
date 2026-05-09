@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Prufrock Protocol — Poem View: Poem 01</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1440px;height:900px;overflow:hidden;background:#1c2530;color:#e8dec4;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px}
+nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;align-items:center;padding:0 24px;gap:2px}
+.brand{display:flex;align-items:baseline;gap:10px;margin-right:28px}
+.brand-name{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.brand-sub{font-size:10px;letter-spacing:.06em;color:#a8623c;opacity:.75}
+.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#5a5450;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.nav-tab.active{color:#e8dec4;border-bottom-color:#a8623c}
+.nav-right{margin-left:auto;font-size:10px;color:#3c3834}
+.controls{height:40px;background:#1c2028;border-bottom:1px solid #232a32;display:flex;align-items:center;padding:0 24px;gap:20px}
+.cohort-btns{display:flex;border:1px solid #2a3340;border-radius:3px;overflow:hidden}
+.cbt{padding:4px 11px;font-size:10px;color:#5a5450;border-right:1px solid #2a3340}
+.cbt:last-child{border-right:none}
+.cbt.active{background:rgba(255,255,255,.05);color:#e8dec4}
+.slider-group{display:flex;align-items:center;gap:8px;flex:1;max-width:400px}
+.slider-lbl{font-size:10px;color:#5a5450;white-space:nowrap}
+.track{flex:1;height:3px;background:#232a32;border-radius:2px;position:relative}
+.fill{position:absolute;left:0;top:0;height:100%;background:#a8623c;border-radius:2px;width:100%}
+.thumb{position:absolute;top:50%;left:100%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:#a8623c;border:2px solid #1c2530}
+.ctrl-right{margin-left:auto;font-size:10px;color:#5a5450;display:flex;gap:12px}
+.view-mode-btn{padding:3px 10px;border:1px solid #2a3340;border-radius:3px;font-size:10px;cursor:pointer}
+.view-mode-btn.active{background:rgba(255,255,255,.06);color:#e8dec4;border-color:#2e3640}
+.seed-strip{height:36px;background:rgba(168,98,60,.06);border-bottom:1px solid rgba(168,98,60,.15);display:flex;align-items:center;padding:0 24px;gap:16px}
+.ss-tag{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#a8623c;opacity:.7}
+.ss-line{font-family:Georgia,serif;font-style:italic;font-size:12px;color:rgba(168,98,60,.7)}
+.ss-right{margin-left:auto;font-size:10px;color:#5a5450}
+.poem-view{height:780px;display:flex;flex-direction:column}
+.seed-display{padding:8px 24px 7px;border-top:1px solid #232a32;background:#1c2530;border-bottom:1px solid #232a32;flex-shrink:0}
+.sd-lbl{font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#a8623c;opacity:.6;margin-bottom:4px}
+.sd-lines{font-family:Georgia,serif;font-style:italic;font-size:11px;color:rgba(168,98,60,.5);line-height:1.6}
+.comparison-header{height:52px;display:flex;align-items:stretch;border-bottom:1px solid #232a32;flex-shrink:0}
+.comparison-label{width:44px;flex-shrink:0;border-right:1px solid #232a32;display:flex;align-items:center;justify-content:center;font-size:8px;color:#3c3834;letter-spacing:.1em;text-transform:uppercase;writing-mode:vertical-lr;transform:rotate(180deg)}
+.poem-header{flex:1;display:flex;align-items:center;padding:0 22px;gap:14px}
+.poem-header.poet{border-right:1px solid #2a3340;background:rgba(200,120,90,.03)}
+.poem-header.lay{background:rgba(96,122,146,.03)}
+.ph-badge{font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:10px}
+.ph-badge.poet{color:#c47048;background:rgba(200,120,90,.1);border:1px solid rgba(200,120,90,.2)}
+.ph-badge.lay{color:#607a92;background:rgba(96,122,146,.1);border:1px solid rgba(96,122,146,.2)}
+.ph-title{font-size:16px;font-weight:300;color:#e8dec4;flex:1}
+.ph-sub{font-size:10px;color:#5a5450}
+.author-legend{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+.al-item{display:flex;align-items:center;gap:3px;font-size:8px;color:#5a5450}
+.al-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.poem-body{flex:1;display:flex;overflow:hidden}
+.line-numbers{width:44px;flex-shrink:0;border-right:1px solid #232a32;background:#1c2028;display:flex;flex-direction:column}
+.lnum{height:42px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:monospace;color:#322e2a;border-bottom:1px solid #1e2228}
+.poem-col{flex:1;overflow-y:hidden;background:#1c2028}
+.poem-col.poet{border-right:1px solid #2a3340}
+.poem-line{height:42px;display:flex;align-items:center;padding:0 14px 0 18px;border-bottom:1px solid #1e2228;cursor:pointer;position:relative;transition:background .12s}
+.poem-line:hover{background:rgba(255,255,255,.02)}
+.pl-text{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:14px;line-height:1.4;color:#b0a690;flex:1}
+.poem-line:hover .pl-text{color:#d4cab2}
+.pl-author{display:flex;align-items:center;gap:5px;flex-shrink:0}
+.pl-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.pl-init{font-size:7.5px;font-family:monospace;font-weight:700}
+/* Tooltip on line 7 */
+.line-tooltip{position:absolute;z-index:200;width:290px;background:#232a32;border:1px solid #2e3640;border-radius:6px;padding:14px;box-shadow:0 6px 28px rgba(0,0,0,.7);top:320px;left:300px}
+.lt-row{font-size:10px;color:#5a5450;display:flex;gap:6px;margin-bottom:4px}
+.lt-lbl{color:#3c3834;width:58px;flex-shrink:0}
+.lt-val{color:#8a8278}
+.lt-prompt{margin-top:8px;padding-top:8px;border-top:1px solid #2a3340}
+.lt-plbl{font-size:8px;color:#3c3834;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+.lt-ptext{font-family:Georgia,serif;font-style:italic;font-size:11px;color:#7a7066;line-height:1.5}
+</style>
+</head>
+<body>
+<nav>
+  <div class="brand"><span class="brand-name">The Prufrock Protocol</span><span class="brand-sub">Sonnet Experiment Alpha</span></div>
+  <div class="nav-tab">Timeline</div>
+  <div class="nav-tab">Lineage</div>
+  <div class="nav-tab">Map</div>
+  <div class="nav-tab active">Poem</div>
+  <div class="nav-tab">Participant</div>
+  <div class="nav-right">Poem 01 · Side-by-side · Poets vs Laypeople cohort</div>
+</nav>
+<div class="controls">
+  <div class="cohort-btns"><div class="cbt">Poets</div><div class="cbt">Laypeople</div><div class="cbt active">Both</div></div>
+  <div class="slider-group">
+    <span class="slider-lbl">Day</span>
+    <div class="track"><div class="fill"></div><div class="thumb"></div></div>
+    <span class="slider-lbl">14 / 14</span>
+  </div>
+  <div class="ctrl-right">
+    <div class="view-mode-btn active">Side-by-side</div>
+    <div class="view-mode-btn">Single</div>
+    <div class="view-mode-btn">All poems</div>
+  </div>
+</div>
+<div class="seed-strip">
+  <span class="ss-tag">Shared seed</span>
+  <span class="ss-line">Nor shall death brag thou wander'st in his shade, · When in eternal lines to time thou grow'st:</span>
+  <span class="ss-right">Poem 01 · Same structure · 14 different voices each · Different cohorts</span>
+</div>
+<div class="poem-view">
+  <div class="seed-display">
+    <div class="sd-lbl">Day 1 prompt — shared by all 28 poems</div>
+    <div class="sd-lines">Nor shall death brag thou wander'st in his shade, / When in eternal lines to time thou grow'st:</div>
+  </div>
+  <div class="comparison-header">
+    <div class="comparison-label">Poem 01</div>
+    <div class="poem-header poet">
+      <div class="ph-badge poet">Poet Cohort</div>
+      <div class="ph-title">Poem 01 — Poets</div>
+      <div class="ph-sub">14 authors · 14 lines · 1 poem</div>
+    </div>
+    <div class="poem-header lay">
+      <div class="ph-badge lay">Layperson Cohort</div>
+      <div class="ph-title">Poem 01 — Laypeople</div>
+      <div class="ph-sub">14 authors · 14 lines · 1 poem</div>
+    </div>
+  </div>
+  <div class="poem-body">
+    <div class="line-numbers" id="lnums"></div>
+    <div class="poem-col poet" id="poet-col"></div>
+    <div class="poem-col lay" id="lay-col"></div>
+  </div>
+</div>
+
+<!-- Tooltip on poet line 7 (Lena Brandt) -->
+<div class="line-tooltip">
+  <div class="lt-row"><span class="lt-lbl">Author</span><span class="lt-val" style="color:#785888">Lena Brandt · Berlin, Germany</span></div>
+  <div class="lt-row"><span class="lt-lbl">Day written</span><span class="lt-val">Day 7 · 2026-06-07 · 10:14 CET</span></div>
+  <div class="lt-row"><span class="lt-lbl">Latency</span><span class="lt-val">22 min after prompt delivery</span></div>
+  <div class="lt-row"><span class="lt-lbl">Location</span><span class="lt-val">Berlin-Mitte · 52.5°N, 13.4°E</span></div>
+  <div class="lt-row"><span class="lt-lbl">Moment</span><span class="lt-val">at desk, rain on the window</span></div>
+  <div class="lt-prompt">
+    <div class="lt-plbl">Prompt received — lines 5–6 of Poem 01</div>
+    <div class="lt-ptext">
+      "I speak my name into the gap where history went quiet"<br>
+      "The Tagus carries everything to where the sea begins"
+    </div>
+  </div>
+</div>
+
+<script>
+// Poem 01, Poets cohort
+// Latin square: author[poem=0][day=d] = (0 - d + 14) % 14
+// Day 1: A0=AO, Day2: A13=BL, Day3: A12=VG, Day4: A11=PL, Day5: A10=ND, Day6: A9=CA, Day7: A8=LB, Day8: A7=YN, Day9: A6=AD, Day10: A5=MP, Day11: A4=EŞ, Day12: A3=SN, Day13: A2=MF, Day14: A1=HT
+
+const POET_AUTHORS = [
+  {id:'AO',name:'Amara Osei',loc:'Accra',color:'#c47048'},
+  {id:'HT',name:'Hiroshi Tanaka',loc:'Kyoto',color:'#5a5070'},
+  {id:'MF',name:'Marisol Fuentes',loc:'B.Aires',color:'#886878'},
+  {id:'SN',name:'Siobhán',loc:'Galway',color:'#5a8870'},
+  {id:'EŞ',name:'Elif Şahin',loc:'Istanbul',color:'#a8623c'},
+  {id:'MP',name:'Meera Pillai',loc:'Kochi',color:'#a85040'},
+  {id:'AD',name:'Antoine Diallo',loc:'Dakar',color:'#547088'},
+  {id:'YN',name:'Yuki Nakamura',loc:'Sapporo',color:'#889060'},
+  {id:'LB',name:'Lena Brandt',loc:'Berlin',color:'#785888'},
+  {id:'CA',name:'Carlos Andrade',loc:'Lisbon',color:'#5a907c'},
+  {id:'ND',name:'Naledi Dlamini',loc:'J\'burg',color:'#b8703c'},
+  {id:'PL',name:'Pham Thi Lan',loc:'Hanoi',color:'#c47048'},
+  {id:'VG',name:'Valentina Greco',loc:'Naples',color:'#6a7e92'},
+  {id:'BL',name:'Björn Lindqvist',loc:'Stockholm',color:'#889078'},
+];
+
+const LAY_AUTHORS = [
+  {id:'MW',name:'Marcus Webb',loc:'Detroit',color:'#547088'},
+  {id:'FA',name:'Fatimah A-H.',loc:'Nairobi',color:'#6a9588'},
+  {id:'GM',name:'Guo Mei',loc:'Chongqing',color:'#985868'},
+  {id:'PK',name:'Priya Krishn.',loc:'Chennai',color:'#708498'},
+  {id:'JO',name:'James Okoro',loc:'Lagos',color:'#889060'},
+  {id:'MS',name:'María Santos',loc:'Mex.City',color:'#a87884'},
+  {id:'TB',name:'Tom Brennan',loc:'Cork',color:'#5a7a90'},
+  {id:'AS',name:'Aiko Sato',loc:'Osaka',color:'#909668'},
+  {id:'DV',name:'Dmitri Volkov',loc:'St.Pete',color:'#786894'},
+  {id:'AC',name:'Amina Cissé',loc:'Dakar',color:'#5a907c'},
+  {id:'PS',name:'Paulo S.',loc:'S.Paulo',color:'#cc6440'},
+  {id:'CW',name:'Chen Wei',loc:'Shanghai',color:'#607a92'},
+  {id:'SM',name:'Sarah McKay',loc:'Edinburgh',color:'#985868'},
+  {id:'HF',name:'Hans Fischer',loc:'Zurich',color:'#7a9078'},
+];
+
+// Poem 01 author sequence (Latin square, poem=0): day d → author (0-d+14)%14
+const poetLineAuthors = Array.from({length:14},(_,d)=>(14-d)%14);
+// poetLineAuthors = [0,13,12,11,10,9,8,7,6,5,4,3,2,1]
+const layLineAuthors = Array.from({length:14},(_,d)=>(14-d)%14);
+
+const POET_LINES = [
+  'The summer I remember had no owner',
+  'The ice does not know what it means to hold or release',
+  'Vesuvius is patient: it has buried us before',
+  'The river remembers the village that the map forgot',
+  'I speak my name into the gap where history went quiet',
+  'The Tagus carries everything to where the sea begins',
+  'The wall came down but the frontier remained in my dreaming',
+  'Under the northern lights, the cold is slow and patient',
+  'The drum that calls the living names the dead',
+  'The monsoon names each year the same: this one',
+  'Between two empires, I misplace my century',
+  'These hands have held what tides forget they moved',
+  'I carry what I cannot bury in the common grave',
+  'What the pine tree writes in shadows, snow erases',
+];
+
+const LAY_LINES = [
+  'The pipe runs through the wall and no one sees it',
+  'Between shifts I count the lights in the pachinko window',
+  'The filing cabinet holds forty years of other people\'s grief',
+  'The machine remembers every shift I work and forget',
+  'São Paulo breathes a million people who breathe it back',
+  'The market knows the price of everything except the time',
+  'I fixed the thing they said couldn\'t be fixed again',
+  'The factory bell: my body knows it before my mind',
+  'At 3am the ward is quiet and the clocks keep going',
+  'The harvest quota is a number that has no interest in me',
+  'Lagos is a city of machines that know no sleep',
+  'The Neva freezes and the city pretends to be eternal',
+  'The haar comes in off the firth and the city disappears',
+  'The bank clears the debt before the family clears the house',
+];
+
+// Line numbers
+const lnDiv = document.getElementById('lnums');
+for (let i=1;i<=14;i++){
+  const d = document.createElement('div');
+  d.className = 'lnum';
+  d.textContent = i;
+  lnDiv.appendChild(d);
+}
+
+// Build poem columns
+function buildCol(colId, lines, authorSeq, authorsArr) {
+  const col = document.getElementById(colId);
+  lines.forEach((text, i) => {
+    const aIdx = authorSeq[i];
+    const a = authorsArr[aIdx];
+    const div = document.createElement('div');
+    div.className = 'poem-line';
+    div.innerHTML = `
+      <span class="pl-text">${text}</span>
+      <div class="pl-author">
+        <div class="pl-dot" style="background:${a.color}"></div>
+        <span class="pl-init" style="color:${a.color}bb">${a.id}</span>
+      </div>`;
+    col.appendChild(div);
+  });
+}
+
+buildCol('poet-col', POET_LINES, poetLineAuthors, POET_AUTHORS);
+buildCol('lay-col', LAY_LINES, layLineAuthors, LAY_AUTHORS);
+</script>
+<div style="position:fixed;bottom:0;left:0;width:100%;background:#a83a2a;color:#fff;text-align:center;font-size:11px;font-weight:700;letter-spacing:.25em;padding:4px 0;z-index:9999">MOCKUP</div>
+</body>
+</html>

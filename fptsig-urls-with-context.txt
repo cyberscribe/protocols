@@ -1,0 +1,145 @@
+./Simulating Driving  Protocol.md:28:            - {{[[video]]: https://youtu.be/Wb4T-to8WmU}}
+./Simulating Driving  Protocol.md:37:        - {{[[video]]: https://youtu.be/DNG31IGMz94}}
+./Simulating Driving  Protocol.md:46:    - {{[[video]]: https://youtu.be/kYzRDdgLtZM}}
+./Simulating Driving  Protocol.md:84:    - While the original paper is published in Transportation Research Record (DOI: 10.3141/1999-10), a PDF version is available directly from the lead author at: https://akesting.de/download/MOBIL_TRR_2007.pdf
+./Simulating Driving  Protocol.md:86:- https://journals.sagepub.com/doi/epdf/10.3141/1999-10
+./SIGFPT Member Directory.md:9:- **Mike Travers**: Software developer/writer in the Bay Area; I deal mostly with biomedical applications and data. Nontechnical interests include the nature of agency, narrative, politics, and ethics. Past life at MIT Media Lab where I worked on agent-based programming environments for education. Interested in protocols for data sharing, open source software development, and society/politics in general. Also the more human side of protocols (rituals, social interaction, procedural epistemology). All my protocol thoughts may be found [here](https://hyperphor.com/ammdi/Protocols) with connections to all my other half-baked thoughts.
+./Protocol Foundations Workshop.md:68:        - [link to pages from talk]([Protocol workshop lightning talk.pdf](https://buckeyemailosu-my.sharepoint.com/:b:/g/personal/skinner_352_osu_edu/EeK0xUyoCgVDt1EHg5sZknkBrqFULlYp6hyHi9m17wSz4g?e=FClEoP))
+./James's talk - Robustness.md:2:    - [Symmetry and Collective Fluctuations in Evolutionary Games](https://iopscience.iop.org/book/mono/978-0-7503-1137-3.pdf)
+./James's talk - Robustness.md:3:    - [Intrinsic and extrinsic thermodynamics for stochastic population processes with multi-level large-deviation structure](https://arxiv.org/abs/2008.01260)
+./James's talk - Robustness.md:4:    - [The Origin and Nature of Life on Earth](https://www.cambridge.org/core/books/origin-and-nature-of-life-on-earth/CEA8B764107B896A9CBA371F552BE215) , great [Youtube video](https://www.youtube.com/watch?v=0cwvj0XBKlE)
+./James's talk - Robustness.md:5:    - And [my review](https://www.cambridge.org/core/books/origin-and-nature-of-life-on-earth/CEA8B764107B896A9CBA371F552BE215) of that book
+./Protocol School.md:10:        - https://docs.google.com/spreadsheets/d/1RyS4YpPCX1e-6s6qcq7aL7EdP6rZAV24rAyi17sDTwY/edit?usp=sharing
+./Protocol School.md:16:        - https://discord.com/channels/1082444651946049567/1417190154937827410/1418375104521437224
+./Protocol School.md:18:        - https://docs.google.com/presentation/d/1skFmsrMNM8C9lA6qde2AFKYbHTzOH8TYC93wEuHR1Jk/edit?slide=id.p#slide=id.p
+./Protocol School.md:22:        - live presentation. referenced: https://discord.com/channels/1082444651946049567/1417190154937827410/1418388301718753432
+./Protocol School.md:27:    - kate ecologies.fm https://ecologies.fm/Protocols-Draft 
+./Impossibilities and Symmetries.md:2:- Reading: [Wikipedia page on Witsenhausen counterexample](https://en.wikipedia.org/wiki/Witsenhausen%27s_counterexample) + Google "Witsenhausen counterexample" and browse around to get a sense of why it is considered such an important problem.
+./Impossibilities and Symmetries.md:3:- Supplemental: Slide deck on[ Game Theory with Information: Introducing the Witsenhausen Intrinsic Model ](https://cermics.enpc.fr/~delara/exposes/Game_models_with_information.pdf)
+./Design Principles for Protocols.md:13:        - See study, [The Unreasonable Sufficiency of Protocols](https://summerofprotocols.com/research/the-unreasonable-sufficiency-of-protocols)
+./Design Principles for Protocols.md:19:        - Thin vs. Thick. See [Lorraine Daston, Rules: A Short History of What We Live By](https://press.princeton.edu/books/hardcover/9780691156989/rules?srsltid=AfmBOorVBtdRMoXt69mij4g3OtGOcQ0ikxq8_y91N3XdkYYEk6d89j6x) -- basically thick requires a lot of judgment and context/exception-making. Thin is low-discretion/low-context rigidity.
+./Design Principles for Protocols.md:46:        - Design for "mundanity of excellence." See [David Chambliss, The Mundanity of Excellence](https://academics.hamilton.edu/documents/themundanityofexcellence.pdf)
+./Actor Models.md:8:    - [Introduction to Actor Theory](https://docs.google.com/document/d/1f0rs5SjJH9-xYRAq83hGTMQdukWfb7n6TrbJsnPaP30/edit?usp=sharing) (LLM generated, on GDoc, comments enabled and encouraged)
+./Actor Models.md:9:    - [An Overview of Actor Languages](https://dl.acm.org/doi/pdf/10.1145/323648.323743) Gul Agha
+./Actor Models.md:10:    - [The Scientific Community Metaphor](https://bitsavers.trailing-edge.com/pdf/mit/ai/aim/AIM-641.pdf), Kornfeld & Hewitt (confusingly uses the term "sprites" but they are the same as actors more or less)
+./Actor Models.md:12:- Presentation Page: https://hyperphor.com/ammdi/Protocols%E2%88%95Actors
+./Woodenman Group 1: There's Plenty of Rules at the Bottom.md:17:- Lodestar: [Sugarscape](https://en.wikipedia.org/wiki/Sugarscape)
+./Woodenman Group 1: There's Plenty of Rules at the Bottom.md:18:    - Sugarscape is a classic model for simulating social systems introduced in Epstein and Axtell's "[Growing Artificial Societies: Social Science from the Bottom Up](https://archive.org/details/growingartificia00epst)" by iteratively adding layers of local behaviors and environmental features. It's basically a mixture of Game of Life (2D cellular automata) with Schelling's work on social dynamics (particularly racial segregation).
+./Woodenman Group 1: There's Plenty of Rules at the Bottom.md:46:    - Similarly, you might also map time-parameterized curves on a [tension graph](https://protocolized.summerofprotocols.com/p/one-tension-to-rule-them-all)
+./Woodenman Group 1: There's Plenty of Rules at the Bottom.md:49:    - Collective Memory may be investigated through an analysis of hysteresis effects in transitions between behavioral states cf. [Collective Memory and Spatial Sorting in Animal Groups](https://jmvidal.cse.sc.edu/library/couzin02a.pdf)
+./Woodenman Group 1: There's Plenty of Rules at the Bottom.md:50:    - Some protocols may arise more or less naturally from modeled behaviors, as is seen in some  [collective animal behaviors](https://kops.uni-konstanz.de/server/api/core/bitstreams/34931617-ddb1-4d42-8388-687a1df0fa3d/content)
+./Woodenman Group 1: There's Plenty of Rules at the Bottom.md:52:        - The dynamics of the system given whatever behaviors you decide to include as "natural" (possibly just [total randomness](https://www.youtube.com/watch?v=oAHbLRjF0vo)) can be considered a "null protocol" which can serve as the basis for benchmarking alternatives given a goal or metric.
+./List of projects | Protocol School September 02025.md:3:    - THEME: __Protocol School… of Thought__: A reflection on my ventures in protocol studies independently of the SoP program from inside academia (and outside). It will be a set of autoethnographic reflections from 3 main sources a) a SIG I have been organizing from my academic community, b) a wacky Symposium I organized [at a big philosophy conference](https://ishpssb2025.icbas.up.pt/), c) a Fiction Writing Workshop at Funding the Commons Berlin.
+./List of projects | Protocol School September 02025.md:6:    - **[List of Other Project Suggestions](https://docs.google.com/document/d/1SMHdvX3ixfi9KuOK6ERKM8ecuSXRe1UFSwwmLtghEug/edit?tab=t.0)**
+./List of projects | Protocol School September 02025.md:12:    - Motivation: take the idea of city operating systems seriously as more than a metaphor. See here for a (very US centric) orienting [blog post](https://pioneeringspirit.xyz/pioneering-protocols-for-the-next-city-os).  
+./List of projects | Protocol School September 02025.md:15:        - Gold) develop a plausible async protocol for a loose network of folks to play with additional city protocols. Build on [DeED protocol](https://github.com/vr00n/de-ed).
+./List of projects | Protocol School September 02025.md:16:            - [DeED urban adventure 101 option](https://docs.google.com/document/d/1Eq2IKe2eG7Go1Spwa9wPB7sMKHC73dzTGvjd5EnqhI0/edit?usp=sharing)  
+./List of projects | Protocol School September 02025.md:25:    - The work itself is [here](https://any.coop/A6tDa67uK297ntkaV61EavSXvWPDE8WqXDSYaZZ8FrkmBLpg/idea-alignment-protocol-proposal), and the slide deck I used to present it is [here](https://www.conversence.com/presentations/2025-09-19-IdeaAlignmentProtocol.pdf).
+./List of projects | Protocol School September 02025.md:54:    - **PRESENTATION**: https://docs.google.com/presentation/d/1GOLN2pU9gNnNvcAJzokXz17WpRbD3aEq9j2ZgbeWEZ4/edit?usp=sharing
+./List of projects | Protocol School September 02025.md:56:    - I think I'll be developing a rough theory I have around the idea of Archival time as a distinctive temporality produced by media protocols that freeze, enclose, and redistribute culture in fixed slices (https://summerlightning.substack.com/p/meme-time-vs-archival-time)
+./List of projects | Protocol School September 02025.md:57:    - I think medium I'll settle on is lyric essay in the style of David Shields Reality Hunger (which feels appropriate for the topic) https://www.amazon.com/Reality-Hunger-Manifesto-David-Shields/dp/0307387976
+./List of projects | Protocol School September 02025.md:138:    - Here's a very sketchy list of project ideas https://hyperphor.com/ammdi/Protocols∕Ideas  The two things that are most "project shaped" (that is, things I could implement in a week)
+./List of projects | Protocol School September 02025.md:179:      Dawn - I’d also like to sharpen up our Meshtastic Haiku readiness protocol for next May’s Dawn Chorus Day - https://cascadenetwork.gitbook.io/meshes-of-the-ata-hapara. A techy eco-poetics experiment, translating listening at sunrise into poetic fragments & texting these haikus across the mesh in the valley we live in. It’s fun, but also a rough community prototype for LoRa comms in case of emergency.
+./List of projects | Protocol School September 02025.md:185:        - **Rationale:** https://docs.google.com/document/d/1P3Gj1gfDJdXX-YzPGLM_51kBxsNbhLOwuYRiyetRIHc/edit?usp=sharing
+./List of projects | Protocol School September 02025.md:187:            - Github: https://github.com/vyakart/Meeting-Merkle
+./List of projects | Protocol School September 02025.md:198:    - https://docs.google.com/document/d/e/2PACX-1vTeiSZGxYa6KKjs2LvnrJ38o7_Na8R5iqw1HHNYjAZ6ta7exQFTWUu9KPcPlym7gew0uPgVIlWrVHbY/pub
+./RCC-TIC.md:2:- [RCC](https://en.wikipedia.org/wiki/Region_connection_calculus) — Region Connection Calculus (from QSR community of GOFAI)
+./RCC-TIC.md:3:- [TIC](https://en.wikipedia.org/wiki/Allen%27s_interval_algebra) — Temporal Interval Calculus (the Allen paper)
+./Maneuver Automata.md:2:- ^^Early seminal paper by Frazzoli et al, [Maneuver-based motion planning for nonlinear systems with symmetries — Frazzoli, Dahleh, Feron (IEEE T-RO, 2005)](https://web.mit.edu/dahleh/www/pubs/2005.1.pdf). Canonical formalization of trim states + maneuvers as a graph (“maneuver automaton”), with symmetry reductions and optimal switching logic. This is the reference that cleanly sets up the abstraction.^^
+./Maneuver Automata.md:3:- [Designing Maneuver Automata of Motion Primitives for Autonomous Driving](https://link.springer.com/chapter/10.1007/978-3-031-60494-2_8?utm_source=chatgpt.com) — Pedrosa et al. (Springer chapter, 2024). A recent, compact tutorial chapter: how to build MAs from analytical or data-driven models, with up-to-date autonomous-driving context.
+./Maneuver Automata.md:4:- [A Survey on Hybrid Motion Planning Methods for Autonomous Driving](https://arxiv.org/abs/2406.05575) (2024). It situates maneuver-automata within the wider hybrid planning landscape (tactical + trajectory). Skim to compare MA with other hybrid stacks.
+./Maneuver Automata.md:6:    - [Real-Time Motion Planning for Agile Autonomous Vehicles — Frazzoli (AIAA/early MIT work, 2001).](https://msl.cs.illinois.edu/~lavalle/cs497_2001/papers/frazzoli.pdf?utm_source=chatgpt.com). Historically important case study showing the move from continuous ODE models to the maneuver-automaton abstraction for aggressive vehicles. Read for intuition and early empirical flavor.
+./Maneuver Automata.md:7:    - [A Hybrid Control Framework for Robust Maneuver-Based Motion Planning](https://hybrid.soe.ucsc.edu/sites/default/files/preprints/26.pdf) — Sanfelice, Frazzoli. Extends the basic model to a hybrid closed-loop architecture; focuses on robustness of primitive concatenation under disturbances and modeling error. Good for seeing the control-theoretic glue between primitives.
+./Maneuver Automata.md:8:    - [Formal Verification of Maneuver Automata for Parameterized Motion Primitives — Hess](https://mediatum.ub.tum.de/doc/1281590/document.pdf?utm_source=chatgpt.com) (TUM dissertation paper, 2014). Computes reachable sets for parameterized primitives and uses them to build/verify a maneuver automaton with safety guarantees. If you want “mechanically checkable” MA, start here.
+./Maneuver Automata.md:9:    - [A Modular Framework for Motion Planning using Safe-by-Design Maneuver Automata](https://www.dynsyslab.org/wp-content/papercite-data/pdf/vukosavljev-tro19.pdf?utm_source=chatgpt.com) — Vukosavljev et al. (IEEE T-RO, 2019).  Brings the verification mindset into a practical planning stack: explicit design constraints on primitives so concatenation is correct-by-construction; obstacle handling via discrete planning over “safe boxes.” Great bridge from theory to implementations.
+./Maneuver Automata.md:10:    -  [Improving the Maneuver Automaton with Maneuver Interruption (AIAA, 2023) ](https://arc.aiaa.org/doi/abs/10.2514/6.2023-0487?utm_source=chatgpt.com)— explores replanning via interruptible maneuvers; useful for time-critical, uncertain settings.
+./Edge Esmeralda 2025 Workshop.md:2:- Collectively brainstormed [this spreadhseet](https://docs.google.com/spreadsheets/d/195cM0NFq8kyLY5Ytu1idmS-p6owVKM47aCc68lfJOtM/edit?usp=sharing)
+./PFW Idea Index.md:66:    - https://en.wikipedia.org/wiki/The_Great_Derangement:_Climate_Change_and_the_Unthinkable - literary fiction does not deal in archetypes and hence does not give us models of the world ? 
+./Autocurricula.md:5:      [Autocurricula and the Emergence of Innovation from Social Interaction: A Manifesto for Multi-Agent Intelligence Research](https://arxiv.org/pdf/1903.00742)
+./Autocurricula.md:7:      https://openai.com/index/emergent-tool-use/
+./Autocurricula.md:10:      https://deepmind.google/blog/understanding-agent-cooperation/https://arxiv.org/pdf/2012.08630
+./Autocurricula.md:11:    - Slides: https://docs.google.com/presentation/d/1DSKLE5pCo0n5pCWfYJaXQtbHCofoR7sf_ntAAKIZglY/edit?slide=id.p#slide=id.p
+./Protocolizing Agent Space.md:12:    - This "Urani Principle" is useful https://x.com/bradurani/status/2044849902312636433?s=61&t=Z7ogL5oXQlE-zjAQ_mFVBw
+./Ontology and Politics.md:2:- From a 2011 talk [politics of knowledge representation](https://hyperphor.com/ammdi/Politics-and-Pragmatism-in-Scientific-Ontology-Construction)
+./Ontology and Politics.md:3:- [Carl Hewitt](https://hyperphor.com/ammdi/Carl-Hewitt#54454), Actors, Inconsistency Robustness
+./Ontology and Politics.md:9:- [Politics and Pragmatism in Scientific Ontologies](https://www.slideshare.net/slideshow/politics-and-pragmatism-in-scientic-ontology-construction/8942625)
+./Process Calculi.md:3:    - Session 1: https://discord.com/channels/1082444651946049567/1401796807498928210
+./Process Calculi.md:4:    - Session 2: https://discord.com/channels/1082444651946049567/1410118590522462270
+./Process Calculi.md:5:    - Session 3: https://discord.com/channels/1082444651946049567/1422644720961720542
+./Process Calculi.md:45:    - [Calculus of Communicating Systems: A Synopsis by Mantis H.M. Cheng](https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=d6566bd1026125a09cf928d2d6de9d6ca6c32529)
+./Process Calculi.md:46:    - [Ubiqitous Computing: Shall we Understand It?](https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=f2e0ae7d516fe47a95395bea16a13809ab7489cf)
+./Process Calculi.md:47:    - [FAQ on pi-calculus](https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=fac9fca826f1dac2f30fd906fc324e4356cb9282)
+./Process Calculi.md:48:    - [A Brief History of Process Algebra](https://pure.tue.nl/ws/files/2154050/200402.pdf)
+./Process Calculi.md:49:    - [A Gentle Introduction to process Algebra](https://www.pst.ifi.lmu.de/Lehre/fruhere-semester/sose-2013/formale-spezifikation-und-verifikation/intro-to-pa.pdf)
+./Process Calculi.md:50:    - [Foundations of Concurrency lecture slides](https://cgi.cse.unsw.edu.au/~cs3151/22T2/Week%2008/Wednesday%20Slides.pdf)
+./Process Calculi.md:51:    - [Foundation of Session Types and Behavioral Contracts](https://pure.itu.dk/ws/portalfiles/portal/82370304/huttel.lanese.etal_fondations_session_types.pdf)
+./Process Calculi.md:52:    - [Bigraphs by Example](https://pure.itu.dk/ws/portalfiles/portal/108241548/ITU-TR-2005-61_pdf.pdf)
+./Process Calculi.md:53:    - [Practical Modeling with Bigraphs](https://arxiv.org/pdf/2405.20745)
+./Process Calculi.md:54:    - [Communicating Sequential Processes Hoare](https://web.eecs.umich.edu/~movaghar/cspbook.pdf)
+./Process Calculi.md:55:    - [Modeling MultiAgent Systems as Labeled Transitions Systems](https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=34435136b92c956639c7eb6774f545e41893fab7)
+./Process Calculi.md:56:    - [Robin Milner's work on Concurrency: An Apperciation, Samson Abramsky](https://arxiv.org/pdf/2206.09250)
+./Process Calculi.md:57:    - [Pi Calculus vs Petri Nets](http://www.workflowpatterns.com/documentation/documents/bptrendsPiHype.pdf)
+./Process Calculi.md:58:    - [The poly-adic pi calculus: a tutorial](https://www.lix.polytechnique.fr/~fvalenci/papers/intro-ppi.pdf)
+./Process Calculi.md:59:    - [Process Calculi as a tool for studying coordination, contracts, and session types](https://inria.hal.science/hal-03102438/document)
+./Process Calculi.md:60:    - [The variety of process algebras](https://pure.tue.nl/ws/portalfiles/portal/4437128/589774.pdf)
+./Process Calculi.md:61:    - http://mrg.doc.ic.ac.uk/publications/a-very-gentle-introduction-to-multiparty-session-types/main.pdf (Multiparty session types)
+./Process Calculi.md:62:    - https://dl.acm.org/doi/pdf/10.1145/2873052 (Session Types and Behavioral Contracts)
+./Amsterdam Talk.md:1:- [Hysteresis](https://contraptions.venkateshrao.com/p/hysteresis-and-the-mark-makers) (Bourdieu)
+./Amsterdam Talk.md:11:- [Cosmopolis](https://contraptions.venkateshrao.com/p/welcome-to-the-cosmopolis)
+./Incentive Patterns.md:31:- The [pattern language concept](https://en.wikipedia.org/wiki/A_Pattern_Language)
+./Incentive Patterns.md:40:    - [Software engineering design patterns](https://en.wikipedia.org/wiki/Software_design_pattern): when a problem takes roughly X form, apply this pattern
+./Protocols and Drift.md:77:- A checklist of assessing protocols: https://summerofprotocols.com/wp-content/uploads/2024/04/Kafka-Index-Nadia-Asparouhova-1.pdf
+./Do-Calculus.md:9:    - https://ftp.cs.ucla.edu/pub/stat_ser/r402.pdf
+./Do-Calculus.md:10:    - https://www.andrewheiss.com/blog/2021/09/07/do-calculus-backdoors/
+./Do-Calculus.md:11:    - https://en.wikipedia.org/wiki/Causality_(book)
+./Formal Protocol Theory Special Interest Group (SIG).md:7:    1. June 13: [[Warmup session]] [Discord thread](https://discord.com/channels/1082444651946049567/1383122240220172328)
+./Formal Protocol Theory Special Interest Group (SIG).md:8:    2. June 27: [[Observability]] | [Discord thread](https://discord.com/channels/1082444651946049567/1387142362937032714)
+./Formal Protocol Theory Special Interest Group (SIG).md:9:    3. July 12: [[Notation]] | [Discord thread](https://discord.com/channels/1082444651946049567/1389626057195257979)
+./Formal Protocol Theory Special Interest Group (SIG).md:10:    4. July 25: [[Paper Napkin Math]] | [Discord thread](https://discord.com/channels/1082444651946049567/1398346502413352993)
+./Formal Protocol Theory Special Interest Group (SIG).md:11:    5. Aug 8: [[Process Calculi]] | [Discord thread](https://discord.com/channels/1082444651946049567/1401796807498928210)
+./Integration Jigsaw: Convergence~Divergences between groups.md:15:                    - On Distributability "In essence, parallel composition offers an only incomplete view on the distributability of its components." https://www.sciencedirect.com/science/article/abs/pii/S030439752200177 
+./Integration Jigsaw: Convergence~Divergences between groups.md:33:        - https://www.youtube.com/watch?v=_7VAnAgmshA (The Terminator Gambit), but in rulial space?
+./Integration Jigsaw: Convergence~Divergences between groups.md:34:    - Manheim, D.; Garrabrant, S. "Categorizing Variants of Goodhart's Law" https://arxiv.org/abs/1803.04585
+./Atomic Protocol Questions.md:8:        - To that end, I’m mixing together the idea of “[Hilbert Problems](https://www.aemea.org/math/Hilbert_23_Mathematical_Problems_1900.pdf)” with the “[Basket of Protocols](https://docs.google.com/spreadsheets/d/195cM0NFq8kyLY5Ytu1idmS-p6owVKM47aCc68lfJOtM/edit?gid=1046176015#gid=1046176015)” to catalogue a list of interdisciplinary research problems that roughly span the space of interest in nascent formal protocol studies.
+./Atomic Protocol Questions.md:115:    - **Fair Cake cutting problems**: https://en.wikipedia.org/wiki/List_of_unsolved_problems_in_fair_division
+./Atomic Protocol Questions.md:116:    - **Witsenhausen Stochastic decision problem**: https://raganwald.com/assets/fractran/open-problems-in-communication-and-computation-1987.pdf
+./Atomic Protocol Questions.md:140:        - https://arxiv.org/pdf/1912.04977
+./Atomic Protocol Questions.md:141:        - https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9039606
+./Atomic Protocol Questions.md:142:        -  https://arxiv.org/pdf/2310.19201
+./Atomic Protocol Questions.md:143:        - https://arxiv.org/pdf/2106.15691
+./Atomic Protocol Questions.md:144:        - https://arxiv.org/pdf/2311.13714
+./Observability.md:7:        - [🔗](https://gist.github.com/vgururao/5f28be9f8adcbc450ca74ed8063f47bc#-key-concepts)
+./Observability.md:13:        - [🔗](https://gist.github.com/vgururao/5f28be9f8adcbc450ca74ed8063f47bc#-highlights-from-discussion)
+./Observability.md:15:        - [🔗](https://gist.github.com/vgururao/5f28be9f8adcbc450ca74ed8063f47bc#venkatesh-rao)
+./Observability.md:21:        - [🔗](https://gist.github.com/vgururao/5f28be9f8adcbc450ca74ed8063f47bc#participant-contributions)
+./Observability.md:43:        - [🔗](https://gist.github.com/vgururao/5f28be9f8adcbc450ca74ed8063f47bc#-exercise-observability-in-climate-protocols)
+./Observability.md:46:        - [🔗](https://gist.github.com/vgururao/5f28be9f8adcbc450ca74ed8063f47bc#examples-given)
+./Observability.md:51:        - [🔗](https://gist.github.com/vgururao/5f28be9f8adcbc450ca74ed8063f47bc#participant-suggestions)
+./Observability.md:66:        - [🔗](https://gist.github.com/vgururao/5f28be9f8adcbc450ca74ed8063f47bc#-takeaways)
+./Group 6 Insights.md:13:    - formal structure as product rather than generator of interaction ([ethnomethodology](https://en.wikipedia.org/wiki/Ethnomethodology))
+./Protocol Homework Problem Sets.md:669:        - Problem statement: The TIC ([wikipedia link](https://en.wikipedia.org/wiki/Allen%27s_interval_algebra)) describes events with intervals and relations between intervals rather than points. 2 unequal intervals X (shorter)and Y (longer) can be in 13 possible relations with each other. Assuming the intervals are used to represent ACTIONS that occupy a period of time, come up with 2 real-world examples where you might need to use the "X during Y" state to describe the relationship between actions, and 2 real-world examples for the special case where X=Y in length
+./Notation.md:22:- [Iverson paper](https://www.eecg.utoronto.ca/~jzhu/csc326/readings/iverson.pdf) -- add any comments below
+./Notation.md:25:    - Venkat: Allen's interval calculus: [Wikipedia](https://en.wikipedia.org/wiki/Allen%27s_interval_algebra)
+./Notation.md:27:    - Patrick Nast: Feynman Diagrams [Wiki](https://en.wikipedia.org/wiki/Feynman_diagram)
+./Notation.md:29:    - Amita: causal loop diagrams [wiki](https://en.wikipedia.org/wiki/Causal_loop_diagram) 
+./Notation.md:41:        - https://en.wikipedia.org/wiki/Business_Process_Model_and_Notation
+./Notation.md:47:      I also remember the natural-language fiction / world-building language [Inform 7](https://ganelson.github.io/inform-website/) outputting a very clear and concise notation for world states and rules, but it's been 10 years since I used it and can't currently find what that's called in the latest release. It could also output very readable diagrammatic representations of world state too. (Inform models world time in a step-wise fashion, so would probably collapse for anything requiring continuous time modelling)
+./Notation.md:49:    - Amber: Probabilistic Graphical Models. A graphical model or probabilistic graphical model (PGM) or structured probabilistic model is a probabilistic model for which a graph expresses the conditional dependence structure between random variables. See more: https://en.wikipedia.org/wiki/Graphical_model and https://ermongroup.github.io/cs228/
+./Notation.md:80:            - https://www.interaction-design.org/literature/book/the-encyclopedia-of-human-computer-interaction-2nd-ed/affordances?srsltid=AfmBOoqzR-97jX0IBDnsV-w23aUaMh3v1GHEKWQFzlMVecMVnRwVv3Zd
+./Notation.md:84:            - https://link.springer.com/chapter/10.1007/978-3-030-23807-0_1
+./Notation.md:110:            - {{[[video]]: https://youtu.be/vhTZYrWe4Xo}}
+./Talk — Towards a Formal Theory of Protocols.md:3:- Math-level calibration for summer SIG -- street-fighting mathematics (see [book](https://mitpress.mit.edu/9780262526548/the-art-of-insight-in-science-and-engineering/) and [course](https://ocw.mit.edu/courses/18-098-street-fighting-mathematics-january-iap-2008/)), but for formal modeling and design rather than estimation
+./Talk — Towards a Formal Theory of Protocols.md:8:    - {{[[video]]: https://www.youtube.com/watch?v=uSOw-hulg6s}}
+./Talk — Towards a Formal Theory of Protocols.md:47:- Complex example: [Old postdoc research on command and control](https://ieeexplore.ieee.org/document/4200813)
+./Stigmergy.md:3:      [A Brief History of Stigmergy](https://www.researchgate.net/publication/12680033_A_Brief_History_of_Stigmergy) (Primary Reference) 
+./Stigmergy.md:5:      Human-Human Stigmergy](https://www.abcresearch.org/abc/papers/E4MAS05HHS.pdf) (Rich set of examples)
+./Stigmergy.md:8:      [Stigmergy: the most important concept you’ve never heard of](https://francisheylighen.substack.com/p/stigmergy-the-most-important-concept)[Stigmergy as a Universal Coordination Mechanism](https://pespmc1.vub.ac.be/Papers/Stigmergy-varieties.pdf)
+./Actor Models Dec 12 session transcript.md:2:    - [More readable gist](https://gist.github.com/vgururao/8fab66e30e3802884562115fc670f813#summer-of-protocols--voice-call-transcript-cleaned)
+./Lightning talks.md:12:        - [Symmetry and Collective Fluctuations in Evolutionary Games](https://iopscience.iop.org/book/mono/978-0-7503-1137-3.pdf)
+./Lightning talks.md:13:        - [Intrinsic and extrinsic thermodynamics for stochastic population processes with multi-level large-deviation structure](https://arxiv.org/abs/2008.01260)
+./Lightning talks.md:14:        - [The Origin and Nature of Life on Earth](https://www.cambridge.org/core/books/origin-and-nature-of-life-on-earth/CEA8B764107B896A9CBA371F552BE215) , great [Youtube video](https://www.youtube.com/watch?v=0cwvj0XBKlE)
+./Lightning talks.md:15:        - And [my review](https://www.cambridge.org/core/books/origin-and-nature-of-life-on-earth/CEA8B764107B896A9CBA371F552BE215) of that book
+./Lightning talks.md:38:        - https://learn.sparkfun.com/tutorials/i2c/all
+./Lightning talks.md:40:            - https://playwithcircuit.com/understanding-the-i2c-communication-protocol/
+./Lightning talks.md:42:        - https://youtu.be/IcPUE-kTN50?feature=shared&t=1238
+./Lightning talks.md:44:    6. Brian [**not actually available in the afternoon**] - statistical inference can have sharply distinct "phases" ("works" and "doesn't work") when applied at scale. Example of how prestige works in job applications: https://www.scipost.org/SciPostPhys.8.2.030

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Prufrock Protocol — Lineage View</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1440px;height:900px;overflow:hidden;background:#0c0c0f;color:#eae6de;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px}
+nav{height:44px;background:#131318;border-bottom:1px solid #1e1e2a;display:flex;align-items:center;padding:0 24px;gap:2px}
+.brand{display:flex;align-items:baseline;gap:10px;margin-right:28px}
+.brand-name{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.brand-sub{font-size:10px;letter-spacing:.06em;color:#c8a040;opacity:.75}
+.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#4a4644;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.nav-tab.active{color:#eae6de;border-bottom-color:#c8a040}
+.nav-right{margin-left:auto;font-size:10px;color:#3a3634}
+.controls{height:40px;background:#0f0f14;border-bottom:1px solid #1a1a26;display:flex;align-items:center;padding:0 24px;gap:20px}
+.cohort-btns{display:flex;border:1px solid #1e1e2a;border-radius:3px;overflow:hidden}
+.cbt{padding:4px 11px;font-size:10px;color:#4a4644;border-right:1px solid #1e1e2a}
+.cbt:last-child{border-right:none}
+.cbt.active{background:rgba(255,255,255,.05);color:#eae6de}
+.slider-group{display:flex;align-items:center;gap:8px;flex:1;max-width:400px}
+.slider-lbl{font-size:10px;color:#4a4644;white-space:nowrap}
+.track{flex:1;height:3px;background:#1a1a26;border-radius:2px;position:relative}
+.fill{position:absolute;left:0;top:0;height:100%;background:#c8a040;border-radius:2px;width:100%}
+.thumb{position:absolute;top:50%;left:100%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:#c8a040;border:2px solid #0c0c0f}
+.ctrl-right{margin-left:auto;font-size:10px;color:#4a4644;display:flex;gap:16px;align-items:center}
+.legend-item{display:flex;align-items:center;gap:5px}
+.leg-dot{width:8px;height:8px;border-radius:50%}
+.seed-strip{height:36px;background:rgba(200,160,64,.06);border-bottom:1px solid rgba(200,160,64,.15);display:flex;align-items:center;padding:0 24px;gap:16px}
+.ss-tag{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#c8a040;opacity:.7}
+.ss-line{font-family:Georgia,serif;font-style:italic;font-size:12px;color:rgba(200,160,64,.7)}
+.ss-right{margin-left:auto;font-size:10px;color:#4a4644}
+
+#tree-svg{display:block;width:1440px;height:780px}
+
+.node-label{font-size:9px;fill:#6a6662;font-family:-apple-system,sans-serif}
+.node-label.gold{fill:#c8a040}
+.node-label.spine{fill:rgba(240,216,32,.8)}
+</style>
+</head>
+<body>
+<nav>
+  <div class="brand"><span class="brand-name">The Prufrock Protocol</span><span class="brand-sub">Sonnet Experiment Alpha</span></div>
+  <div class="nav-tab">Timeline</div>
+  <div class="nav-tab active">Lineage</div>
+  <div class="nav-tab">Map</div>
+  <div class="nav-tab">Poem</div>
+  <div class="nav-tab">Participant</div>
+  <div class="nav-right">393 nodes · 14 lineage levels · complete</div>
+</nav>
+<div class="controls">
+  <div class="cohort-btns"><div class="cbt">Poets</div><div class="cbt">Laypeople</div><div class="cbt active">Both</div></div>
+  <div class="slider-group">
+    <span class="slider-lbl">Day</span>
+    <div class="track"><div class="fill"></div><div class="thumb"></div></div>
+    <span class="slider-lbl">14 / 14</span>
+  </div>
+  <div class="ctrl-right">
+    <div class="legend-item"><div class="leg-dot" style="background:#c8785a"></div><span>Poet cohort</span></div>
+    <div class="legend-item"><div class="leg-dot" style="background:#5a8fd4"></div><span>Layperson cohort</span></div>
+    <div class="legend-item"><div class="leg-dot" style="background:#c8a040;box-shadow:0 0 6px #c8a040"></div><span>Seed / chosen-poet line</span></div>
+  </div>
+</div>
+<div class="seed-strip">
+  <span class="ss-tag">Root</span>
+  <span class="ss-line">Nor shall death brag thou wander'st in his shade, · When in eternal lines to time thou grow'st:</span>
+  <span class="ss-right">W. Shakespeare · London · 1609 → 2026</span>
+</div>
+<svg id="tree-svg" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feComposite in="SourceGraphic" in2="blur" operator="over"/></filter>
+    <filter id="glow-soft"><feGaussianBlur stdDeviation="2" result="blur"/><feComposite in="SourceGraphic" in2="blur" operator="over"/></filter>
+    <radialGradient id="bg-grad" cx="50%" cy="0%" r="80%">
+      <stop offset="0%" stop-color="#131320" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#0c0c0f" stop-opacity="1"/>
+    </radialGradient>
+  </defs>
+  <rect width="1440" height="780" fill="url(#bg-grad)"/>
+</svg>
+<script>
+const svg = document.getElementById('tree-svg');
+const W = 1440, H = 780;
+const poetColor = '#c8785a', layColor = '#5a8fd4', goldColor = '#c8a040', spineColor = '#f0d820';
+const ROOT = {x: W/2, y: 42};
+
+// 14 poets + 14 laypeople
+const N = 28;
+// Poet x positions: 60 to 660 (14 nodes, spacing ~46)
+// Lay x positions: 780 to 1380 (14 nodes, spacing ~46)
+function poetX(i) { return 60 + i * (600/13); }
+function layX(i) { return 780 + i * (600/13); }
+
+// Day y positions
+const dayY = [0, 110, 200, 300, 390, 470, 540, 600, 646, 684, 714, 738, 756, 770, 778];
+
+// Spine rotation: [3,7,1,14,9,5,12,2,8,11,6,10,4,13] (1-indexed, poet cohort)
+// Converted to 0-indexed poet positions:
+const spinePoet = [2,6,0,13,8,4,11,1,7,10,5,9,3,12];
+const spineX = spinePoet.map(i => poetX(i));
+
+function mkPath(x1,y1,x2,y2,cp=0.45){
+  const cy1=y1+(y2-y1)*cp, cy2=y2-(y2-y1)*cp;
+  return `M${x1},${y1} C${x1},${cy1} ${x2},${cy2} ${x2},${y2}`;
+}
+
+function addEl(tag,attrs,parent=svg){
+  const el=document.createElementNS('http://www.w3.org/2000/svg',tag);
+  for(const[k,v] of Object.entries(attrs)) el.setAttribute(k,v);
+  parent.appendChild(el);
+  return el;
+}
+
+function addText(x,y,txt,cls='node-label',parent=svg){
+  const el=addEl('text',{x,y,'text-anchor':'middle','dominant-baseline':'middle'},parent);
+  el.setAttribute('class',cls);
+  el.textContent=txt;
+}
+
+// Draw connections from root to all day-1 nodes
+for(let i=0;i<14;i++){
+  const x=poetX(i), isSpine=(i===spinePoet[0]);
+  addEl('path',{d:mkPath(ROOT.x,ROOT.y,x,dayY[1]),
+    stroke: isSpine ? 'rgba(200,160,64,.6)' : 'rgba(200,120,90,.18)',
+    'stroke-width': isSpine?1.5:.7, fill:'none'});
+}
+for(let i=0;i<14;i++){
+  const x=layX(i);
+  addEl('path',{d:mkPath(ROOT.x,ROOT.y,x,dayY[1]),
+    stroke:'rgba(90,143,212,.18)','stroke-width':.7,fill:'none'});
+}
+
+// Draw connections from spine day-k to all day-(k+1) nodes
+for(let d=0;d<13;d++){
+  const sx=spineX[d], sy=dayY[d+1], ty=dayY[d+2];
+  const spineNext=spinePoet[d+1];
+  for(let i=0;i<14;i++){
+    const x=poetX(i), isSpineNext=(i===spineNext);
+    addEl('path',{d:mkPath(sx,sy,x,ty,.4),
+      stroke: isSpineNext ? 'rgba(200,160,64,.5)' : 'rgba(200,120,90,.12)',
+      'stroke-width': isSpineNext?1.5:.5, fill:'none'});
+  }
+  for(let i=0;i<14;i++){
+    const x=layX(i);
+    addEl('path',{d:mkPath(sx,sy,x,ty,.4),
+      stroke:'rgba(90,143,212,.12)','stroke-width':.5,fill:'none'});
+  }
+}
+
+// Draw spine path (connecting spine nodes through days)
+let spinePath=`M${ROOT.x},${ROOT.y}`;
+for(let d=0;d<14;d++){
+  const x=spineX[d], y=dayY[d+1];
+  const px = d===0 ? ROOT.x : spineX[d-1];
+  const py = dayY[d];
+  spinePath += ` Q${(px+x)/2},${(py+y)/2+10} ${x},${y}`;
+}
+addEl('path',{d:spinePath,stroke:'rgba(240,216,32,.5)','stroke-width':2.5,fill:'none',
+  'stroke-dasharray':'none',filter:'url(#glow)'});
+addEl('path',{d:spinePath,stroke:'rgba(240,216,32,.2)','stroke-width':8,fill:'none',filter:'url(#glow)'});
+
+// Day-1 nodes
+for(let i=0;i<14;i++){
+  const x=poetX(i), y=dayY[1], isSpine=(i===spinePoet[0]);
+  addEl('circle',{cx:x,cy:y,r:isSpine?6:3,
+    fill:isSpine?goldColor:poetColor,opacity:isSpine?1:.6,
+    ...(isSpine?{filter:'url(#glow-soft)'}:{})});
+}
+for(let i=0;i<14;i++){
+  const x=layX(i), y=dayY[1];
+  addEl('circle',{cx:x,cy:y,r:3,fill:layColor,opacity:.6});
+}
+
+// Days 2-14 nodes
+for(let d=1;d<14;d++){
+  const y=dayY[d+1], spineIdx=spinePoet[d];
+  for(let i=0;i<14;i++){
+    const x=poetX(i), isSpine=(i===spineIdx);
+    const r = d < 7 ? (isSpine?5:2.5) : (isSpine?4:1.8);
+    const op = d < 7 ? (isSpine?1:.5) : (isSpine?1:.4);
+    addEl('circle',{cx:x,cy:y,r,fill:isSpine?goldColor:poetColor,opacity:op,
+      ...(isSpine?{filter:'url(#glow-soft)'}:{})});
+  }
+  for(let i=0;i<14;i++){
+    const x=layX(i);
+    const r = d < 7 ? 2.5 : 1.8;
+    const op = d < 7 ? .5 : .35;
+    addEl('circle',{cx:x,cy:y,r,fill:layColor,opacity:op});
+  }
+}
+
+// Root node
+addEl('circle',{cx:ROOT.x,cy:ROOT.y,r:14,fill:'#1a1812',stroke:goldColor,'stroke-width':2,filter:'url(#glow)'});
+addEl('circle',{cx:ROOT.x,cy:ROOT.y,r:8,fill:goldColor,opacity:.9});
+
+// Labels
+addText(ROOT.x, ROOT.y+28, 'Sonnet XVIII · W. Shakespeare · London · 1609', 'node-label gold');
+
+// Day labels on right side
+for(let d=1;d<=14;d++){
+  const y=dayY[d];
+  addEl('line',{x1:1410,y1:y,x2:1425,y2:y,stroke:'#2a2820','stroke-width':1});
+  addText(1435, y, 'D'+d, 'node-label');
+}
+
+// Spine labels
+const spineNames = ['Marisol Fuentes','Hiroshi Tanaka','Amara Osei','Wei Chen','Meera Pillai','Siobhán Ní Faoláin','Astrid Lindqvist','Hiroshi Tanaka','Sasha Volkov','Leila Nasser','Elif Şahin','James Okafor','Yaw Darko','Benedita Ferreira'];
+for(let d=0;d<Math.min(6,14);d++){
+  const x=spineX[d], y=dayY[d+1];
+  const tx = x > 720 ? x-60 : x+60;
+  addEl('line',{x1:x,y1:y,x2:tx,y2:y,stroke:'rgba(200,160,64,.3)','stroke-width':.8});
+  addText(tx+(x>720?-2:2), y, spineNames[d], 'node-label gold');
+}
+
+// Cohort zone labels
+addText(360, 770, 'POETS  —  14 participants  ·  warm tones', 'node-label');
+addText(1080, 770, 'LAYPEOPLE  —  14 participants  ·  cool tones', 'node-label');
+
+// Year label at bottom of spine
+const lastSpineX = spineX[13], lastY = dayY[14];
+addEl('circle',{cx:lastSpineX,cy:lastY,r:5,fill:goldColor,opacity:.8,filter:'url(#glow-soft)'});
+addText(lastSpineX, lastY+18, '2026-06-14', 'node-label gold');
+
+// Separator line between cohorts
+addEl('line',{x1:720,y1:60,x2:720,y2:760,stroke:'#1a1a22','stroke-width':1,'stroke-dasharray':'4,6'});
+</script>
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Prufrock Protocol — Participant: Amara Osei</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1440px;height:900px;overflow:hidden;background:#0c0c0f;color:#eae6de;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px}
+nav{height:44px;background:#131318;border-bottom:1px solid #1e1e2a;display:flex;align-items:center;padding:0 24px;gap:2px}
+.brand{display:flex;align-items:baseline;gap:10px;margin-right:28px}
+.brand-name{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.brand-sub{font-size:10px;letter-spacing:.06em;color:#c8a040;opacity:.75}
+.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#4a4644;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.nav-tab.active{color:#eae6de;border-bottom-color:#c8a040}
+.nav-right{margin-left:auto;font-size:10px;color:#3a3634}
+.controls{height:40px;background:#0f0f14;border-bottom:1px solid #1a1a26;display:flex;align-items:center;padding:0 24px;gap:20px}
+.cohort-btns{display:flex;border:1px solid #1e1e2a;border-radius:3px;overflow:hidden}
+.cbt{padding:4px 11px;font-size:10px;color:#4a4644;border-right:1px solid #1e1e2a}
+.cbt:last-child{border-right:none}
+.cbt.active{background:rgba(200,120,90,.12);color:#c8785a;border-color:rgba(200,120,90,.2)}
+.slider-group{display:flex;align-items:center;gap:8px;flex:1;max-width:400px}
+.slider-lbl{font-size:10px;color:#4a4644;white-space:nowrap}
+.track{flex:1;height:3px;background:#1a1a26;border-radius:2px;position:relative}
+.fill{position:absolute;left:0;top:0;height:100%;background:#c8a040;border-radius:2px;width:100%}
+.thumb{position:absolute;top:50%;left:100%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:#c8a040;border:2px solid #0c0c0f}
+.ctrl-right{margin-left:auto;font-size:10px;color:#4a4644}
+
+.view-body{height:816px;display:flex}
+
+/* LEFT: profile + stats */
+.profile-col{width:330px;flex-shrink:0;border-right:1px solid #1a1a26;display:flex;flex-direction:column;overflow:hidden}
+.profile-card{padding:18px 20px;border-bottom:1px solid #1a1a26}
+.pc-top{display:flex;align-items:flex-start;gap:14px;margin-bottom:12px}
+.pc-avatar{width:50px;height:50px;border-radius:50%;background:rgba(200,120,90,.15);border:2px solid rgba(200,120,90,.4);display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:600;color:#c8785a;flex-shrink:0}
+.pc-name{font-size:16px;font-weight:400;color:#eae6de;margin-bottom:3px}
+.pc-id{font-size:9px;font-family:monospace;color:#4a4644}
+.pc-cohort{display:inline-block;font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#c8785a;background:rgba(200,120,90,.1);padding:2px 7px;border-radius:10px;margin-top:4px}
+.pc-location{font-size:11px;color:#5a5654;margin-bottom:8px}
+.pc-bio{font-size:10.5px;color:#6a6462;line-height:1.55;padding:9px 11px;background:#111116;border-radius:4px;border-left:2px solid rgba(200,120,90,.3)}
+.pc-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:9px}
+.pc-tag{font-size:8px;color:#4a4644;padding:2px 7px;border:1px solid #1e1e2a;border-radius:10px}
+
+.section-lbl{font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#3a3634;margin-bottom:8px}
+
+.stats-section{padding:12px 20px;border-bottom:1px solid #1a1a26}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.stat-box{background:#0f0f14;border:1px solid #1a1a26;border-radius:3px;padding:7px 10px}
+.stat-n{font-size:19px;font-weight:200;color:#c8785a;line-height:1}
+.stat-l{font-size:7.5px;color:#3a3634;margin-top:2px;letter-spacing:.05em}
+
+/* Mini timeline — one dot per poem/day */
+.mini-timeline{padding:12px 20px;border-bottom:1px solid #1a1a26}
+.mt-track{height:30px;display:flex;align-items:center;gap:2px}
+.mt-day{flex:1;height:24px;background:#111116;border:1px solid #1a1a26;border-radius:2px;position:relative;cursor:pointer}
+.mt-day.has-line{background:rgba(200,120,90,.1);border-color:rgba(200,120,90,.25)}
+.mt-dot{position:absolute;bottom:4px;left:50%;transform:translateX(-50%);width:4px;height:4px;border-radius:50%;background:#c8785a;opacity:.8}
+.mt-labels{display:flex;gap:2px;padding-top:2px}
+.mt-lbl{flex:1;text-align:center;font-size:7px;color:#2a2826;font-family:monospace}
+
+/* Latency chart */
+.latency-chart{padding:12px 20px;border-bottom:1px solid #1a1a26;flex:1}
+.chart-bars{display:flex;align-items:flex-end;gap:3px;height:72px}
+.bar{flex:1;border-radius:2px 2px 0 0;min-height:2px;cursor:pointer;background:rgba(200,120,90,.45)}
+.bar:hover{background:rgba(200,120,90,.75)}
+.chart-axis{display:flex;gap:3px;padding-top:2px;border-top:1px solid #1a1a26}
+.chart-lbl{flex:1;text-align:center;font-size:7px;color:#2a2826;font-family:monospace}
+.chart-y{display:flex;flex-direction:column;justify-content:space-between;padding-right:4px;height:72px;font-size:7px;color:#2a2826;text-align:right}
+
+.influences{padding:12px 20px}
+.inf-list{display:flex;flex-direction:column;gap:4px}
+.inf-item{font-size:10px;color:#5a5654;display:flex;align-items:center;gap:6px}
+.inf-item::before{content:'';width:3px;height:3px;border-radius:50%;background:#c8785a;opacity:.5;flex-shrink:0}
+
+/* CENTER: authorial trail */
+.trail-col{flex:1;border-right:1px solid #1a1a26;display:flex;flex-direction:column;overflow:hidden}
+.trail-header{padding:14px 20px 10px;border-bottom:1px solid #1a1a26;flex-shrink:0}
+.trail-header h2{font-size:13px;font-weight:400;color:#eae6de;margin-bottom:3px}
+.trail-header .sub{font-size:10px;color:#4a4644}
+.trail-list{flex:1;overflow-y:auto}
+.trail-list::-webkit-scrollbar{width:3px}
+.trail-list::-webkit-scrollbar-thumb{background:#1e1e2a}
+.trail-item{display:flex;align-items:flex-start;gap:10px;padding:10px 20px;border-bottom:1px solid #131318;cursor:pointer;transition:background .1s;position:relative}
+.trail-item:hover{background:rgba(200,120,80,.03)}
+.ti-poem{font-size:8.5px;font-family:monospace;color:#4a4644;width:58px;flex-shrink:0;padding-top:3px}
+.ti-day{font-size:8px;color:#2a2826;margin-top:2px}
+.ti-text{font-family:Georgia,serif;font-style:italic;font-size:13.5px;color:#9a9288;line-height:1.4;flex:1}
+.trail-item:hover .ti-text{color:#b8b0a4}
+.ti-prompt{position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:8.5px;color:#3a3634;opacity:0;transition:opacity .1s;white-space:nowrap}
+.trail-item:hover .ti-prompt{opacity:1}
+
+/* RIGHT: voice consistency + mini-map */
+.right-col{width:280px;flex-shrink:0;display:flex;flex-direction:column;overflow:hidden}
+.voice-section{flex:1;padding:14px 18px;border-bottom:1px solid #1a1a26;overflow:hidden}
+.vc-pair{margin-bottom:14px}
+.vc-label{font-size:8px;color:#2e2c28;letter-spacing:.06em;margin-bottom:5px}
+.vc-line{font-family:Georgia,serif;font-style:italic;font-size:12px;color:#6a6460;line-height:1.5;padding:5px 8px;border-left:2px solid rgba(200,120,90,.3);margin-bottom:3px}
+.map-section{padding:14px 18px;flex-shrink:0}
+.map-placeholder{height:110px;background:#0f0f14;border:1px solid #1a1a26;border-radius:4px;position:relative;overflow:hidden}
+.map-label{position:absolute;top:7px;left:9px;font-size:8px;color:#3a3634;letter-spacing:.06em;text-transform:uppercase}
+.map-dot{position:absolute;width:8px;height:8px;border-radius:50%;transform:translate(-50%,-50%)}
+.map-dot.self{background:#c87850;box-shadow:0 0 6px #c87850}
+.map-arc{position:absolute;pointer-events:none}
+</style>
+</head>
+<body>
+<nav>
+  <div class="brand"><span class="brand-name">The Prufrock Protocol</span><span class="brand-sub">Sonnet Experiment Alpha</span></div>
+  <div class="nav-tab">Timeline</div>
+  <div class="nav-tab">Lineage</div>
+  <div class="nav-tab">Map</div>
+  <div class="nav-tab">Poem</div>
+  <div class="nav-tab active">Participant</div>
+  <div class="nav-right">Amara Osei · poet-01 · 14 contributions across 14 poems</div>
+</nav>
+<div class="controls">
+  <div class="cohort-btns">
+    <div class="cbt active">Amara Osei</div>
+    <div class="cbt">← Prev</div>
+    <div class="cbt">Next →</div>
+  </div>
+  <div class="slider-group">
+    <span class="slider-lbl">Day</span>
+    <div class="track"><div class="fill"></div><div class="thumb"></div></div>
+    <span class="slider-lbl">14 / 14</span>
+  </div>
+  <div class="ctrl-right">poet-01 · Accra, Ghana · Poets cohort</div>
+</div>
+
+<div class="view-body">
+
+  <!-- LEFT: Profile -->
+  <div class="profile-col">
+    <div class="profile-card">
+      <div class="pc-top">
+        <div class="pc-avatar">AO</div>
+        <div>
+          <div class="pc-name">Amara Osei</div>
+          <div class="pc-id">poet-01 · sonnet-trial-alpha</div>
+          <div class="pc-cohort">Poet Cohort</div>
+        </div>
+      </div>
+      <div class="pc-location">● Accra, Ghana · Africa/Accra (UTC+0)</div>
+      <div class="pc-bio">Published her first collection at 28 through a Ghanaian indie press. Teaches creative writing at the University of Ghana. Her work circles migration within West Africa.</div>
+      <div class="pc-tags">
+        <div class="pc-tag">MFA Michigan</div>
+        <div class="pc-tag">terse</div>
+        <div class="pc-tag">deliberate</div>
+        <div class="pc-tag">Clifton-influenced</div>
+        <div class="pc-tag">urban</div>
+      </div>
+    </div>
+
+    <div class="stats-section">
+      <div class="section-lbl">Contribution statistics</div>
+      <div class="stats-grid">
+        <div class="stat-box"><div class="stat-n">14</div><div class="stat-l">poems contributed to</div></div>
+        <div class="stat-box"><div class="stat-n">14</div><div class="stat-l">lines written</div></div>
+        <div class="stat-box"><div class="stat-n">0</div><div class="stat-l">forfeits</div></div>
+        <div class="stat-box"><div class="stat-n">21m</div><div class="stat-l">avg response latency</div></div>
+      </div>
+    </div>
+
+    <div class="mini-timeline">
+      <div class="section-lbl">Contribution timeline (one per poem)</div>
+      <div class="mt-track" id="mt-track"></div>
+      <div class="mt-labels" id="mt-labels"></div>
+    </div>
+
+    <div class="latency-chart">
+      <div class="section-lbl">Response latency by poem (minutes)</div>
+      <div style="display:flex;align-items:flex-end;gap:4px">
+        <div class="chart-y"><span>60</span><span>30</span><span>0</span></div>
+        <div style="flex:1">
+          <div class="chart-bars" id="chart-bars"></div>
+          <div class="chart-axis" id="chart-axis"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="influences">
+      <div class="section-lbl">Influences</div>
+      <div class="inf-list">
+        <div class="inf-item">Lucille Clifton</div>
+        <div class="inf-item">Kofi Awoonor</div>
+        <div class="inf-item">Warsan Shire</div>
+        <div class="inf-item">Highlife music lyrics</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CENTER: Authorial trail -->
+  <div class="trail-col">
+    <div class="trail-header">
+      <h2>Authorial trail — 14 contributions across 14 poems</h2>
+      <div class="sub">Each line contributed to a different poem · Latin square assignment · read as a sequence to hear her voice across the experiment</div>
+    </div>
+    <div class="trail-list" id="trail-list"></div>
+  </div>
+
+  <!-- RIGHT: Voice consistency + map -->
+  <div class="right-col">
+    <div class="voice-section">
+      <div class="section-lbl" style="margin-bottom:10px">Voice consistency — non-adjacent pairs</div>
+      <div class="vc-pair">
+        <div class="vc-label">Poem 01 (Day 1) · Poem 05 (Day 5)</div>
+        <div class="vc-line">"The summer I remember had no owner"</div>
+        <div class="vc-line">"Even absence has a temperature in this latitude"</div>
+      </div>
+      <div class="vc-pair">
+        <div class="vc-label">Poem 08 (Day 8) · Poem 12 (Day 12)</div>
+        <div class="vc-line">"The dead know the weather better than the living"</div>
+        <div class="vc-line">"To be chosen is only one way of being seen"</div>
+      </div>
+      <div class="vc-pair">
+        <div class="vc-label">Poem 03 (Day 3) · Poem 14 (Day 14)</div>
+        <div class="vc-line">"I named my grief and it answered to nothing"</div>
+        <div class="vc-line">"The line I write today will outlast the hand that wrote it"</div>
+      </div>
+    </div>
+    <div class="map-section">
+      <div class="section-lbl" style="margin-bottom:8px">Prompt source locations</div>
+      <div class="map-placeholder" id="map-ph">
+        <div class="map-label">Accra → prompt authors</div>
+        <!-- dots added via script -->
+      </div>
+      <div style="font-size:8px;color:#3a3634;margin-top:6px">Each day Amara received a prompt from a poem built by poets in different locations. Arcs show prompt author locations.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+const AMARA_LINES = [
+  ['Poem 01','Day 1','The summer I remember had no owner','Seed lines — Shakespeare 1609'],
+  ['Poem 02','Day 2','What does the grave forget that the soil keeps?','Lines 1–2 of Poem 02 (HT · MF)'],
+  ['Poem 03','Day 3','I named my grief and it answered to nothing','Lines 1–2 of Poem 03 (MF · HT)'],
+  ['Poem 04','Day 4','The words we inherit outlive the mouths that made them','Lines 1–2 of Poem 04 (SN · MF)'],
+  ['Poem 05','Day 5','Even absence has a temperature in this latitude','Lines 1–2 of Poem 05 (EŞ · SN)'],
+  ['Poem 06','Day 6','She carried the country in her posture, not her speech','Lines 1–2 of Poem 06 (MP · EŞ)'],
+  ['Poem 07','Day 7','What is given cannot be taken, only forgotten','Lines 5–6 of Poem 07 (MF · HT)'],
+  ['Poem 08','Day 8','The dead know the weather better than the living','Lines 6–7 of Poem 08 (EŞ · MP)'],
+  ['Poem 09','Day 9','Everything I owe I owe to someone\'s silence','Lines 7–8 of Poem 09 (SN · EŞ)'],
+  ['Poem 10','Day 10','The body remembers what the mind consents to forget','Lines 8–9 of Poem 10 (SN · MF)'],
+  ['Poem 11','Day 11','Light falls differently on things it has already burned','Lines 9–10 of Poem 11 (BL · VG)'],
+  ['Poem 12','Day 12','To be chosen is only one way of being seen','Lines 10–11 of Poem 12 (YN · LB)'],
+  ['Poem 13','Day 13','I have stopped explaining the country to strangers','Lines 11–12 of Poem 13 (AD · YN)'],
+  ['Poem 14','Day 14','The line I write today will outlast the hand that wrote it','Lines 12–13 of Poem 14 (MP · AD)'],
+];
+
+const latencies = [18,24,12,31,19,15,18,42,27,22,16,29,25,38];
+
+// Mini timeline
+const track = document.getElementById('mt-track');
+const mlabels = document.getElementById('mt-labels');
+for (let i=0;i<14;i++){
+  const d = document.createElement('div');
+  d.className = 'mt-day has-line';
+  const dot = document.createElement('div');
+  dot.className = 'mt-dot';
+  d.appendChild(dot);
+  track.appendChild(d);
+  const l = document.createElement('div');
+  l.className = 'mt-lbl';
+  l.textContent = 'P'+(i+1);
+  mlabels.appendChild(l);
+}
+
+// Latency chart
+const bars = document.getElementById('chart-bars');
+const axis = document.getElementById('chart-axis');
+const maxLat = Math.max(...latencies);
+latencies.forEach((v,i)=>{
+  const bar = document.createElement('div');
+  bar.className = 'bar';
+  bar.style.height = (v/maxLat*100)+'%';
+  bar.title = v+' min';
+  bars.appendChild(bar);
+  const lbl = document.createElement('div');
+  lbl.className = 'chart-lbl';
+  lbl.textContent = 'P'+(i+1);
+  axis.appendChild(lbl);
+});
+
+// Trail list
+const list = document.getElementById('trail-list');
+AMARA_LINES.forEach(([poem,day,text,prompt])=>{
+  const item = document.createElement('div');
+  item.className = 'trail-item';
+  item.innerHTML = `
+    <div class="ti-poem">${poem}<div class="ti-day">${day}</div></div>
+    <div class="ti-text">"${text}"</div>
+    <div class="ti-prompt">${prompt}</div>`;
+  list.appendChild(item);
+});
+
+// Mini map (placeholder dots)
+const mp = document.getElementById('map-ph');
+// Accra (self) roughly in center-left
+const pts = [
+  {x:30,y:55,self:true,lbl:'Accra'},
+  {x:75,y:30,self:false,lbl:'Kyoto'},
+  {x:25,y:35,self:false,lbl:'Galway'},
+  {x:45,y:38,self:false,lbl:'Naples'},
+  {x:55,y:50,self:false,lbl:'Hanoi'},
+  {x:50,y:42,self:false,lbl:'Istanbul'},
+  {x:60,y:62,self:false,lbl:'J\'burg'},
+];
+pts.forEach(p=>{
+  const dot = document.createElement('div');
+  dot.className = 'map-dot' + (p.self?' self':'');
+  dot.style.left = p.x+'%';
+  dot.style.top = p.y+'%';
+  dot.style.background = p.self ? '#c87850' : '#4890d066';
+  dot.style.width = p.self ? '8px' : '5px';
+  dot.style.height = p.self ? '8px' : '5px';
+  dot.style.boxShadow = p.self ? '0 0 6px #c87850' : '';
+  mp.appendChild(dot);
+});
+</script>
+<div style="position:fixed;bottom:0;left:0;width:100%;background:#cc0000;color:#fff;text-align:center;font-size:11px;font-weight:700;letter-spacing:.25em;padding:4px 0;z-index:9999">MOCKUP</div>
+</body>
+</html>

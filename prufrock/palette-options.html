@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Prufrock Protocol — Palette Options for Long Now</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#ece6d8;font-family:Georgia,'Times New Roman',serif;color:#2a2820;line-height:1.5}
+body{padding:48px 56px 80px;max-width:1280px;margin:0 auto}
+header{margin-bottom:40px;padding-bottom:24px;border-bottom:1px solid #c8bfa8}
+h1{font-size:28px;font-weight:400;letter-spacing:.01em;margin-bottom:6px}
+header .sub{font-size:13px;font-style:italic;color:#6a6250}
+header .meta{font-size:11px;color:#8a8270;margin-top:12px;letter-spacing:.04em}
+.frame{margin-bottom:48px;background:#fcfaf2;border:1px solid #d4cab2;border-radius:3px;padding:28px 32px;box-shadow:0 1px 0 rgba(0,0,0,.02)}
+.frame-head{display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid #e6dfc8;padding-bottom:14px;margin-bottom:20px}
+.frame-head .name{font-size:18px;font-weight:500;letter-spacing:.02em}
+.frame-head .id{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#a89a78}
+.frame-body{display:grid;grid-template-columns:280px 1fr 1fr;gap:24px}
+.swatches{display:flex;flex-direction:column;gap:6px}
+.swatch{display:flex;align-items:center;gap:10px;font-family:'SF Mono',Menlo,monospace;font-size:11px;color:#4a4434}
+.swatch .chip{width:36px;height:24px;border-radius:2px;border:1px solid rgba(0,0,0,.08);flex-shrink:0}
+.swatch .name{flex:1;color:#6a6250;font-family:Georgia,serif;font-style:italic;font-size:11px}
+.swatch .hex{letter-spacing:.02em}
+.vignette{border-radius:3px;overflow:hidden;border:1px solid rgba(0,0,0,.08)}
+.vignette-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#a89a78;margin-bottom:6px}
+.notes{margin-top:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;border-top:1px dashed #d8cfb8;padding-top:14px}
+.note{font-size:12px;line-height:1.55;color:#4a4434}
+.note .label{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#a89a78;margin-bottom:4px;display:block}
+.note.score-high{color:#3a5a3a}
+.note.score-mid{color:#6a5424}
+.note.score-low{color:#8a3a2a}
+footer{margin-top:48px;padding-top:24px;border-top:1px solid #c8bfa8;font-size:12px;color:#6a6250;font-style:italic}
+
+/* ============ DARK VIGNETTE BASE ============ */
+.dark{padding:14px 16px 16px;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:11px}
+.dark .topnav{display:flex;align-items:baseline;gap:14px;padding-bottom:8px;border-bottom-width:1px;border-bottom-style:solid;margin-bottom:12px}
+.dark .brand{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.dark .sub{font-size:8px;letter-spacing:.06em}
+.dark .tab{font-size:8px;letter-spacing:.08em;text-transform:uppercase}
+.dark .tab.act{padding-bottom:6px;margin-bottom:-9px;border-bottom-width:2px;border-bottom-style:solid}
+.dark .row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:8px}
+.dark .stat{padding:10px;border-width:1px;border-style:solid;border-radius:2px}
+.dark .stat-n{font-size:20px;font-weight:200;line-height:1}
+.dark .stat-l{font-size:7px;letter-spacing:.12em;text-transform:uppercase;margin-top:3px}
+.dark .seedbox{padding:10px 12px;border-width:1px;border-style:solid;border-radius:2px;margin-top:4px}
+.dark .seedlbl{font-size:7px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px;font-weight:600}
+.dark .seedline{font-family:Georgia,serif;font-style:italic;font-size:11px;line-height:1.55}
+
+/* ============ LIGHT VIGNETTE BASE ============ */
+.light{padding:14px 16px 16px;font-family:Georgia,serif}
+.light .ttl{font-size:13px;font-weight:600;text-align:center;margin-bottom:4px}
+.light .ttls{font-size:9px;font-style:italic;text-align:center;margin-bottom:14px}
+.light svg{width:100%;height:auto;display:block}
+
+/* ============ DIRECTION A — BRONZE & BONE ============ */
+.A-dark{background:#0c0c0f;color:#eae6de}
+.A-dark .topnav{border-color:#1e1e2a}
+.A-dark .brand{color:#eae6de}
+.A-dark .sub{color:#c8a040;opacity:.75}
+.A-dark .tab{color:#6a6660}
+.A-dark .tab.act{color:#eae6de;border-color:#c8a040}
+.A-dark .stat{background:#0f0f14;border-color:#1a1a26}
+.A-dark .stat-n{color:#eae6de}
+.A-dark .stat-l{color:#4a4644}
+.A-dark .seedbox{background:#0f0f14;border-color:rgba(200,160,64,.25)}
+.A-dark .seedlbl{color:#c8a040;opacity:.7}
+.A-dark .seedline{color:#d8b858}
+.A-light{background:#fcfaf5}
+.A-light .ttl{color:#2a2a2a}
+.A-light .ttls{color:#7a6e58}
+
+/* ============ DIRECTION B — LONG NOW HOUSE ============ */
+.B-dark{background:#1c2530;color:#e8dec4}
+.B-dark .topnav{border-color:#2a3340}
+.B-dark .brand{color:#e8dec4}
+.B-dark .sub{color:#a8623c;opacity:.85}
+.B-dark .tab{color:#7a7066}
+.B-dark .tab.act{color:#e8dec4;border-color:#a8623c}
+.B-dark .stat{background:#14181f;border-color:#2a3340}
+.B-dark .stat-n{color:#e8dec4}
+.B-dark .stat-l{color:#7a7066}
+.B-dark .seedbox{background:#14181f;border-color:rgba(168,98,60,.3)}
+.B-dark .seedlbl{color:#a8623c;opacity:.85}
+.B-dark .seedline{color:#d4986a}
+.B-light{background:#f0e8d4}
+.B-light .ttl{color:#1c2530}
+.B-light .ttls{color:#7a7066}
+
+/* ============ DIRECTION C — YELLOW FOG ============ */
+.C-dark{background:#2c2a26;color:#ece2c8}
+.C-dark .topnav{border-color:#3a3833}
+.C-dark .brand{color:#ece2c8}
+.C-dark .sub{color:#c89c2c;opacity:.85}
+.C-dark .tab{color:#7a7268}
+.C-dark .tab.act{color:#ece2c8;border-color:#c89c2c}
+.C-dark .stat{background:#24221e;border-color:#3a3833}
+.C-dark .stat-n{color:#ece2c8}
+.C-dark .stat-l{color:#7a7268}
+.C-dark .seedbox{background:#24221e;border-color:rgba(168,122,120,.4)}
+.C-dark .seedlbl{color:#a87a78;opacity:.95}
+.C-dark .seedline{color:#d4b48c}
+.C-light{background:#ece2c8}
+.C-light .ttl{color:#2c2a26}
+.C-light .ttls{color:#6e5868}
+
+/* ============ DIRECTION D — COLD PASTORAL ============ */
+.D-dark{background:#1a1a1a;color:#f4f0e8}
+.D-dark .topnav{border-color:#2c2c2c}
+.D-dark .brand{color:#f4f0e8}
+.D-dark .sub{color:#7a3838;opacity:.95}
+.D-dark .tab{color:#7a7670}
+.D-dark .tab.act{color:#f4f0e8;border-color:#7a3838}
+.D-dark .stat{background:#0f0f0f;border-color:#2c2c2c}
+.D-dark .stat-n{color:#f4f0e8}
+.D-dark .stat-l{color:#7a7670}
+.D-dark .seedbox{background:#0f0f0f;border-color:rgba(244,240,232,.18)}
+.D-dark .seedlbl{color:#a8a49c;font-weight:700}
+.D-dark .seedline{color:#d8d0c4}
+.D-light{background:#f4f0e8}
+.D-light .ttl{color:#1a1a1a}
+.D-light .ttls{color:#5a5a5a}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>The Prufrock Protocol — Palette Study</h1>
+  <div class="sub">Four directions for the Long Now Foundation pitch. Two surfaces shown per direction: the simulator chrome (dark) and the protocol diagram (parchment).</div>
+  <div class="meta">Selection criteria — Authentic to Prufrock · Principled enough for 10,000-year framing · Effective in pitch context</div>
+</header>
+
+<!-- ====================================================== A ====================================================== -->
+<section class="frame">
+  <div class="frame-head">
+    <div class="name">A &nbsp;·&nbsp; Bronze &amp; Bone</div>
+    <div class="id">current direction · refined for unity</div>
+  </div>
+  <div class="frame-body">
+    <div class="swatches">
+      <div class="swatch"><div class="chip" style="background:#0c0c0f"></div><span class="name">deep ink</span><span class="hex">#0C0C0F</span></div>
+      <div class="swatch"><div class="chip" style="background:#fcfaf5"></div><span class="name">parchment</span><span class="hex">#FCFAF5</span></div>
+      <div class="swatch"><div class="chip" style="background:#eae6de"></div><span class="name">warm bone</span><span class="hex">#EAE6DE</span></div>
+      <div class="swatch"><div class="chip" style="background:#c8a040"></div><span class="name">antique gold</span><span class="hex">#C8A040</span></div>
+      <div class="swatch"><div class="chip" style="background:#bcae8a"></div><span class="name">sepia</span><span class="hex">#BCAE8A</span></div>
+      <div class="swatch"><div class="chip" style="background:#4a7a9a"></div><span class="name">muted blue</span><span class="hex">#4A7A9A</span></div>
+      <div class="swatch"><div class="chip" style="background:#2a2a2a"></div><span class="name">archive ink</span><span class="hex">#2A2A2A</span></div>
+    </div>
+    <div>
+      <div class="vignette-label">Simulator chrome</div>
+      <div class="vignette dark A-dark">
+        <div class="topnav">
+          <span class="brand">The Prufrock Protocol</span>
+          <span class="sub">Sonnet Experiment Alpha</span>
+          <span class="tab act">Timeline</span>
+          <span class="tab">Lineage</span>
+          <span class="tab">Map</span>
+        </div>
+        <div class="row">
+          <div class="stat"><div class="stat-n">14</div><div class="stat-l">poets</div></div>
+          <div class="stat"><div class="stat-n">196</div><div class="stat-l">lines</div></div>
+        </div>
+        <div class="seedbox">
+          <div class="seedlbl">Shared seed · day 1</div>
+          <div class="seedline">Of yellow smoke that slides along the street, /<br>Rubbing its back upon the window-panes</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="vignette-label">Protocol diagram</div>
+      <div class="vignette light A-light">
+        <div class="ttl">Dispersed Authorship</div>
+        <div class="ttls">14 poets × 14 lines × 14 days</div>
+        <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+          <rect x="120" y="6" width="80" height="22" rx="3" fill="#f4ecd8" stroke="#bcae8a"/>
+          <text x="160" y="22" text-anchor="middle" font-size="10" font-style="italic" fill="#7a6e58">shared seed</text>
+          <g stroke="#bcae8a" stroke-width=".7" opacity=".7" fill="none">
+            <path d="M160 28 Q 80 50 30 70"/><path d="M160 28 Q 100 60 40 100"/>
+            <path d="M160 28 L 50 130"/><path d="M160 28 Q 220 60 290 100"/>
+            <path d="M160 28 Q 240 50 290 70"/>
+          </g>
+          <g font-family="Georgia,serif" font-size="8" fill="#666" text-anchor="middle">
+            <rect x="20" y="64" width="22" height="14" rx="2" fill="#fcfaf5" stroke="#bcae8a"/><text x="31" y="74">A1</text>
+            <rect x="60" y="64" width="22" height="14" rx="2" fill="#fcfaf5" stroke="#bcae8a"/><text x="71" y="74">A2</text>
+            <rect x="100" y="64" width="22" height="14" rx="2" fill="#fcfaf5" stroke="#bcae8a"/><text x="111" y="74">A3</text>
+            <rect x="140" y="64" width="22" height="14" rx="2" fill="#c8a040" stroke="#9a7a20"/><text x="151" y="74" fill="#fff">A4</text>
+            <rect x="180" y="64" width="22" height="14" rx="2" fill="#fcfaf5" stroke="#bcae8a"/><text x="191" y="74">A5</text>
+            <rect x="20" y="92" width="22" height="14" rx="2" fill="#fcfaf5" stroke="#bcae8a"/><text x="31" y="102">B1</text>
+            <rect x="60" y="92" width="22" height="14" rx="2" fill="#fcfaf5" stroke="#bcae8a"/><text x="71" y="102">B2</text>
+            <rect x="100" y="92" width="22" height="14" rx="2" fill="#c8a040" stroke="#9a7a20"/><text x="111" y="102" fill="#fff">B3</text>
+            <rect x="140" y="92" width="22" height="14" rx="2" fill="#fcfaf5" stroke="#bcae8a"/><text x="151" y="102">B4</text>
+            <rect x="180" y="92" width="22" height="14" rx="2" fill="#fcfaf5" stroke="#bcae8a"/><text x="191" y="102">B5</text>
+            <rect x="20" y="120" width="22" height="14" rx="2" fill="#c8a040" stroke="#9a7a20"/><text x="31" y="130" fill="#fff">C1</text>
+            <rect x="60" y="120" width="22" height="14" rx="2" fill="#fcfaf5" stroke="#bcae8a"/><text x="71" y="130">C2</text>
+            <rect x="100" y="120" width="22" height="14" rx="2" fill="#fcfaf5" stroke="#bcae8a"/><text x="111" y="130">C3</text>
+            <rect x="140" y="120" width="22" height="14" rx="2" fill="#fcfaf5" stroke="#bcae8a"/><text x="151" y="130">C4</text>
+            <rect x="180" y="120" width="22" height="14" rx="2" fill="#fcfaf5" stroke="#bcae8a"/><text x="191" y="130">C5</text>
+          </g>
+          <g stroke="#bdb6a4" stroke-width=".6" fill="none" opacity=".8">
+            <line x1="42" y1="71" x2="60" y2="71"/><line x1="82" y1="71" x2="100" y2="71"/><line x1="122" y1="71" x2="140" y2="71"/><line x1="162" y1="71" x2="180" y2="71"/>
+            <line x1="42" y1="99" x2="60" y2="99"/><line x1="82" y1="99" x2="100" y2="99"/><line x1="122" y1="99" x2="140" y2="99"/><line x1="162" y1="99" x2="180" y2="99"/>
+            <line x1="42" y1="127" x2="60" y2="127"/><line x1="82" y1="127" x2="100" y2="127"/><line x1="122" y1="127" x2="140" y2="127"/><line x1="162" y1="127" x2="180" y2="127"/>
+          </g>
+          <text x="160" y="160" text-anchor="middle" font-size="8" font-style="italic" fill="#a08a6a">— rotation across days 2–5 —</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="notes">
+    <div class="note score-high"><span class="label">Authentic</span>Already chosen once — scholar's terminal married to archival page. Reads as the artefact made by the people who made it.</div>
+    <div class="note score-mid"><span class="label">Principled</span>Warm neutrals don't date; gold can drift into mid-2010s "premium SaaS" if the saturation creeps up. Hold it muted.</div>
+    <div class="note score-mid"><span class="label">Effective</span>Confident, legible. Risk: not visually distinct from a hundred other dark dashboards with a gold accent.</div>
+  </div>
+</section>
+
+<!-- ====================================================== B ====================================================== -->
+<section class="frame">
+  <div class="frame-head">
+    <div class="name">B &nbsp;·&nbsp; Long Now House</div>
+    <div class="id">their palette · spoken back to them</div>
+  </div>
+  <div class="frame-body">
+    <div class="swatches">
+      <div class="swatch"><div class="chip" style="background:#1c2530"></div><span class="name">slate</span><span class="hex">#1C2530</span></div>
+      <div class="swatch"><div class="chip" style="background:#f0e8d4"></div><span class="name">cream</span><span class="hex">#F0E8D4</span></div>
+      <div class="swatch"><div class="chip" style="background:#e8dec4"></div><span class="name">vellum</span><span class="hex">#E8DEC4</span></div>
+      <div class="swatch"><div class="chip" style="background:#a8623c"></div><span class="name">oxidised copper</span><span class="hex">#A8623C</span></div>
+      <div class="swatch"><div class="chip" style="background:#7a7066"></div><span class="name">weathered stone</span><span class="hex">#7A7066</span></div>
+      <div class="swatch"><div class="chip" style="background:#14181f"></div><span class="name">deep ink</span><span class="hex">#14181F</span></div>
+      <div class="swatch"><div class="chip" style="background:#5a6878"></div><span class="name">tarnish</span><span class="hex">#5A6878</span></div>
+    </div>
+    <div>
+      <div class="vignette-label">Simulator chrome</div>
+      <div class="vignette dark B-dark">
+        <div class="topnav">
+          <span class="brand">The Prufrock Protocol</span>
+          <span class="sub">Sonnet Experiment Alpha</span>
+          <span class="tab act">Timeline</span>
+          <span class="tab">Lineage</span>
+          <span class="tab">Map</span>
+        </div>
+        <div class="row">
+          <div class="stat"><div class="stat-n">14</div><div class="stat-l">poets</div></div>
+          <div class="stat"><div class="stat-n">196</div><div class="stat-l">lines</div></div>
+        </div>
+        <div class="seedbox">
+          <div class="seedlbl">Shared seed · day 1</div>
+          <div class="seedline">Of yellow smoke that slides along the street, /<br>Rubbing its back upon the window-panes</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="vignette-label">Protocol diagram</div>
+      <div class="vignette light B-light">
+        <div class="ttl">Dispersed Authorship</div>
+        <div class="ttls">14 poets × 14 lines × 14 days</div>
+        <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+          <rect x="120" y="6" width="80" height="22" rx="3" fill="#e8dec4" stroke="#7a7066"/>
+          <text x="160" y="22" text-anchor="middle" font-size="10" font-style="italic" fill="#1c2530">shared seed</text>
+          <g stroke="#7a7066" stroke-width=".7" opacity=".7" fill="none">
+            <path d="M160 28 Q 80 50 30 70"/><path d="M160 28 Q 100 60 40 100"/>
+            <path d="M160 28 L 50 130"/><path d="M160 28 Q 220 60 290 100"/>
+            <path d="M160 28 Q 240 50 290 70"/>
+          </g>
+          <g font-family="Georgia,serif" font-size="8" fill="#1c2530" text-anchor="middle">
+            <rect x="20" y="64" width="22" height="14" rx="2" fill="#f0e8d4" stroke="#7a7066"/><text x="31" y="74">A1</text>
+            <rect x="60" y="64" width="22" height="14" rx="2" fill="#f0e8d4" stroke="#7a7066"/><text x="71" y="74">A2</text>
+            <rect x="100" y="64" width="22" height="14" rx="2" fill="#f0e8d4" stroke="#7a7066"/><text x="111" y="74">A3</text>
+            <rect x="140" y="64" width="22" height="14" rx="2" fill="#a8623c" stroke="#7a3a18"/><text x="151" y="74" fill="#f0e8d4">A4</text>
+            <rect x="180" y="64" width="22" height="14" rx="2" fill="#f0e8d4" stroke="#7a7066"/><text x="191" y="74">A5</text>
+            <rect x="20" y="92" width="22" height="14" rx="2" fill="#f0e8d4" stroke="#7a7066"/><text x="31" y="102">B1</text>
+            <rect x="60" y="92" width="22" height="14" rx="2" fill="#f0e8d4" stroke="#7a7066"/><text x="71" y="102">B2</text>
+            <rect x="100" y="92" width="22" height="14" rx="2" fill="#a8623c" stroke="#7a3a18"/><text x="111" y="102" fill="#f0e8d4">B3</text>
+            <rect x="140" y="92" width="22" height="14" rx="2" fill="#f0e8d4" stroke="#7a7066"/><text x="151" y="102">B4</text>
+            <rect x="180" y="92" width="22" height="14" rx="2" fill="#f0e8d4" stroke="#7a7066"/><text x="191" y="102">B5</text>
+            <rect x="20" y="120" width="22" height="14" rx="2" fill="#a8623c" stroke="#7a3a18"/><text x="31" y="130" fill="#f0e8d4">C1</text>
+            <rect x="60" y="120" width="22" height="14" rx="2" fill="#f0e8d4" stroke="#7a7066"/><text x="71" y="130">C2</text>
+            <rect x="100" y="120" width="22" height="14" rx="2" fill="#f0e8d4" stroke="#7a7066"/><text x="111" y="130">C3</text>
+            <rect x="140" y="120" width="22" height="14" rx="2" fill="#f0e8d4" stroke="#7a7066"/><text x="151" y="130">C4</text>
+            <rect x="180" y="120" width="22" height="14" rx="2" fill="#f0e8d4" stroke="#7a7066"/><text x="191" y="130">C5</text>
+          </g>
+          <g stroke="#7a7066" stroke-width=".6" fill="none" opacity=".7">
+            <line x1="42" y1="71" x2="60" y2="71"/><line x1="82" y1="71" x2="100" y2="71"/><line x1="122" y1="71" x2="140" y2="71"/><line x1="162" y1="71" x2="180" y2="71"/>
+            <line x1="42" y1="99" x2="60" y2="99"/><line x1="82" y1="99" x2="100" y2="99"/><line x1="122" y1="99" x2="140" y2="99"/><line x1="162" y1="99" x2="180" y2="99"/>
+            <line x1="42" y1="127" x2="60" y2="127"/><line x1="82" y1="127" x2="100" y2="127"/><line x1="122" y1="127" x2="140" y2="127"/><line x1="162" y1="127" x2="180" y2="127"/>
+          </g>
+          <text x="160" y="160" text-anchor="middle" font-size="8" font-style="italic" fill="#7a7066">— rotation across days 2–5 —</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="notes">
+    <div class="note score-mid"><span class="label">Authentic</span>Bronze plaques and slate marker stones — Long Now's actual material vocabulary. Authentic to <em>them</em>, less so to Prufrock specifically.</div>
+    <div class="note score-high"><span class="label">Principled</span>The most defensible "this will outlast a decade" palette. Materials that age, not pixels that trend.</div>
+    <div class="note score-low"><span class="label">Effective</span>Pitching to them in their own colours can read as cosplay or flattery. They've seen this palette a thousand times.</div>
+  </div>
+</section>
+
+<!-- ====================================================== C ====================================================== -->
+<section class="frame">
+  <div class="frame-head">
+    <div class="name">C &nbsp;·&nbsp; Yellow Fog</div>
+    <div class="id">the poem made material</div>
+  </div>
+  <div class="frame-body">
+    <div class="swatches">
+      <div class="swatch"><div class="chip" style="background:#2c2a26"></div><span class="name">smoke</span><span class="hex">#2C2A26</span></div>
+      <div class="swatch"><div class="chip" style="background:#ece2c8"></div><span class="name">tea ivory</span><span class="hex">#ECE2C8</span></div>
+      <div class="swatch"><div class="chip" style="background:#c89c2c"></div><span class="name">sulphur yellow</span><span class="hex">#C89C2C</span></div>
+      <div class="swatch"><div class="chip" style="background:#a87a78"></div><span class="name">fog rose</span><span class="hex">#A87A78</span></div>
+      <div class="swatch"><div class="chip" style="background:#6e5868"></div><span class="name">drawing-room mauve</span><span class="hex">#6E5868</span></div>
+      <div class="swatch"><div class="chip" style="background:#4a4844"></div><span class="name">pencil</span><span class="hex">#4A4844</span></div>
+      <div class="swatch"><div class="chip" style="background:#d4b48c"></div><span class="name">peach skin</span><span class="hex">#D4B48C</span></div>
+    </div>
+    <div>
+      <div class="vignette-label">Simulator chrome</div>
+      <div class="vignette dark C-dark">
+        <div class="topnav">
+          <span class="brand">The Prufrock Protocol</span>
+          <span class="sub">Sonnet Experiment Alpha</span>
+          <span class="tab act">Timeline</span>
+          <span class="tab">Lineage</span>
+          <span class="tab">Map</span>
+        </div>
+        <div class="row">
+          <div class="stat"><div class="stat-n">14</div><div class="stat-l">poets</div></div>
+          <div class="stat"><div class="stat-n">196</div><div class="stat-l">lines</div></div>
+        </div>
+        <div class="seedbox">
+          <div class="seedlbl">Shared seed · day 1</div>
+          <div class="seedline">Of yellow smoke that slides along the street, /<br>Rubbing its back upon the window-panes</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="vignette-label">Protocol diagram</div>
+      <div class="vignette light C-light">
+        <div class="ttl">Dispersed Authorship</div>
+        <div class="ttls">14 poets × 14 lines × 14 days</div>
+        <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+          <rect x="120" y="6" width="80" height="22" rx="3" fill="#f4ecd0" stroke="#a87a78"/>
+          <text x="160" y="22" text-anchor="middle" font-size="10" font-style="italic" fill="#6e5868">shared seed</text>
+          <g stroke="#a87a78" stroke-width=".7" opacity=".55" fill="none">
+            <path d="M160 28 Q 80 50 30 70"/><path d="M160 28 Q 100 60 40 100"/>
+            <path d="M160 28 L 50 130"/><path d="M160 28 Q 220 60 290 100"/>
+            <path d="M160 28 Q 240 50 290 70"/>
+          </g>
+          <g font-family="Georgia,serif" font-size="8" fill="#4a4844" text-anchor="middle">
+            <rect x="20" y="64" width="22" height="14" rx="2" fill="#f4ecd0" stroke="#a87a78"/><text x="31" y="74">A1</text>
+            <rect x="60" y="64" width="22" height="14" rx="2" fill="#f4ecd0" stroke="#a87a78"/><text x="71" y="74">A2</text>
+            <rect x="100" y="64" width="22" height="14" rx="2" fill="#f4ecd0" stroke="#a87a78"/><text x="111" y="74">A3</text>
+            <rect x="140" y="64" width="22" height="14" rx="2" fill="#c89c2c" stroke="#8a6818"/><text x="151" y="74" fill="#2c2a26">A4</text>
+            <rect x="180" y="64" width="22" height="14" rx="2" fill="#f4ecd0" stroke="#a87a78"/><text x="191" y="74">A5</text>
+            <rect x="20" y="92" width="22" height="14" rx="2" fill="#f4ecd0" stroke="#a87a78"/><text x="31" y="102">B1</text>
+            <rect x="60" y="92" width="22" height="14" rx="2" fill="#f4ecd0" stroke="#a87a78"/><text x="71" y="102">B2</text>
+            <rect x="100" y="92" width="22" height="14" rx="2" fill="#c89c2c" stroke="#8a6818"/><text x="111" y="102" fill="#2c2a26">B3</text>
+            <rect x="140" y="92" width="22" height="14" rx="2" fill="#f4ecd0" stroke="#a87a78"/><text x="151" y="102">B4</text>
+            <rect x="180" y="92" width="22" height="14" rx="2" fill="#f4ecd0" stroke="#a87a78"/><text x="191" y="102">B5</text>
+            <rect x="20" y="120" width="22" height="14" rx="2" fill="#c89c2c" stroke="#8a6818"/><text x="31" y="130" fill="#2c2a26">C1</text>
+            <rect x="60" y="120" width="22" height="14" rx="2" fill="#f4ecd0" stroke="#a87a78"/><text x="71" y="130">C2</text>
+            <rect x="100" y="120" width="22" height="14" rx="2" fill="#f4ecd0" stroke="#a87a78"/><text x="111" y="130">C3</text>
+            <rect x="140" y="120" width="22" height="14" rx="2" fill="#f4ecd0" stroke="#a87a78"/><text x="151" y="130">C4</text>
+            <rect x="180" y="120" width="22" height="14" rx="2" fill="#f4ecd0" stroke="#a87a78"/><text x="191" y="130">C5</text>
+          </g>
+          <g stroke="#a87a78" stroke-width=".6" fill="none" opacity=".6">
+            <line x1="42" y1="71" x2="60" y2="71"/><line x1="82" y1="71" x2="100" y2="71"/><line x1="122" y1="71" x2="140" y2="71"/><line x1="162" y1="71" x2="180" y2="71"/>
+            <line x1="42" y1="99" x2="60" y2="99"/><line x1="82" y1="99" x2="100" y2="99"/><line x1="122" y1="99" x2="140" y2="99"/><line x1="162" y1="99" x2="180" y2="99"/>
+            <line x1="42" y1="127" x2="60" y2="127"/><line x1="82" y1="127" x2="100" y2="127"/><line x1="122" y1="127" x2="140" y2="127"/><line x1="162" y1="127" x2="180" y2="127"/>
+          </g>
+          <text x="160" y="160" text-anchor="middle" font-size="8" font-style="italic" fill="#6e5868">— rotation across days 2–5 —</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="notes">
+    <div class="note score-high"><span class="label">Authentic</span>Eliot's actual palette: yellow smoke, tea-stained ivory, drawing-room dusk, the peach he dares to eat. The poem isn't decoration here — it's the colour key.</div>
+    <div class="note score-mid"><span class="label">Principled</span>Strong thematic argument; the rose/mauve risks reading decorative if used at scale. Keep mauve as deep accent, not surface.</div>
+    <div class="note score-high"><span class="label">Effective</span>The most distinctive of the four. Memorable in a deck of pitches that all use slate-and-amber.</div>
+  </div>
+</section>
+
+<!-- ====================================================== D ====================================================== -->
+<section class="frame">
+  <div class="frame-head">
+    <div class="name">D &nbsp;·&nbsp; Cold Pastoral</div>
+    <div class="id">Faber severity · MIT Press register</div>
+  </div>
+  <div class="frame-body">
+    <div class="swatches">
+      <div class="swatch"><div class="chip" style="background:#1a1a1a"></div><span class="name">ink</span><span class="hex">#1A1A1A</span></div>
+      <div class="swatch"><div class="chip" style="background:#f4f0e8"></div><span class="name">warm white</span><span class="hex">#F4F0E8</span></div>
+      <div class="swatch"><div class="chip" style="background:#5a5a5a"></div><span class="name">graphite</span><span class="hex">#5A5A5A</span></div>
+      <div class="swatch"><div class="chip" style="background:#d8d0c4"></div><span class="name">paper rule</span><span class="hex">#D8D0C4</span></div>
+      <div class="swatch"><div class="chip" style="background:#7a3838"></div><span class="name">madder red</span><span class="hex">#7A3838</span></div>
+      <div class="swatch"><div class="chip" style="background:#a8a49c"></div><span class="name">stone</span><span class="hex">#A8A49C</span></div>
+      <div class="swatch"><div class="chip" style="background:#2c2c2c"></div><span class="name">char</span><span class="hex">#2C2C2C</span></div>
+    </div>
+    <div>
+      <div class="vignette-label">Simulator chrome</div>
+      <div class="vignette dark D-dark">
+        <div class="topnav">
+          <span class="brand">The Prufrock Protocol</span>
+          <span class="sub">Sonnet Experiment Alpha</span>
+          <span class="tab act">Timeline</span>
+          <span class="tab">Lineage</span>
+          <span class="tab">Map</span>
+        </div>
+        <div class="row">
+          <div class="stat"><div class="stat-n">14</div><div class="stat-l">poets</div></div>
+          <div class="stat"><div class="stat-n">196</div><div class="stat-l">lines</div></div>
+        </div>
+        <div class="seedbox">
+          <div class="seedlbl">Shared seed · day 1</div>
+          <div class="seedline">Of yellow smoke that slides along the street, /<br>Rubbing its back upon the window-panes</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="vignette-label">Protocol diagram</div>
+      <div class="vignette light D-light">
+        <div class="ttl">Dispersed Authorship</div>
+        <div class="ttls">14 poets × 14 lines × 14 days</div>
+        <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+          <rect x="120" y="6" width="80" height="22" rx="0" fill="#f4f0e8" stroke="#1a1a1a"/>
+          <text x="160" y="22" text-anchor="middle" font-size="10" font-style="italic" fill="#1a1a1a">shared seed</text>
+          <g stroke="#5a5a5a" stroke-width=".6" opacity=".7" fill="none">
+            <path d="M160 28 Q 80 50 30 70"/><path d="M160 28 Q 100 60 40 100"/>
+            <path d="M160 28 L 50 130"/><path d="M160 28 Q 220 60 290 100"/>
+            <path d="M160 28 Q 240 50 290 70"/>
+          </g>
+          <g font-family="Georgia,serif" font-size="8" fill="#1a1a1a" text-anchor="middle">
+            <rect x="20" y="64" width="22" height="14" rx="0" fill="#f4f0e8" stroke="#5a5a5a"/><text x="31" y="74">A1</text>
+            <rect x="60" y="64" width="22" height="14" rx="0" fill="#f4f0e8" stroke="#5a5a5a"/><text x="71" y="74">A2</text>
+            <rect x="100" y="64" width="22" height="14" rx="0" fill="#f4f0e8" stroke="#5a5a5a"/><text x="111" y="74">A3</text>
+            <rect x="140" y="64" width="22" height="14" rx="0" fill="#7a3838" stroke="#3a1818"/><text x="151" y="74" fill="#f4f0e8">A4</text>
+            <rect x="180" y="64" width="22" height="14" rx="0" fill="#f4f0e8" stroke="#5a5a5a"/><text x="191" y="74">A5</text>
+            <rect x="20" y="92" width="22" height="14" rx="0" fill="#f4f0e8" stroke="#5a5a5a"/><text x="31" y="102">B1</text>
+            <rect x="60" y="92" width="22" height="14" rx="0" fill="#f4f0e8" stroke="#5a5a5a"/><text x="71" y="102">B2</text>
+            <rect x="100" y="92" width="22" height="14" rx="0" fill="#7a3838" stroke="#3a1818"/><text x="111" y="102" fill="#f4f0e8">B3</text>
+            <rect x="140" y="92" width="22" height="14" rx="0" fill="#f4f0e8" stroke="#5a5a5a"/><text x="151" y="102">B4</text>
+            <rect x="180" y="92" width="22" height="14" rx="0" fill="#f4f0e8" stroke="#5a5a5a"/><text x="191" y="102">B5</text>
+            <rect x="20" y="120" width="22" height="14" rx="0" fill="#7a3838" stroke="#3a1818"/><text x="31" y="130" fill="#f4f0e8">C1</text>
+            <rect x="60" y="120" width="22" height="14" rx="0" fill="#f4f0e8" stroke="#5a5a5a"/><text x="71" y="130">C2</text>
+            <rect x="100" y="120" width="22" height="14" rx="0" fill="#f4f0e8" stroke="#5a5a5a"/><text x="111" y="130">C3</text>
+            <rect x="140" y="120" width="22" height="14" rx="0" fill="#f4f0e8" stroke="#5a5a5a"/><text x="151" y="130">C4</text>
+            <rect x="180" y="120" width="22" height="14" rx="0" fill="#f4f0e8" stroke="#5a5a5a"/><text x="191" y="130">C5</text>
+          </g>
+          <g stroke="#1a1a1a" stroke-width=".5" fill="none" opacity=".7">
+            <line x1="42" y1="71" x2="60" y2="71"/><line x1="82" y1="71" x2="100" y2="71"/><line x1="122" y1="71" x2="140" y2="71"/><line x1="162" y1="71" x2="180" y2="71"/>
+            <line x1="42" y1="99" x2="60" y2="99"/><line x1="82" y1="99" x2="100" y2="99"/><line x1="122" y1="99" x2="140" y2="99"/><line x1="162" y1="99" x2="180" y2="99"/>
+            <line x1="42" y1="127" x2="60" y2="127"/><line x1="82" y1="127" x2="100" y2="127"/><line x1="122" y1="127" x2="140" y2="127"/><line x1="162" y1="127" x2="180" y2="127"/>
+          </g>
+          <text x="160" y="160" text-anchor="middle" font-size="8" font-style="italic" fill="#5a5a5a">— rotation across days 2–5 —</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="notes">
+    <div class="note score-mid"><span class="label">Authentic</span>The register Eliot was actually published in: Faber &amp; Faber, mid-century type, austere paper. Authentic to the <em>book</em>, not the poem.</div>
+    <div class="note score-high"><span class="label">Principled</span>Hardest to date. No metallic, no trend pigment. A single madder red carries every emphasis the artefact needs.</div>
+    <div class="note score-mid"><span class="label">Effective</span>Most "this will be taken seriously." Risk: visually quiet for a simulator UI; may need typography to do work the colour won't.</div>
+  </div>
+</section>
+
+<footer>
+  <div style="background:#1c2530;color:#e8dec4;padding:14px 18px;border-radius:3px;margin-bottom:14px;font-style:normal">
+    <strong style="color:#a8623c;letter-spacing:.14em;text-transform:uppercase;font-size:11px">Selected · 2026-05-09</strong>
+    &nbsp;&nbsp;Direction <strong>B — Long Now House</strong>. Applied across the v2 simulator mockups (11 HTML files) and the protocol diagram SVG.
+  </div>
+  My original read: C (Yellow Fog) for thematic argument, D (Cold Pastoral) as institutional fallback. Robert chose B — there is a reason Long Now use it, and we should respect it rather than dress it up.
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Prufrock Protocol — Lineage: Authorial Trail</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1440px;height:900px;overflow:hidden;background:#0c0c0f;color:#eae6de;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px}
+nav{height:44px;background:#131318;border-bottom:1px solid #1e1e2a;display:flex;align-items:center;padding:0 24px;gap:2px}
+.brand{display:flex;align-items:baseline;gap:10px;margin-right:28px}
+.brand-name{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.brand-sub{font-size:10px;letter-spacing:.06em;color:#c8a040;opacity:.75}
+.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#4a4644;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.nav-tab.active{color:#eae6de;border-bottom-color:#c8a040}
+.nav-right{margin-left:auto;font-size:10px;color:#3a3634}
+.controls{height:40px;background:#0f0f14;border-bottom:1px solid #1a1a26;display:flex;align-items:center;padding:0 24px;gap:20px}
+.cohort-btns{display:flex;border:1px solid #1e1e2a;border-radius:3px;overflow:hidden}
+.cbt{padding:4px 11px;font-size:10px;color:#4a4644;border-right:1px solid #1e1e2a}
+.cbt:last-child{border-right:none}
+.cbt.active{background:rgba(255,255,255,.05);color:#eae6de}
+.slider-group{display:flex;align-items:center;gap:8px;flex:1;max-width:400px}
+.slider-lbl{font-size:10px;color:#4a4644;white-space:nowrap}
+.track{flex:1;height:3px;background:#1a1a26;border-radius:2px;position:relative}
+.fill{position:absolute;left:0;top:0;height:100%;background:#c8a040;border-radius:2px;width:100%}
+.thumb{position:absolute;top:50%;left:100%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:#c8a040;border:2px solid #0c0c0f}
+.ctrl-right{margin-left:auto;font-size:10px;color:#4a4644;display:flex;gap:12px;align-items:center}
+.selected-tag{background:rgba(200,120,80,.12);border:1px solid rgba(200,120,80,.3);border-radius:3px;padding:2px 10px;color:#c87850;font-size:9px;font-weight:600}
+.seed-strip{height:36px;background:rgba(200,160,64,.06);border-bottom:1px solid rgba(200,160,64,.15);display:flex;align-items:center;padding:0 24px;gap:16px}
+.ss-tag{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#c8a040;opacity:.7}
+.ss-line{font-family:Georgia,serif;font-style:italic;font-size:12px;color:rgba(200,160,64,.7)}
+.ss-right{margin-left:auto;font-size:10px;color:#4a4644}
+.main{height:780px;display:flex}
+#svg-col{flex:1}
+.trail-panel{width:340px;border-left:1px solid #1a1a26;background:#0e0e14;display:flex;flex-direction:column;overflow:hidden}
+.tp-header{padding:16px 18px;border-bottom:1px solid #1a1a26}
+.tp-avatar{width:36px;height:36px;border-radius:50%;background:rgba(200,120,80,.15);border:1.5px solid rgba(200,120,80,.5);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#c87850;margin-bottom:8px}
+.tp-name{font-size:15px;color:#eae6de;font-weight:400;margin-bottom:2px}
+.tp-sub{font-size:10px;color:#5a5654}
+.tp-badge{display:inline-block;font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#c87850;background:rgba(200,120,80,.1);padding:2px 7px;border-radius:10px;margin-top:6px}
+.tp-label{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#3a3634;padding:10px 18px 6px}
+.trail-list{flex:1;overflow:hidden;padding:0 0 8px}
+.trail-item{display:flex;align-items:flex-start;gap:10px;padding:7px 18px;border-bottom:1px solid #131318;cursor:pointer;transition:background .1s}
+.trail-item:hover{background:rgba(200,120,80,.04)}
+.ti-num{font-size:8px;font-family:monospace;color:#4a4644;width:44px;flex-shrink:0;padding-top:2px}
+.ti-text{font-family:Georgia,serif;font-style:italic;font-size:12px;color:#9a9288;line-height:1.4}
+.ti-dot{width:5px;height:5px;border-radius:50%;background:#c87850;margin-top:5px;flex-shrink:0}
+</style>
+</head>
+<body>
+<nav>
+  <div class="brand"><span class="brand-name">The Prufrock Protocol</span><span class="brand-sub">Sonnet Experiment Alpha</span></div>
+  <div class="nav-tab">Timeline</div>
+  <div class="nav-tab active">Lineage</div>
+  <div class="nav-tab">Map</div>
+  <div class="nav-tab">Poem</div>
+  <div class="nav-tab">Participant</div>
+  <div class="nav-right">Authorial trail — Amara Osei across 14 poems</div>
+</nav>
+<div class="controls">
+  <div class="cohort-btns"><div class="cbt active">Poets</div><div class="cbt">Laypeople</div><div class="cbt">Both</div></div>
+  <div class="slider-group">
+    <span class="slider-lbl">Day</span>
+    <div class="track"><div class="fill"></div><div class="thumb"></div></div>
+    <span class="slider-lbl">14 / 14</span>
+  </div>
+  <div class="ctrl-right">
+    <div class="selected-tag">● Amara Osei · 14 contributions across 14 poems</div>
+    <div style="font-size:9px;color:#2a2826">Click any node to select</div>
+  </div>
+</div>
+<div class="seed-strip">
+  <span class="ss-tag">Root</span>
+  <span class="ss-line">Nor shall death brag thou wander'st in his shade, · When in eternal lines to time thou grow'st:</span>
+  <span class="ss-right">W. Shakespeare · 1609</span>
+</div>
+<div class="main">
+  <svg id="svg-col" xmlns="http://www.w3.org/2000/svg" width="1100" height="780"></svg>
+  <div class="trail-panel">
+    <div class="tp-header">
+      <div class="tp-avatar">AO</div>
+      <div class="tp-name">Amara Osei</div>
+      <div class="tp-sub">Accra, Ghana · Poet and lecturer · MFA Michigan</div>
+      <div class="tp-badge">Poet Cohort</div>
+    </div>
+    <div class="tp-label">Authorial trail — 14 contributions across 14 poems</div>
+    <div class="trail-list" id="trail-list"></div>
+  </div>
+</div>
+<script>
+const svg = document.getElementById('svg-col');
+const W = 1100, H = 780;
+const N = 14;
+
+// Shuffled Latin square: column permutation makes Amara's trail zigzag visually
+// author[poem_p][day_d] = (COL_PERM_INV[p] + d) % N
+const COL_PERM_INV = [0, 8, 6, 2, 11, 4, 9, 1, 12, 7, 13, 3, 5, 10];
+
+const AUTHORS = [
+  {id:'AO',name:'Amara Osei',color:'#c87850'},
+  {id:'HT',name:'Hiroshi Tanaka',color:'#7060c0'},
+  {id:'MF',name:'Marisol Fuentes',color:'#b05890'},
+  {id:'SN',name:'Siobhán',color:'#40a870'},
+  {id:'EŞ',name:'Elif Şahin',color:'#e09020'},
+  {id:'MP',name:'Meera Pillai',color:'#c04848'},
+  {id:'AD',name:'Antoine Diallo',color:'#4890d0'},
+  {id:'YN',name:'Yuki Nakamura',color:'#98b030'},
+  {id:'LB',name:'Lena Brandt',color:'#9858b0'},
+  {id:'CA',name:'Carlos Andrade',color:'#50a8a0'},
+  {id:'ND',name:'Naledi Dlamini',color:'#e0a040'},
+  {id:'PL',name:'Pham Thi Lan',color:'#d07040'},
+  {id:'VG',name:'Valentina Greco',color:'#6090b0'},
+  {id:'BL',name:'Björn Lindqvist',color:'#80b870'},
+];
+
+// Amara's day for poem p: d = (N - COL_PERM_INV[p]) % N — non-diagonal zigzag trail
+const AMARA_LINES = [
+  'The summer I remember had no owner',
+  'What does the grave forget that the soil keeps?',
+  'I named my grief and it answered to nothing',
+  'The words we inherit outlive the mouths that made them',
+  'Even absence has a temperature in this latitude',
+  'She carried the country in her posture, not her speech',
+  'What is given cannot be taken, only forgotten',
+  'The dead know the weather better than the living',
+  'Everything I owe I owe to someone\'s silence',
+  'The body remembers what the mind consents to forget',
+  'Light falls differently on things it has already burned',
+  'To be chosen is only one way of being seen',
+  'I have stopped explaining the country to strangers',
+  'The line I write today will outlast the hand that wrote it',
+];
+
+function el(tag, attrs, parent) {
+  const e = document.createElementNS('http://www.w3.org/2000/svg', tag);
+  for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+  if (parent) parent.appendChild(e);
+  return e;
+}
+function txt(x, y, t, attrs, parent) {
+  const e = el('text', {x, y, 'text-anchor': 'middle', 'dominant-baseline': 'middle', ...attrs}, parent);
+  e.textContent = t;
+  return e;
+}
+
+const defs = el('defs', {}, svg);
+const gf = el('filter', {id:'glow'}, defs);
+el('feGaussianBlur', {stdDeviation:'5', result:'blur'}, gf);
+el('feComposite', {in:'SourceGraphic', in2:'blur', operator:'over'}, gf);
+const gf2 = el('filter', {id:'glow-sm'}, defs);
+el('feGaussianBlur', {stdDeviation:'2.5', result:'blur'}, gf2);
+el('feComposite', {in:'SourceGraphic', in2:'blur', operator:'over'}, gf2);
+
+el('rect', {width: W, height: H, fill: '#0c0c0f'}, svg);
+const grad = el('radialGradient', {id:'bg', cx:'50%', cy:'5%', r:'80%'}, defs);
+el('stop', {'offset':'0%', 'stop-color':'#131320'}, grad);
+el('stop', {'offset':'100%', 'stop-color':'#0c0c0f'}, grad);
+el('rect', {width: W, height: H, fill: 'url(#bg)'}, svg);
+
+const MARGIN_L = 52, MARGIN_R = 40;
+const USABLE_W = W - MARGIN_L - MARGIN_R;
+const COL_W = USABLE_W / N;
+const colX = p => MARGIN_L + COL_W * p + COL_W / 2;
+
+const SEED_Y = 44;
+const NODE_START_Y = 108;
+const NODE_END_Y = 738;
+const NODE_STEP = (NODE_END_Y - NODE_START_Y) / (N - 1);
+const nodeY = d => NODE_START_Y + NODE_STEP * d;
+const NODE_R = 7;
+const AMARA_R = 10;
+
+// Seed bar
+el('rect', {x: MARGIN_L - 10, y: SEED_Y - 11, width: USABLE_W + 20, height: 22,
+  rx: 3, fill: 'rgba(200,160,64,.05)', stroke: 'rgba(200,160,64,.18)', 'stroke-width': '1'}, svg);
+txt(W / 2 - 20, SEED_Y, '"Nor shall death brag…When in eternal lines to time thou grow\'st:"  ·  1609',
+  {fill:'rgba(200,160,64,.5)', 'font-size':'9', 'font-family':'Georgia,serif','font-style':'italic'}, svg);
+
+// Column labels
+for (let p = 0; p < N; p++) {
+  txt(colX(p), NODE_START_Y - 24, 'P' + String(p+1).padStart(2,'0'),
+    {fill:'#3a3634','font-size':'7.5','font-family':'monospace'}, svg);
+}
+
+// Day labels
+for (let d = 0; d < N; d++) {
+  txt(MARGIN_L - 12, nodeY(d), 'D'+(d+1),
+    {fill:'#252320','font-size':'7.5','font-family':'monospace','text-anchor':'end'}, svg);
+}
+
+// Seed→day1 lines
+for (let p = 0; p < N; p++) {
+  el('line', {x1:colX(p),y1:SEED_Y+11,x2:colX(p),y2:nodeY(0)-NODE_R-1,
+    stroke:'rgba(200,160,64,.12)','stroke-width':'1'}, svg);
+}
+
+// Within-poem vertical connectors
+for (let p = 0; p < N; p++) {
+  for (let d = 0; d < N-1; d++) {
+    const aIdx = (COL_PERM_INV[p] + d) % N;
+    const aIdxNext = (COL_PERM_INV[p] + (d + 1)) % N;
+    const isAmaraConn = (aIdx === 0 || aIdxNext === 0);
+    el('line', {x1:colX(p),y1:nodeY(d)+NODE_R,x2:colX(p),y2:nodeY(d+1)-NODE_R,
+      stroke: isAmaraConn ? 'rgba(200,120,80,.35)' : 'rgba(60,60,80,.25)',
+      'stroke-width': isAmaraConn ? '1.5' : '1'}, svg);
+  }
+}
+
+// Amara's trail: zigzag glow line connecting her nodes poem-by-poem (left to right)
+// Day for poem p: (N - COL_PERM_INV[p]) % N
+let trailPath = '';
+for (let p = 0; p < N; p++) {
+  const d = (N - COL_PERM_INV[p]) % N;
+  const x = colX(p), y = nodeY(d);
+  if (p === 0) trailPath = `M${x},${y}`;
+  else trailPath += ` L${x},${y}`;
+}
+el('path', {d:trailPath, stroke:'rgba(200,120,80,.15)', 'stroke-width':'18', fill:'none'}, svg);
+el('path', {d:trailPath, stroke:'rgba(200,120,80,.25)', 'stroke-width':'3', fill:'none',
+  'stroke-dasharray':'4 3', filter:'url(#glow-sm)'}, svg);
+
+// All nodes
+for (let p = 0; p < N; p++) {
+  for (let d = 0; d < N; d++) {
+    const aIdx = (COL_PERM_INV[p] + d) % N;
+    const a = AUTHORS[aIdx];
+    const isAmara = aIdx === 0;
+    const r = isAmara ? AMARA_R : NODE_R;
+    if (isAmara) {
+      // Outer glow
+      el('circle', {cx:colX(p),cy:nodeY(d),r:r+5,fill:'rgba(200,120,80,.12)',filter:'url(#glow)'}, svg);
+      el('circle', {cx:colX(p),cy:nodeY(d),r:r,fill:'#c87850e0',stroke:'#c87850','stroke-width':'1.5'}, svg);
+      txt(colX(p),nodeY(d),'AO',{fill:'#fff','font-size':'6','font-weight':'700','font-family':'monospace'}, svg);
+    } else {
+      el('circle', {cx:colX(p),cy:nodeY(d),r:r,fill:a.color+'90',stroke:a.color+'40','stroke-width':'0.6'}, svg);
+    }
+  }
+}
+
+// Annotation
+txt(W/2-20, H-10, 'Amara\'s 14 contributions zigzag across 14 poems — one per poem, one per day — shuffled Latin square ensures no two consecutive contributions land in adjacent poems',
+  {fill:'#2a2826','font-size':'8'}, svg);
+
+// Trail list (right panel)
+const list = document.getElementById('trail-list');
+AMARA_LINES.forEach((line, i) => {
+  const day = (N - COL_PERM_INV[i]) % N + 1;
+  const item = document.createElement('div');
+  item.className = 'trail-item';
+  item.innerHTML = `
+    <div class="ti-dot"></div>
+    <div class="ti-num">Poem ${String(i+1).padStart(2,'0')}<br><span style="color:#2a2826;font-size:7px">Day ${day}</span></div>
+    <div class="ti-text">"${line}"</div>`;
+  list.appendChild(item);
+});
+</script>
+<div style="position:fixed;bottom:0;left:0;width:100%;background:#cc0000;color:#fff;text-align:center;font-size:11px;font-weight:700;letter-spacing:.25em;padding:4px 0;z-index:9999">MOCKUP</div>
+</body>
+</html>

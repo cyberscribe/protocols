@@ -1,0 +1,208 @@
+<svg viewBox="0 0 1100 780" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, 'Times New Roman', serif">
+  <!-- background -->
+  <rect width="1100" height="780" fill="#f0e8d4"/>
+
+  <!-- title -->
+  <text x="550" y="32" text-anchor="middle" font-size="22" font-weight="600" fill="#1c2530">The Prufrock Protocol — Dispersed Authorship</text>
+  <text x="550" y="56" text-anchor="middle" font-size="13" fill="#5a5450" font-style="italic">14 poets × 14 lines × 14 days. Illustrative slice: 5 poets × 5 lines. Assignment: precomputed random combinatrix (no self-adjacency).</text>
+
+  <!-- ============ SHARED SEED ============ -->
+  <text x="550" y="92" text-anchor="middle" font-size="12" fill="#5a5450" font-style="italic">Shared seed pair (extracted from a public-domain sonnet's volta)</text>
+
+  <!-- bracket around both seeds -->
+  <path d="M 340 116 Q 340 108 348 108 L 612 108 Q 620 108 620 116 L 620 152 Q 620 160 612 160 L 480 160 L 476 168 L 472 160 L 348 160 Q 340 160 340 152 Z"
+        fill="#e8dec4" stroke="#7a7066" stroke-width="1" opacity="0.85"/>
+
+  <!-- S1 cell -->
+  <g>
+    <rect x="358" y="118" width="56" height="32" rx="4" fill="#7a7066" stroke="#5a5450" stroke-width="1.5" stroke-dasharray="3 2"/>
+    <text x="386" y="139" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">S₁</text>
+  </g>
+  <!-- S2 cell -->
+  <g>
+    <rect x="546" y="118" width="56" height="32" rx="4" fill="#7a7066" stroke="#5a5450" stroke-width="1.5" stroke-dasharray="3 2"/>
+    <text x="574" y="139" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">S₂</text>
+  </g>
+
+  <text x="550" y="190" text-anchor="middle" font-size="11" fill="#7a7066" font-style="italic">↓ shown to every poet on day 1; each poet writes line 1 of their nominal poem ↓</text>
+
+  <!-- ============ COLUMN LABELS ============ -->
+  <g font-size="12" fill="#7a7066" text-anchor="middle">
+    <text x="180" y="222">Line 1</text>
+    <text x="180" y="238" font-style="italic" fill="#a89e88">day 1 · nominal</text>
+    <text x="360" y="222">Line 2</text>
+    <text x="360" y="238" font-style="italic" fill="#a89e88">day 2</text>
+    <text x="540" y="222">Line 3</text>
+    <text x="540" y="238" font-style="italic" fill="#a89e88">day 3</text>
+    <text x="720" y="222">Line 4</text>
+    <text x="720" y="238" font-style="italic" fill="#a89e88">day 4</text>
+    <text x="900" y="222">Line 5</text>
+    <text x="900" y="238" font-style="italic" fill="#a89e88">day 5</text>
+  </g>
+  <line x1="120" y1="248" x2="980" y2="248" stroke="#c0b8a0" stroke-width="1"/>
+
+  <!-- vertical separator -->
+  <line x1="270" y1="200" x2="270" y2="640" stroke="#a89e88" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="180" y="660" text-anchor="middle" font-size="10" fill="#7a7066" font-style="italic">— nominal day 1 —</text>
+  <text x="630" y="660" text-anchor="middle" font-size="10" fill="#7a7066" font-style="italic">— precomputed assignment, days 2–5 —</text>
+
+  <!-- ============ ROW LABELS ============ -->
+  <g font-size="13" fill="#5a5450" font-weight="500">
+    <text x="58" y="282">Poem A</text>
+    <text x="58" y="362">Poem B</text>
+    <text x="58" y="442">Poem C</text>
+    <text x="58" y="522">Poem D</text>
+    <text x="58" y="602">Poem E</text>
+  </g>
+
+  <!-- horizontal lane guides -->
+  <g stroke="#d4cab2" stroke-width="1" stroke-dasharray="2 4">
+    <line x1="120" y1="276" x2="980" y2="276"/>
+    <line x1="120" y1="356" x2="980" y2="356"/>
+    <line x1="120" y1="436" x2="980" y2="436"/>
+    <line x1="120" y1="516" x2="980" y2="516"/>
+    <line x1="120" y1="596" x2="980" y2="596"/>
+  </g>
+
+  <!-- ============ EDGES ============ -->
+
+  <!-- seed → all line 1s (fan-out from bracket bottom) -->
+  <g stroke="#7a7066" stroke-width="1" fill="none" opacity="0.7">
+    <path d="M 480 168 Q 320 220 206 276" />
+    <path d="M 480 168 Q 320 280 206 356" />
+    <path d="M 480 168 L 206 436" />
+    <path d="M 480 168 Q 320 380 206 516" />
+    <path d="M 480 168 Q 320 420 206 596" />
+  </g>
+
+  <!-- inter-line edges within each row (line k → line k+1 primary parent) -->
+  <g stroke="#a89e88" stroke-width="1" fill="none" opacity="0.85">
+    <!-- Row A -->
+    <line x1="208" y1="276" x2="332" y2="276"/>
+    <line x1="388" y1="276" x2="512" y2="276"/>
+    <line x1="568" y1="276" x2="692" y2="276"/>
+    <line x1="748" y1="276" x2="872" y2="276"/>
+    <!-- Row B -->
+    <line x1="208" y1="356" x2="332" y2="356"/>
+    <line x1="388" y1="356" x2="512" y2="356"/>
+    <line x1="568" y1="356" x2="692" y2="356"/>
+    <line x1="748" y1="356" x2="872" y2="356"/>
+    <!-- Row C -->
+    <line x1="208" y1="436" x2="332" y2="436"/>
+    <line x1="388" y1="436" x2="512" y2="436"/>
+    <line x1="568" y1="436" x2="692" y2="436"/>
+    <line x1="748" y1="436" x2="872" y2="436"/>
+    <!-- Row D -->
+    <line x1="208" y1="516" x2="332" y2="516"/>
+    <line x1="388" y1="516" x2="512" y2="516"/>
+    <line x1="568" y1="516" x2="692" y2="516"/>
+    <line x1="748" y1="516" x2="872" y2="516"/>
+    <!-- Row E -->
+    <line x1="208" y1="596" x2="332" y2="596"/>
+    <line x1="388" y1="596" x2="512" y2="596"/>
+    <line x1="568" y1="596" x2="692" y2="596"/>
+    <line x1="748" y1="596" x2="872" y2="596"/>
+  </g>
+
+  <!-- second-parent edges (k=2 backreference): line k+1 ← line k-1, drawn as subtle curves -->
+  <g stroke="#c0b8a0" stroke-width="0.8" fill="none" opacity="0.6">
+    <!-- Row A: lines 1→3, 2→4, 3→5 -->
+    <path d="M 208 276 Q 360 250 512 271"/>
+    <path d="M 388 276 Q 540 250 692 271"/>
+    <path d="M 568 276 Q 720 250 872 271"/>
+    <!-- Row B -->
+    <path d="M 208 356 Q 360 330 512 351"/>
+    <path d="M 388 356 Q 540 330 692 351"/>
+    <path d="M 568 356 Q 720 330 872 351"/>
+    <!-- Row C -->
+    <path d="M 208 436 Q 360 410 512 431"/>
+    <path d="M 388 436 Q 540 410 692 431"/>
+    <path d="M 568 436 Q 720 410 872 431"/>
+    <!-- Row D -->
+    <path d="M 208 516 Q 360 490 512 511"/>
+    <path d="M 388 516 Q 540 490 692 511"/>
+    <path d="M 568 516 Q 720 490 872 511"/>
+    <!-- Row E -->
+    <path d="M 208 596 Q 360 570 512 591"/>
+    <path d="M 388 596 Q 540 570 692 591"/>
+    <path d="M 568 596 Q 720 570 872 591"/>
+  </g>
+
+  <!-- ============ CELLS ============ -->
+  <!-- Authorship matrix (precomputed random combinatrix, not cyclic shift):
+       Day 1 column = identity (each poet's nominal poem).
+       Constraints: each poet writes each poem exactly once;
+                    each line position drawn once across poems;
+                    no consecutive lines by same author.
+       Poem A: P1 P3 P5 P2 P4
+       Poem B: P2 P5 P4 P1 P3
+       Poem C: P3 P1 P2 P4 P5
+       Poem D: P4 P2 P3 P5 P1
+       Poem E: P5 P4 P1 P3 P2
+  -->
+
+  <g font-size="12" font-weight="600" text-anchor="middle">
+    <!-- Row A: P1 P3 P5 P2 P4 -->
+    <g><rect x="152" y="260" width="56" height="32" rx="4" fill="#a83a2a" stroke="#8a3424" stroke-width="1.5"/><text x="180" y="281" fill="#fff">P1</text></g>
+    <g><rect x="332" y="260" width="56" height="32" rx="4" fill="#6a8060" stroke="#506a4a" stroke-width="1.5"/><text x="360" y="281" fill="#fff">P3</text></g>
+    <g><rect x="512" y="260" width="56" height="32" rx="4" fill="#a8623c" stroke="#6a3a18" stroke-width="1.5"/><text x="540" y="281" fill="#fff">P5</text></g>
+    <g><rect x="692" y="260" width="56" height="32" rx="4" fill="#5a6878" stroke="#3a4858" stroke-width="1.5"/><text x="720" y="281" fill="#fff">P2</text></g>
+    <g><rect x="872" y="260" width="56" height="32" rx="4" fill="#785888" stroke="#5a4068" stroke-width="1.5"/><text x="900" y="281" fill="#fff">P4</text></g>
+
+    <!-- Row B: P2 P5 P4 P1 P3 -->
+    <g><rect x="152" y="340" width="56" height="32" rx="4" fill="#5a6878" stroke="#3a4858" stroke-width="1.5"/><text x="180" y="361" fill="#fff">P2</text></g>
+    <g><rect x="332" y="340" width="56" height="32" rx="4" fill="#a8623c" stroke="#6a3a18" stroke-width="1.5"/><text x="360" y="361" fill="#fff">P5</text></g>
+    <g><rect x="512" y="340" width="56" height="32" rx="4" fill="#785888" stroke="#5a4068" stroke-width="1.5"/><text x="540" y="361" fill="#fff">P4</text></g>
+    <g><rect x="692" y="340" width="56" height="32" rx="4" fill="#a83a2a" stroke="#8a3424" stroke-width="1.5"/><text x="720" y="361" fill="#fff">P1</text></g>
+    <g><rect x="872" y="340" width="56" height="32" rx="4" fill="#6a8060" stroke="#506a4a" stroke-width="1.5"/><text x="900" y="361" fill="#fff">P3</text></g>
+
+    <!-- Row C: P3 P1 P2 P4 P5 -->
+    <g><rect x="152" y="420" width="56" height="32" rx="4" fill="#6a8060" stroke="#506a4a" stroke-width="1.5"/><text x="180" y="441" fill="#fff">P3</text></g>
+    <g><rect x="332" y="420" width="56" height="32" rx="4" fill="#a83a2a" stroke="#8a3424" stroke-width="1.5"/><text x="360" y="441" fill="#fff">P1</text></g>
+    <g><rect x="512" y="420" width="56" height="32" rx="4" fill="#5a6878" stroke="#3a4858" stroke-width="1.5"/><text x="540" y="441" fill="#fff">P2</text></g>
+    <g><rect x="692" y="420" width="56" height="32" rx="4" fill="#785888" stroke="#5a4068" stroke-width="1.5"/><text x="720" y="441" fill="#fff">P4</text></g>
+    <g><rect x="872" y="420" width="56" height="32" rx="4" fill="#a8623c" stroke="#6a3a18" stroke-width="1.5"/><text x="900" y="441" fill="#fff">P5</text></g>
+
+    <!-- Row D: P4 P2 P3 P5 P1 -->
+    <g><rect x="152" y="500" width="56" height="32" rx="4" fill="#785888" stroke="#5a4068" stroke-width="1.5"/><text x="180" y="521" fill="#fff">P4</text></g>
+    <g><rect x="332" y="500" width="56" height="32" rx="4" fill="#5a6878" stroke="#3a4858" stroke-width="1.5"/><text x="360" y="521" fill="#fff">P2</text></g>
+    <g><rect x="512" y="500" width="56" height="32" rx="4" fill="#6a8060" stroke="#506a4a" stroke-width="1.5"/><text x="540" y="521" fill="#fff">P3</text></g>
+    <g><rect x="692" y="500" width="56" height="32" rx="4" fill="#a8623c" stroke="#6a3a18" stroke-width="1.5"/><text x="720" y="521" fill="#fff">P5</text></g>
+    <g><rect x="872" y="500" width="56" height="32" rx="4" fill="#a83a2a" stroke="#8a3424" stroke-width="1.5"/><text x="900" y="521" fill="#fff">P1</text></g>
+
+    <!-- Row E: P5 P4 P1 P3 P2 -->
+    <g><rect x="152" y="580" width="56" height="32" rx="4" fill="#a8623c" stroke="#6a3a18" stroke-width="1.5"/><text x="180" y="601" fill="#fff">P5</text></g>
+    <g><rect x="332" y="580" width="56" height="32" rx="4" fill="#785888" stroke="#5a4068" stroke-width="1.5"/><text x="360" y="601" fill="#fff">P4</text></g>
+    <g><rect x="512" y="580" width="56" height="32" rx="4" fill="#a83a2a" stroke="#8a3424" stroke-width="1.5"/><text x="540" y="601" fill="#fff">P1</text></g>
+    <g><rect x="692" y="580" width="56" height="32" rx="4" fill="#6a8060" stroke="#506a4a" stroke-width="1.5"/><text x="720" y="601" fill="#fff">P3</text></g>
+    <g><rect x="872" y="580" width="56" height="32" rx="4" fill="#5a6878" stroke="#3a4858" stroke-width="1.5"/><text x="900" y="601" fill="#fff">P2</text></g>
+  </g>
+
+  <!-- ============ LEGEND ============ -->
+  <g transform="translate(60, 686)">
+    <text x="0" y="0" font-size="13" font-weight="600" fill="#1c2530">Notation</text>
+
+    <!-- poet swatches in a single row -->
+    <g transform="translate(0, 16)">
+      <rect x="0" y="0" width="20" height="20" rx="3" fill="#a83a2a" stroke="#8a3424" stroke-width="1.5"/>
+      <text x="10" y="14" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">P1</text>
+      <rect x="56" y="0" width="20" height="20" rx="3" fill="#5a6878" stroke="#3a4858" stroke-width="1.5"/>
+      <text x="66" y="14" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">P2</text>
+      <rect x="112" y="0" width="20" height="20" rx="3" fill="#6a8060" stroke="#506a4a" stroke-width="1.5"/>
+      <text x="122" y="14" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">P3</text>
+      <rect x="168" y="0" width="20" height="20" rx="3" fill="#785888" stroke="#5a4068" stroke-width="1.5"/>
+      <text x="178" y="14" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">P4</text>
+      <rect x="224" y="0" width="20" height="20" rx="3" fill="#a8623c" stroke="#6a3a18" stroke-width="1.5"/>
+      <text x="234" y="14" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">P5</text>
+      <rect x="280" y="0" width="20" height="20" rx="3" fill="#7a7066" stroke="#5a5450" stroke-width="1.5" stroke-dasharray="3 2"/>
+      <text x="290" y="14" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">S</text>
+      <text x="312" y="14" font-size="12" fill="#1c2530">Cell colour = author. S = shared corpus seed (not poet-authored).</text>
+    </g>
+
+    <!-- edge legend -->
+    <g transform="translate(0, 46)">
+      <line x1="0" y1="10" x2="40" y2="10" stroke="#a89e88" stroke-width="1"/>
+      <text x="50" y="14" font-size="12" fill="#1c2530">Primary parent edge — each line is signed against the immediately prior line; subtler curves show second parent (k = 2): seeds for line 1, line k–2 thereafter.</text>
+    </g>
+  </g>
+</svg>
