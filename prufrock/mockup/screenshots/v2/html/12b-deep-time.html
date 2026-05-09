@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Prufrock Protocol — Deep Time River</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1440px;height:900px;overflow:hidden;background:#1c2530;color:#e8dec4;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px}
+nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;align-items:center;padding:0 24px;gap:2px}
+.brand{display:flex;align-items:baseline;gap:10px;margin-right:28px}
+.brand-name{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.brand-sub{font-size:10px;letter-spacing:.06em;color:#a8623c;opacity:.75}
+.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#5a5450;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.nav-tab.active{color:#e8dec4;border-bottom-color:#a8623c}
+.nav-right{margin-left:auto;font-size:10px;color:#3c3834}
+.title-bar{height:44px;background:#1c2028;border-bottom:1px solid #232a32;display:flex;align-items:center;padding:0 32px;gap:20px}
+.tb-title{font-size:13px;font-weight:600;color:#e8dec4;letter-spacing:.02em}
+.tb-sub{font-size:10px;color:#5a5450}
+.tb-right{margin-left:auto}
+.view-btns{display:flex;border:1px solid #2a3340;border-radius:3px;overflow:hidden}
+.vbt{padding:3px 11px;font-size:9px;color:#5a5450;border-right:1px solid #2a3340;cursor:pointer;white-space:nowrap}
+.vbt:last-child{border-right:none}
+.vbt.active{background:rgba(255,255,255,.05);color:#e8dec4;cursor:default}
+#chart{display:block}
+</style>
+</head>
+<body>
+<nav>
+  <div class="brand"><span class="brand-name">The Prufrock Protocol</span><span class="brand-sub">Sonnet Experiment Alpha</span></div>
+  <div class="nav-tab">Timeline</div>
+  <div class="nav-tab">Lineage</div>
+  <div class="nav-tab">Map</div>
+  <div class="nav-tab">Poem</div>
+  <div class="nav-tab">Participant</div>
+  <div class="nav-tab active">Concerns</div>
+  <div class="nav-right">Deep time river · 800 CE → 2500 CE · 1700-year sweep · poetic concerns persisting, drifting, emerging</div>
+</nav>
+<div class="title-bar">
+  <span class="tb-title">Deep Time River</span>
+  <span class="tb-sub">The concerns that have driven poetry for 1200 years — and those that will drive it for centuries more</span>
+  <div class="tb-right">
+    <div class="view-btns">
+      <div class="vbt">Theme river</div>
+      <div class="vbt">Theme network</div>
+      <div class="vbt">Long view</div>
+      <div class="vbt active">Deep Time</div>
+    </div>
+  </div>
+</div>
+<svg id="chart" xmlns="http://www.w3.org/2000/svg" width="1440" height="812"></svg>
+<script>
+const svg = document.getElementById('chart');
+const W = 1440, H = 812;
+
+// 11 poetic concern themes across deep time
+const THEMES = [
+  {name:'Religious / transcendence', short:'Religious', color:'#8a7858'}, // fades
+  {name:'Mortality / impermanence',  short:'Mortality', color:'#786894'},  // perennial
+  {name:'Love / longing',            short:'Love',      color:'#985868'},  // perennial
+  {name:'Nature / pastoral',         short:'Nature',    color:'#5a7848'},  // rises then falls
+  {name:'Time / aging',              short:'Time',      color:'#a8623c'},  // grows
+  {name:'War / conflict',            short:'War',       color:'#8a4840'},  // spikes modernity
+  {name:'Memory / preservation',     short:'Memory',    color:'#4a6a8a'},  // grows
+  {name:'Wonder / awe',              short:'Wonder',    color:'#6a9580'},  // perennial
+  {name:'Identity / selfhood',       short:'Identity',  color:'#7a9078'},  // grows modern
+  {name:'Climate / survival',        short:'Climate',   color:'#4a7864'},  // new 2026+
+  {name:'Transhumanism',             short:'Trans.',    color:'#3a8090'},  // new 2126+
+];
+
+const T = THEMES.length;
+
+// Column years
+const YEARS = [800, 1100, 1300, 1450, 1609, 1750, 1850, 1950, 2026, 2126, 2300, 2500];
+const COLS = YEARS.length;
+
+// Concern weights per year [Religious, Mortality, Love, Nature, Time, War, Memory, Wonder, Identity, Climate, Trans]
+const rawData = [
+  [0.38, 0.18, 0.12, 0.10, 0.06, 0.08, 0.05, 0.02, 0.01, 0.00, 0.00], // 800
+  [0.35, 0.20, 0.14, 0.10, 0.07, 0.07, 0.04, 0.02, 0.01, 0.00, 0.00], // 1100
+  [0.28, 0.22, 0.20, 0.09, 0.08, 0.06, 0.04, 0.02, 0.01, 0.00, 0.00], // 1300 courtly love rises
+  [0.20, 0.26, 0.22, 0.09, 0.10, 0.05, 0.05, 0.02, 0.01, 0.00, 0.00], // 1450 Mortality+Love
+  [0.09, 0.28, 0.20, 0.07, 0.24, 0.03, 0.18, 0.07, 0.02, 0.00, 0.00], // 1609 Shakespeare
+  [0.07, 0.20, 0.19, 0.16, 0.18, 0.04, 0.08, 0.07, 0.01, 0.00, 0.00], // 1750 Romantic/Nature
+  [0.05, 0.21, 0.17, 0.14, 0.17, 0.05, 0.10, 0.07, 0.04, 0.00, 0.00], // 1850 Victorian
+  [0.03, 0.20, 0.15, 0.08, 0.15, 0.15, 0.12, 0.06, 0.06, 0.00, 0.00], // 1950 War+Identity
+  [0.01, 0.22, 0.16, 0.05, 0.19, 0.04, 0.18, 0.07, 0.07, 0.01, 0.00], // 2026 Protocol
+  [0.00, 0.16, 0.14, 0.03, 0.17, 0.03, 0.22, 0.08, 0.07, 0.08, 0.05], // 2126 heir poems
+  [0.00, 0.14, 0.13, 0.02, 0.14, 0.02, 0.22, 0.09, 0.08, 0.12, 0.09], // 2300 projected
+  [0.00, 0.12, 0.11, 0.01, 0.12, 0.01, 0.20, 0.10, 0.09, 0.15, 0.14], // 2500 projected
+];
+
+const norm = rawData.map(row => {
+  const s = row.reduce((a,b)=>a+b,0);
+  return row.map(v=>v/s);
+});
+const cum = norm.map(row => {
+  const c=[0];
+  row.forEach(v=>c.push(c[c.length-1]+v));
+  return c;
+});
+
+function el(tag, attrs, parent) {
+  const e = document.createElementNS('http://www.w3.org/2000/svg', tag);
+  for (const [k,v] of Object.entries(attrs)) e.setAttribute(k,v);
+  if (parent) parent.appendChild(e);
+  return e;
+}
+function txt(x, y, t, attrs, parent) {
+  const e = el('text', {x, y, 'text-anchor':'middle', 'dominant-baseline':'middle', ...attrs}, parent);
+  e.textContent = t;
+  return e;
+}
+function txta(x, y, t, anchor, attrs, parent) {
+  const e = el('text', {x, y, 'text-anchor':anchor, 'dominant-baseline':'middle', ...attrs}, parent);
+  e.textContent = t;
+  return e;
+}
+
+el('rect', {width:W, height:H, fill:'#1c2530'}, svg);
+const defs = el('defs', {}, svg);
+
+// Chart geometry
+const CT = 60, CB = 710;
+const CH = CB - CT;
+const CL = 78, CR = 1270;
+const CW = CR - CL;
+
+// Column x positions — proportional to time
+const yearToX = y => CL + (y - 800) / (2500 - 800) * CW;
+const COL_X = YEARS.map(yearToX);
+
+const cumY = (col, t) => CB - cum[col][t] * CH;
+
+// ─── Future projection zones ──────────────────────────────────
+const futureX = yearToX(2026.5);
+el('rect', {x:futureX, y:CT-10, width:CR-futureX+8, height:CH+24, fill:'rgba(28,37,48,.4)', rx:2}, svg);
+el('line', {x1:futureX, y1:CT-18, x2:futureX, y2:CB+18, stroke:'#232a32', 'stroke-width':'1.5', 'stroke-dasharray':'4 4'}, svg);
+txt(futureX + (CR-futureX)/2, CT-10, '← projected →', {fill:'#1e2830', 'font-size':'7', 'font-family':'monospace'}, svg);
+
+// ─── Shakespeare 1609 vertical marker ─────────────────────────
+const shX = COL_X[4]; // 1609
+el('line', {x1:shX, y1:CT-18, x2:shX, y2:CB+18, stroke:'rgba(168,98,60,.22)', 'stroke-width':'1', 'stroke-dasharray':'3 4'}, svg);
+el('rect', {x:shX-60, y:CT-38, width:120, height:22, rx:3, fill:'rgba(28,20,12,.9)', stroke:'rgba(168,98,60,.2)', 'stroke-width':'1'}, svg);
+txt(shX, CT-27, 'Shakespeare · Sonnet XVIII · 1609', {fill:'rgba(168,98,60,.55)', 'font-size':'7.5', 'font-family':'monospace'}, svg);
+
+// ─── Protocol 2026 vertical marker (prominent) ─────────────────
+const protX = COL_X[8]; // 2026
+el('line', {x1:protX, y1:CT-18, x2:protX, y2:CB+18, stroke:'rgba(168,98,60,.5)', 'stroke-width':'1.5'}, svg);
+el('rect', {x:protX-68, y:CT-38, width:136, height:22, rx:3, fill:'rgba(28,20,12,.95)', stroke:'rgba(168,98,60,.35)', 'stroke-width':'1'}, svg);
+txt(protX, CT-27, 'Prufrock Protocol · 2026', {fill:'rgba(168,98,60,.8)', 'font-size':'8', 'font-weight':'600'}, svg);
+// Small bracket below the 2026 marker
+el('rect', {x:protX-38, y:CT, width:76, height:CH, fill:'rgba(168,98,60,.015)'}, svg);
+
+// ─── Ribbons ─────────────────────────────────────────────────
+for (let i = 0; i < COLS - 1; i++) {
+  const x0 = COL_X[i], x1 = COL_X[i+1];
+  const cx = (x0+x1)/2;
+  const isFuture = (i >= 8); // after 2026
+  for (let t = 0; t < T; t++) {
+    const bot0 = cumY(i,t),   top0 = cumY(i,t+1);
+    const bot1 = cumY(i+1,t), top1 = cumY(i+1,t+1);
+    const heightAvg = Math.abs((bot0-top0)+(bot1-top1))/2;
+    if (heightAvg < 0.8) continue;
+    const d = `M${x0},${bot0} C${cx},${bot0},${cx},${bot1},${x1},${bot1} L${x1},${top1} C${cx},${top1},${cx},${top0},${x0},${top0} Z`;
+    el('path', {d, fill: THEMES[t].color + (isFuture ? '48' : '88'), stroke: THEMES[t].color+'10', 'stroke-width':'0.3'}, svg);
+  }
+}
+
+// ─── Thin column dividers ─────────────────────────────────────
+COL_X.forEach((x, i) => {
+  if (i > 0 && i < COLS-1) {
+    el('line', {x1:x, y1:CT, x2:x, y2:CB, stroke:'rgba(0,0,0,.18)', 'stroke-width':'0.4'}, svg);
+  }
+});
+
+// ─── Year labels (x-axis) ─────────────────────────────────────
+YEARS.forEach((yr, i) => {
+  const x = COL_X[i];
+  const isKey = (yr === 1609 || yr === 2026 || yr === 2126);
+  const isFuture = (yr > 2026);
+  txt(x, CB+18, String(yr), {
+    fill: yr===1609 ? 'rgba(168,98,60,.5)' : yr===2026 ? 'rgba(168,98,60,.8)' : isFuture ? 'rgba(58,128,144,.4)' : '#3a3632',
+    'font-size': isKey ? '8.5' : '7.5',
+    'font-family':'monospace',
+    'font-weight': isKey ? '700' : '400'
+  }, svg);
+});
+
+// ─── Chart border ─────────────────────────────────────────────
+el('rect', {x:CL, y:CT, width:CW, height:CH, fill:'none', stroke:'rgba(255,255,255,.03)', 'stroke-width':'1'}, svg);
+
+// ─── Religious devotion fade annotation ─────────────────────
+const relFadeX = COL_X[4] - 30; // around 1609, where it's nearly gone
+const relMidY = cumY(0, 0) + (cumY(0, 1) - cumY(0, 0))/2; // midpoint of Religious band at col 0
+el('rect', {x:CL+4, y:relMidY-16, width:148, height:32, rx:3, fill:'rgba(28,24,18,.9)', stroke:'rgba(138,120,88,.25)', 'stroke-width':'1'}, svg);
+txt(CL+78, relMidY-4, 'Religious / transcendence', {fill:'#8a7858', 'font-size':'8.5', 'font-weight':'600'}, svg);
+txt(CL+78, relMidY+8, 'dominant medieval · fades 1600s', {fill:'#4a4232', 'font-size':'7.5'}, svg);
+
+// ─── War spike annotation (1950) ─────────────────────────────
+const warX = COL_X[7];
+const warBandMidY = cumY(7, 5) + (cumY(7, 6) - cumY(7, 5))/2;
+el('rect', {x:warX-82, y:warBandMidY-16, width:162, height:32, rx:3, fill:'rgba(28,24,18,.9)', stroke:'rgba(138,72,64,.28)', 'stroke-width':'1'}, svg);
+txt(warX-1, warBandMidY-4, 'War / conflict peaks 1950', {fill:'#8a4840', 'font-size':'8.5', 'font-weight':'600'}, svg);
+txt(warX-1, warBandMidY+8, 'absent in pre-modern verse', {fill:'#4a3434', 'font-size':'7.5'}, svg);
+
+// ─── Climate emergence annotation ─────────────────────────────
+const climX = COL_X[9] + 18;
+const climMidY = cumY(9, 9) + (cumY(9, 10) - cumY(9, 9))/2;
+el('rect', {x:climX-8, y:climMidY-16, width:162, height:32, rx:3, fill:'rgba(28,37,48,.95)', stroke:'rgba(74,120,100,.35)', 'stroke-width':'1'}, svg);
+txt(climX+73, climMidY-4, 'Climate / survival', {fill:'#4a7864', 'font-size':'8.5', 'font-weight':'600'}, svg);
+txt(climX+73, climMidY+8, 'absent in all prior eras of verse', {fill:'#2e4a40', 'font-size':'7.5'}, svg);
+
+// ─── Transhumanism annotation ─────────────────────────────────
+const transX = COL_X[10] + 18;
+const transMidY = cumY(10, 10) + (cumY(10, 11) - cumY(10, 10))/2;
+el('rect', {x:transX-8, y:transMidY-16, width:154, height:32, rx:3, fill:'rgba(28,37,48,.95)', stroke:'rgba(58,128,144,.32)', 'stroke-width':'1'}, svg);
+txt(transX+69, transMidY-4, 'Transhumanism', {fill:'#3a8090', 'font-size':'8.5', 'font-weight':'600'}, svg);
+txt(transX+69, transMidY+8, 'wholly new concern · 2126 onward', {fill:'#1e4858', 'font-size':'7.5'}, svg);
+
+// ─── Legend (right panel) ─────────────────────────────────────
+const LX = CR + 22;
+txt(LX + 60, CT + 4, 'CONCERNS', {fill:'#2c2826', 'font-size':'7', 'font-weight':'700', 'letter-spacing':'.1em'}, svg);
+const legStep = (CB - CT - 14) / T;
+THEMES.forEach((th, i) => {
+  const ly = CT + 10 + i * legStep + legStep/2;
+  const isFade = i === 0;
+  const isNew = i >= 9;
+  el('rect', {x:LX, y:ly-5, width:9, height:9, rx:2, fill:th.color+(isNew?'70':'88')}, svg);
+  txt(LX+14, ly, th.name, {fill: isNew ? th.color+'aa' : isFade ? '#5a5040' : '#5a5450', 'font-size':'7.5', 'text-anchor':'start'}, svg);
+  if (i === 0) txt(LX+14, ly+11, '← fades after 1700', {fill:'#322e28', 'font-size':'6', 'font-family':'monospace', 'text-anchor':'start'}, svg);
+  if (i === 9) txt(LX+14, ly+11, '← new in 2026+', {fill:'#2e4540', 'font-size':'6', 'font-family':'monospace', 'text-anchor':'start'}, svg);
+  if (i === 10) txt(LX+14, ly+11, '← new in 2126+', {fill:'#1e4858', 'font-size':'6', 'font-family':'monospace', 'text-anchor':'start'}, svg);
+});
+
+// ─── Bottom statement ─────────────────────────────────────────
+const bx = CL + CW/2;
+txt(bx, H-22, 'Mortality, Love, Memory and Wonder persist across every era of verse · Religious devotion fades from the record · War intrudes then recedes · Climate and Transhumanism are entirely new',
+  {fill:'#262220', 'font-size':'7.5'}, svg);
+txt(bx, H-8, 'The Prufrock Protocol is a single bright mark in a flow that has never paused — and is designed to ensure the flow continues for at least another century',
+  {fill:'#222028', 'font-size':'7.5', 'font-style':'italic'}, svg);
+</script>
+<script src="nav-wire.js"></script>
+<div style="position:fixed;bottom:0;left:0;width:100%;background:#523018;color:#e8dec4;text-align:center;font-size:11px;font-weight:700;letter-spacing:.25em;padding:4px 0;z-index:9999">MOCKUP</div>
+</body>
+</html>

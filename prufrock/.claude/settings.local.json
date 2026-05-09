@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e \"const {chromium} = require\\('playwright'\\); chromium.launch\\(\\).then\\(b => { console.log\\('playwright ok'\\); b.close\\(\\); }\\).catch\\(e => console.error\\('playwright error:', e.message\\)\\)\")",
+      "Read(//private/tmp/**)",
+      "Bash(npm list *)",
+      "Bash(npx playwright *)",
+      "Bash(python3 -c \"from playwright.sync_api import sync_playwright; print\\('python playwright ok'\\)\")",
+      "Bash(pip3 show *)",
+      "Bash(node *)",
+      "Bash(python3 -c \"from playwright.sync_api import sync_playwright; print\\('ok'\\)\")",
+      "Bash(pip3 install *)",
+      "Bash(python3 -m playwright install chromium)",
+      "Bash(python3 *)",
+      "Bash(awk '{print $5, $9}')",
+      "Bash(awk '{print $5\"\\\\t\"$9}')",
+      "Bash(sort -k2)"
+    ]
+  }
+}

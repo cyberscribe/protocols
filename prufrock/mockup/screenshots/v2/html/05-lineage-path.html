@@ -54,6 +54,7 @@ nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;
   <div class="nav-tab">Map</div>
   <div class="nav-tab">Poem</div>
   <div class="nav-tab">Participant</div>
+  <div class="nav-tab">Concerns</div>
   <div class="nav-right">Authorial trail — Amara Osei across 14 poems</div>
 </nav>
 <div class="controls">
@@ -228,8 +229,15 @@ for (let p = 0; p < N; p++) {
     if (isAmara) {
       // Outer glow
       el('circle', {cx:colX(p),cy:nodeY(d),r:r+5,fill:'rgba(200,120,80,.12)',filter:'url(#glow)'}, svg);
-      el('circle', {cx:colX(p),cy:nodeY(d),r:r,fill:'#c47048e0',stroke:'#c47048','stroke-width':'1.5'}, svg);
+      const aCirc = el('circle', {cx:colX(p),cy:nodeY(d),r:r,fill:'#c47048e0',stroke:'#c47048','stroke-width':'1.5',style:'cursor:pointer'}, svg);
       txt(colX(p),nodeY(d),'AO',{fill:'#fff','font-size':'6','font-weight':'700','font-family':'monospace'}, svg);
+      if (p === 6) { // Poem 07 — tooltip node
+        aCirc.title = 'Click to inspect — Amara Osei · Poem 07';
+        aCirc.addEventListener('click', () => {
+          const tt = document.getElementById('amara-tooltip');
+          tt.style.display = tt.style.display === 'none' ? 'block' : 'none';
+        });
+      }
     } else {
       el('circle', {cx:colX(p),cy:nodeY(d),r:r,fill:a.color+'90',stroke:a.color+'40','stroke-width':'0.6'}, svg);
     }
@@ -254,8 +262,8 @@ AMARA_LINES.forEach((line, i) => {
 });
 </script>
 
-<!-- Tooltip: Amara's contribution to Poem 07, Day 7 (node at ~col 6, day 5 in grid) -->
-<div style="position:fixed;top:342px;left:398px;z-index:200;width:286px;background:#1a2030;border:1px solid #2e3848;border-radius:6px;padding:14px;box-shadow:0 6px 28px rgba(0,0,0,.75)">
+<!-- Tooltip: Amara's contribution to Poem 07, Day 7 — click node to show -->
+<div id="amara-tooltip" style="display:none;position:fixed;top:342px;left:398px;z-index:200;width:286px;background:#1a2030;border:1px solid #2e3848;border-radius:6px;padding:14px;box-shadow:0 6px 28px rgba(0,0,0,.75)">
   <div style="font-size:10px;color:#5a5450;display:flex;gap:6px;margin-bottom:5px">
     <span style="color:#3c3834;width:62px;flex-shrink:0">Author</span>
     <span style="color:#c47048;font-weight:500">Amara Osei · Accra, Ghana</span>
@@ -281,6 +289,7 @@ AMARA_LINES.forEach((line, i) => {
     <div style="font-size:8px;color:#2e2a26;margin-top:4px">by Marisol Fuentes (Buenos Aires) · Hiroshi Tanaka (Kyoto)</div>
   </div>
 </div>
+<script src="nav-wire.js"></script>
 <div style="position:fixed;bottom:0;left:0;width:100%;background:#523018;color:#e8dec4;text-align:center;font-size:11px;font-weight:700;letter-spacing:.25em;padding:4px 0;z-index:9999">MOCKUP</div>
 </body>
 </html>

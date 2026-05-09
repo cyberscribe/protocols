@@ -60,13 +60,17 @@ nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;
 .pl-concerns{display:flex;flex-wrap:wrap;gap:3px;margin-top:4px}
 .pl-loz{font-size:6.5px;padding:1px 6px;border-radius:8px;white-space:nowrap}
 /* Tooltip */
-.line-tooltip{position:fixed;z-index:200;width:296px;background:#1a2030;border:1px solid #2e3848;border-radius:6px;padding:14px;box-shadow:0 6px 28px rgba(0,0,0,.75);top:446px;right:20px}
+.line-tooltip{position:fixed;z-index:200;width:296px;background:#1a2030;border:1px solid #2e3848;border-radius:6px;padding:14px;box-shadow:0 6px 28px rgba(0,0,0,.75);top:446px;right:20px;display:none}
 .lt-row{font-size:10px;color:#5a5450;display:flex;gap:6px;margin-bottom:5px}
 .lt-lbl{color:#3c3834;width:62px;flex-shrink:0}
 .lt-val{color:#8a8278}
 .lt-prompt{margin-top:8px;padding-top:8px;border-top:1px solid #2a3340}
 .lt-plbl{font-size:8px;color:#3c3834;letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px}
 .lt-ptext{font-family:Georgia,serif;font-style:italic;font-size:11px;color:#4a8090;line-height:1.55}
+.poem-sub-btns{display:flex;border:1px solid #2a3340;border-radius:3px;overflow:hidden}
+.psbt{padding:3px 11px;font-size:9px;color:#5a5450;border-right:1px solid #2a3340;cursor:pointer;white-space:nowrap}
+.psbt:last-child{border-right:none}
+.psbt.active{background:rgba(255,255,255,.05);color:#e8dec4;cursor:default}
 </style>
 </head>
 <body>
@@ -77,6 +81,7 @@ nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;
   <div class="nav-tab">Map</div>
   <div class="nav-tab active">Poem</div>
   <div class="nav-tab">Participant</div>
+  <div class="nav-tab">Concerns</div>
   <div class="nav-right">Poem 01 · 2026 → lines 7–8 transmitted → 2126 response · 100-year inheritance</div>
 </nav>
 <div class="controls">
@@ -87,7 +92,11 @@ nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;
   </div>
   <div class="transmission-tag">→ Lines 7–8 sealed as seed · June 2026 · received by 2126 cohort</div>
   <div class="ctrl-right">
-    <span style="font-size:9px;color:#3c3834">Concern tags AI-assigned · 2126 language drift is speculative</span>
+    <div class="poem-sub-btns">
+      <div class="psbt active">2026 ↔ 2126</div>
+      <div class="psbt">Chain of Attention</div>
+      <div class="psbt">The Inheritance</div>
+    </div>
   </div>
 </div>
 <div class="seed-strip">
@@ -217,8 +226,19 @@ const leftCol = document.getElementById('left-col');
 LEFT_LINES.forEach(d => leftCol.appendChild(buildLine(d, !!d.seed, false)));
 
 const rightCol = document.getElementById('right-col');
-RIGHT_LINES.forEach(d => rightCol.appendChild(buildLine(d, false, !!d.echo)));
+RIGHT_LINES.forEach((d, i) => {
+  const lineEl = buildLine(d, false, !!d.echo);
+  if (i === 7) {
+    lineEl.title = 'Click to inspect — Lena Berg echoes 2026 seed line 8';
+    lineEl.addEventListener('click', () => {
+      const tt = document.querySelector('.line-tooltip');
+      tt.style.display = tt.style.display === 'none' ? 'block' : 'none';
+    });
+  }
+  rightCol.appendChild(lineEl);
+});
 </script>
+<script src="nav-wire.js"></script>
 <div style="position:fixed;bottom:0;left:0;width:100%;background:#523018;color:#e8dec4;text-align:center;font-size:11px;font-weight:700;letter-spacing:.25em;padding:4px 0;z-index:9999">MOCKUP</div>
 </body>
 </html>

@@ -43,7 +43,7 @@ nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;
 </nav>
 <div class="controls">
   <div class="cohort-btns"><div class="cbt active">Poets</div><div class="cbt">Laypeople</div><div class="cbt">Both</div></div>
-  <div class="view-btns"><div class="vbt">Theme river</div><div class="vbt active">Theme network</div></div>
+  <div class="view-btns"><div class="vbt">Theme river</div><div class="vbt active">Theme network</div><div class="vbt">Long view</div><div class="vbt">Deep Time</div></div>
   <div class="ctrl-right">Solid edge = concern inherited from seed · Dotted edge = concern new to this poem, not in seed</div>
 </div>
 <div class="seed-strip">
@@ -158,6 +158,7 @@ for (let t = 0; t < T; t++) {
 }
 
 // ─── Theme → poem connections ─────────────────────────────────
+const DIVERGENT_SET = new Set([3,4,5,7,10,12]); // P04,P05,P06,P08,P11,P13
 const INHERITED_THRESH = 0.08;
 const NEW_THRESH = 0.07;
 
@@ -207,9 +208,6 @@ for (let i = 0; i < T; i++) {
 }
 
 // ─── Poem nodes ───────────────────────────────────────────────
-const DIVERGENT = new Set([3,4,5,7,10,12]); // P04,P05,P06,P08,P11,P13 (0-indexed) — but only 5 per spec
-// Actually P04=3, P05=4, P06=5, P08=7, P11=10, P13=12 = 6 total; keep P14=13 as inheriting
-const DIVERGENT_SET = new Set([3,4,5,7,10,12]);
 for (let p = 0; p < N_POEMS; p++) {
   const py = poemY(p);
   const isDivergent = DIVERGENT_SET.has(p);
@@ -245,6 +243,7 @@ txt(410, H-29, 'New theme — emerged within the poem corpus, not in seed', {fil
 // Bottom note
 txt(W-200, H-14, 'Edge width ∝ concern weight in poem', {fill:'#262220', 'font-size':'7.5', 'text-anchor':'end'}, svg);
 </script>
+<script src="nav-wire.js"></script>
 <div style="position:fixed;bottom:0;left:0;width:100%;background:#523018;color:#e8dec4;text-align:center;font-size:11px;font-weight:700;letter-spacing:.25em;padding:4px 0;z-index:9999">MOCKUP</div>
 </body>
 </html>

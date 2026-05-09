@@ -2,6 +2,8 @@
 
 > Path to a polished Long Now Lab 001.1 (Book of Time) submission. Deadline **2026-06-05**.
 > Three lanes: **[H]** Human (Robert) · **[C]** Cowork (me) · **[K]** Code. Items on the critical path are marked **[CRIT]**.
+>
+> **Convention:** all docs in `to-review/` are staged for Robert's human review. Cowork should not treat them as final or auto-edit them once parked there — only update on Robert's instruction or to apply his returned feedback.
 
 ## Critical Path
 

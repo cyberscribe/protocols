@@ -4,7 +4,7 @@ The protocol is the engine, not the deliverable. Long Now backs objects with cus
 
 ## Named deliverable
 
-***Continual Proof: Volume I*** — a hand-bound print codex (edition of 250) containing the first season's fourteen sonnets, fourteen poets, fourteen days, with maps of where in the world each line was written, the chosen-poet rotation revealed in the colophon, and a tipped-in QR pointing to the live ledger and on-chain inscriptions. Title from Stephen Dunn's "Different Hours": *Bring to me, it said, continual proof / you've been alive*.
+***Continual Proof: Volume I*** — a hand-bound print codex (edition of 250) containing the first season's fourteen sonnets, fourteen poets, fourteen days, with maps of where in the world each line was written, the precomputed assignment matrix revealed in the colophon, and a tipped-in QR pointing to the live ledger and on-chain inscriptions. Title from Stephen Dunn's "Different Hours": *Bring to me, it said, continual proof / you've been alive*. The codex is the readable demonstration of the project's wager: that poetry — the oldest long-now form — can be enlisted as the timepiece for a new kind of time, at once unique to each signed moment and continuous with the timeless themes the form has always engaged.
 
 ## Durable artefact (across pace layers)
 
@@ -33,7 +33,7 @@ Funded August 02026 → built through 02026–02027 → trial autumn 02027 → c
 - Bitcoin Ordinal inscription per signed line
 - *Continual Proof: Volume I* — bound print codex, edition of 250
 - One ~3-minute film-poem assembled from the trial's optional photo/video attachments
-- Public unveiling at The Interval, in which the chosen-poet rotation is unsealed against its prior cryptographic commitment
+- Public unveiling at The Interval, in which the assignment matrix is unsealed against its prior cryptographic commitment
 
 ## Deferred to v2+
 

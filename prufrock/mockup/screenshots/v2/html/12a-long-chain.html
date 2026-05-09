@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Prufrock Protocol — The Chain of Attention</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1440px;height:900px;overflow:hidden;background:#1c2530;color:#e8dec4;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px}
+nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;align-items:center;padding:0 24px;gap:2px}
+.brand{display:flex;align-items:baseline;gap:10px;margin-right:28px}
+.brand-name{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.brand-sub{font-size:10px;letter-spacing:.06em;color:#a8623c;opacity:.75}
+.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#5a5450;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.nav-tab.active{color:#e8dec4;border-bottom-color:#a8623c}
+.nav-right{margin-left:auto;font-size:10px;color:#3c3834}
+.title-bar{height:44px;background:#1c2028;border-bottom:1px solid #232a32;display:flex;align-items:center;padding:0 32px;gap:20px}
+.tb-title{font-size:13px;font-weight:600;color:#e8dec4;letter-spacing:.02em}
+.tb-sub{font-size:10px;color:#5a5450}
+.tb-right{margin-left:auto}
+.poem-sub-btns{display:flex;border:1px solid #2a3340;border-radius:3px;overflow:hidden}
+.psbt{padding:3px 11px;font-size:9px;color:#5a5450;border-right:1px solid #2a3340;cursor:pointer;white-space:nowrap}
+.psbt:last-child{border-right:none}
+.psbt.active{background:rgba(255,255,255,.05);color:#e8dec4;cursor:default}
+#chart{display:block}
+</style>
+</head>
+<body>
+<nav>
+  <div class="brand"><span class="brand-name">The Prufrock Protocol</span><span class="brand-sub">Sonnet Experiment Alpha</span></div>
+  <div class="nav-tab">Timeline</div>
+  <div class="nav-tab">Lineage</div>
+  <div class="nav-tab">Map</div>
+  <div class="nav-tab active">Poem</div>
+  <div class="nav-tab">Participant</div>
+  <div class="nav-tab">Concerns</div>
+  <div class="nav-right">The Chain of Attention · 1609 → 2026 → 2126 · human creativity across 517 years</div>
+</nav>
+<div class="title-bar">
+  <span class="tb-title">The Chain of Attention</span>
+  <span class="tb-sub">Poetry is one of the longest of long nows — each act of attention passes something forward</span>
+  <div class="tb-right">
+    <div class="poem-sub-btns">
+      <div class="psbt">2026 ↔ 2126</div>
+      <div class="psbt active">Chain of Attention</div>
+      <div class="psbt">The Inheritance</div>
+    </div>
+  </div>
+</div>
+<svg id="chart" xmlns="http://www.w3.org/2000/svg" width="1440" height="812"></svg>
+<script>
+const svg = document.getElementById('chart');
+const W = 1440, H = 812;
+
+function el(tag, attrs, parent) {
+  const e = document.createElementNS('http://www.w3.org/2000/svg', tag);
+  for (const [k,v] of Object.entries(attrs)) e.setAttribute(k, v);
+  if (parent) parent.appendChild(e);
+  return e;
+}
+function txt(x, y, t, attrs, parent) {
+  const e = el('text', {x, y, 'text-anchor':'middle', 'dominant-baseline':'middle', ...attrs}, parent);
+  e.textContent = t;
+  return e;
+}
+function txta(x, y, t, anchor, attrs, parent) {
+  const e = el('text', {x, y, 'text-anchor':anchor, 'dominant-baseline':'middle', ...attrs}, parent);
+  e.textContent = t;
+  return e;
+}
+
+el('rect', {width:W, height:H, fill:'#1c2530'}, svg);
+const defs = el('defs', {}, svg);
+
+// Concern color palette
+const CC = {
+  Mortality:'#786894', Time:'#a8623c', Love:'#985868',
+  Memory:'#4a6a8a', Wonder:'#6a9580', Solitude:'#7a7080',
+  Domestic:'#c47048', Grief:'#5a6878', Identity:'#7a9078',
+  Climate:'#4a7864', Trans:'#3a8090'
+};
+
+// Layout zones
+const TL_Y = 406; // main timeline y
+const CARD_H = 260; const CARD_R = 6;
+
+// Zone x-centers
+const X1 = 192;   // 1609 Shakespeare
+const X2 = 720;   // 2026 Protocol
+const X3 = 1270;  // 2126 Response
+
+// ─── Background timeline bar ────────────────────────────────
+const tlGrad = el('linearGradient', {id:'tlg', x1:'0', x2:'1', y1:'0', y2:'0'}, defs);
+el('stop', {offset:'0%', 'stop-color':'rgba(168,98,60,.25)'}, tlGrad);
+el('stop', {offset:'30%', 'stop-color':'rgba(168,98,60,.12)'}, tlGrad);
+el('stop', {offset:'60%', 'stop-color':'rgba(58,128,144,.12)'}, tlGrad);
+el('stop', {offset:'100%', 'stop-color':'rgba(58,128,144,.25)'}, tlGrad);
+el('rect', {x:40, y:TL_Y-2, width:W-80, height:4, rx:2, fill:'url(#tlg)'}, svg);
+
+// ─── Period markers on timeline ─────────────────────────────
+[[X1,'1609',true],[X2,'2026',false],[X3,'2126',false]].forEach(([x,yr,isRoot])=>{
+  el('circle', {cx:x, cy:TL_Y, r:6, fill: isRoot ? '#a8623c' : yr==='2026' ? '#3c3834' : '#3a8090',
+    stroke: isRoot ? 'rgba(168,98,60,.4)' : yr==='2026' ? '#2e3640' : 'rgba(58,128,144,.4)',
+    'stroke-width':'1.5'}, svg);
+});
+
+// ─── Time bridge labels ─────────────────────────────────────
+const bx1 = (X1+X2)/2, bx2 = (X2+X3)/2;
+el('rect', {x:bx1-46, y:TL_Y-10, width:92, height:20, rx:3, fill:'#1c2530', stroke:'#232a32', 'stroke-width':'1'}, svg);
+txt(bx1, TL_Y, '→ 417 years →', {fill:'#2e2a26', 'font-size':'7.5', 'font-family':'monospace'}, svg);
+el('rect', {x:bx2-46, y:TL_Y-10, width:92, height:20, rx:3, fill:'rgba(28,37,48,.95)', stroke:'rgba(58,128,144,.2)', 'stroke-width':'1'}, svg);
+txt(bx2, TL_Y, '→ 100 years →', {fill:'rgba(58,128,144,.5)', 'font-size':'7.5', 'font-family':'monospace'}, svg);
+
+// ─── Flowing concern streams (bezier) ───────────────────────
+// From Shakespeare card (right edge ~X1+160) to 2026 card (left edge ~X2-200)
+// Concern flows: Mortality, Memory, Time persist through both periods
+// From 2026 seed lines to 2126 (right edge ~X2+200 to X3-160)
+// Concern flows: Identity, Solitude → transform into Memory, + new Climate, Trans
+
+function drawStream(x0, y0, x1, y1, color, width, opacity, dash) {
+  const cx = (x0+x1)/2;
+  const attrs = {
+    d: `M${x0},${y0} C${cx},${y0},${cx},${y1},${x1},${y1}`,
+    stroke: color, 'stroke-width': width, 'stroke-opacity': opacity, fill:'none'
+  };
+  if (dash) attrs['stroke-dasharray'] = dash;
+  el('path', attrs, svg);
+}
+
+// Shakespeare → 2026 concern streams (emerging from right edge of 1609 card)
+const s1x = X1 + 162, s2x = X2 - 206;
+const s1streams = [
+  {color:CC.Mortality, y0:TL_Y-70, y1:TL_Y-80, w:8, op:0.35},
+  {color:CC.Memory,    y0:TL_Y-20, y1:TL_Y-30, w:7, op:0.35},
+  {color:CC.Time,      y0:TL_Y+30, y1:TL_Y+20, w:5, op:0.30},
+  {color:CC.Love,      y0:TL_Y+70, y1:TL_Y+60, w:4, op:0.22},
+];
+s1streams.forEach(s => drawStream(s1x, s.y0, s2x, s.y1, s.color, s.w, s.op, null));
+
+// 2026 seed lines → 2126 concern streams (from right edge of 2026 seed card section)
+const s3x = X2 + 188, s4x = X3 - 160;
+const s2streams = [
+  {color:CC.Memory,   y0:TL_Y-90, y1:TL_Y-80, w:9, op:0.40},
+  {color:CC.Identity, y0:TL_Y-40, y1:TL_Y-130, w:5, op:0.28},
+  {color:CC.Climate,  y0:TL_Y+30, y1:TL_Y+80, w:7, op:0.40, dash:'5 4'},
+  {color:CC.Trans,    y0:TL_Y+80, y1:TL_Y+130, w:6, op:0.38, dash:'5 4'},
+];
+s2streams.forEach(s => drawStream(s3x, s.y0, s4x, s.y1, s.color, s.w, s.op, s.dash||null));
+
+// ─── 1609 Shakespeare card ───────────────────────────────────
+const c1x = X1 - 160, c1y = TL_Y - CARD_H/2 - 30, c1w = 320, c1h = CARD_H;
+el('rect', {x:c1x, y:c1y, width:c1w, height:c1h, rx:CARD_R,
+  fill:'rgba(24,20,14,.85)', stroke:'rgba(168,98,60,.25)', 'stroke-width':'1.2'}, svg);
+// Card glow
+el('rect', {x:c1x-1, y:c1y-1, width:c1w+2, height:c1h+2, rx:CARD_R+1,
+  fill:'none', stroke:'rgba(168,98,60,.08)', 'stroke-width':'3'}, svg);
+// Year badge
+el('rect', {x:c1x+12, y:c1y+12, width:60, height:18, rx:3,
+  fill:'rgba(168,98,60,.12)', stroke:'rgba(168,98,60,.3)', 'stroke-width':'1'}, svg);
+txt(c1x+42, c1y+21, '1609', {fill:'rgba(168,98,60,.85)', 'font-size':'9', 'font-family':'monospace', 'font-weight':'700'}, svg);
+// Location
+txta(c1x+12+64, c1y+21, 'London, England', 'start', {fill:'#3c3834', 'font-size':'8'}, svg);
+// Poetry lines
+const lines1609 = [
+  'Nor shall death brag thou wander\'st in his shade,',
+  'When in eternal lines to time thou grow\'st:',
+];
+lines1609.forEach((line, i) => {
+  txt(c1x + c1w/2, c1y + 62 + i*38, line, {
+    fill:'rgba(232,222,196,.75)', 'font-size':'13.5', 'font-family':'Georgia,serif', 'font-style':'italic',
+    'text-anchor':'middle'
+  }, svg);
+});
+// Author line
+txt(c1x+c1w/2, c1y+148, '— William Shakespeare', {fill:'rgba(168,98,60,.55)', 'font-size':'10', 'font-family':'Georgia,serif', 'font-style':'italic'}, svg);
+txt(c1x+c1w/2, c1y+164, 'Sonnet XVIII · London · 1609', {fill:'#3a3632', 'font-size':'8', 'font-family':'monospace'}, svg);
+// Concern tags
+const tags1609 = ['Mortality','Memory','Time'];
+tags1609.forEach((tag, i) => {
+  const c = CC[tag]; const tw = 62;
+  const tx = c1x + c1w/2 - (tw*tags1609.length + 4*(tags1609.length-1))/2 + i*(tw+4);
+  el('rect', {x:tx, y:c1y+c1h-44, width:tw, height:18, rx:8, fill:c+'20', stroke:c+'38', 'stroke-width':'1'}, svg);
+  txt(tx+tw/2, c1y+c1h-35, tag, {fill:c+'cc', 'font-size':'8'}, svg);
+});
+// "Seeds" label at bottom
+txt(c1x+c1w/2, c1y+c1h-16, 'seeds every re-reading across 4 centuries', {fill:'#2e2a26', 'font-size':'7.5', 'font-style':'italic'}, svg);
+
+// ─── 2026 Protocol card ──────────────────────────────────────
+const c2x = X2 - 210, c2y = TL_Y - CARD_H/2 - 60, c2w = 420, c2h = CARD_H + 50;
+el('rect', {x:c2x, y:c2y, width:c2w, height:c2h, rx:CARD_R,
+  fill:'rgba(24,28,36,.88)', stroke:'rgba(62,80,100,.3)', 'stroke-width':'1.2'}, svg);
+// Year badge
+el('rect', {x:c2x+12, y:c2y+12, width:56, height:18, rx:3,
+  fill:'rgba(62,80,100,.15)', stroke:'rgba(62,80,100,.35)', 'stroke-width':'1'}, svg);
+txt(c2x+40, c2y+21, '2026', {fill:'#8aacbc', 'font-size':'9', 'font-family':'monospace', 'font-weight':'700'}, svg);
+txta(c2x+76, c2y+21, 'Prufrock Protocol · 14 poets · 14 poems', 'start', {fill:'#3c3834', 'font-size':'8'}, svg);
+// Show 4 selected lines from Poem 01: lines 1, 5, 7 (seed), 8 (seed), 14
+const lines2026 = [
+  {l:'"The summer I remember had no owner"',                        tags:['Memory','Domestic'],   seed:false, lineN:'L1'},
+  {l:'"I speak my name into the gap where history went quiet"',    tags:['Identity','Solitude'], seed:false, lineN:'L5'},
+  {l:'"The wall came down but the frontier remained in my dreaming"',tags:['Identity','Solitude'],seed:true, lineN:'L7 →'},
+  {l:'"Under the northern lights, the cold is slow and patient"',  tags:['Wonder','Time'],       seed:true, lineN:'L8 →'},
+  {l:'"What the pine tree writes in shadows, snow erases"',        tags:['Mortality','Memory'],  seed:false, lineN:'L14'},
+];
+lines2026.forEach((item, i) => {
+  const ly = c2y + 44 + i * 54;
+  if (item.seed) {
+    el('rect', {x:c2x+8, y:ly-2, width:c2w-16, height:46, rx:3,
+      fill:'rgba(168,98,60,.07)', stroke:'rgba(168,98,60,.2)', 'stroke-width':'1'}, svg);
+  }
+  // Line number
+  txta(c2x+18, ly+12, item.lineN, 'start', {fill: item.seed ? 'rgba(168,98,60,.7)' : '#3c3834', 'font-size':'7', 'font-family':'monospace', 'font-weight': item.seed ? '700' : '400'}, svg);
+  // Line text
+  txta(c2x+46, ly+12, item.l, 'start', {fill: item.seed ? 'rgba(218,198,150,.8)' : 'rgba(168,158,136,.7)', 'font-size':'11', 'font-family':'Georgia,serif', 'font-style':'italic'}, svg);
+  // Concern tags
+  item.tags.forEach((tag, ti) => {
+    const c = CC[tag]; const tw = 58;
+    const tx = c2x + 46 + ti*(tw+4);
+    el('rect', {x:tx, y:ly+26, width:tw, height:15, rx:7, fill:c+'1a', stroke:c+'30', 'stroke-width':'0.8'}, svg);
+    txt(tx+tw/2, ly+33.5, tag, {fill:c+'aa', 'font-size':'7'}, svg);
+  });
+  if (item.seed) {
+    txta(c2x+c2w-14, ly+12, '→ sealed as seed for 2126', 'end', {fill:'rgba(168,98,60,.5)', 'font-size':'7', 'font-weight':'700'}, svg);
+  }
+});
+txt(c2x+c2w/2, c2y+c2h-16, 'Collaborative poems build on each other daily · Lines 7–8 selected as seed by protocol', {fill:'#2e2a26', 'font-size':'7.5'}, svg);
+
+// 2026 stats
+el('rect', {x:c2x+c2w-88, y:c2y+12, width:76, height:18, rx:3, fill:'rgba(168,98,60,.08)', stroke:'rgba(168,98,60,.18)', 'stroke-width':'1'}, svg);
+txt(c2x+c2w-50, c2y+21, '14 poets · 14 days', {fill:'rgba(168,98,60,.5)', 'font-size':'7.5', 'font-family':'monospace'}, svg);
+
+// ─── 2126 Response card ──────────────────────────────────────
+const c3x = X3 - 156, c3y = TL_Y - CARD_H/2 - 30, c3w = 314, c3h = CARD_H + 20;
+el('rect', {x:c3x, y:c3y, width:c3w, height:c3h, rx:CARD_R,
+  fill:'rgba(20,28,36,.88)', stroke:'rgba(58,128,144,.22)', 'stroke-width':'1.2'}, svg);
+el('rect', {x:c3x-1, y:c3y-1, width:c3w+2, height:c3h+2, rx:CARD_R+1,
+  fill:'none', stroke:'rgba(58,128,144,.07)', 'stroke-width':'3'}, svg);
+// Year badge
+el('rect', {x:c3x+12, y:c3y+12, width:48, height:18, rx:3,
+  fill:'rgba(58,128,144,.12)', stroke:'rgba(58,128,144,.3)', 'stroke-width':'1'}, svg);
+txt(c3x+36, c3y+21, '2126', {fill:'#3a8090', 'font-size':'9', 'font-family':'monospace', 'font-weight':'700'}, svg);
+txta(c3x+68, c3y+21, 'Response Cohort · projected', 'start', {fill:'#3c3834', 'font-size':'8'}, svg);
+// Echo lines
+const lines2126 = [
+  {l:'"The frontier hath no body now; it drifts"',     tags:['Memory','Trans'], echo:true},
+  {l:'"Cold patienced wait became the methane-sigh"',  tags:['Climate','Time'], echo:false},
+  {l:'"We dreamshed the wall our mothers dreamed"',    tags:['Memory','Identity'], echo:true},
+  {l:'"The patient cold is gone; we mourn that still"',tags:['Climate','Grief'], echo:true},
+];
+lines2126.forEach((item, i) => {
+  const ly = c3y + 44 + i * 54;
+  if (item.echo) {
+    el('rect', {x:c3x+8, y:ly-2, width:c3w-16, height:46, rx:3,
+      fill:'rgba(58,128,144,.06)', stroke:'rgba(58,128,144,.18)', 'stroke-width':'0.8'}, svg);
+  }
+  txta(c3x+14, ly+12, item.l, 'start', {fill: item.echo ? 'rgba(180,210,220,.75)' : 'rgba(140,150,160,.6)', 'font-size':'10.5', 'font-family':'Georgia,serif', 'font-style':'italic'}, svg);
+  item.tags.forEach((tag, ti) => {
+    const c = CC[tag]; const tw = 56;
+    const tx = c3x + 14 + ti*(tw+4);
+    el('rect', {x:tx, y:ly+26, width:tw, height:15, rx:7, fill:c+'1a', stroke:c+'30', 'stroke-width':'0.8'}, svg);
+    txt(tx+tw/2, ly+33.5, tag, {fill:c+'aa', 'font-size':'7'}, svg);
+  });
+  if (item.echo) {
+    txta(c3x+c3w-12, ly+12, '↻ echo', 'end', {fill:'rgba(58,128,144,.6)', 'font-size':'7', 'font-weight':'700'}, svg);
+  }
+});
+txt(c3x+c3w/2, c3y+c3h-16, 'Seed fragment received · 100 years later', {fill:'#222c38', 'font-size':'7.5'}, svg);
+
+// ─── Section heading labels ──────────────────────────────────
+txt(X1, c1y - 18, 'ACT OF ATTENTION I', {fill:'rgba(168,98,60,.3)', 'font-size':'7.5', 'font-weight':'700', 'letter-spacing':'.12em'}, svg);
+txt(X2, c2y - 18, 'ACT OF ATTENTION II', {fill:'#2e3a48', 'font-size':'7.5', 'font-weight':'700', 'letter-spacing':'.12em'}, svg);
+txt(X3, c3y - 18, 'ACT OF ATTENTION III', {fill:'rgba(58,128,144,.3)', 'font-size':'7.5', 'font-weight':'700', 'letter-spacing':'.12em'}, svg);
+
+// ─── Bottom thematic statement ───────────────────────────────
+const bx = W/2, by = H - 46;
+el('rect', {x:bx-460, y:by-16, width:920, height:36, rx:4, fill:'rgba(0,0,0,.45)', stroke:'#232a32', 'stroke-width':'1'}, svg);
+txt(bx, by-4, 'Poetry is one of the longest long nows in human history — each line is an act of attention passed forward in time', {fill:'#5a5450', 'font-size':'10', 'font-style':'italic', 'font-family':'Georgia,serif'}, svg);
+txt(bx, by+12, 'The Prufrock Protocol makes that inheritance explicit: 2026 poems become seeds for 2126 poets, who will seed 2226, and so on without end', {fill:'#3a3632', 'font-size':'8.5'}, svg);
+
+// ─── Concern legend (bottom-right) ──────────────────────────
+const legX = W - 150, legY = H - 160;
+txt(legX, legY - 14, 'CONCERN FLOWS', {fill:'#2c2826', 'font-size':'6.5', 'font-weight':'700', 'letter-spacing':'.1em'}, svg);
+const legItems = [
+  {label:'Persistent (1609→2126)', color:'#5a5450', dash:false},
+  {label:'Transformed',            color:'#786894', dash:false},
+  {label:'New in 2126',            color:'#3a8090', dash:true},
+];
+legItems.forEach((item, i) => {
+  const ly = legY + i * 18;
+  el('line', {x1:legX-50, y1:ly, x2:legX-14, y2:ly, stroke:item.color, 'stroke-width':'2',
+    'stroke-dasharray': item.dash ? '4 3' : 'none', 'stroke-opacity':'0.6'}, svg);
+  txta(legX-8, ly, item.label, 'start', {fill:'#3a3632', 'font-size':'7.5'}, svg);
+});
+</script>
+<script src="nav-wire.js"></script>
+<div style="position:fixed;bottom:0;left:0;width:100%;background:#523018;color:#e8dec4;text-align:center;font-size:11px;font-weight:700;letter-spacing:.25em;padding:4px 0;z-index:9999">MOCKUP</div>
+</body>
+</html>

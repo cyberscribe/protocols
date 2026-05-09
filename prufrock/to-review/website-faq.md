@@ -38,6 +38,8 @@ The protocol is not exclusive to poets. A poem is its native artifact, but the p
 
 More than is obvious. Before writing, poetry was the durable medium — Beowulf, the Vedas, the Iliad, the song-lines of Aboriginal Australia. Lynne Kelley's *The Memory Code* documents how oral cultures encoded multi-generational practical knowledge in poetic forms because the constraints of meter, rhyme, and image are mnemonic technologies. Poetry is *compression with redundancy* — the same property that lets a TCP packet survive a noisy channel lets a stanza survive a noisy century.
 
+Put differently: poetry is among the oldest long nows we have. It binds the *long* — timeless themes — to the *now* — concrete individual moments — in a single act. The Prufrock Protocol takes that intrinsic structure and proposes to use it deliberately, as a timepiece for a kind of time the present technological moment makes harder to keep otherwise.
+
 ### Why a "protocol" rather than a method, framework, or discipline?
 
 A protocol — from *protokollon*, the "first glued" leaf of a manuscript — is a preface to a system. The Protocols Institute distinguishes three orders:
@@ -150,7 +152,7 @@ Three structural commitments: open publication of the protocol itself; a public 
 
 ### Will AI change any of this?
 
-The protocol was conceived in part as a response to the question of what language work is *for* once a sufficiently large model can produce passable verse on demand. The short answer: machine generation accelerates the first-order rule-following layer to the point where second- and third-order practice is the only remaining locus of human work in this medium. The protocol is one attempt to formalize that locus. AI tools are explicitly welcome inside the practice; the protocol is opinionated about how they are used and what they are used for.
+The protocol was conceived in part as a response to the question of what language work is *for* once a sufficiently large model can produce passable verse on demand. The deeper answer is that large models compress human concerns toward the statistical mean — averaging into anonymous probability-weighted text — while poetry has always done the opposite, expanding what is compressed in humanity in aggregate into specific instances of individual consciousness in time and space. The two move through the same human-meaning mass in opposite directions. The shorter answer is that machine generation accelerates the first-order rule-following layer to the point where second- and third-order practice is the only remaining locus of human work in this medium. The protocol is one attempt to formalize that locus. AI tools are explicitly welcome inside the practice; the protocol is opinionated about how they are used and what they are used for.
 
 ---
 

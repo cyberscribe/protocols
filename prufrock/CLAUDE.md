@@ -58,3 +58,4 @@ Sibling directory `00-protocols/` contains adjacent project material that may oc
 - Default working directory: `prufrock/` within `00-protocols/`.
 - All dates expressed in Long Now Zero (02026, 02028) when addressing Long Now.
 - Default identifiers in formalisation: $n$ cohort size, $m$ poem length, $D$ duration, $r$ rounds/day, $k$ prompt depth, $\Theta$ parent tuple, $\phi$ permutation.
+- **`to-review/` is human-review staging.** Documents parked in `prufrock/to-review/` are awaiting Robert's review. Cowork should not auto-edit them once parked — only update on Robert's explicit instruction or to apply his returned feedback. Treat them as paused, not final.

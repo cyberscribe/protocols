@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Prufrock Protocol — Screencast Demo</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1440px;min-height:900px;background:#1c2530;color:#e8dec4;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px}
+nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;align-items:center;padding:0 24px}
+.brand{display:flex;align-items:baseline;gap:10px}
+.brand-name{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.brand-sub{font-size:10px;letter-spacing:.06em;color:#a8623c;opacity:.75}
+.nav-right{margin-left:auto;font-size:10px;color:#3c3834}
+.hero{padding:52px 80px 36px;border-bottom:1px solid #1e2530}
+.hero-eyebrow{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#a8623c;opacity:.7;margin-bottom:12px}
+.hero-title{font-size:32px;font-weight:300;color:#e8dec4;letter-spacing:.01em;margin-bottom:6px}
+.hero-sub{font-size:14px;color:#5a5450;line-height:1.6;max-width:620px}
+.path-label{padding:28px 80px 12px;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#3c3834}
+.screens{padding:0 80px 60px;display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.screen-card{background:#1c2028;border:1px solid #232a32;border-radius:6px;padding:18px 18px 14px;cursor:pointer;transition:border-color .15s,background .15s;position:relative}
+.screen-card:hover{border-color:#3a4050;background:#1e2430}
+.screen-card:hover .sc-arrow{opacity:1}
+.sc-step{font-size:8px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#2e3848;margin-bottom:8px}
+.sc-title{font-size:13px;font-weight:600;color:#e8dec4;margin-bottom:3px;line-height:1.3}
+.sc-desc{font-size:10px;color:#4a5060;line-height:1.5;margin-bottom:10px}
+.sc-tag{display:inline-block;font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:10px;border:1px solid}
+.tag-timeline{color:#a8623c;border-color:rgba(168,98,60,.3);background:rgba(168,98,60,.07)}
+.tag-lineage{color:#6a9580;border-color:rgba(106,149,128,.3);background:rgba(106,149,128,.07)}
+.tag-map{color:#4a7864;border-color:rgba(74,120,100,.3);background:rgba(74,120,100,.07)}
+.tag-participant{color:#c47048;border-color:rgba(196,112,72,.3);background:rgba(196,112,72,.07)}
+.tag-poem{color:#785888;border-color:rgba(120,88,136,.3);background:rgba(120,88,136,.07)}
+.tag-concerns{color:#4a6a8a;border-color:rgba(74,106,138,.3);background:rgba(74,106,138,.07)}
+.sc-arrow{position:absolute;top:14px;right:16px;font-size:14px;color:#3a3632;opacity:0;transition:opacity .15s}
+.divider{grid-column:1/-1;height:1px;background:#1e2530;margin:6px 0}
+.path-connector{grid-column:1/-1;display:flex;align-items:center;gap:8px;padding:0 2px}
+.pc-line{flex:1;height:1px;background:linear-gradient(90deg,rgba(168,98,60,.3),rgba(168,98,60,.1))}
+.pc-label{font-size:8px;color:#2e3848;letter-spacing:.08em;white-space:nowrap}
+</style>
+</head>
+<body>
+<nav>
+  <div class="brand">
+    <span class="brand-name">The Prufrock Protocol</span>
+    <span class="brand-sub">Sonnet Experiment Alpha</span>
+  </div>
+  <div class="nav-right">Screencast demo · click any card to open screen</div>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">Long Now Lab 001.1 — Book of Time</div>
+  <div class="hero-title">The Prufrock Protocol</div>
+  <div class="hero-sub">A protocol for marking time through cryptographically-signed responses to random interruptions, framed by poetic form. Each card below opens a screen in the demo sequence.</div>
+</div>
+
+<div class="path-label">Demo sequence — click in order or jump to any screen</div>
+
+<div class="screens">
+
+  <!-- Row 1: Seed through Poem -->
+  <div class="screen-card" onclick="location.href='01-seed-panel.html'">
+    <div class="sc-step">Step 01</div>
+    <div class="sc-title">The Seed</div>
+    <div class="sc-desc">Shakespeare's Sonnet 18 as the 1609 root text. Protocol parameters and cohort configuration.</div>
+    <span class="sc-tag tag-timeline">Timeline</span>
+    <div class="sc-arrow">→</div>
+  </div>
+
+  <div class="screen-card" onclick="location.href='06-map-full.html'">
+    <div class="sc-step">Step 02</div>
+    <div class="sc-title">Global Map</div>
+    <div class="sc-desc">Day 14 complete. 14 poets across 14 countries, 6 continents — all authorship arcs drawn.</div>
+    <span class="sc-tag tag-map">Map</span>
+    <div class="sc-arrow">→</div>
+  </div>
+
+  <div class="screen-card" onclick="location.href='05-lineage-path.html'">
+    <div class="sc-step">Step 03</div>
+    <div class="sc-title">Lineage Trail</div>
+    <div class="sc-desc">Amara Osei's zigzag path through 14 poems. Latin square distribution visualised.</div>
+    <span class="sc-tag tag-lineage">Lineage</span>
+    <div class="sc-arrow">→</div>
+  </div>
+
+  <div class="screen-card" onclick="location.href='08-participant.html'">
+    <div class="sc-step">Step 04</div>
+    <div class="sc-title">Participant Profile</div>
+    <div class="sc-desc">Amara Osei — poet-01. Full contribution trail, concern tags, and mini-timeline.</div>
+    <span class="sc-tag tag-participant">Participant</span>
+    <div class="sc-arrow">→</div>
+  </div>
+
+  <div class="screen-card" onclick="location.href='07-poem-sidebyside.html'">
+    <div class="sc-step">Step 05</div>
+    <div class="sc-title">Poem: 2026 ↔ 2126</div>
+    <div class="sc-desc">Poem 01 side-by-side across a century. Seed lines transmitted; 2126 echoes marked.</div>
+    <span class="sc-tag tag-poem">Poem</span>
+    <div class="sc-arrow">→</div>
+  </div>
+
+  <div class="path-connector">
+    <div class="pc-line"></div>
+    <div class="pc-label">Concerns &amp; deep time views</div>
+    <div class="pc-line"></div>
+  </div>
+
+  <!-- Row 2: Concerns through Inheritance -->
+  <div class="screen-card" onclick="location.href='10-concerns-network.html'">
+    <div class="sc-step">Step 06</div>
+    <div class="sc-title">Theme Network</div>
+    <div class="sc-desc">Concern themes flowing from 3 seed themes into 14 poems. New themes emerging mid-experiment.</div>
+    <span class="sc-tag tag-concerns">Concerns</span>
+    <div class="sc-arrow">→</div>
+  </div>
+
+  <div class="screen-card" onclick="location.href='11-long-view.html'">
+    <div class="sc-step">Step 07</div>
+    <div class="sc-title">Long View</div>
+    <div class="sc-desc">417-year stacked ribbon: 1609 seed through 2026 experiment to 2126 projection.</div>
+    <span class="sc-tag tag-concerns">Concerns</span>
+    <div class="sc-arrow">→</div>
+  </div>
+
+  <div class="screen-card" onclick="location.href='12b-deep-time.html'">
+    <div class="sc-step">Step 08</div>
+    <div class="sc-title">Deep Time River</div>
+    <div class="sc-desc">1700-year sweep from 800 CE to 2500 CE. Poetic concerns persisting, drifting, and emerging.</div>
+    <span class="sc-tag tag-concerns">Concerns</span>
+    <div class="sc-arrow">→</div>
+  </div>
+
+  <div class="screen-card" onclick="location.href='12a-long-chain.html'">
+    <div class="sc-step">Step 09</div>
+    <div class="sc-title">Chain of Attention</div>
+    <div class="sc-desc">Three temporal nodes — 1609, 2026, 2126 — connected by flowing concern streams.</div>
+    <span class="sc-tag tag-poem">Poem</span>
+    <div class="sc-arrow">→</div>
+  </div>
+
+  <div class="screen-card" onclick="location.href='12c-handoff.html'">
+    <div class="sc-step">Step 10</div>
+    <div class="sc-title">The Inheritance</div>
+    <div class="sc-desc">One line. One hundred years. What was given, what was kept, what is new.</div>
+    <span class="sc-tag tag-poem">Poem</span>
+    <div class="sc-arrow">→</div>
+  </div>
+
+</div>
+
+<div style="position:fixed;bottom:0;left:0;width:100%;background:#523018;color:#e8dec4;text-align:center;font-size:11px;font-weight:700;letter-spacing:.25em;padding:4px 0;z-index:9999">MOCKUP</div>
+</body>
+</html>
