@@ -22,7 +22,7 @@ The Prufrock Protocol takes inspiration from poetry-time to provide a solution. 
 
 The protocol is medium-agnostic: its first domain is poetry, but its formal structure applies wherever the goal is to record verifiable human artefacts digitally and at scale in an era where this has suddenly become endangered.
 
-For more on the protocol and the theory behind it, see [The Protocol](theory.md)
+For more on the protocol and the theory behind it, see [The Protocol](protocol.md)
 ## The Problem of Courage
 
 > "I have measured out my life in coffee spoons"
@@ -32,6 +32,9 @@ Even outside the domain of synthesised artificial content, human artefacts are a
 
 The Prufrock Protocol is also a provocation by which its eponymous figure  might finally act, finding universe-distrubing transcendence in the midst of quotidian "coffee spoon" time. Where Prufrock requires courage to disturb the universe, and lacks it, the protocol brings disturbance to the willing participant, and compels them to act in the moment.
 ## The First Experiment: Poetry
+
+>"Live the questions now. Perhaps you will then gradually, without noticing it, live along some distant day into the answer."
+>	Rainer Maria Rilke, "Letters to a Young Poet"
 
 The first experiments use poetry — specifically, the sonnet — as a response medium.
 
@@ -49,13 +52,19 @@ The Prufrock Protocol provides an essential counterpoise to the meteoric rise of
 The sonnet trial is the first experiment. The protocol's parameterisation supports  free-form writing and non-textual media, such as audio, image, or video as response medium. The protocol's authentication, lineage, and tamper-evidence properties hold uniformly regardless of medium — a photograph, cryptographically signed and hash-chained to a prior photograph, satisfies the same invariants as a line of verse.
 
 Each experiment is a point in the protocol's parameter space. Comparing across experiments reveals which properties emerge from the protocol's constants and which from the experiment's variables — a question that is, at heart, an exploration of the myriad forms of creative expression and their unifying properties and themes.
-## The Ledger for a New Kind of Trust
+## In Ledger We Trust
 
 Most cryptographic ledgers attempt to solve issues of financial trust. Prufrock explores their use in authenticating expressions of situated human experience. The need is, ironically, more urgent: the collapse of centralised banking systems remains theoretical; the collapse of our trust in words and images has arrived.
 
 The poem-ledger is an append-only authenticated log. When prompt depth is one, the parent relation forms a directed forest; when greater, a directed acyclic graph. Chains through the graph are poems, i.e. maximal paths from genesis seed to terminal contribution, each node a verified moment of confrontation and response.
 
 The ledger records what happened. It also records what didn't, as forfeits are also permanently inscribed. The protocol insists that silence is data, not absence of data. This is a design decision about the relationship between a protocol and the world it observes.
+
+## In Each Other We Trust
+
+In an era increasingly afraid to disturb the universe on record, provocation alone may not be enough. The Prufrock Protocol does not directly address the question of attribution within the initial protocol specification, but we intend to publish the results of initial experiments as a shared works. That is, the byline remains beneath the title, listing each author's name, not as an annotation of every line. 
+
+In contributing to something shared, especially amongst cohorts of peers, the project further encourages authors to think beyond themselves into the wider concerns of the project, to bring their authentic and best self to the work in each moment, for a good greater than just themselves.
 ## An Enduring Artefact
 
 >"It is sweet to think I was a companion in an expedition that never ends"

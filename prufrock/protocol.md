@@ -37,3 +37,11 @@ The constants are structural: the signature scheme (Ed25519), the hash function 
 The variables are configurational: cohort size, response window, response medium (text, audio, image, video, mixed), response unit, prompt depth, interruption timing, selection rule, form constraints, seed source. A specific combination of these variables defines an **experiment** — a concrete instantiation of the protocol with a defined population, duration, and output form.
 
 This separation matters. It means the protocol can be studied as a formal object independent of any particular experiment, while experiments can be compared as points in a shared parameter space. It also means the protocol can migrate across domains without losing its identity: a Prufrock experiment using sonnets and a Prufrock experiment using field recordings of birdsong satisfy the same five invariants and produce the same kind of authenticated, lineage-preserving record.
+
+## Example Experiment
+
+![[protocol-diagram.png]]
+
+## Draft Formalisation
+
+See: [Draft Formalisation](formalisation.md)

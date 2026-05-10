@@ -1,4 +1,4 @@
-# The Prufrock Protocol — Formal Specification
+# The Prufrock Protocol — DRAFT Formal Specification
 
 This document gives a mathematical specification of The Prufrock Protocol. It describes the abstract objects, the validity rules they must satisfy, and the properties the protocol is intended to guarantee. The protocol is parameterised: specific experiments (the sonnet trial, the ghazal trial, etc.) are concrete instantiations obtained by fixing the experiment configuration variables.
 
