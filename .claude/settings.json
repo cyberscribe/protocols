@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__plugin_playwright_playwright__browser_evaluate",
+      "mcp__plugin_playwright_playwright__browser_navigate",
+      "mcp__plugin_playwright_playwright__browser_wait_for",
+      "mcp__plugin_playwright_playwright__browser_take_screenshot",
+      "mcp__plugin_playwright_playwright__browser_snapshot",
+      "mcp__plugin_playwright_playwright__browser_press_key",
+      "mcp__plugin_playwright_playwright__browser_click",
+      "mcp__plugin_playwright_playwright__browser_tabs",
+      "mcp__plugin_playwright_playwright__browser_console_messages",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__navigate_page",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__evaluate_script",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__take_snapshot",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__take_screenshot",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__press_key",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__list_pages",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__get_console_message",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__list_console_messages",
+      "mcp__ios-simulator__screenshot",
+      "mcp__plugin_slack_slack__slack_read_thread",
+      "mcp__plugin_slack_slack__slack_read_channel",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless *)",
+      "Bash(python3 -m http.server *)"
+    ]
+  }
+}
