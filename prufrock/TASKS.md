@@ -48,6 +48,7 @@ Cycle time is dominated by the video (script → review → record → edit → 
   - Hold open until Robert's review pass returns
 - [ ] **[CRIT] Draft full video script** from the inline shot list — recorded-take prose with timing, cues, B-roll markers
 - [ ] **[CRIT] Edit video** once Robert's takes arrive — B-roll cuts, lower-thirds, captions, ~2:30 final
+  - B-roll ready: `prufrock-demo-prores.mov` (ProRes 422 HQ, 3:15, 1440×900) — import directly to FCP timeline
 - [ ] Compose **Affiliations & Community** text (~3 sentences) once Robert names the channels he wants cited
 - [ ] Compose **Google Form paste-in** text for each field (concept, previous work, affiliations, how-did-you-hear)
 - [ ] Verify all hyperlinks in `previous-work.md` resolve (TAPoetry archive, film-poems page, Poet Tips, talk handouts)
@@ -109,3 +110,6 @@ Cycle time is dominated by the video (script → review → record → edit → 
 - [x] ~~Outline video shot list (inline)~~ (2026-05-09)
 - [x] ~~Productivity scaffolding (TASKS.md, CLAUDE.md, dashboard.html)~~ (2026-05-09)
 - [x] ~~Integrate central frame: poetry-as-long-now + regression-to-mean vs specificity-to-the-timeless~~ across concept, ln-situating, CLAUDE.md, project memory (2026-05-09)
+- [x] ~~HTML mockup suite v2~~ — 17 screens built and indexed: seed panel, map, lineage, participant, poem 2026↔2126, concerns network, long view, deep time river, handoff, Khayyám seed, Gilgamesh seed, line detail (×2), pace layer stack, deep time overlay, single line / all layers (2026-05-10)
+- [x] ~~Pace layers visualisations~~ — 3 screens mapping protocol temporal architecture to Brand/Long Now framework; deep time river annotated with pace layer legend (2026-05-10)
+- [x] ~~Demo video recorded~~ — `prufrock-demo.webm` (3:15, 10 screens, 1440×900 @ 25fps); `prufrock-demo.mp4` (H.264, 6 MB); `prufrock-demo-prores.mov` (ProRes 422 HQ, 1 GB, FCP-ready) (2026-05-10)

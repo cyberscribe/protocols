@@ -1,13 +1,6 @@
-# The Prufrock Protocol — Frequently Asked Questions
+# The Prufrock Protocol — DRAFT Frequently Asked Questions
 
 *A pitch in development for The Long Now Foundation, in collaboration with the Protocols Institute.*
-
-> *Working assumption behind this draft:* The Prufrock Protocol is a poetic protocol for long-term thinking — a structured practice that uses the compression, mnemonic durability, and second-order rule-breaking native to poetry to help individuals and institutions resist the small, hesitant mode that Eliot's Prufrock embodies, and act meaningfully across long time horizons. Push back on any framing here that doesn't match the pitch.
-
----
-
-## The basics
-
 ### What is The Prufrock Protocol?
 
 A protocol — in the deliberate sense the Protocols Institute uses the word — for thinking, speaking, and deciding at long-now time scales using the technology of poetry. It is part civic practice, part memory technique, part rule set for a particular way of paying attention. The protocol is opinionated about *how* but agnostic about *what*: it can be used by individuals, institutions, or communities to compose work meant to outlast the present moment.
@@ -80,20 +73,6 @@ The protocol prescribes ordering, pacing, and review rituals for these movements
 
 No. A poem is the canonical output, but the protocol is medium-flexible. A constitutional preamble, a foundational mission statement, a long-running ritual, a software architecture document, and a piece of legislation are all candidates — provided they meet the protocol's structural tests for compression, durability, and capacity to transcend their originating problem.
 
-### How long does the practice take?
-
-There is a daily form (roughly 20 minutes), a weekly review form (60–90 minutes), and a long-cycle form measured in years rather than weeks. The long-cycle form is the one that matters for long-now work; the shorter forms exist to make the long-cycle form possible.
-
-### Is there a curriculum?
-
-The pitch includes a proposed curriculum in three tiers:
-
-- **Tier I — Foundations** (10 weeks): introduces protocol thinking, the core poetic forms used as worked examples, and the daily and weekly practice.
-- **Tier II — Composition** (12 weeks): structured production of long-form work using the protocol.
-- **Tier III — Stewardship** (ongoing): the practice of maintaining and revising protocols within an institution.
-
-Curriculum design is a live area of the pitch and feedback from both Long Now and Protocols Institute readers will shape the final structure.
-
 ---
 
 ## The collaboration
@@ -128,7 +107,7 @@ Phase one will be supported through grants and patronage rather than tuition. La
 
 ### What if I disagree with the framing?
 
-The protocol takes disagreement as a feature, not a bug. Protocolling is the practice of making rules explicit so they can be contested. Public review and revision will be built into the program from phase one onward. Specific feedback channels will be published on launch.
+Protocolling is the practice of making rules explicit so they can be contested. Public review and revision will be built into the program from phase one onward. Specific feedback channels will be published on launch.
 
 ---
 
@@ -137,10 +116,6 @@ The protocol takes disagreement as a feature, not a bug. Protocolling is the pra
 ### Isn't this just dressing up creative writing in technical language?
 
 The framing is deliberate, not decorative. Poetry has been treated as ornament for long enough that its civic and cognitive functions have atrophied in the popular imagination. Returning to a protocol vocabulary makes those functions legible again to people who would not pick up a poetry workshop brochure but who do think seriously about durability, transmission, and coordination. The protocol stands or falls on whether it produces work that does what it claims; the language is in service of that.
-
-### Aren't there already plenty of MFA programs and writing workshops?
-
-There are, and the protocol is not in competition with them. MFA programs train writers in craft; the protocol trains practitioners in a specific use of craft. A graduate of a strong MFA could complete the protocol and gain something the MFA did not provide. So could a city planner, a software architect, or an abbot — none of whom would otherwise enroll in an MFA.
 
 ### Why not just read more poetry?
 
@@ -153,11 +128,3 @@ Three structural commitments: open publication of the protocol itself; a public 
 ### Will AI change any of this?
 
 The protocol was conceived in part as a response to the question of what language work is *for* once a sufficiently large model can produce passable verse on demand. The deeper answer is that large models compress human concerns toward the statistical mean — averaging into anonymous probability-weighted text — while poetry has always done the opposite, expanding what is compressed in humanity in aggregate into specific instances of individual consciousness in time and space. The two move through the same human-meaning mass in opposite directions. The shorter answer is that machine generation accelerates the first-order rule-following layer to the point where second- and third-order practice is the only remaining locus of human work in this medium. The protocol is one attempt to formalize that locus. AI tools are explicitly welcome inside the practice; the protocol is opinionated about how they are used and what they are used for.
-
----
-
-## Contact
-
-For collaboration inquiries, cohort interest, or critical feedback on the pitch, contact through the form on this site. Replies are slower than the contemporary norm by design.
-
-*Last revised: 2026-05-08.*

@@ -1,8 +1,6 @@
 # Previous Work (revised)
 
-For the Long Now Lab 001.1 application, "Previous Work" field. Voice tuned to pitch.md; AI-speak edited out.
-
-Note: the talk anchor was corrected — "The Infinite Game of Poetry" closely reads Marianne Moore's "The Fish" (not Marvin Bell's "Wednesday", which appears in the folder as supplementary material related to a separate 2014 BODY Literature essay).
+For the Long Now Lab 001.1 application
 
 ---
 
