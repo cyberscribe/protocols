@@ -44,4 +44,4 @@ This separation matters. It means the protocol can be studied as a formal object
 
 ## Draft Formalisation
 
-See: [Draft Formalisation](formalisation.md)
+See: [Draft Formalisation](formalisation.pdf)
