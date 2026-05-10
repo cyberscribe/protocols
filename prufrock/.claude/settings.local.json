@@ -24,7 +24,9 @@
       "WebFetch(domain:longnow.org)",
       "Bash(ffmpeg -version)",
       "Bash(ffprobe -v quiet -print_format json -show_format -show_streams /Users/rpeake/Desktop/project-support/00-protocols/prufrock/mockup/screenshots/v2/html/prufrock-demo.webm)",
-      "Bash(xargs ls -la)"
+      "Bash(xargs ls -la)",
+      "Bash(lsof -ti:9191)",
+      "Bash(xargs kill -9)"
     ]
   }
 }

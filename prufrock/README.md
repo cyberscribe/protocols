@@ -9,10 +9,8 @@ The work is in development as a pitch to The Long Now Foundation's Lab 001.1 —
 ## Reading order
 
 - [`pitch.md`](pitch.md) — the long-form essay.
-- [`formalisation.md`](formalisation.md) — protocol formal specification, parameterised over experiment configurations, with the Sonnet-form trial in §9.1.
+- [theory.md](theory.md) -- the protocol and some implications for protocol theory
+- [`formalisation.md`](formalisation.md) — protocol formal specification, parameterised over experiment configurations, with the Sonnet-form trial
 - [`protocol-diagram.svg`](protocol-diagram.svg) — dispersed-authorship diagram (5×5 illustrative slice of the 14×14 Year-1 trial).
-- [`poetry-blockchain-precedents.md`](poetry-blockchain-precedents.md) — comparative review of seven prior poetry-on-blockchain projects.
 
-## Status
-
-Active development. Critical-path tracking lives in [`TASKS.md`](TASKS.md); review-staged drafts live at [`../to-review/prufrock/`](../to-review/prufrock/) under the workspace-wide review queue.
+*Updated 10 May 2026 by Robert Peake*

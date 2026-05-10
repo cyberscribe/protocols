@@ -2,6 +2,7 @@
 .DS_Store
 .obsidian/
 .playwright-mcp/
+screenshots/
 
 # Read pipeline (raw inputs and post-read archive — local-only, large)
 transhuman-protocols/read-and-review/
