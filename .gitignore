@@ -15,3 +15,8 @@ transhuman-protocols/feeds/.feeds-runs.log
 
 # Roam graph dump — third-party data, kept local
 transhuman-protocols/fptsig/roam/
+
+*.mov
+*.pptx
+*.webm
+*.pdf
