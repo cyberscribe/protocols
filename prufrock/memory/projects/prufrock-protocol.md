@@ -8,7 +8,7 @@ Poetry is among the oldest long nows we have: for four thousand years it has bou
 
 Where generative AI compresses human concerns toward the statistical mean — averaging into anonymous probability-weighted text — the protocol works in the opposite direction. It expands what is compressed in humanity in aggregate into specific, signed, dated, located instances of individual consciousness expressing itself, giving specificity to the timeless. Marvin Bell's *infinite game of using words to transcend words* is the design language at the heart of this work.
 
-This is the central frame for every artefact: concept, ln-situating paragraph, artefact-and-v1 spec, video script. The frame should be legible in each — drift toward "just a counter-AI argument" or "just a clever distributed poetry protocol" is drift away from the project's spirit.
+This is the central frame for every artefact: README, concept, ln-situating paragraph, video script, deck slide. The frame should be legible in each — drift toward "just a counter-AI argument" or "just a clever distributed poetry protocol" is drift away from the project's spirit.
 
 ## One-line claim
 
@@ -26,14 +26,15 @@ Each iteration was a refinement — same dialectic (situated experience meets di
 
 ## Key files
 
-- `pitch.md` — long-form essay (voice reference; do not alter).
+- `README.md` — long-form essay (voice reference; do not alter). Absorbed the previous `pitch.md`.
 - `formalisation.md` — protocol formal specification, parameterised over experiment configurations. Sonnet trial in §9.1.
 - `protocol-diagram.svg` — dispersed-authorship diagram (5×5 illustrative slice).
-- `to-review/concept.md` — 500-word concept for the Long Now form.
-- `to-review/previous-work.md` — credentials paragraph.
-- `to-review/ln-situating.md` — paragraph situating Prufrock against existing Long Now work.
-- `to-review/artefact-and-v1.md` — named deliverable, pace-layer artefact strategy, institutional pairing, scoped v1.
+- `../to-review/prufrock/concept.md` — 500-word concept for the Long Now form.
+- `application/previous-work.md` — credentials paragraph.
+- `memory/ln-situating.md` — paragraph situating Prufrock against existing Long Now work.
 - `poetry-blockchain-precedents.md` — comparative review of 7 prior poetry-on-blockchain projects.
+
+(The previous `to-review/artefact-and-v1.md` spec has been absorbed: the deliverable content lives below in *v1 deliverable* and *Institutional pairing*; the file itself was retired.)
 
 ## v1 deliverable
 

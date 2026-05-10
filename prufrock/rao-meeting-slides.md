@@ -80,7 +80,7 @@ The scoped v1 is concrete: 14 poets × 14 days × 14 poems × 2 cohorts, trial a
 
 **ASK:** Does this deliverable structure work for the review panel? Is the pace-layer framing the right register for Long Now? What would Venkat change?
 
-**References:** cf. artefact-and-v1.md (full deliverable spec); cf. long-now-lab-001-1.md (timeline, application fields, review panel); cf. concept.md (500-word application text — "Poetry is among the oldest long nows we have").
+**References:** cf. `memory/projects/prufrock-protocol.md` §"v1 deliverable" + §"Institutional pairing" (the deliverable spec content; the previous standalone `artefact-and-v1.md` was retired and absorbed here); cf. `memory/projects/long-now-lab-001-1.md` (timeline, application fields, review panel); cf. `to-review/prufrock/concept.md` (500-word application text — "Poetry is among the oldest long nows we have").
 
 ---
 
@@ -96,7 +96,7 @@ Specific questions for Venkat:
 
 3. **The Long Bet:** Candidate prediction — *"By 02050, a Prufrock-protocol chain will be canonised in a major literary anthology of record."* Too audacious? Not audacious enough?
 
-4. **Supporting media:** The application allows up to 10 files. Current plan: formalisation PDF, protocol diagram, artefact-and-v1 PDF, video explainer (~2:30). What else would strengthen it? Would the poetry-blockchain-precedents review (7 prior projects analysed) help or clutter?
+4. **Supporting media:** The application allows up to 10 files. Current plan: formalisation PDF, protocol diagram, video explainer (~2:30). What else would strengthen it? Would the poetry-blockchain-precedents review (7 prior projects analysed) help or clutter?
 
 5. **Denise Hearn:** Venkat and Timber have been working with Denise on the Labs. Would it be useful for Robert to connect with her directly before the application deadline (June 5)?
 
@@ -196,7 +196,7 @@ If the conversation is running short, compress Part 3 into a 5-minute teaser and
 
 **Title:** Transposing Human Collaboration into Transhuman Protocols
 
-- Robert's research statement (STATEMENT.md): effective human collaboration methodologies share design properties — data gathering, clarification, inspectability, accountability, shared context, standards for language and behaviour. These recur across traditions (GTD, agile, pair programming).
+- Robert's research statement (`transhuman-protocols/README.md`): effective human collaboration methodologies share design properties — data gathering, clarification, inspectability, accountability, shared context, standards for language and behaviour. These recur across traditions (GTD, agile, pair programming).
 - The hypothesis: human collaboration paradigms can be *transposed* into transhuman protocols by deriving fundamental characteristics from concrete implementations and recasting them for human-AI use.
 - The expansion: we may have more to learn from *humans with differences* than from studying "baseline" human collaboration.
 
@@ -205,7 +205,7 @@ This is the bridge from Prufrock (human-only, poetry, authentication) to the bro
 
 Introduce the reframe gently: most human-AI collaboration research treats AI as a tool to be aligned or a mirror to be calibrated. What if we treated AI as a *new species* — with its own cognitive style, its own strengths and failure modes, requiring *interspecies* communication protocols rather than tool-use protocols?
 
-**References:** cf. STATEMENT.md (full research statement); cf. FPT SIG, "Protocolizing Agent Space" session (April 17) — Robert's point about cognitive sovereignty and drift management; cf. Asparouhova, "Dangerous Protocols" (Protocol Reader ch. 9) — protocol-as-identity, Protocolisation 2.0.
+**References:** cf. `transhuman-protocols/README.md` (full research statement); cf. FPT SIG, "Protocolizing Agent Space" session (April 17) — Robert's point about cognitive sovereignty and drift management; cf. Asparouhova, "Dangerous Protocols" (Protocol Reader ch. 9) — protocol-as-identity, Protocolisation 2.0.
 
 ---
 
@@ -224,7 +224,7 @@ The key insight: in all three cases, the productive move is *not* to make the ot
 
 Connect to the SIG's existing vocabulary: the ETTO principle (Hollnagel) applies — neurodivergent protocols choose thoroughness over efficiency in communication, which is exactly the trade-off human-AI protocols need to make. Goodhart's Law (Manheim & Garrabrant) applies — optimising for "human-likeness" in AI is a Goodhart failure; the metric (human-likeness) is not the goal (effective collaboration).
 
-**References:** cf. STATEMENT.md — "wider contextual implications for individuals (cognitive load / sovereignty / debt)"; cf. Hollnagel, ETTO Principle (FPT SIG, Group 4 insights); cf. Manheim & Garrabrant, "Categorizing Variants of Goodhart's Law" (FPT SIG, Integration Jigsaw); cf. Daston, *Rules* — thick/thin distinction; cf. Walch, "The Protocol System Experience" (Protocol Reader ch. 4) — bistable perception, individual vs system view; cf. Kittel & Shorin, "Unprotocolized Knowledge" (Protocol Reader ch. 15) — "protocols are unreasonably sufficient and reasonably insufficient at the same time."
+**References:** cf. `transhuman-protocols/README.md` — "wider contextual implications for individuals (cognitive load / sovereignty / debt)"; cf. Hollnagel, ETTO Principle (FPT SIG, Group 4 insights); cf. Manheim & Garrabrant, "Categorizing Variants of Goodhart's Law" (FPT SIG, Integration Jigsaw); cf. Daston, *Rules* — thick/thin distinction; cf. Walch, "The Protocol System Experience" (Protocol Reader ch. 4) — bistable perception, individual vs system view; cf. Kittel & Shorin, "Unprotocolized Knowledge" (Protocol Reader ch. 15) — "protocols are unreasonably sufficient and reasonably insufficient at the same time."
 
 ---
 
@@ -290,7 +290,7 @@ cf. pitch.md §"An Enduring Artefact".
 
 **Response:** Formalisation complete. Parameterisation spec complete. Application concept drafted (500 words, in review). What's needed for v1: (a) client app for interruptions and signed responses, (b) ledger backend (any authenticated append-only data structure), (c) scheduling service. Scoped v1 targets trial autumn 2027, codex Spring Equinox 02028.
 
-cf. formalisation.md §10; cf. artefact-and-v1.md (scoped v1).
+cf. formalisation.md §10; cf. `memory/projects/prufrock-protocol.md` §"v1 deliverable" (scoped v1).
 
 ### Q: "Can you really run a 14-person trial through PI?"
 
@@ -302,7 +302,7 @@ cf. FPT positioning §7 (tactical notes — know the room); cf. parameterisation
 
 **Response:** It's a *productive* metaphor that generates different design moves than "AI as tool" or "AI as mirror." Tool-use protocols assume the tool has no preferences and serves the user. Mirror protocols assume the AI should reflect the user's own patterns back. Interspecies protocols assume *irreducible cognitive difference* and design for interoperability across that difference. The design moves are different: explicit signalling (not implicit inference), accommodation of different processing speeds (not synchronisation), mutual adaptation (not one-sided alignment). These are the same design moves that work for neurodivergent communication and cross-cultural coordination. Whether the metaphor is "just" a metaphor depends on whether it produces better protocols than the alternatives — and that's an empirical question.
 
-cf. STATEMENT.md; cf. Kornfeld & Hewitt, "The Scientific Community Metaphor" (FPT SIG, Actor Models session) — agents organised on the model of a scientific community, proposals and confirmation without central authority. The metaphor generated productive computer science for decades.
+cf. `transhuman-protocols/README.md`; cf. Kornfeld & Hewitt, "The Scientific Community Metaphor" (FPT SIG, Actor Models session) — agents organised on the model of a scientific community, proposals and confirmation without central authority. The metaphor generated productive computer science for decades.
 
 ### Q: "Where does Prufrock sit relative to PI's research programme?"
 
@@ -360,17 +360,17 @@ Follow his thread. The three-part structure is prep, not a script. If he wants t
 
 | Source | Path | Key content |
 |---|---|---|
-| Pitch | `prufrock/pitch.md` | Five invariants, compression argument, domain rationale |
+| Pitch | `prufrock/README.md` | Five invariants, compression argument, domain rationale (absorbed the previous `pitch.md`) |
 | Formalisation | `prufrock/formalisation.md` | Full mathematical spec, 7 properties (P1–P7), experiment definitions |
 | FPT Positioning | `prufrock/fpt-positioning.md` | Concept mapping to SIG, novel contributions, presentation angles |
 | Parameterisation | `prufrock/mockup/spec/protocol-parameterisation.md` | Parameter space, experiment definitions for ghazal, sestina, haiku-relay |
 | Long Now Lab 001.1 | `prufrock/memory/projects/long-now-lab-001-1.md` | Timeline, application fields, sibling labs, review panel |
 | Application concept | `to-review/prufrock/concept.md` | 500-word Long Now application text |
-| Artefact + v1 spec | `to-review/prufrock/artefact-and-v1.md` | Named deliverable, pace layers, institutional pairing, scoped v1 |
+| Artefact + v1 spec | `prufrock/memory/projects/prufrock-protocol.md` §"v1 deliverable" + §"Institutional pairing" | Named deliverable (Continual Proof: Volume I), pace layers, institutional pairing, scoped v1 |
 | Protocol Reader distillation | `transhuman-protocols/protocol-reader/distillation.md` | 27-essay review, promotion shortlist |
 | FPT SIG distillation | `transhuman-protocols/fptsig/distillation.md` | Reference catalogue scored against human-AI thesis |
 | FPT SIG references | `transhuman-protocols/fptsig/references.md` | Thematic grouping of SIG sources |
-| Research statement | `STATEMENT.md` | Broader programme: effective protocols for human-AI collaboration |
+| Research statement | `transhuman-protocols/README.md` | Broader programme: effective protocols for human-AI collaboration |
 | Poetry protocols talk | `poetry-talk/poetry-protocols-notes.pdf` | 40-slide talk: compression, Gestalt, Fermi-Dyson, infinite game |
-| PI General Assembly | `pi/20260429 1600 Transcription.txt` | Venkat on "new nature," Timber on PI launch, member round-robin |
+| PI General Assembly | `transhuman-protocols/pi/20260429 1600 Transcription.txt` | Venkat on "new nature," Timber on PI launch, member round-robin |
 | Rough notes | `prufrock/rough-notes.txt` | Design evolution, thematic notes, domain ideas |

@@ -14,7 +14,7 @@ This repository holds materials under the umbrella of *humane protocols for the 
 | `poetry-talk/` | Materials and assets for *The Infinite Game of Poetry* (talk, July 2025) — one of the three threads. Opened the door at the Protocols Institute. |
 | `prufrock/` | *The Prufrock Protocol* — pitch in development for The Long Now Foundation Lab 001.1 (Book of Time). Deadline 2026-06-05. |
 | `transhuman-protocols/` | *Protocols for Effective Human-AI Collaboration* — the broad research thread on transposing human collaboration paradigms into transhuman protocols. Holds the read pipeline, daily research digests, distillations, and adjacent reference material. See `transhuman-protocols/CONVENTIONS.md` for thread-specific read-flow conventions. |
-| `blogs/` | Drafts and published blog posts. Supporting material; not promoted in the public README. |
+| `blogs/` | Robert's ongoing writing — drafts (`drafts/`) and published posts (`published/`). Sits at root as a peer of the threads but is **not a research project**: it's an ongoing writing practice. Not promoted in the public README. Cross-thread blog-format material (e.g. talk-derived essays) lands here rather than in any thread's `to-review/`. |
 | `to-review/` | Single workspace-wide review queue. Subfolders are by thread (e.g. `to-review/prufrock/`). |
 
 The three threads are peers, not nested — Prufrock is **not** a subset of the human-AI collaboration thread, and vice versa. They are distinct projects sharing the same umbrella. `.obsidian/` and `.git/` are housekeeping.

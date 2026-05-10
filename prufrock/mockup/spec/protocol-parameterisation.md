@@ -9,7 +9,7 @@ This spec defines the parameter space, the experiment definition format, the for
 ## 2. Relationship to existing documents
 
 - **`formalisation.md`** already treats the sonnet trial as a "concrete instantiation" (§5). This spec makes that parameterisation explicit and comprehensive, replacing the hardcoded sonnet values with a configuration schema.
-- **`pitch.md`** references sonnets as the example. It should be updated to frame sonnets as the first experiment, with the protocol itself being form-agnostic.
+- **`README.md`** (the thread's public landing, formerly `pitch.md`) already frames sonnets as "The First Experiment: Poetry" with the protocol itself being form-agnostic ("Beyond Sonnets"). The form-agnostic framing is in place; this spec gives it teeth.
 - **`simulation.md`** and **`dossier-generator.md`** already accept config files. This spec defines the canonical config schema they consume.
 
 After this rework, `formalisation.md` §5 becomes a library of experiment definitions, not a single trial.

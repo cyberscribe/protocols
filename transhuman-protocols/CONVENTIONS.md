@@ -10,7 +10,7 @@ Conventions specific to the *Effective Protocols for Human-AI Collaboration* res
 
 | Path | Purpose |
 |---|---|
-| `STATEMENT.md` | Research statement (the load-bearing thesis for this thread). |
+| `README.md` | Research statement (the load-bearing thesis for this thread). Public-facing surface for this folder. Date-stamped — do not auto-edit without Robert's permission. |
 | `feeds/` | RSS / page-diff / search surveillance pipeline. Holds `config.json`, `brief.md`, `feeds.opml`, plus pipeline state (`.feeds-state.json`, `.feeds-runs.log`). |
 | `read-and-review/` | Inbox for newly gathered articles awaiting reading. *(gitignored)* |
 | `read/` | Articles after reading. Retained for back-reference from the corpus. *(gitignored)* |

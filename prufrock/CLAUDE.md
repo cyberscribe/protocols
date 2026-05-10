@@ -9,7 +9,7 @@ Poetry is among the oldest long nows we have: for four thousand years it has bou
 
 Where generative AI compresses human concerns toward the statistical mean — averaging into anonymous probability-weighted text — the protocol works in the opposite direction: it expands what is compressed in humanity in aggregate into specific, signed, dated, located instances of individual consciousness expressing itself, giving specificity to the timeless. This is what makes poetry, in particular, the right medium for marking time at this moment in history. Marvin Bell's *infinite game of using words to transcend words* runs through the project's DNA.
 
-These framings are load-bearing. Every artefact (concept, ln-situating, artefact-and-v1, video script) should be legible against them; if a draft starts to read as just "a counter-AI argument" or just "a clever distributed-poetry protocol", it has lost the frame.
+These framings are load-bearing. Every artefact (README, concept, ln-situating, video script, deck slide) should be legible against them; if a draft starts to read as just "a counter-AI argument" or just "a clever distributed-poetry protocol", it has lost the frame.
 
 ## Projects
 
@@ -33,15 +33,18 @@ These framings are load-bearing. Every artefact (concept, ln-situating, artefact
 
 | File | Role |
 |------|------|
-| `pitch.md` | Long-form essay. **Reference voice; do not alter.** |
+| `README.md` | Public-facing landing for the thread; carries the long-form essay voice (absorbed the previous `pitch.md`). Date-stamped — **reference voice; do not alter** without Robert's explicit permission. |
+| `protocol.md` | "The Protocol" — five-invariant definition and protocol-theory framing. |
 | `formalisation.md` | Protocol formal specification, parameterised over experiment configurations. Sonnet trial in §9.1. |
 | `protocol-diagram.svg` | Dispersed-authorship diagram (5×5 illustrative slice of the 14×14 trial). |
-| `application.pdf`, `callout.pdf` | Long Now Lab 001.1 brief and Google Form export. |
+| `application/application-form.pdf`, `application/callout.pdf` | Long Now Lab 001.1 brief and Google Form export. |
 | `poetry-blockchain-precedents.md` | Comparative review of 7 prior poetry-on-blockchain projects (Po.et, Mirror, Etherpoems, theVERSEverse, POEM, TECHNELEGY, Cord). |
 | `TASKS.md` | Three-lane (Human / Cowork / Code) critical-path task list. |
-| `../to-review/prufrock/` | Drafts awaiting Robert's review pass (workspace-wide review queue): `concept.md`, `previous-work.md`, `ln-situating.md`, `artefact-and-v1.md`, `website-faq.md`, `pitch-draft-v1.md`, `pre-reading-for-rao.md`, `judges-notes.md`, `audit-and-mitigations.md`, `board-member-analysis-grounded.md`, `substack-the-infinite-game-of-poetry.md`, `TODO.md`. |
+| `mockup/spec/` | Specs for the parameterisation-driven mockup pipeline: `protocol-parameterisation.md`, `simulation.md`, `dossier-generator.md`, `scraper.md`, `visualisation.md`. |
+| `memory/` | Project memory (sub-Cowork). Contains `glossary.md`, `ln-situating.md`, `board-member-analysis-grounded.md`, and `projects/` entries. |
+| `../to-review/prufrock/` | Workspace-wide review queue for this thread. Currently parked: `concept.md`. (Earlier drafts — `previous-work.md`, `ln-situating.md`, `board-member-analysis-grounded.md`, etc. — have been reviewed by Robert and either moved into `prufrock/memory/` or `prufrock/application/`, or removed.) Cowork must not auto-edit anything still parked here. |
 
-Sibling threads under the same umbrella (*humane protocols for the transhuman age*) — peers of Prufrock, not parents or supersets: `../poetry-talk/` (*The Infinite Game of Poetry*) and `../transhuman-protocols/` (*Protocols for Effective Human-AI Collaboration*). Material from these threads may be useful as adjacent context but each project sits on its own. `../blogs/` is supporting material.
+Sibling threads under the same umbrella (*humane protocols for the transhuman age*) — peers of Prufrock, not parents or supersets: `../poetry-talk/` (*The Infinite Game of Poetry* — done; reference-only) and `../transhuman-protocols/` (*Protocols for Effective Human-AI Collaboration* — active). Material from these threads may be useful as adjacent context but each project sits on its own. `../blogs/` is Robert's ongoing writing practice (not a research project) and may be drawn from for cross-thread material.
 
 ## Preferences (durable)
 

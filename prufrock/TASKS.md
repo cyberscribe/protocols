@@ -8,9 +8,7 @@
 ## Critical Path
 
 ```
-[C] update artefact-and-v1 for shared-seed mechanic
-        ↓
-[H] review pass: concept · previous-work · ln-situating · artefact-and-v1
+[H] review pass: concept · previous-work · ln-situating
 [H] review formalisation                                ─┐
 [H] review protocol-diagram                              │  parallel
 [H] pick seed sonnet (public-domain volta couplet)      ─┘
@@ -27,7 +25,7 @@
         ↓
 [H] approve final cut
         ↓
-[K] render PDFs (formalisation, artefact-and-v1, ln-situating)
+[K] render PDFs (formalisation, ln-situating)
 [K] render diagram to PNG + PDF
 [K] package submission bundle
         ↓
@@ -42,21 +40,19 @@ Cycle time is dominated by the video (script → review → record → edit → 
 
 ### Cowork
 
-- [ ] **[CRIT] Update `to-review/artefact-and-v1.md`** for the shared-seed mechanic
-  - Current draft references the old participant-seeded model (2 seeds + 12 responses per poet); needs alignment with §9.1's shared-corpus seed + 1-nominal-line + 13-rotated-lines design
-- [ ] **[CRIT] Apply Robert's review feedback** across to-review/ docs, formalisation, and diagram
+- [ ] **[CRIT] Apply Robert's review feedback** across `../to-review/prufrock/` docs, formalisation, and diagram
   - Hold open until Robert's review pass returns
 - [ ] **[CRIT] Draft full video script** from the inline shot list — recorded-take prose with timing, cues, B-roll markers
 - [ ] **[CRIT] Edit video** once Robert's takes arrive — B-roll cuts, lower-thirds, captions, ~2:30 final
   - B-roll ready: `prufrock-demo-prores.mov` (ProRes 422 HQ, 3:15, 1440×900) — import directly to FCP timeline
 - [ ] Compose **Affiliations & Community** text (~3 sentences) once Robert names the channels he wants cited
 - [ ] Compose **Google Form paste-in** text for each field (concept, previous work, affiliations, how-did-you-hear)
-- [ ] Verify all hyperlinks in `previous-work.md` resolve (TAPoetry archive, film-poems page, Poet Tips, talk handouts)
+- [ ] Verify all hyperlinks in `application/previous-work.md` resolve (TAPoetry archive, film-poems page, Poet Tips, talk handouts)
 - [ ] Draft a one-page **submission bundle README** — file names + reading order for the reviewer
 
 ### Human (Robert)
 
-- [ ] **[CRIT] Review pass on `to-review/`** — concept, previous-work, ln-situating, artefact-and-v1
+- [ ] **[CRIT] Review pass on `../to-review/prufrock/`** — concept (and any other items currently parked there)
   - Inline edits welcome; comment back any structural concerns
 - [ ] **[CRIT] Review `formalisation.md`** for technical correctness
   - Particular attention to §1.1 prompt-anonymity invariant, §4.2 dialectic framing, §6.1 form-constraint extensions, §9.1 shared-seed Sonnet Trial
@@ -76,12 +72,11 @@ Cycle time is dominated by the video (script → review → record → edit → 
 
 - [ ] **[CRIT] Render `formalisation.md` → `formalisation.pdf`** with proper LaTeX math (pandoc + xelatex/lualatex; Greek letters, $\Theta$, $\phi$, $\mathcal{L}^*$, etc. must render cleanly)
 - [ ] **[CRIT] Render `protocol-diagram.svg` → PNG and PDF** at submission-grade resolution
-- [ ] **[CRIT] Render `to-review/artefact-and-v1.md` → PDF** (after Robert's review applied)
-- [ ] **[CRIT] Render `to-review/ln-situating.md` → PDF** (or fold into another document)
+- [ ] **[CRIT] Render `memory/ln-situating.md` → PDF** (or fold into another document)
 - [ ] **[CRIT] Package final submission bundle** — folder of named files (or zip) respecting form's 10-file / 10-GB-per-file limits
-- [ ] **Word-count validator** for `to-review/concept.md` — script (`wc -w` with title/epigraph excluded) confirming body ≤ 500
+- [ ] **Word-count validator** for `../to-review/prufrock/concept.md` — script (`wc -w` with title/epigraph excluded) confirming body ≤ 500
 - [ ] **Latin-square validator** for §9.1 — generate a 13-row Latin rectangle on 14 poems with no fixed points; output the assignment matrix as a table; sanity-check that the dispersion design is realisable
-- [ ] Optional: **reference simulation** — small Python notebook running one cohort end-to-end, verifying authorship-dispersion arithmetic and rendering the resulting matrix as a chart. Could be embedded as an appendix in `artefact-and-v1.md`
+- [ ] Optional: **reference simulation** — small Python notebook running one cohort end-to-end, verifying authorship-dispersion arithmetic and rendering the resulting matrix as a chart.
 
 ## Waiting On
 
