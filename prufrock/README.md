@@ -23,7 +23,7 @@ In a world forever changed by generative AI, where words and images can be synth
 
 One answer is to retreat to private and analogue approaches — a handwritten journal, a face-to-face conversation, a photograph taken on film. Though more verifiable and incorruptible, these methods abandon the advances that digitisation and network distribution afford us for communicating quickly, globally, and for archiving artefacts at scale.
 
-The Prufrock Protocol takes inspiration from poetry-time to provide a solution. It defines an agnostic protocol for provoking authentic expression to produce a verifiable record of situated human experience across a network of participants over time. 
+The Prufrock Protocol takes inspiration from poetry-time to provide a solution. It defines a means for provoking authentic expression to produce a verifiable record of situated human experience across a network of participants over time. 
 
 The protocol is medium-agnostic: its first domain is poetry, but its formal structure applies wherever the goal is to record verifiable human artefacts digitally and at scale in an era where this has suddenly become endangered.
 
@@ -43,7 +43,7 @@ The Prufrock Protocol is also a provocation by which its eponymous figure  might
 
 The first experiments use poetry — specifically, the sonnet — as a response medium.
 
-Poetry is perhaps our oldest compression algorithm. It distills subjective moments of individual reflection into form: originally into prescribed structures (meter, rhyme, stanza), now by recalling their echoes. A line of poetry compresses an experience into language shaped by constraint, and in doing so creates negative space for the reader's inference and interpretation. It is an attempt to use words to transcend words, and thereby communicate essential human experience.
+Poetry is perhaps our oldest compression algorithm. It distills subjective moments of individual reflection into form: originally into prescribed structures (metre, rhyme, stanza), now by recalling their echoes. A line of poetry compresses an experience into language shaped by constraint, and in doing so creates negative space for the reader's inference and interpretation. It is an attempt to use words to transcend words, and thereby communicate essential human experience.
 
 Generative AI models also compress human culture, but do so statistically and anonymously, deriving patterns of association from past human artefacts. Furthermore, while LLMs create a regression to the mean of human concerns, poetry proceeds in the opposite direction -- as an expansion of human concerns in aggregate into momentary instances--thus the "infinite game" of using words to transcend words, giving specificity to the timeless.
 

@@ -40,7 +40,7 @@ This separation matters. It means the protocol can be studied as a formal object
 
 ## Example Experiment
 
-![[protocol-diagram.png]]
+![Sonnet Experiment Diagram](protocol-diagram.png)
 
 ## Draft Formalisation
 
