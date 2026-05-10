@@ -1,12 +1,12 @@
 Prufrock Protocol
 
-Poetry is the one of the longest of long nows in human history, charting timeless themes (long) through concrete moments (nows) of individual expression. As such, poetry is already a latent timepiece we can surface and utilise to mark a new kind of time: at once unique (individual expression) and timeless (cyclical, enduring, essentially human) themes. This is a form of time that continually reinvents itself, folding at pinch points into recurrent themes yet recasting them through both contemporary context and individual consciousness.
+Poetry is the one of the longest of long nows in human history, charting timeless themes (long) through concrete moments (nows) of individual expression. It is a set of protocols that continually reinvent themselves, proceeding linearly through contemporary context and individual consciousness yet folding time at pinch points into recurrent human themes. As such, poetry is a latent timepiece we can surface and utilise to understand humanity in both specific and timeless dimensions.
 
-While LLMs create a regression to the mean of human concerns, this is the opposite -- an expansion of "humanity" in aggregate without time dimension or individual expression into the specific instances in time of individual consciousness expressing itself--thus the "infinite game" of using words to transcend words, giving specificity to the timeless.
 
-Where Prufrock requires a courage he doesn't have to disturb the universe, a protocol lets the not-courageous practitioner act consequentially anyway, because the form carries the disturbance for them. That is the literarily exact claim of the name: the Prufrock Protocol is the structure by which the figure who could not act finally does, not because he found the nerve, but because the form supplied what the nerve was missing.
 
-This rhymes precisely with the Hillis posture from the prior reading — "I plant my acorns knowing that I will never live to harvest the oaks" — because both gestures are about acting at scale without first becoming a hero. Prufrock confesses, "I am no prophet — and here's no great matter." The Protocol takes him at his word. It is the form by which the non-prophet still plants.
+While LLMs create a regression to the mean of human concerns, poetry is the opposite -- an expansion of this "humanity" in aggregate into momentary instances--thus the "infinite game" of using words to transcend words, giving specificity to the timeless.
+
+The Prufrock Protocol is also a provocation by which its eponymous figure  might finally act, finding transcendence in the midst of "coffee spoon" time. Where Prufrock requires courage to disturb the universe, and lacks it, the protocol brings disturbance to the willing participant, and compels them to act in the moment. 
 
 Disturbing the universe, together, one line at a time
 
@@ -30,35 +30,20 @@ Possible domains:
 prufrock.now
 prufrockprotocol.com/net/org
 
-sonnet approach:
-
-14 poets write 14 poems of 14 lines over 14 days at 14 random times
-
-day 1 - one chosen poet writes line 1
-day 2 - all poets respond to that one chosen poet's line 1 with line 2
-day 3 - all poets respond to a new chosen poet's line 2 with line 3
-...
-day 14 - all poets respond to a new chosen poet's line 13 with line 14
-
-order of whose line is chosen for what day is predetermined but not announced, so each poet is chosen one time
-calls for lines are sent out at a random time of day during predetermined waking hours of each poet each day
-the lines are sent at the same "time of day" for each poet based on their timezone
-the poet agrees to respond as soon as safely possible after being sent the line
-
 optional - also send a photo or short video (max 5 seconds) with each line; at the end AI makes a film-poem using the media, text, and author reading the poem
 
 optional - map the interconnection of the lines as an interactive infographic
 
 optional - make film-poems from the results
 
-implications for PI to discuss with Venkat:
+Implications for PI to discuss with Venkat:
 
  - stigmergic 
  - autocurricular
  - drift by design
  - novel conceptualisations of:
   * compression (words transcend words)
-  *  nondimensionalisation (negative space)
+  * acknowledged exclusion (negative space)
 
 
 also
