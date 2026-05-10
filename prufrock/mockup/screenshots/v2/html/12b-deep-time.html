@@ -258,6 +258,126 @@ THEMES.forEach((th, i) => {
   if (i === 10) txt(LX+14, ly+11, '← new in 2126+', {fill:'#1e4858', 'font-size':'6', 'font-family':'monospace', 'text-anchor':'start'}, svg);
 });
 
+// ═══════════════════════════════════════════════════════════════
+// PACE LAYER OVERLAY — left-side legend strip (x 0–108)
+// Fast at top → slow at bottom; full chart height CT to CB
+// ═══════════════════════════════════════════════════════════════
+(function drawPaceLayers() {
+  const PX0 = 0, PX1 = 108; // strip x bounds
+  const PW = PX1 - PX0;     // 108px wide
+
+  // Five pace-layer zones mapped to chart height proportions
+  // fractions must sum to 1.0
+  const layers = [
+    { pct: 0.12, fill: 'rgba(168,98,60,.55)',  label: 'Art',      sub: 'individual moment' },
+    { pct: 0.18, fill: 'rgba(140,110,60,.40)', label: 'Poem',     sub: 'assembled days'    },
+    { pct: 0.20, fill: 'rgba(100,110,80,.35)', label: 'Protocol', sub: 'rules & form'      },
+    { pct: 0.22, fill: 'rgba(60,88,118,.40)',  label: 'Culture',  sub: 'century & millennium' },
+    { pct: 0.28, fill: 'rgba(40,65,90,.45)',   label: 'Nature',   sub: 'language & time'   },
+  ];
+
+  let curY = CT;
+  layers.forEach(layer => {
+    const bandH = Math.round(CH * layer.pct);
+    const bandY = curY;
+
+    // Filled band
+    el('rect', { x: PX0, y: bandY, width: PW, height: bandH,
+      fill: layer.fill }, svg);
+
+    // Right border
+    el('line', { x1: PX1, y1: bandY, x2: PX1, y2: bandY + bandH,
+      stroke: 'rgba(255,255,255,.06)', 'stroke-width': '1' }, svg);
+
+    // Layer name — horizontal text, centred in band
+    const midY = bandY + bandH / 2;
+    // Main label (7px uppercase monospace, white 40%)
+    const labEl = el('text', {
+      x: PX0 + PW / 2,
+      y: midY - 5,
+      'text-anchor': 'middle',
+      'dominant-baseline': 'middle',
+      fill: 'rgba(255,255,255,.40)',
+      'font-size': '7',
+      'font-family': 'monospace',
+      'letter-spacing': '.08em',
+    }, svg);
+    labEl.textContent = layer.label.toUpperCase();
+
+    // Sub-label (6px, white 25%)
+    const subEl = el('text', {
+      x: PX0 + PW / 2,
+      y: midY + 7,
+      'text-anchor': 'middle',
+      'dominant-baseline': 'middle',
+      fill: 'rgba(255,255,255,.25)',
+      'font-size': '6',
+      'font-family': 'monospace',
+    }, svg);
+    subEl.textContent = layer.sub;
+
+    curY += bandH;
+  });
+
+  // Vertical separator line at x=112
+  el('line', { x1: 112, y1: CT, x2: 112, y2: CB,
+    stroke: 'rgba(255,255,255,.08)', 'stroke-width': '1' }, svg);
+
+  // "Pace layers" header label above the strip
+  const headerEl = el('text', {
+    x: PX0 + PW / 2,
+    y: CT - 14,
+    'text-anchor': 'middle',
+    'dominant-baseline': 'middle',
+    fill: 'rgba(168,98,60,.50)',
+    'font-size': '7',
+    'font-family': 'monospace',
+    'letter-spacing': '.10em',
+  }, svg);
+  headerEl.textContent = 'PACE LAYERS';
+
+  // Brand quote annotation — top-left of chart area (x~120, y~18)
+  const quoteEl1 = el('text', {
+    x: 120, y: 18,
+    'text-anchor': 'start',
+    'dominant-baseline': 'middle',
+    fill: 'rgba(168,98,60,.50)',
+    'font-size': '7',
+    'font-family': 'monospace',
+    'letter-spacing': '.08em',
+  }, svg);
+  quoteEl1.textContent = 'PACE LAYERS';
+
+  const quoteEl2 = el('text', {
+    x: 120, y: 30,
+    'text-anchor': 'start',
+    'dominant-baseline': 'middle',
+    fill: '#3a4050',
+    'font-size': '7',
+    'font-family': 'monospace',
+  }, svg);
+  quoteEl2.textContent = 'Fast learns · Slow remembers';
+
+  // "Culture layer" floating annotation near the concern ribbons
+  // Positioned at the centre of the chart, near the top of the main ribbon flow
+  // so it doesn't overlap the existing Religious annotation (which is at the left)
+  const cultLabelX = CL + CW * 0.42;  // ~42% across the chart (~580px from CL)
+  const cultLabelY = CT + CH * 0.30;   // 30% down the chart height
+  el('rect', { x: cultLabelX - 4, y: cultLabelY - 10, width: 240, height: 18,
+    rx: 2, fill: 'rgba(28,32,42,.70)' }, svg);
+  const cultEl = el('text', {
+    x: cultLabelX,
+    y: cultLabelY,
+    'text-anchor': 'start',
+    'dominant-baseline': 'middle',
+    fill: 'rgba(60,88,118,.65)',
+    'font-size': '7',
+    'font-family': 'monospace',
+    'letter-spacing': '.04em',
+  }, svg);
+  cultEl.textContent = 'Concern themes — Culture layer · persists across centuries';
+})();
+
 // ─── Bottom statement ─────────────────────────────────────────
 const bx = CL + CW/2;
 txt(bx, H-22, 'Mortality, Love, Memory and Wonder persist across every era of verse · Religious devotion fades from the record · War intrudes then recedes · Climate and Transhumanism are entirely new',

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Prufrock Protocol — The Interruption: Lena Berg · L07 · Poem 01</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1440px;height:900px;overflow:hidden;background:#1c2530;color:#e8dec4;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px;opacity:0}
+
+/* Nav */
+nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;align-items:center;padding:0 24px;gap:2px}
+.brand{display:flex;align-items:baseline;gap:10px;margin-right:28px}
+.brand-name{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.brand-sub{font-size:10px;letter-spacing:.06em;color:#a8623c;opacity:.75}
+.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#5a5450;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.nav-tab.active{color:#e8dec4;border-bottom-color:#a8623c}
+.nav-right{margin-left:auto;font-size:10px;color:#3c3834}
+
+/* Main canvas below nav */
+.canvas{height:856px;display:flex;position:relative;overflow:hidden}
+
+/* Left context panel */
+.left-ctx{width:300px;flex-shrink:0;border-right:1px solid #1e2530;padding:36px 28px;display:flex;flex-direction:column;gap:0;opacity:.55}
+
+.ctx-label{font-size:8px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#3c3834;margin-bottom:20px}
+
+.ctx-poet-row{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.ctx-avatar{width:42px;height:42px;border-radius:50%;background:rgba(120,88,136,.15);border:1.5px solid rgba(120,88,136,.35);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;color:#907098;flex-shrink:0}
+.ctx-poet-name{font-size:15px;font-weight:400;color:#c8c0b0;line-height:1.2;margin-bottom:2px}
+.ctx-poet-sub{font-size:9px;color:#3c3834;font-family:monospace}
+
+.ctx-divider{height:1px;background:#1e2530;margin:16px 0}
+
+.ctx-meta-row{display:flex;align-items:flex-start;gap:0;margin-bottom:7px}
+.ctx-meta-lbl{font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#252c38;width:72px;flex-shrink:0;padding-top:1px}
+.ctx-meta-val{font-size:9px;color:#3c4250;font-family:monospace;line-height:1.5}
+
+.ctx-day-chip{display:inline-flex;align-items:center;gap:6px;margin-top:18px;padding:5px 12px;background:rgba(168,98,60,.06);border:1px solid rgba(168,98,60,.18);border-radius:3px}
+.ctx-day-pips{display:flex;gap:3px}
+.ctx-pip{width:8px;height:3px;border-radius:1px;background:#2a3240}
+.ctx-pip.done{background:rgba(168,98,60,.5)}
+.ctx-pip.today{background:#a8623c}
+.ctx-day-txt{font-size:9px;color:#5a4030;font-family:monospace}
+
+.ctx-poem-strip{margin-top:20px}
+.ctx-poem-lbl{font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#252c38;margin-bottom:8px}
+.ctx-poem-bars{display:flex;flex-direction:column;gap:2px}
+.ctx-bar-row{display:flex;align-items:center;gap:6px}
+.ctx-bar-lnum{font-size:7px;font-family:monospace;color:#252c38;width:18px;text-align:right}
+.ctx-bar-wrap{flex:1;height:3px;background:#1a2028;border-radius:1px;overflow:hidden}
+.ctx-bar-fill{height:100%;border-radius:1px}
+.ctx-bar-cur{font-size:7px;color:#2a3848;font-family:monospace;white-space:nowrap}
+
+/* Centre — phone frame area */
+.centre{flex:1;display:flex;align-items:center;justify-content:center;position:relative}
+
+/* Subtle ambient light behind phone */
+.ambient{position:absolute;width:420px;height:520px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(58,128,144,.045) 0%,transparent 68%);pointer-events:none}
+
+/* Phone frame */
+.phone{width:340px;height:680px;background:#0d1118;border-radius:38px;border:2px solid #2a3340;position:relative;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.7),0 2px 8px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.04)}
+
+/* Phone notch */
+.phone-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:100px;height:26px;background:#0d1118;border-radius:0 0 16px 16px;z-index:10;display:flex;align-items:center;justify-content:center;gap:8px}
+.notch-cam{width:8px;height:8px;border-radius:50%;background:#0a0e14;border:1px solid #1a2028}
+
+/* Status bar */
+.phone-status{height:44px;display:flex;align-items:flex-end;padding:0 22px 6px;justify-content:space-between;flex-shrink:0}
+.ps-time{font-size:13px;font-weight:600;color:#c8c0b0;letter-spacing:.01em}
+.ps-icons{display:flex;align-items:center;gap:6px}
+.ps-icon{font-size:10px;color:#7a7870}
+
+/* Notification banner */
+.notif-banner{margin:0 10px 12px;background:#1a2130;border:1px solid #2a3848;border-radius:16px;padding:12px 14px;position:relative}
+.nb-app-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.nb-app-icon{width:22px;height:22px;border-radius:6px;background:rgba(168,98,60,.2);border:1px solid rgba(168,98,60,.4);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.nb-app-icon svg{width:12px;height:12px;opacity:.8}
+.nb-app-name{font-size:10px;font-weight:600;color:#7a7870;letter-spacing:.04em;text-transform:uppercase;flex:1}
+.nb-time{font-size:9px;color:#3a4050}
+.nb-title{font-size:12px;font-weight:600;color:#e8dec4;margin-bottom:3px;line-height:1.3}
+.nb-body{font-size:10.5px;color:#7a7870;line-height:1.4}
+.nb-body em{font-style:normal;color:#a89878}
+
+/* Phone scroll body */
+.phone-body{flex:1;overflow:hidden;display:flex;flex-direction:column;padding:0 14px 0}
+
+/* Prompt area */
+.prompt-area{background:#141c28;border-radius:14px;padding:16px 16px 14px;margin-bottom:12px}
+.pa-label{font-size:8px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#2e3848;margin-bottom:12px}
+
+.pa-line{padding:10px 12px;border-radius:8px;margin-bottom:8px;background:#0d1118}
+.pa-line:last-of-type{margin-bottom:0}
+.pa-line-hdr{display:flex;align-items:center;gap:6px;margin-bottom:6px}
+.pa-lnum{font-size:7.5px;font-weight:700;letter-spacing:.08em;color:#3c4050;font-family:monospace}
+.pa-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.pa-name{font-size:9.5px;font-weight:600;color:#5a6070}
+.pa-loc{font-size:8px;color:#2e3848;font-family:monospace;margin-left:auto}
+.pa-text{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:12.5px;color:#8a8878;line-height:1.5}
+
+.pa-join{display:flex;align-items:center;gap:8px;margin:10px 0 12px}
+.pa-join-line{flex:1;height:1px;background:#1e2838}
+.pa-join-lbl{font-size:7.5px;color:#2a3440;font-family:monospace;white-space:nowrap}
+
+/* Compose area */
+.compose-area{background:#0f161e;border:1.5px solid rgba(58,128,144,.22);border-radius:14px;padding:14px 14px 12px;margin-bottom:10px;position:relative}
+.ca-label{font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#2a4050;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.ca-label-line-num{font-size:8px;font-weight:700;color:rgba(58,128,144,.6);background:rgba(58,128,144,.1);border:1px solid rgba(58,128,144,.2);border-radius:3px;padding:1px 6px;font-family:monospace;letter-spacing:.06em}
+.ca-text{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:13.5px;color:#a89878;line-height:1.6;min-height:48px;word-break:break-word}
+.ca-cursor{display:inline-block;width:1.5px;height:16px;background:#3a8090;margin-left:1px;vertical-align:text-bottom;animation:blink 1.1s step-end infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+.ca-draft-tag{position:absolute;top:12px;right:12px;font-size:7.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(58,128,144,.5);background:rgba(58,128,144,.07);border:1px solid rgba(58,128,144,.15);padding:2px 7px;border-radius:8px}
+
+/* Signature forming */
+.sig-area{background:rgba(168,98,60,.05);border:1px solid rgba(168,98,60,.15);border-radius:12px;padding:12px 13px;margin-bottom:12px}
+.sig-label{font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(168,98,60,.45);margin-bottom:9px;display:flex;align-items:center;gap:6px}
+.sig-forming-dot{width:5px;height:5px;border-radius:50%;background:#a8623c;opacity:.5;animation:pulse-dot 2s ease-in-out infinite}
+@keyframes pulse-dot{0%,100%{opacity:.3}50%{opacity:.8}}
+.sig-tuple{font-size:9px;font-family:monospace;color:rgba(168,98,60,.55);line-height:1.8;letter-spacing:.04em}
+.sig-tuple span{color:rgba(168,98,60,.35)}
+.sig-tuple .val{color:rgba(200,130,80,.7)}
+.sig-field{display:flex;align-items:baseline;gap:6px;margin-bottom:2px}
+.sf-key{font-size:7.5px;color:rgba(168,98,60,.3);width:54px;flex-shrink:0;letter-spacing:.05em;text-transform:uppercase}
+.sf-val{font-size:9px;font-family:monospace;color:rgba(168,98,60,.6)}
+.sf-val.partial{color:rgba(168,98,60,.35);font-style:italic}
+
+/* Submit row */
+.submit-row{display:flex;gap:8px;padding-bottom:4px}
+.btn-cancel{flex:1;padding:9px 0;background:transparent;border:1px solid #1e2838;border-radius:10px;font-size:11px;color:#3c4050;text-align:center;letter-spacing:.03em}
+.btn-submit{flex:2;padding:9px 0;background:rgba(168,98,60,.15);border:1px solid rgba(168,98,60,.35);border-radius:10px;font-size:11px;color:#a8623c;text-align:center;letter-spacing:.03em;font-weight:600}
+
+/* Right context panel */
+.right-ctx{width:280px;flex-shrink:0;border-left:1px solid #1e2530;padding:36px 24px;display:flex;flex-direction:column;gap:0;opacity:.45}
+
+.rctx-label{font-size:8px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#2e3438;margin-bottom:16px}
+
+.rctx-poem-id{font-size:22px;font-weight:200;color:#2e3848;letter-spacing:.02em;line-height:1;margin-bottom:4px}
+.rctx-poem-sub{font-size:9px;color:#252c38;font-family:monospace}
+
+.rctx-divider{height:1px;background:#1a2028;margin:18px 0}
+
+.rctx-chain-lbl{font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#252c38;margin-bottom:10px}
+.rctx-chain{display:flex;flex-direction:column;gap:4px}
+.rchain-item{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:4px;background:#141c24}
+.rchain-item.active{background:rgba(58,128,144,.06);border:1px solid rgba(58,128,144,.12)}
+.rchain-lnum{font-size:7.5px;font-family:monospace;color:#2e3848;width:22px}
+.rchain-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.rchain-name{font-size:9px;color:#3c4250;flex:1}
+.rchain-name.active-name{color:#4a7888}
+.rchain-arrow{font-size:9px;color:#2e3848}
+
+.rctx-divider-sm{height:1px;background:#141c24;margin:14px 0}
+
+.rctx-protocol-lbl{font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#252c38;margin-bottom:8px}
+.rctx-protocol-row{display:flex;align-items:center;gap:6px;margin-bottom:5px}
+.rp-key{font-size:7.5px;color:#252c38;width:58px;letter-spacing:.05em;text-transform:uppercase}
+.rp-val{font-size:9px;font-family:monospace;color:#2e3848}
+
+.rctx-note{margin-top:auto;padding:12px;background:#141c24;border-radius:6px;border-left:2px solid rgba(168,98,60,.15)}
+.rctx-note-txt{font-size:9px;color:#2a3440;line-height:1.6;font-style:italic}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">
+    <span class="brand-name">The Prufrock Protocol</span>
+    <span class="brand-sub">Sonnet Experiment Alpha</span>
+  </div>
+  <div class="nav-tab">Timeline</div>
+  <div class="nav-tab">Lineage</div>
+  <div class="nav-tab">Map</div>
+  <div class="nav-tab active">Poem</div>
+  <div class="nav-tab">Participant</div>
+  <div class="nav-tab">Concerns</div>
+  <div class="nav-right">The interruption · poet-09 · Lena Berg · Poem 01 · L07 · Day 7</div>
+</nav>
+
+<div class="canvas">
+
+  <!-- Left context: who is being interrupted -->
+  <div class="left-ctx">
+    <div class="ctx-label">Participant receiving interruption</div>
+
+    <div class="ctx-poet-row">
+      <div class="ctx-avatar">LB</div>
+      <div>
+        <div class="ctx-poet-name">Lena Berg</div>
+        <div class="ctx-poet-sub">poet-09 · sonnet-trial-alpha</div>
+      </div>
+    </div>
+
+    <div class="ctx-meta-row">
+      <span class="ctx-meta-lbl">Location</span>
+      <span class="ctx-meta-val">Södermalm, Stockholm<br>58.9°N, 18.1°E · Europe/Stockholm</span>
+    </div>
+    <div class="ctx-meta-row">
+      <span class="ctx-meta-lbl">Local time</span>
+      <span class="ctx-meta-val">14:23 CET · Saturday</span>
+    </div>
+    <div class="ctx-meta-row">
+      <span class="ctx-meta-lbl">UTC</span>
+      <span class="ctx-meta-val">2026-03-14T13:23:11Z</span>
+    </div>
+    <div class="ctx-meta-row">
+      <span class="ctx-meta-lbl">Interrupted</span>
+      <span class="ctx-meta-val">random · Day 7 window</span>
+    </div>
+
+    <div class="ctx-divider"></div>
+
+    <div class="ctx-day-chip">
+      <div class="ctx-day-pips" id="day-pips"></div>
+      <span class="ctx-day-txt">Day 7 of 14</span>
+    </div>
+
+    <div class="ctx-poem-strip" style="margin-top:22px">
+      <div class="ctx-poem-lbl">Poem 01 progress at interruption</div>
+      <div class="ctx-poem-bars" id="poem-bars"></div>
+    </div>
+  </div>
+
+  <!-- Centre: phone frame -->
+  <div class="centre">
+    <div class="ambient"></div>
+    <div class="phone" id="phone">
+      <div class="phone-notch">
+        <div class="notch-cam"></div>
+      </div>
+
+      <!-- Status bar -->
+      <div class="phone-status">
+        <span class="ps-time">14:23</span>
+        <div class="ps-icons">
+          <span class="ps-icon">●●●</span>
+          <span class="ps-icon" style="font-size:9px">WiFi</span>
+          <span class="ps-icon" style="font-size:9px">87%</span>
+        </div>
+      </div>
+
+      <!-- Notification banner -->
+      <div class="notif-banner">
+        <div class="nb-app-row">
+          <div class="nb-app-icon">
+            <!-- small quill/pen icon via SVG -->
+            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13 2C11 2 8 5 7 8L5 14l3-1c3-1 6-4 6-6 0-3-1-5-1-5z" stroke="#a8623c" stroke-width="1.2" stroke-linejoin="round"/>
+              <path d="M7 8L4 11" stroke="#a8623c" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <span class="nb-app-name">Prufrock</span>
+          <span class="nb-time">now</span>
+        </div>
+        <div class="nb-title">Your turn — Poem 01, Line 07</div>
+        <div class="nb-body">Two lines are waiting. You have <em>until midnight</em> to respond.</div>
+      </div>
+
+      <!-- Phone body: scrollable content -->
+      <div class="phone-body">
+
+        <!-- Prompt: two parent lines -->
+        <div class="prompt-area">
+          <div class="pa-label">Prompted by</div>
+
+          <div class="pa-line">
+            <div class="pa-line-hdr">
+              <span class="pa-lnum">L05</span>
+              <div class="pa-dot" style="background:#5a8878"></div>
+              <span class="pa-name">Yuki Tanaka</span>
+              <span class="pa-loc">Tokyo</span>
+            </div>
+            <div class="pa-text">"Rough winds have bent the cedar at the gate,"</div>
+          </div>
+
+          <div class="pa-line">
+            <div class="pa-line-hdr">
+              <span class="pa-lnum">L06</span>
+              <div class="pa-dot" style="background:#c47048"></div>
+              <span class="pa-name">Amara Osei</span>
+              <span class="pa-loc">Accra</span>
+            </div>
+            <div class="pa-text">"yet what the season takes, the root holds on;"</div>
+          </div>
+
+          <div class="pa-join">
+            <div class="pa-join-line"></div>
+            <div class="pa-join-lbl">your line follows</div>
+            <div class="pa-join-line"></div>
+          </div>
+        </div>
+
+        <!-- Compose area -->
+        <div class="compose-area">
+          <div class="ca-label">
+            Write line
+            <span class="ca-label-line-num">L07</span>
+          </div>
+          <div class="ca-text">"the frost-laced morning will not hold—<span class="ca-cursor"></span></div>
+          <div class="ca-draft-tag">draft</div>
+        </div>
+
+        <!-- Spatiotemporal signature forming -->
+        <div class="sig-area">
+          <div class="sig-label">
+            <div class="sig-forming-dot"></div>
+            Signature forming
+          </div>
+          <div style="display:flex;flex-direction:column;gap:2px">
+            <div class="sig-field">
+              <span class="sf-key">Poem</span>
+              <span class="sf-val">P01</span>
+            </div>
+            <div class="sig-field">
+              <span class="sf-key">Line</span>
+              <span class="sf-val">L07</span>
+            </div>
+            <div class="sig-field">
+              <span class="sf-key">Poet</span>
+              <span class="sf-val">LB</span>
+            </div>
+            <div class="sig-field">
+              <span class="sf-key">Timestamp</span>
+              <span class="sf-val">2026-03-14T14:23:11+01:00</span>
+            </div>
+            <div class="sig-field">
+              <span class="sf-key">Location</span>
+              <span class="sf-val">STO · 58.9°N 18.1°E</span>
+            </div>
+            <div class="sig-field">
+              <span class="sf-key">Status</span>
+              <span class="sf-val partial">draft — not yet committed</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="submit-row">
+          <div class="btn-cancel">Discard</div>
+          <div class="btn-submit">Sign &amp; Submit →</div>
+        </div>
+
+      </div><!-- /phone-body -->
+    </div><!-- /phone -->
+  </div><!-- /centre -->
+
+  <!-- Right context: poem state and protocol -->
+  <div class="right-ctx">
+    <div class="rctx-label">Protocol state</div>
+
+    <div class="rctx-poem-id">Poem 01</div>
+    <div class="rctx-poem-sub">Sonnet 18 trial · alpha cohort</div>
+
+    <div class="rctx-divider"></div>
+
+    <div class="rctx-chain-lbl">Line chain — Poem 01</div>
+    <div class="rctx-chain" id="chain-list"></div>
+
+    <div class="rctx-divider-sm"></div>
+
+    <div class="rctx-protocol-lbl">Protocol parameters</div>
+    <div class="rctx-protocol-row">
+      <span class="rp-key">Prompt depth</span>
+      <span class="rp-val">k = 2</span>
+    </div>
+    <div class="rctx-protocol-row">
+      <span class="rp-key">Round</span>
+      <span class="rp-val">1 of 1 (daily)</span>
+    </div>
+    <div class="rctx-protocol-row">
+      <span class="rp-key">Window</span>
+      <span class="rp-val">random · 08:00–22:00 local</span>
+    </div>
+    <div class="rctx-protocol-row">
+      <span class="rp-key">Deadline</span>
+      <span class="rp-val">2026-03-14T22:59 CET</span>
+    </div>
+    <div class="rctx-protocol-row">
+      <span class="rp-key">Forfeit after</span>
+      <span class="rp-val">23:00 → skip recorded</span>
+    </div>
+
+    <div class="rctx-note" style="margin-top:22px">
+      <div class="rctx-note-txt">When submitted, L07 becomes the prompt context for two other poets writing L08 in other poems. The interruption propagates.</div>
+    </div>
+  </div>
+
+</div><!-- /canvas -->
+
+<script>
+// Day pips
+const pipsEl = document.getElementById('day-pips');
+for (let i = 1; i <= 14; i++) {
+  const pip = document.createElement('div');
+  pip.className = 'ctx-pip' + (i < 7 ? ' done' : i === 7 ? ' today' : '');
+  pipsEl.appendChild(pip);
+}
+
+// Poem bars (L01–L14, with L01–L06 filled, L07 pending/active, L08–L14 empty)
+const barsEl = document.getElementById('poem-bars');
+const barWidths = [78, 62, 85, 58, 70, 65, 0, 0, 0, 0, 0, 0, 0, 0];
+const barColors = ['#2a3848','#2a3848','#2a3848','#2a3848','#34606c','#c47048'];
+for (let i = 1; i <= 14; i++) {
+  const row = document.createElement('div');
+  row.className = 'ctx-bar-row';
+  const w = barWidths[i-1] || 0;
+  const isCur = i === 7;
+  const fillColor = i === 5 ? '#2a7060' : i === 6 ? '#c47048' : '#263040';
+  const curLbl = isCur ? '<span class="ctx-bar-cur">← awaiting</span>' : '';
+  row.innerHTML = `<span class="ctx-bar-lnum">${String(i).padStart(2,'0')}</span><div class="ctx-bar-wrap"><div class="ctx-bar-fill" style="width:${w}%;background:${w > 0 ? fillColor : 'transparent'}"></div></div>${curLbl}`;
+  barsEl.appendChild(row);
+}
+
+// Right panel: line chain
+const chainEl = document.getElementById('chain-list');
+const chainData = [
+  {n:'01', name:'Amara Osei',   color:'#c47048', done:true},
+  {n:'02', name:'Hiroshi Tanaka', color:'#4a8890', done:true},
+  {n:'03', name:'Marisol Fuentes',color:'#7a9870', done:true},
+  {n:'04', name:'Siobhán Ní F.', color:'#786894', done:true},
+  {n:'05', name:'Yuki Tanaka',   color:'#5a8878', done:true},
+  {n:'06', name:'Amara Osei',    color:'#c47048', done:true},
+  {n:'07', name:'Lena Berg',     color:'#907098', done:false, active:true},
+  {n:'08', name:'—',             color:'#252c38', done:false},
+  {n:'09', name:'—',             color:'#252c38', done:false},
+];
+chainData.forEach(d => {
+  const item = document.createElement('div');
+  item.className = 'rchain-item' + (d.active ? ' active' : '');
+  item.innerHTML = `<span class="rchain-lnum">L${d.n}</span><div class="rchain-dot" style="background:${d.color};opacity:${d.done ? '.7' : d.active ? '1' : '.2'}"></div><span class="rchain-name${d.active ? ' active-name' : ''}">${d.name}</span>${d.active ? '<span class="rchain-arrow">←</span>' : ''}`;
+  chainEl.appendChild(item);
+});
+
+// Fade in
+requestAnimationFrame(() => requestAnimationFrame(() => {
+  document.body.style.transition = 'opacity .42s ease';
+  document.body.style.opacity = '1';
+}));
+</script>
+<script src="nav-wire.js"></script>
+
+<!-- Nav footer -->
+<div style="position:fixed;bottom:19px;left:28px;font-size:9px;color:#2a3240;z-index:100">
+  <a href="00-index.html" style="color:#2a3240;text-decoration:none">← Index</a>
+  &nbsp;·&nbsp;
+  <a href="15b-line-detail-parent.html" style="color:#2a3240;text-decoration:none">← Detail B</a>
+</div>
+
+<div style="position:fixed;bottom:0;left:0;width:100%;background:#523018;color:#e8dec4;text-align:center;font-size:11px;font-weight:700;letter-spacing:.25em;padding:4px 0;z-index:9999">MOCKUP</div>
+</body>
+</html>

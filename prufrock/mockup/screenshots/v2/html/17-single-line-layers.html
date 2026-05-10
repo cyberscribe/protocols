@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Prufrock Protocol — Single Line · All Layers · Amara Osei · L01 · 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1440px;height:900px;overflow:hidden;background:#1c2530;color:#e8dec4;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px;opacity:0}
+
+/* ── Nav ────────────────────────────────────────────── */
+nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;align-items:center;padding:0 24px;gap:2px}
+.brand{display:flex;align-items:baseline;gap:10px;margin-right:28px}
+.brand-name{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.brand-sub{font-size:10px;letter-spacing:.06em;color:#a8623c;opacity:.75}
+.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#5a5450;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.nav-tab.active{color:#e8dec4;border-bottom-color:#a8623c}
+.nav-right{margin-left:auto;font-size:10px;color:#3c3834}
+
+/* ── Info strip ─────────────────────────────────────── */
+.info-strip{height:36px;background:#1c2028;border-bottom:1px solid #232a32;display:flex;align-items:center;padding:0 24px}
+.is-left{font-size:10px;color:#5a5450;display:flex;align-items:center;gap:6px}
+.is-sep{color:#2a3340;padding:0 2px}
+.is-accent{color:#8a8278}
+.is-right{margin-left:auto;font-size:9px;color:#2e3848;font-style:italic}
+
+/* ── Main body ──────────────────────────────────────── */
+.main-body{height:820px;display:flex}
+
+/* ── Left panel (core sample) ───────────────────────── */
+.left-panel{width:460px;flex-shrink:0;border-right:1px solid #232a32;background:#1c2028;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:28px 0 0}
+.lp-heading{font-size:8px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#3a4050;margin-bottom:18px;text-align:center}
+.core-svg{display:block}
+
+/* ── Right panel (annotations) ──────────────────────── */
+.right-panel{flex:1;background:#1c2028;display:flex;flex-direction:column;padding:0;overflow:hidden}
+.rp-inner{padding:22px 32px 0;flex:1;display:flex;flex-direction:column;gap:0}
+
+/* ── Annotation rows ────────────────────────────────── */
+.ann-row{display:flex;flex-direction:row;align-items:stretch;border-left:3px solid transparent;border-radius:0 4px 4px 0;margin-bottom:6px;background:transparent;opacity:0;transform:translateY(6px);transition:opacity .32s ease, transform .32s ease}
+.ann-row.visible{opacity:1;transform:translateY(0)}
+.ann-body{flex:1;padding:8px 14px 8px 12px}
+.ann-layer{font-size:8px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-bottom:2px}
+.ann-scale{font-size:8px;font-family:monospace;letter-spacing:.04em;margin-bottom:5px}
+.ann-text{font-size:10px;line-height:1.55;color:#6a6860}
+.ann-hash{display:inline;font-family:monospace;font-size:8px;letter-spacing:.04em;color:#3a4a5a}
+
+/* Layer colour tints for right rows */
+.row-l1{border-left-color:rgba(168,98,60,.75);background:rgba(168,98,60,.04)}
+.row-l1 .ann-layer{color:rgba(168,98,60,.8)}
+.row-l1 .ann-scale{color:rgba(168,98,60,.5)}
+
+.row-l2{border-left-color:rgba(155,112,60,.55);background:rgba(155,112,60,.03)}
+.row-l2 .ann-layer{color:rgba(155,112,60,.75)}
+.row-l2 .ann-scale{color:rgba(155,112,60,.45)}
+
+.row-l3{border-left-color:rgba(120,108,74,.5);background:rgba(120,108,74,.025)}
+.row-l3 .ann-layer{color:rgba(140,128,94,.7)}
+.row-l3 .ann-scale{color:rgba(120,108,74,.5)}
+
+.row-l4{border-left-color:rgba(80,104,118,.55);background:rgba(80,104,118,.025)}
+.row-l4 .ann-layer{color:rgba(100,124,138,.7)}
+.row-l4 .ann-scale{color:rgba(80,104,118,.5)}
+
+.row-l5{border-left-color:rgba(60,90,124,.6);background:rgba(60,90,124,.03)}
+.row-l5 .ann-layer{color:rgba(80,110,144,.7)}
+.row-l5 .ann-scale{color:rgba(60,90,124,.5)}
+
+.row-l6{border-left-color:rgba(46,76,108,.65);background:rgba(46,76,108,.03)}
+.row-l6 .ann-layer{color:rgba(70,100,132,.65)}
+.row-l6 .ann-scale{color:rgba(46,76,108,.5)}
+
+.row-l7{border-left-color:rgba(32,58,84,.8);background:rgba(32,58,84,.04)}
+.row-l7 .ann-layer{color:rgba(58,88,118,.65)}
+.row-l7 .ann-scale{color:rgba(32,58,84,.55)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand"><span class="brand-name">The Prufrock Protocol</span><span class="brand-sub">Sonnet Experiment Alpha</span></div>
+  <div class="nav-tab">Timeline</div>
+  <div class="nav-tab">Lineage</div>
+  <div class="nav-tab">Map</div>
+  <div class="nav-tab active">Poem</div>
+  <div class="nav-tab">Participant</div>
+  <div class="nav-tab">Concerns</div>
+  <div class="nav-right">One line · all layers · Amara Osei · L01 · 2026</div>
+</nav>
+
+<div class="info-strip">
+  <div class="is-left">
+    <span class="is-accent">Poem 01 · Line 01 · Amara Osei · Accra · 2026-06-08</span>
+  </div>
+  <div class="is-right">Every act of verse simultaneously fast and slow</div>
+</div>
+
+<div class="main-body">
+
+  <!-- Left: core sample SVG -->
+  <div class="left-panel">
+    <div class="lp-heading">Geological core sample · one line · seven layers</div>
+    <svg class="core-svg" width="460" height="776" xmlns="http://www.w3.org/2000/svg">
+
+      <!-- Central spine line -->
+      <line x1="230" y1="0" x2="230" y2="776" stroke="rgba(255,255,255,.08)" stroke-width="0.8"/>
+
+      <!--
+        Layer polygons — each is a trapezoid, centred at x=230.
+        top-left  = 230 - topW/2,   topY
+        top-right = 230 + topW/2,   topY
+        bot-right = 230 + botW/2,   topY+h   (botW = next layer's topW)
+        bot-left  = 230 - botW/2,   topY+h
+
+        Layer   topW   botW    h    y-start
+        L1       80    120    70      14
+        L2      120    165    72      84
+        L3      165    215    74     156
+        L4      215    278    80     230
+        L5      278    352    88     310
+        L6      352    440    96     398
+        L7      440    460   110     494
+      -->
+
+      <!-- Layer 1 — Art (amber) -->
+      <polygon
+        points="190,14 270,14 290,84 170,84"
+        fill="rgba(168,98,60,.75)"
+        stroke="rgba(200,130,80,.25)" stroke-width="0.8"/>
+      <!-- Layer 1 label -->
+      <text x="230" y="43" text-anchor="middle" dominant-baseline="middle"
+        fill="rgba(255,255,255,.60)" font-size="7" font-family="monospace" letter-spacing=".08em">ART</text>
+      <!-- The line text in Layer 1 -->
+      <text x="230" y="59" text-anchor="middle" dominant-baseline="middle"
+        fill="rgba(255,255,255,.80)" font-size="9" font-family="Georgia,'Times New Roman',serif" font-style="italic">"The summer I remember had no owner"</text>
+
+      <!-- Layer 2 — Poem -->
+      <polygon
+        points="170,84 290,84 312.5,156 147.5,156"
+        fill="rgba(155,112,60,.60)"
+        stroke="rgba(185,142,80,.20)" stroke-width="0.8"/>
+      <text x="230" y="120" text-anchor="middle" dominant-baseline="middle"
+        fill="rgba(255,255,255,.60)" font-size="7" font-family="monospace" letter-spacing=".08em">POEM</text>
+
+      <!-- Layer 3 — Experiment -->
+      <polygon
+        points="147.5,156 312.5,156 337.5,230 122.5,230"
+        fill="rgba(120,108,74,.50)"
+        stroke="rgba(155,140,100,.18)" stroke-width="0.8"/>
+      <text x="230" y="193" text-anchor="middle" dominant-baseline="middle"
+        fill="rgba(255,255,255,.60)" font-size="7" font-family="monospace" letter-spacing=".08em">EXPERIMENT</text>
+
+      <!-- Layer 4 — Protocol -->
+      <polygon
+        points="122.5,230 337.5,230 369,310 91,310"
+        fill="rgba(80,104,118,.50)"
+        stroke="rgba(110,134,148,.18)" stroke-width="0.8"/>
+      <text x="230" y="270" text-anchor="middle" dominant-baseline="middle"
+        fill="rgba(255,255,255,.60)" font-size="7" font-family="monospace" letter-spacing=".08em">PROTOCOL</text>
+
+      <!-- Layer 5 — Seed text -->
+      <polygon
+        points="91,310 369,310 406,398 54,398"
+        fill="rgba(60,90,124,.52)"
+        stroke="rgba(90,120,154,.18)" stroke-width="0.8"/>
+      <text x="230" y="354" text-anchor="middle" dominant-baseline="middle"
+        fill="rgba(255,255,255,.60)" font-size="7" font-family="monospace" letter-spacing=".08em">SEED TEXT</text>
+
+      <!-- Layer 6 — Concern -->
+      <polygon
+        points="54,398 406,398 450,494 10,494"
+        fill="rgba(46,76,108,.55)"
+        stroke="rgba(76,106,138,.18)" stroke-width="0.8"/>
+      <text x="230" y="446" text-anchor="middle" dominant-baseline="middle"
+        fill="rgba(255,255,255,.60)" font-size="7" font-family="monospace" letter-spacing=".08em">CONCERN</text>
+
+      <!-- Layer 7 — Language (widest, full-bleed) -->
+      <polygon
+        points="10,494 450,494 460,604 0,604"
+        fill="rgba(32,58,84,.62)"
+        stroke="rgba(62,88,114,.18)" stroke-width="0.8"/>
+      <text x="230" y="549" text-anchor="middle" dominant-baseline="middle"
+        fill="rgba(255,255,255,.60)" font-size="7" font-family="monospace" letter-spacing=".08em">LANGUAGE</text>
+
+      <!-- Layer boundary dividers (thin white hairlines at each trapezoid join) -->
+      <line x1="170" y1="84" x2="290" y2="84" stroke="rgba(255,255,255,.06)" stroke-width="0.5"/>
+      <line x1="147.5" y1="156" x2="312.5" y2="156" stroke="rgba(255,255,255,.06)" stroke-width="0.5"/>
+      <line x1="122.5" y1="230" x2="337.5" y2="230" stroke="rgba(255,255,255,.06)" stroke-width="0.5"/>
+      <line x1="91" y1="310" x2="369" y2="310" stroke="rgba(255,255,255,.06)" stroke-width="0.5"/>
+      <line x1="54" y1="398" x2="406" y2="398" stroke="rgba(255,255,255,.06)" stroke-width="0.5"/>
+      <line x1="10" y1="494" x2="450" y2="494" stroke="rgba(255,255,255,.06)" stroke-width="0.5"/>
+      <line x1="0" y1="604" x2="460" y2="604" stroke="rgba(255,255,255,.04)" stroke-width="0.5"/>
+
+      <!-- Scale legend below the layers -->
+      <text x="230" y="630" text-anchor="middle" dominant-baseline="middle"
+        fill="rgba(255,255,255,.12)" font-size="7" font-family="monospace" letter-spacing=".08em">FAST</text>
+      <line x1="100" y1="630" x2="200" y2="630" stroke="rgba(255,255,255,.07)" stroke-width="0.6" stroke-dasharray="2 3"/>
+      <line x1="260" y1="630" x2="360" y2="630" stroke="rgba(255,255,255,.07)" stroke-width="0.6" stroke-dasharray="2 3"/>
+
+      <text x="230" y="655" text-anchor="middle" dominant-baseline="middle"
+        fill="rgba(255,255,255,.08)" font-size="7" font-family="monospace" letter-spacing=".06em">↕ widening = deeper time</text>
+
+      <text x="230" y="676" text-anchor="middle" dominant-baseline="middle"
+        fill="rgba(255,255,255,.12)" font-size="7" font-family="monospace" letter-spacing=".08em">SLOW</text>
+
+      <!-- Pace annotation — fast/slow arrows -->
+      <text x="12" y="50" text-anchor="start" dominant-baseline="middle"
+        fill="rgba(168,98,60,.40)" font-size="6.5" font-family="monospace">minutes</text>
+      <text x="12" y="548" text-anchor="start" dominant-baseline="middle"
+        fill="rgba(46,76,108,.45)" font-size="6.5" font-family="monospace">millennia</text>
+
+      <!-- Layer number badges -->
+      <text x="244" y="43" text-anchor="start" dominant-baseline="middle"
+        fill="rgba(168,98,60,.45)" font-size="6" font-family="monospace">01</text>
+      <text x="244" y="120" text-anchor="start" dominant-baseline="middle"
+        fill="rgba(155,112,60,.40)" font-size="6" font-family="monospace">02</text>
+      <text x="244" y="193" text-anchor="start" dominant-baseline="middle"
+        fill="rgba(120,108,74,.40)" font-size="6" font-family="monospace">03</text>
+      <text x="244" y="270" text-anchor="start" dominant-baseline="middle"
+        fill="rgba(80,104,118,.40)" font-size="6" font-family="monospace">04</text>
+      <text x="244" y="354" text-anchor="start" dominant-baseline="middle"
+        fill="rgba(60,90,124,.40)" font-size="6" font-family="monospace">05</text>
+      <text x="244" y="446" text-anchor="start" dominant-baseline="middle"
+        fill="rgba(46,76,108,.40)" font-size="6" font-family="monospace">06</text>
+      <text x="244" y="549" text-anchor="start" dominant-baseline="middle"
+        fill="rgba(32,58,84,.45)" font-size="6" font-family="monospace">07</text>
+
+    </svg>
+  </div>
+
+  <!-- Right: annotation rows -->
+  <div class="right-panel">
+    <div class="rp-inner">
+
+      <!-- Row 1 — Art / Signed line -->
+      <div class="ann-row row-l1" id="ann-1">
+        <div class="ann-body">
+          <div class="ann-layer">Layer 01 — Art / Signed line</div>
+          <div class="ann-scale">2026-06-08 · 09:14 GMT · minutes</div>
+          <div class="ann-text">A single act of attention. Amara Osei opened the app in Accra at dawn. The prior two lines arrived — Shakespeare's seed: "Nor shall death brag…" — she wrote one line and signed it. <span class="ann-hash">SHA-3: c4a8f1d2…7b3e</span>. Timestamp sealed. This moment will not change.</div>
+        </div>
+      </div>
+
+      <!-- Row 2 — Commerce / Poem -->
+      <div class="ann-row row-l2" id="ann-2">
+        <div class="ann-body">
+          <div class="ann-layer">Layer 02 — Commerce / Poem</div>
+          <div class="ann-scale">Poem 01 · 14 contributions · June 2026 · days</div>
+          <div class="ann-text">Her line becomes the first of fourteen. Each subsequent poet receives the prior two lines. Her L01 — "The summer I remember had no owner" — passes to the L02 poet as half of their prompt. The poem closes on day 14.</div>
+        </div>
+      </div>
+
+      <!-- Row 3 — Infrastructure / Experiment -->
+      <div class="ann-row row-l3" id="ann-3">
+        <div class="ann-body">
+          <div class="ann-layer">Layer 03 — Infrastructure / Experiment</div>
+          <div class="ann-scale">Sonnet Experiment Alpha · 14 poems · 1 year</div>
+          <div class="ann-text">Poem 01 is one of fourteen. All 14 poets write one line per poem per day. By year's end, 196 signed lines form a corpus — the first complete run of the Prufrock Protocol. Amara's L01 appears in 14 of those poems.</div>
+        </div>
+      </div>
+
+      <!-- Row 4 — Governance / Protocol -->
+      <div class="ann-row row-l4" id="ann-4">
+        <div class="ann-body">
+          <div class="ann-layer">Layer 04 — Governance / Protocol</div>
+          <div class="ann-scale">Protocol v1.0 · decades</div>
+          <div class="ann-text">The protocol rules — two-line prompt, one-line response, cryptographic signing, random interruption timing — exist independently of this experiment. They will govern future runs, with different cohorts, different seeds, different centuries. Her line was produced by these rules and testifies to them.</div>
+        </div>
+      </div>
+
+      <!-- Row 5 — Culture / Seed text -->
+      <div class="ann-row row-l5" id="ann-5">
+        <div class="ann-body">
+          <div class="ann-layer">Layer 05 — Culture / Seed text</div>
+          <div class="ann-scale">Shakespeare · Sonnet 18 · 1609 · 417 years</div>
+          <div class="ann-text">The seed lines she received were written in London in 1609. "Nor shall death brag thou wander'st in his shade." She responded without knowing who would read her response next. Her summer that had no owner echoes the poem's summer that "shall not fade" — across four centuries of English.</div>
+        </div>
+      </div>
+
+      <!-- Row 6 — Culture / Concern -->
+      <div class="ann-row row-l6" id="ann-6">
+        <div class="ann-body">
+          <div class="ann-layer">Layer 06 — Culture / Concern</div>
+          <div class="ann-scale">Memory · Domestic · millennia</div>
+          <div class="ann-text">"The summer I remember had no owner" — this engages Memory and the Domestic: a summer not owned by anyone, already lost to collective forgetting. These concerns appear in Gilgamesh (2100 BCE), in Khayyám (c.1120 CE), in Wordsworth (1798). They are not hers alone; they are the recurring human question.</div>
+        </div>
+      </div>
+
+      <!-- Row 7 — Nature / Language -->
+      <div class="ann-row row-l7" id="ann-7">
+        <div class="ann-body">
+          <div class="ann-layer">Layer 07 — Nature / Language</div>
+          <div class="ann-scale">Language · human consciousness · geological</div>
+          <div class="ann-text">Every word she chose has been used by the dead for thousands of years. "Summer." "Remember." "Owner." These are not her words — she is borrowing them from all prior speakers and lending them to all who come after. This is what language is. The protocol makes this inheritance visible.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+// Fade in body
+requestAnimationFrame(() => requestAnimationFrame(() => {
+  document.body.style.transition = 'opacity .38s ease';
+  document.body.style.opacity = '1';
+}));
+
+// Staggered cascade: annotation rows fade in top-to-bottom
+// Start after 500ms, 120ms stagger per row
+const rows = document.querySelectorAll('.ann-row');
+rows.forEach((row, i) => {
+  setTimeout(() => {
+    row.classList.add('visible');
+  }, 500 + i * 120);
+});
+</script>
+<script src="nav-wire.js"></script>
+<div style="position:fixed;bottom:0;left:0;width:100%;background:#523018;color:#e8dec4;text-align:center;font-size:11px;font-weight:700;letter-spacing:.25em;padding:4px 0;z-index:9999">MOCKUP</div>
+</body>
+</html>
