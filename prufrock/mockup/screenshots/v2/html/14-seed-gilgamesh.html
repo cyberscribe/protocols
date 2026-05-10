@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Prufrock Protocol — Seed: Epic of Gilgamesh c. 2100 BCE</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1440px;height:900px;overflow:hidden;background:#1a1f28;color:#e8dec4;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px}
+nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;align-items:center;padding:0 24px;gap:2px}
+.brand{display:flex;align-items:baseline;gap:10px;margin-right:28px}
+.brand-name{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#e8dec4}
+.brand-sub{font-size:10px;letter-spacing:.06em;color:#a8623c;opacity:.75}
+.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#5a5450;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.nav-tab.active{color:#e8dec4;border-bottom-color:#a8623c}
+.nav-right{margin-left:auto;font-size:10px;color:#3c3834}
+.seed-strip{height:40px;background:rgba(138,110,70,.08);border-bottom:1px solid rgba(138,110,70,.2);display:flex;align-items:center;padding:0 24px;gap:16px}
+.ss-tag{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8a6e46;opacity:.9;flex-shrink:0}
+.ss-line{font-family:Georgia,serif;font-style:italic;font-size:12px;color:rgba(138,110,70,.8)}
+.ss-right{margin-left:auto;font-size:10px;color:#5a4a38;white-space:nowrap;flex-shrink:0}
+.era-strip{height:32px;background:rgba(80,60,30,.06);border-bottom:1px solid rgba(80,60,30,.15);display:flex;align-items:center;padding:0 24px;gap:20px}
+.era-tag{font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#6a5838;opacity:.9}
+.era-span{font-size:9px;color:#4a3a28;font-family:monospace}
+.poem-view{height:784px;display:flex;flex-direction:column}
+.comparison-header{height:52px;display:flex;align-items:stretch;border-bottom:1px solid #232a32;flex-shrink:0}
+.comparison-label{width:44px;flex-shrink:0;border-right:1px solid #232a32;display:flex;align-items:center;justify-content:center;font-size:7.5px;color:#3c3834;letter-spacing:.1em;text-transform:uppercase;writing-mode:vertical-lr;transform:rotate(180deg)}
+.poem-header{flex:1;display:flex;align-items:center;padding:0 20px;gap:14px}
+.poem-header.left{border-right:1px solid #2a3340;background:rgba(138,110,70,.025)}
+.poem-header.right{background:rgba(168,98,60,.015)}
+.ph-year{font-size:11px;font-weight:700;padding:3px 12px;border-radius:10px;flex-shrink:0}
+.ph-year.ancient{color:#8a6e46;background:rgba(138,110,70,.12);border:1px solid rgba(138,110,70,.28)}
+.ph-year.y2026{color:#c47048;background:rgba(196,112,72,.1);border:1px solid rgba(196,112,72,.22)}
+.ph-title{font-size:15px;font-weight:300;color:#e8dec4;flex:1}
+.ph-sub{font-size:9px;color:#5a5450}
+.poem-body{flex:1;display:flex;overflow:hidden}
+.line-numbers{width:44px;flex-shrink:0;border-right:1px solid #232a32;background:#181d26;display:flex;flex-direction:column}
+.lnum{height:50px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:monospace;color:#322e2a;border-bottom:1px solid #1e2228}
+.poem-col{flex:1;overflow-y:hidden;background:#181d26}
+.poem-col.left{border-right:1px solid #2a3340}
+.poem-line{height:50px;padding:8px 16px 0 18px;border-bottom:1px solid #1e2228;position:relative;display:flex;flex-direction:column}
+.pl-text{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:13px;line-height:1.3;color:#a8a090}
+.poem-line.seed-line{background:rgba(138,110,70,.07);border-left:3px solid rgba(138,110,70,.4);padding-left:15px}
+.poem-line.seed-line .pl-text{color:#c4b078}
+.poem-line.gap{background:rgba(0,0,0,.2);border-bottom:1px dashed #2a3340}
+.poem-line.echo-line{background:rgba(168,98,60,.04)}
+.poem-line.echo-line .pl-text{color:#c49870}
+.pl-top{display:flex;align-items:baseline;gap:6px}
+.pl-author{display:flex;align-items:center;gap:4px;flex-shrink:0}
+.pl-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.pl-init{font-size:7px;font-family:monospace;font-weight:700}
+.pl-meta{font-size:7px;color:#3c3428;margin-top:3px;font-family:monospace}
+.seed-badge{font-size:6.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(138,110,70,.9);background:rgba(138,110,70,.12);border:1px solid rgba(138,110,70,.3);border-radius:3px;padding:1px 5px;flex-shrink:0;align-self:center}
+.echo-badge{font-size:6.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(168,98,60,.8);background:rgba(168,98,60,.1);border:1px solid rgba(168,98,60,.25);border-radius:3px;padding:1px 5px;flex-shrink:0;align-self:center}
+.gap-label{font-size:8px;color:#3a3020;font-family:monospace;display:flex;align-items:center;height:100%;padding:0 8px}
+.note-bar{position:fixed;bottom:20px;right:24px;width:330px;background:#141019;border:1px solid #2a2818;border-radius:6px;padding:14px;font-size:9px;color:#6a6050;line-height:1.65}
+.note-bar strong{color:#c4b078;font-weight:600}
+.deep-label{position:fixed;top:130px;left:50%;transform:translateX(-50%);font-size:8px;font-family:monospace;color:#3a2e1e;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;pointer-events:none}
+</style>
+</head>
+<body>
+<nav>
+  <div class="brand"><span class="brand-name">The Prufrock Protocol</span><span class="brand-sub">Sonnet Experiment Alpha</span></div>
+  <div class="nav-tab">Timeline</div>
+  <div class="nav-tab">Lineage</div>
+  <div class="nav-tab">Map</div>
+  <div class="nav-tab active">Poem</div>
+  <div class="nav-tab">Participant</div>
+  <div class="nav-tab">Concerns</div>
+  <div class="nav-right">Deep seed · Epic of Gilgamesh c. 2100 BCE → 2026 response · ~4,100-year inheritance</div>
+</nav>
+<div class="seed-strip">
+  <span class="ss-tag">Root seed</span>
+  <span class="ss-line">When the gods created mankind, · they allotted death to mankind,</span>
+  <span class="ss-right">Epic of Gilgamesh · Tablet X · c. 2100 BCE (A. George trans. 2003)</span>
+</div>
+<div class="era-strip">
+  <span class="era-tag">Protocol applied to a 4,100-year-old seed</span>
+  <span class="era-span">Oldest surviving literary text · Sumerian cuneiform · Tablet X concerns mortality and the limits of human striving · translation by Andrew George (Penguin Classics)</span>
+</div>
+
+<div class="poem-view">
+  <div class="comparison-header">
+    <div class="comparison-label">Gilgamesh</div>
+    <div class="poem-header left">
+      <div class="ph-year ancient">c. 2100 BCE</div>
+      <div class="ph-title">Epic of Gilgamesh — Tablet X (excerpt)</div>
+      <div class="ph-sub">Cuneiform original · Andrew George translation · lines 1–2 extracted as protocol seed</div>
+    </div>
+    <div class="poem-header right">
+      <div class="ph-year y2026">2026</div>
+      <div class="ph-title">Response Poem — Sonnet Experiment Alpha</div>
+      <div class="ph-sub">14 authors · 14 lines · seed received: "When the gods created mankind"</div>
+    </div>
+  </div>
+  <div class="poem-body">
+    <div class="line-numbers" id="lnums"></div>
+    <div class="poem-col left" id="left-col"></div>
+    <div class="poem-col right" id="right-col"></div>
+  </div>
+</div>
+
+<div class="note-bar">
+  <strong>What this demonstrates:</strong> The protocol holds across 4,100 years. Mortality — the original human concern — is still the prompt. The 2026 cohort receives two lines and writes the next. The chain is unbroken; the question is the same. Poetry has always been this: attention passed forward through time against the allotment of death.
+</div>
+
+<script>
+// Left column: Gilgamesh Tablet X excerpt, padded to 14 lines with adjacent passages
+const LEFT_LINES = [
+  {t:'When the gods created mankind,',                                              meta:'Tablet X · George 2003', seed:true},
+  {t:'they allotted death to mankind,',                                             meta:'Tablet X · seed line 2', seed:true},
+  {t:'but life they retained in their own keeping.',                               meta:'Tablet X', seed:false},
+  {t:'As for you, Gilgamesh, let your belly be full,',                            meta:'Tablet X', seed:false},
+  {t:'make merry day and night.',                                                   meta:'Tablet X', seed:false},
+  {t:'Of each day make a feast of rejoicing,',                                     meta:'Tablet X', seed:false},
+  {t:'— — —', meta:'', gap:true},
+  {t:'day and night dance thou and play!',                                         meta:'Tablet X', seed:false},
+  {t:'Let thy garments be sparkling fresh,',                                       meta:'Tablet X', seed:false},
+  {t:'thy head be washed; bathe thou in water.',                                   meta:'Tablet X', seed:false},
+  {t:'Pay heed to the little one that holds on to thy hand,',                     meta:'Tablet X', seed:false},
+  {t:'let thy spouse delight in thy embrace!',                                     meta:'Tablet X', seed:false},
+  {t:'These things alone are the concern of mankind.',                             meta:'Tablet X', seed:false},
+  {t:'— — —', meta:'', gap:true},
+];
+
+// Right column: 2026 cohort response — 14 lines
+const RIGHT_LINES = [
+  {t:'They gave us death, but also the word for death, which is a kind of light',  a:{id:'AO',col:'#c47048'}, echo:true},
+  {t:'What the gods kept was not life but the craving for it',                     a:{id:'HT',col:'#5a5070'}, echo:false},
+  {t:'I have been allotted this breath, and this word, and this line',             a:{id:'MF',col:'#7a6888'}, echo:false},
+  {t:'In the beginning was the allotment; then came the argument',                 a:{id:'SN',col:'#5a807c'}, echo:false},
+  {t:'They created us to mourn what they withheld — but here we are, writing',    a:{id:'EŞ',col:'#a8623c'}, echo:false},
+  {t:'Death is the rule: we are the exception still being tested',                 a:{id:'MP',col:'#5a6878'}, echo:false},
+  {t:'What the gods decided, the mouth decides again',                             a:{id:'AD',col:'#786894'}, echo:true},
+  {t:'Even snow knows it was water once, and will be again',                      a:{id:'YN',col:'#889060'}, echo:false},
+  {t:'Between the gods and mankind: the long negotiation of the poem',            a:{id:'LB',col:'#785888'}, echo:false},
+  {t:'Mortality is the hypothesis; verse is the experiment',                       a:{id:'CA',col:'#5a907c'}, echo:true},
+  {t:'They allotted us the ending — we supplied the rest',                        a:{id:'ND',col:'#b8703c'}, echo:false},
+  {t:'Each line I write is an argument against the original allotment',           a:{id:'PL',col:'#6a7e92'}, echo:false},
+  {t:'To create mankind and give us death: a strange gift to unwrap in verse',    a:{id:'VG',col:'#887060'}, echo:false},
+  {t:'The gods retained life; the poem retains the question',                     a:{id:'BL',col:'#889078'}, echo:true},
+];
+
+// Line numbers
+const lnDiv = document.getElementById('lnums');
+for (let i=1;i<=14;i++){
+  const d=document.createElement('div'); d.className='lnum'; d.textContent=i; lnDiv.appendChild(d);
+}
+
+const leftCol = document.getElementById('left-col');
+LEFT_LINES.forEach(d => {
+  const div = document.createElement('div');
+  if (d.gap) {
+    div.className = 'poem-line gap';
+    div.innerHTML = `<div class="gap-label">· · ·</div>`;
+  } else {
+    div.className = 'poem-line' + (d.seed ? ' seed-line' : '');
+    const badge = d.seed ? '<span class="seed-badge">→ 2026</span>' : '';
+    div.innerHTML = `<div class="pl-top">${badge}<span class="pl-text">${d.t}</span></div><div class="pl-meta">${d.meta}</div>`;
+  }
+  leftCol.appendChild(div);
+});
+
+const rightLineEls = [];
+const rightCol = document.getElementById('right-col');
+RIGHT_LINES.forEach((d, i) => {
+  const div = document.createElement('div');
+  div.className = 'poem-line' + (d.echo ? ' echo-line' : '');
+  div.style.opacity = '0';
+  div.style.transform = 'translateX(8px)';
+  const badge = d.echo ? '<span class="echo-badge">↻ echo</span>' : '';
+  div.innerHTML = `<div class="pl-top">${badge}<span class="pl-text">${d.t}</span><div class="pl-author"><div class="pl-dot" style="background:${d.a.col}"></div><span class="pl-init" style="color:${d.a.col}bb">${d.a.id}</span></div></div>`;
+  rightLineEls.push(div);
+  rightCol.appendChild(div);
+});
+
+// Cascade right column in
+setTimeout(() => {
+  rightLineEls.forEach((el, i) => {
+    setTimeout(() => {
+      el.style.transition = 'opacity .32s ease, transform .32s ease';
+      el.style.opacity = '1';
+      el.style.transform = 'translateX(0)';
+      if (el.classList.contains('echo-line')) {
+        setTimeout(() => {
+          el.style.transition = 'background .2s ease';
+          el.style.background = 'rgba(168,98,60,.12)';
+          setTimeout(() => { el.style.transition = 'background .7s ease'; el.style.background = ''; }, 280);
+        }, 330);
+      }
+    }, i * 80);
+  });
+}, 900);
+</script>
+<script src="nav-wire.js"></script>
+<div style="position:fixed;bottom:0;left:0;width:100%;background:#523018;color:#e8dec4;text-align:center;font-size:11px;font-weight:700;letter-spacing:.25em;padding:4px 0;z-index:9999">MOCKUP</div>
+</body>
+</html>

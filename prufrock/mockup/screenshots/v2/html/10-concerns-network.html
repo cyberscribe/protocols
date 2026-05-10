@@ -190,6 +190,10 @@ for (let p = 0; p < N_POEMS; p++) {
   }
 }
 
+// Start hidden — animation reveals from blank graph
+seedThemeArcs.forEach(a => { const l=a.getTotalLength(); a.style.strokeDasharray=l; a.style.strokeDashoffset=l; });
+poemArcGroups.flat().forEach(a => { const l=a.getTotalLength(); a.style.strokeDasharray=l; a.style.strokeDashoffset=l; });
+
 // ─── Seed node ────────────────────────────────────────────────
 el('circle', {cx:SEED_X, cy:SEED_Y, r:32, fill:'rgba(168,98,60,.06)', stroke:'rgba(168,98,60,.25)', 'stroke-width':'1.5'}, svg);
 el('circle', {cx:SEED_X, cy:SEED_Y, r:20, fill:'#1a1612', stroke:'rgba(168,98,60,.5)', 'stroke-width':'1.5'}, svg);
@@ -224,6 +228,9 @@ for (let p = 0; p < N_POEMS; p++) {
   txt(POEM_X, py, String(p+1).padStart(2,'0'), {fill: isDivergent ? '#c47048' : '#5a5450', 'font-size':'7', 'font-family':'monospace', 'font-weight':isDivergent?'700':'400'}, svg);
   txt(POEM_X+r+8, py, `Poem ${String(p+1).padStart(2,'0')}`, {fill: isDivergent ? '#c47048bb' : '#34302c', 'font-size':'7.5', 'font-family':'monospace', 'text-anchor':'start'}, svg);
 }
+
+// Hide poem nodes initially
+poemNodeEls.forEach(n => { n.style.opacity = '0'; });
 
 // Divergent poems callout (P04, P05, P06, P08, P11, P13 — 5 of 14 drop seed themes)
 const p6y = poemY(5);

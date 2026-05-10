@@ -1,0 +1,152 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: The Prufrock Protocol
+      - generic [ref=e5]: Sonnet Experiment Alpha
+    - generic [ref=e6] [cursor=pointer]: Timeline
+    - generic [ref=e7] [cursor=pointer]: Lineage
+    - generic [ref=e8] [cursor=pointer]: Map
+    - generic [ref=e9] [cursor=pointer]: Poem
+    - generic [ref=e10] [cursor=pointer]: Participant
+    - generic [ref=e11] [cursor=pointer]: Concerns
+    - generic [ref=e12]: Authorial trail — Amara Osei across 14 poems
+  - generic [ref=e13]:
+    - generic [ref=e14]:
+      - generic [ref=e15]: Poets
+      - generic [ref=e16]: Laypeople
+      - generic [ref=e17]: Both
+    - generic [ref=e18]:
+      - generic [ref=e19]: Day
+      - generic [ref=e23]: 14 / 14
+    - generic [ref=e24]:
+      - generic [ref=e25]: ● Amara Osei · 14 contributions across 14 poems
+      - generic [ref=e26]: Click any node to select
+  - generic [ref=e27]:
+    - generic [ref=e28]: Root
+    - generic [ref=e29]: "Nor shall death brag thou wander'st in his shade, · When in eternal lines to time thou grow'st:"
+    - generic [ref=e30]: W. Shakespeare · 1609
+  - generic [ref=e31]:
+    - img [ref=e32]:
+      - generic [ref=e36]: "\"Nor shall death brag…When in eternal lines to time thou grow'st:\" · 1609"
+      - generic [ref=e37]: P01
+      - generic [ref=e38]: P02
+      - generic [ref=e39]: P03
+      - generic [ref=e40]: P04
+      - generic [ref=e41]: P05
+      - generic [ref=e42]: P06
+      - generic [ref=e43]: P07
+      - generic [ref=e44]: P08
+      - generic [ref=e45]: P09
+      - generic [ref=e46]: P10
+      - generic [ref=e47]: P11
+      - generic [ref=e48]: P12
+      - generic [ref=e49]: P13
+      - generic [ref=e50]: P14
+      - generic [ref=e51]: D1
+      - generic [ref=e52]: D2
+      - generic [ref=e53]: D3
+      - generic [ref=e54]: D4
+      - generic [ref=e55]: D5
+      - generic [ref=e56]: D6
+      - generic [ref=e57]: D7
+      - generic [ref=e58]: D8
+      - generic [ref=e59]: D9
+      - generic [ref=e60]: D10
+      - generic [ref=e61]: D11
+      - generic [ref=e62]: D12
+      - generic [ref=e63]: D13
+      - generic [ref=e64]: D14
+      - generic [ref=e69]: AO
+      - generic [ref=e91]: AO
+      - generic [ref=e109]: AO
+      - generic [ref=e129]: AO
+      - generic [ref=e136]: AO
+      - generic [ref=e159]: AO
+      - generic [ref=e170]: AO
+      - generic [ref=e194]: AO
+      - generic [ref=e199]: AO
+      - generic [ref=e220]: AO
+      - generic [ref=e230]: AO
+      - generic [ref=e256]: AO
+      - generic [ref=e270]: AO
+      - generic [ref=e281]: AO
+      - generic [ref=e291]: Amara's 14 contributions zigzag across 14 poems — one per poem, one per day — shuffled Latin square ensures no two consecutive contributions land in adjacent poems
+    - generic [ref=e292]:
+      - generic [ref=e293]:
+        - generic [ref=e294]: AO
+        - generic [ref=e295]: Amara Osei
+        - generic [ref=e296]: Accra, Ghana · Poet and lecturer · MFA Michigan
+        - generic [ref=e297]: Poet Cohort
+      - generic [ref=e298]: Authorial trail — 14 contributions across 14 poems
+      - generic [ref=e299]:
+        - generic [ref=e300] [cursor=pointer]:
+          - generic [ref=e302]:
+            - text: Poem 01
+            - text: Day 1
+          - generic [ref=e303]: "\"The summer I remember had no owner\""
+        - generic [ref=e304] [cursor=pointer]:
+          - generic [ref=e306]:
+            - text: Poem 02
+            - text: Day 7
+          - generic [ref=e307]: "\"What does the grave forget that the soil keeps?\""
+        - generic [ref=e308] [cursor=pointer]:
+          - generic [ref=e310]:
+            - text: Poem 03
+            - text: Day 9
+          - generic [ref=e311]: "\"I named my grief and it answered to nothing\""
+        - generic [ref=e312] [cursor=pointer]:
+          - generic [ref=e314]:
+            - text: Poem 04
+            - text: Day 13
+          - generic [ref=e315]: "\"The words we inherit outlive the mouths that made them\""
+        - generic [ref=e316] [cursor=pointer]:
+          - generic [ref=e318]:
+            - text: Poem 05
+            - text: Day 4
+          - generic [ref=e319]: "\"Even absence has a temperature in this latitude\""
+        - generic [ref=e320] [cursor=pointer]:
+          - generic [ref=e322]:
+            - text: Poem 06
+            - text: Day 11
+          - generic [ref=e323]: "\"She carried the country in her posture, not her speech\""
+        - generic [ref=e324] [cursor=pointer]:
+          - generic [ref=e326]:
+            - text: Poem 07
+            - text: Day 6
+          - generic [ref=e327]: "\"What is given cannot be taken, only forgotten\""
+        - generic [ref=e328] [cursor=pointer]:
+          - generic [ref=e330]:
+            - text: Poem 08
+            - text: Day 14
+          - generic [ref=e331]: "\"The dead know the weather better than the living\""
+        - generic [ref=e332] [cursor=pointer]:
+          - generic [ref=e334]:
+            - text: Poem 09
+            - text: Day 3
+          - generic [ref=e335]: "\"Everything I owe I owe to someone's silence\""
+        - generic [ref=e336] [cursor=pointer]:
+          - generic [ref=e338]:
+            - text: Poem 10
+            - text: Day 8
+          - generic [ref=e339]: "\"The body remembers what the mind consents to forget\""
+        - generic [ref=e340] [cursor=pointer]:
+          - generic [ref=e342]:
+            - text: Poem 11
+            - text: Day 2
+          - generic [ref=e343]: "\"Light falls differently on things it has already burned\""
+        - generic [ref=e344] [cursor=pointer]:
+          - generic [ref=e346]:
+            - text: Poem 12
+            - text: Day 12
+          - generic [ref=e347]: "\"To be chosen is only one way of being seen\""
+        - generic [ref=e348] [cursor=pointer]:
+          - generic [ref=e350]:
+            - text: Poem 13
+            - text: Day 10
+          - generic [ref=e351]: "\"I have stopped explaining the country to strangers\""
+        - generic [ref=e352] [cursor=pointer]:
+          - generic [ref=e354]:
+            - text: Poem 14
+            - text: Day 5
+          - generic [ref=e355]: "\"The line I write today will outlast the hand that wrote it\""
+  - generic [ref=e356]: MOCKUP

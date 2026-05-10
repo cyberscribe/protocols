@@ -1,0 +1,262 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: The Prufrock Protocol
+      - generic [ref=e5]: Sonnet Experiment Alpha
+    - generic [ref=e6] [cursor=pointer]: Timeline
+    - generic [ref=e7] [cursor=pointer]: Lineage
+    - generic [ref=e8] [cursor=pointer]: Map
+    - generic [ref=e9] [cursor=pointer]: Poem
+    - generic [ref=e10] [cursor=pointer]: Participant
+    - generic [ref=e11] [cursor=pointer]: Concerns
+    - generic [ref=e12]: Poem 01 · 2026 → lines 7–8 transmitted → 2126 response · 100-year inheritance
+  - generic [ref=e13]:
+    - generic [ref=e14]:
+      - generic [ref=e15]: "2026"
+      - generic [ref=e16]: "2126"
+      - generic [ref=e17]: Compare
+    - generic [ref=e18]: → Lines 7–8 sealed as seed · June 2026 · received by 2126 cohort
+    - generic [ref=e20]:
+      - generic [ref=e21]: 2026 ↔ 2126
+      - generic [ref=e22] [cursor=pointer]: Chain of Attention
+      - generic [ref=e23] [cursor=pointer]: The Inheritance
+  - generic [ref=e24]:
+    - generic [ref=e25]: Root seed
+    - generic [ref=e26]: "Nor shall death brag thou wander'st in his shade, · When in eternal lines to time thou grow'st:"
+    - generic [ref=e27]: W. Shakespeare · London · 1609 → seeded 2026 experiment
+  - generic [ref=e28]:
+    - generic [ref=e29]: Transmitted →
+    - generic [ref=e30]: "\"The wall came down but the frontier remained in my dreaming\" · \"Under the northern lights, the cold is slow and patient\""
+    - generic [ref=e31]: Poem 01 Lines 7–8 · 2026 → 2126
+  - generic [ref=e32]:
+    - generic [ref=e33]:
+      - generic [ref=e34]: Poem 01
+      - generic [ref=e35]:
+        - generic [ref=e36]: "2026"
+        - generic [ref=e37]: Poem 01 — Poets Cohort
+        - generic [ref=e38]: 14 authors · 14 lines · lines 7–8 highlighted as seed for 2126
+      - generic [ref=e39]:
+        - generic [ref=e40]: "2126"
+        - generic [ref=e41]: Response Poem — Future Cohort
+        - generic [ref=e42]: 14 authors · 14 lines · seed received from 2026 · echoes marked ↻
+    - generic [ref=e43]:
+      - generic [ref=e44]:
+        - generic [ref=e45]: "1"
+        - generic [ref=e46]: "2"
+        - generic [ref=e47]: "3"
+        - generic [ref=e48]: "4"
+        - generic [ref=e49]: "5"
+        - generic [ref=e50]: "6"
+        - generic [ref=e51]: "7"
+        - generic [ref=e52]: "8"
+        - generic [ref=e53]: "9"
+        - generic [ref=e54]: "10"
+        - generic [ref=e55]: "11"
+        - generic [ref=e56]: "12"
+        - generic [ref=e57]: "13"
+        - generic [ref=e58]: "14"
+      - generic [ref=e59]:
+        - generic [ref=e60] [cursor=pointer]:
+          - generic [ref=e61]:
+            - generic [ref=e62]: The summer I remember had no owner
+            - generic [ref=e65]: AO
+          - generic [ref=e66]:
+            - generic [ref=e67]: Memory
+            - generic [ref=e68]: Domestic
+        - generic [ref=e69] [cursor=pointer]:
+          - generic [ref=e70]:
+            - generic [ref=e71]: The ice does not know what it means to hold or release
+            - generic [ref=e74]: BL
+          - generic [ref=e75]:
+            - generic [ref=e76]: Mortality
+            - generic [ref=e77]: Time
+        - generic [ref=e78] [cursor=pointer]:
+          - generic [ref=e79]:
+            - generic [ref=e80]: "Vesuvius is patient: it has buried us before"
+            - generic [ref=e83]: VG
+          - generic [ref=e84]:
+            - generic [ref=e85]: Mortality
+            - generic [ref=e86]: Time
+        - generic [ref=e87] [cursor=pointer]:
+          - generic [ref=e88]:
+            - generic [ref=e89]: The river remembers the village that the map forgot
+            - generic [ref=e92]: PL
+          - generic [ref=e93]:
+            - generic [ref=e94]: Memory
+            - generic [ref=e95]: Identity
+        - generic [ref=e96] [cursor=pointer]:
+          - generic [ref=e97]:
+            - generic [ref=e98]: I speak my name into the gap where history went quiet
+            - generic [ref=e101]: ND
+          - generic [ref=e102]:
+            - generic [ref=e103]: Identity
+            - generic [ref=e104]: Solitude
+        - generic [ref=e105] [cursor=pointer]:
+          - generic [ref=e106]:
+            - generic [ref=e107]: The Tagus carries everything to where the sea begins
+            - generic [ref=e110]: CA
+          - generic [ref=e111]:
+            - generic [ref=e112]: Memory
+            - generic [ref=e113]: Wonder
+        - generic [ref=e114] [cursor=pointer]:
+          - generic [ref=e115]:
+            - generic [ref=e116]: → 2126
+            - generic [ref=e117]: The wall came down but the frontier remained in my dreaming
+            - generic [ref=e120]: LB
+          - generic [ref=e121]:
+            - generic [ref=e122]: Identity
+            - generic [ref=e123]: Solitude
+        - generic [ref=e124] [cursor=pointer]:
+          - generic [ref=e125]:
+            - generic [ref=e126]: → 2126
+            - generic [ref=e127]: Under the northern lights, the cold is slow and patient
+            - generic [ref=e130]: YN
+          - generic [ref=e131]:
+            - generic [ref=e132]: Wonder
+            - generic [ref=e133]: Time
+        - generic [ref=e134] [cursor=pointer]:
+          - generic [ref=e135]:
+            - generic [ref=e136]: The drum that calls the living names the dead
+            - generic [ref=e139]: AD
+          - generic [ref=e140]:
+            - generic [ref=e141]: Grief
+            - generic [ref=e142]: Mortality
+        - generic [ref=e143] [cursor=pointer]:
+          - generic [ref=e144]:
+            - generic [ref=e145]: "The monsoon names each year the same: this one"
+            - generic [ref=e148]: MP
+          - generic [ref=e149]:
+            - generic [ref=e150]: Time
+            - generic [ref=e151]: Identity
+        - generic [ref=e152] [cursor=pointer]:
+          - generic [ref=e153]:
+            - generic [ref=e154]: Between two empires, I misplace my century
+            - generic [ref=e157]: EŞ
+          - generic [ref=e158]:
+            - generic [ref=e159]: Time
+            - generic [ref=e160]: Identity
+        - generic [ref=e161] [cursor=pointer]:
+          - generic [ref=e162]:
+            - generic [ref=e163]: These hands have held what tides forget they moved
+            - generic [ref=e166]: SN
+          - generic [ref=e167]:
+            - generic [ref=e168]: Memory
+            - generic [ref=e169]: Grief
+        - generic [ref=e170] [cursor=pointer]:
+          - generic [ref=e171]:
+            - generic [ref=e172]: I carry what I cannot bury in the common grave
+            - generic [ref=e175]: MF
+          - generic [ref=e176]:
+            - generic [ref=e177]: Grief
+            - generic [ref=e178]: Mortality
+        - generic [ref=e179] [cursor=pointer]:
+          - generic [ref=e180]:
+            - generic [ref=e181]: What the pine tree writes in shadows, snow erases
+            - generic [ref=e184]: HT
+          - generic [ref=e185]:
+            - generic [ref=e186]: Mortality
+            - generic [ref=e187]: Memory
+      - generic [ref=e188]:
+        - generic [ref=e189] [cursor=pointer]:
+          - generic [ref=e190]:
+            - generic [ref=e191]: ↻ echo
+            - generic [ref=e192]: The frontier hath no body now; it drifts in the datasphere
+            - generic [ref=e195]: AOO
+          - generic [ref=e196]:
+            - generic [ref=e197]: Memory
+            - generic [ref=e198]: Trans.
+        - generic [ref=e199] [cursor=pointer]:
+          - generic [ref=e200]:
+            - generic [ref=e201]: Cold patienced wait became the methane-sigh of thawing
+            - generic [ref=e204]: HT2
+          - generic [ref=e205]:
+            - generic [ref=e206]: Climate
+            - generic [ref=e207]: Time
+        - generic [ref=e208] [cursor=pointer]:
+          - generic [ref=e209]:
+            - generic [ref=e210]: ↻ echo
+            - generic [ref=e211]: We dreamshed the wall our mothers dreamed, and walked its ghost
+            - generic [ref=e214]: SK2
+          - generic [ref=e215]:
+            - generic [ref=e216]: Memory
+            - generic [ref=e217]: Identity
+        - generic [ref=e218] [cursor=pointer]:
+          - generic [ref=e219]:
+            - generic [ref=e220]: "The archive breathes: all grief hath been indexèd and kept"
+            - generic [ref=e223]: VA2
+          - generic [ref=e224]:
+            - generic [ref=e225]: Grief
+            - generic [ref=e226]: Trans.
+        - generic [ref=e227] [cursor=pointer]:
+          - generic [ref=e228]:
+            - generic [ref=e229]: What sleeps beneath the ice sleeps not — it stirs and names itself
+            - generic [ref=e232]: PL2
+          - generic [ref=e233]:
+            - generic [ref=e234]: Climate
+            - generic [ref=e235]: Mortality
+        - generic [ref=e236] [cursor=pointer]:
+          - generic [ref=e237]:
+            - generic [ref=e238]: I wore the overlay of she who wrote before me
+            - generic [ref=e241]: ND2
+          - generic [ref=e242]:
+            - generic [ref=e243]: Identity
+            - generic [ref=e244]: Memory
+        - generic [ref=e245] [cursor=pointer]:
+          - generic [ref=e246]:
+            - generic [ref=e247]: In neural commons, longing hath no fixed address
+            - generic [ref=e250]: CA2
+          - generic [ref=e251]:
+            - generic [ref=e252]: Love
+            - generic [ref=e253]: Trans.
+        - generic "Click to inspect — Lena Berg echoes 2026 seed line 8" [ref=e254] [cursor=pointer]:
+          - generic [ref=e255]:
+            - generic [ref=e256]: ↻ echo
+            - generic [ref=e257]: The patient cold is gone; we mourn the stillness we unmade
+            - generic [ref=e260]: LB2
+          - generic [ref=e261]:
+            - generic [ref=e262]: Climate
+            - generic [ref=e263]: Grief
+        - generic [ref=e264] [cursor=pointer]:
+          - generic [ref=e265]:
+            - generic [ref=e266]: Between the upload and the flesh, a country of one breath
+            - generic [ref=e269]: YN2
+          - generic [ref=e270]:
+            - generic [ref=e271]: Trans.
+            - generic [ref=e272]: Identity
+        - generic [ref=e273] [cursor=pointer]:
+          - generic [ref=e274]:
+            - generic [ref=e275]: The dreamshed holds the wall — dismantled, piece by piece, whole
+            - generic [ref=e278]: AD2
+          - generic [ref=e279]:
+            - generic [ref=e280]: Memory
+            - generic [ref=e281]: Mortality
+        - generic [ref=e282] [cursor=pointer]:
+          - generic [ref=e283]:
+            - generic [ref=e284]: "To name a frontier: to claim thee knoweth where thou art"
+            - generic [ref=e287]: MV2
+          - generic [ref=e288]:
+            - generic [ref=e289]: Identity
+            - generic [ref=e290]: Time
+        - generic [ref=e291] [cursor=pointer]:
+          - generic [ref=e292]:
+            - generic [ref=e293]: All that the lights forgave, the warming sky unchose
+            - generic [ref=e296]: EY2
+          - generic [ref=e297]:
+            - generic [ref=e298]: Climate
+            - generic [ref=e299]: Wonder
+        - generic [ref=e300] [cursor=pointer]:
+          - generic [ref=e301]:
+            - generic [ref=e302]: "I am what the archive kept: a voice the corpus traced"
+            - generic [ref=e305]: KP2
+          - generic [ref=e306]:
+            - generic [ref=e307]: Trans.
+            - generic [ref=e308]: Memory
+        - generic [ref=e309] [cursor=pointer]:
+          - generic [ref=e310]:
+            - generic [ref=e311]: The line they gave to us outlasts the hand — and now the mind
+            - generic [ref=e314]: BL2
+          - generic [ref=e315]:
+            - generic [ref=e316]: Mortality
+            - generic [ref=e317]: Time
+            - generic [ref=e318]: Memory
+  - generic [ref=e319]: MOCKUP

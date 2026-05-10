@@ -241,6 +241,14 @@ addText(112, H-45, 'Sequential author handoff within poem (laypeople)', 'rgba(96
 addEl('line',{x1:52,y1:H-30,x2:105,y2:H-30,stroke:'rgba(168,98,60,.45)','stroke-width':1.3,'stroke-dasharray':'none'});
 addText(112, H-30, 'Featured poem journey (Poem 07 · days 1–7)', 'rgba(168,98,60,.65)', 8, 'start');
 
+// Start hidden — animation reveals from blank map
+seedArcs.forEach(a => { a.style.opacity = '0'; });
+[...poem01Arcs, ...poem07Arcs, ...layArcs].forEach(a => {
+  const l = a.getTotalLength(); a.style.strokeDasharray = l; a.style.strokeDashoffset = l;
+});
+poetDotEls.forEach(d => { d.style.opacity = '0'; });
+layDotEls.forEach(d => { d.style.opacity = '0'; });
+
 // ═══════════════════════════════════════════════════════════════
 // ANIMATION — arcs cascade in sequence; click ★ to replay
 // ═══════════════════════════════════════════════════════════════

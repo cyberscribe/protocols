@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Prufrock Protocol — Seed: Omar Khayyám c. 1120 CE</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1440px;height:900px;overflow:hidden;background:#1c2530;color:#e8dec4;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px}
+nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;align-items:center;padding:0 24px;gap:2px}
+.brand{display:flex;align-items:baseline;gap:10px;margin-right:28px}
+.brand-name{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#e8dec4}
+.brand-sub{font-size:10px;letter-spacing:.06em;color:#a8623c;opacity:.75}
+.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#5a5450;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.nav-tab.active{color:#e8dec4;border-bottom-color:#a8623c}
+.nav-right{margin-left:auto;font-size:10px;color:#3c3834}
+.seed-strip{height:40px;background:rgba(168,98,60,.06);border-bottom:1px solid rgba(168,98,60,.15);display:flex;align-items:center;padding:0 24px;gap:16px}
+.ss-tag{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#a8623c;opacity:.7;flex-shrink:0}
+.ss-line{font-family:Georgia,serif;font-style:italic;font-size:12px;color:rgba(168,98,60,.7)}
+.ss-right{margin-left:auto;font-size:10px;color:#4a4038;white-space:nowrap;flex-shrink:0}
+.era-strip{height:32px;background:rgba(90,104,120,.04);border-bottom:1px solid rgba(90,104,120,.1);display:flex;align-items:center;padding:0 24px;gap:20px}
+.era-tag{font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#4a6a8a;opacity:.8}
+.era-span{font-size:9px;color:#3c4858;font-family:monospace}
+.poem-view{height:784px;display:flex;flex-direction:column}
+.comparison-header{height:52px;display:flex;align-items:stretch;border-bottom:1px solid #232a32;flex-shrink:0}
+.comparison-label{width:44px;flex-shrink:0;border-right:1px solid #232a32;display:flex;align-items:center;justify-content:center;font-size:7.5px;color:#3c3834;letter-spacing:.1em;text-transform:uppercase;writing-mode:vertical-lr;transform:rotate(180deg)}
+.poem-header{flex:1;display:flex;align-items:center;padding:0 20px;gap:14px}
+.poem-header.left{border-right:1px solid #2a3340;background:rgba(168,98,60,.025)}
+.poem-header.right{background:rgba(74,106,138,.02)}
+.ph-year{font-size:11px;font-weight:700;padding:3px 12px;border-radius:10px;flex-shrink:0}
+.ph-year.hist{color:#9a8258;background:rgba(154,130,88,.1);border:1px solid rgba(154,130,88,.22)}
+.ph-year.y2026{color:#c47048;background:rgba(196,112,72,.1);border:1px solid rgba(196,112,72,.22)}
+.ph-title{font-size:15px;font-weight:300;color:#e8dec4;flex:1}
+.ph-sub{font-size:9px;color:#5a5450}
+.poem-body{flex:1;display:flex;overflow:hidden}
+.line-numbers{width:44px;flex-shrink:0;border-right:1px solid #232a32;background:#1c2028;display:flex;flex-direction:column}
+.lnum{height:50px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:monospace;color:#322e2a;border-bottom:1px solid #1e2228}
+.poem-col{flex:1;overflow-y:hidden;background:#1c2028}
+.poem-col.left{border-right:1px solid #2a3340}
+.poem-line{height:50px;padding:8px 16px 0 18px;border-bottom:1px solid #1e2228;position:relative;display:flex;flex-direction:column}
+.pl-text{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:13px;line-height:1.3;color:#a8a090}
+.poem-line.seed-line{background:rgba(168,98,60,.055);border-left:3px solid rgba(168,98,60,.32);padding-left:15px}
+.poem-line.seed-line .pl-text{color:#b8a87a}
+.poem-line.gap{background:rgba(0,0,0,.15);border-bottom:1px dashed #2a3340}
+.poem-line.echo-line{background:rgba(74,106,138,.04)}
+.poem-line.echo-line .pl-text{color:#a8b8c8}
+.pl-top{display:flex;align-items:baseline;gap:6px}
+.pl-author{display:flex;align-items:center;gap:4px;flex-shrink:0}
+.pl-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.pl-init{font-size:7px;font-family:monospace;font-weight:700}
+.pl-meta{font-size:7px;color:#3c3834;margin-top:3px;font-family:monospace}
+.seed-badge{font-size:6.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(168,98,60,.8);background:rgba(168,98,60,.1);border:1px solid rgba(168,98,60,.25);border-radius:3px;padding:1px 5px;flex-shrink:0;align-self:center}
+.echo-badge{font-size:6.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(74,106,138,.8);background:rgba(74,106,138,.1);border:1px solid rgba(74,106,138,.25);border-radius:3px;padding:1px 5px;flex-shrink:0;align-self:center}
+.gap-label{font-size:8px;color:#3a3428;font-family:monospace;display:flex;align-items:center;height:100%;padding:0 8px}
+.note-bar{position:fixed;bottom:20px;right:24px;width:320px;background:#141c28;border:1px solid #2a3848;border-radius:6px;padding:14px;font-size:9px;color:#6a7878;line-height:1.6}
+.note-bar strong{color:#a8b8c8;font-weight:600}
+</style>
+</head>
+<body>
+<nav>
+  <div class="brand"><span class="brand-name">The Prufrock Protocol</span><span class="brand-sub">Sonnet Experiment Alpha</span></div>
+  <div class="nav-tab">Timeline</div>
+  <div class="nav-tab">Lineage</div>
+  <div class="nav-tab">Map</div>
+  <div class="nav-tab active">Poem</div>
+  <div class="nav-tab">Participant</div>
+  <div class="nav-tab">Concerns</div>
+  <div class="nav-right">Deep seed · Omar Khayyám c. 1120 CE → 2026 response · ~900-year inheritance</div>
+</nav>
+<div class="seed-strip">
+  <span class="ss-tag">Root seed</span>
+  <span class="ss-line">Beside me singing in the Wilderness — · And Wilderness is Paradise enow.</span>
+  <span class="ss-right">Omar Khayyám · Rubáiyát XI · c. 1120 CE (FitzGerald trans. 1859)</span>
+</div>
+<div class="era-strip">
+  <span class="era-tag">Protocol applied to a 900-year-old seed</span>
+  <span class="era-span">Khayyám wrote in Persian quatrains (rubā'ī) · FitzGerald's 1859 translation became the canonical English text · These two lines received by the 2026 cohort as Day 1 prompt</span>
+</div>
+
+<div class="poem-view">
+  <div class="comparison-header">
+    <div class="comparison-label">Rubáiyát</div>
+    <div class="poem-header left">
+      <div class="ph-year hist">c. 1120 CE</div>
+      <div class="ph-title">Rubáiyát of Omar Khayyám — Quatrain XI</div>
+      <div class="ph-sub">Persian original · FitzGerald translation · public domain · lines 3–4 extracted as protocol seed</div>
+    </div>
+    <div class="poem-header right">
+      <div class="ph-year y2026">2026</div>
+      <div class="ph-title">Response Poem — Sonnet Experiment Alpha</div>
+      <div class="ph-sub">14 authors · 14 lines · seed received: "Beside me singing in the Wilderness"</div>
+    </div>
+  </div>
+  <div class="poem-body">
+    <div class="line-numbers" id="lnums"></div>
+    <div class="poem-col left" id="left-col"></div>
+    <div class="poem-col right" id="right-col"></div>
+  </div>
+</div>
+
+<div class="note-bar">
+  <strong>What this demonstrates:</strong> The protocol is seed-agnostic. Any two lines from any source — canonical or obscure, translated or native — become a valid prompt. The 2026 cohort received Khayyám's couplet without context beyond the lines themselves. The inheritance is the text; the occasion is the moment of response.
+</div>
+
+<script>
+// Left column: Rubáiyát Quatrain XI (FitzGerald), padded to 14 lines with adjacent quatrains
+const LEFT_LINES = [
+  {t:'Here with a Loaf of Bread beneath the Bough,',          meta:'Q.XI · FitzGerald 1859', seed:false},
+  {t:'A Flask of Wine, a Book of Verse — and Thou',           meta:'Q.XI', seed:false},
+  {t:'  Beside me singing in the Wilderness —',              meta:'Q.XI · seed line 1', seed:true},
+  {t:'  And Wilderness is Paradise enow.',                    meta:'Q.XI · seed line 2', seed:true},
+  {t:'— — —', meta:'', gap:true},
+  {t:'Some for the Glories of This World; and some',          meta:'Q.XII', seed:false},
+  {t:'Sigh for the Prophet\'s Paradise to come;',             meta:'Q.XII', seed:false},
+  {t:'  Ah, take the Cash, and let the Credit go,',          meta:'Q.XII', seed:false},
+  {t:'  Nor heed the rumble of a distant Drum!',             meta:'Q.XII', seed:false},
+  {t:'— — —', meta:'', gap:true},
+  {t:'Look to the blowing Rose about us — "Lo,',             meta:'Q.XIII', seed:false},
+  {t:'"Laughing," she says, "into the world I blow,',         meta:'Q.XIII', seed:false},
+  {t:'"At once the silken tassel of my Purse',               meta:'Q.XIII', seed:false},
+  {t:'"Tear, and its Treasure on the Garden throw."',         meta:'Q.XIII', seed:false},
+];
+
+// Right column: 2026 cohort response — 14 lines responding to the wilderness/paradise couplet
+const RIGHT_LINES = [
+  {t:'Even the wilderness is someone else\'s garden that forgot its name',    a:{id:'AO',col:'#c47048'}, echo:false},
+  {t:'What we call paradise the pine tree calls an ordinary hour',             a:{id:'HT',col:'#5a5070'}, echo:false},
+  {t:'I have sung into the dark and called it landscape',                      a:{id:'MF',col:'#7a6888'}, echo:false},
+  {t:'All bread is borrowed — from the soil, from the sun, from time',        a:{id:'SN',col:'#5a807c'}, echo:false},
+  {t:'The wilderness inside me has no borders that I know of',                 a:{id:'EŞ',col:'#a8623c'}, echo:true},
+  {t:'Wine or water: both remember where they fell from',                      a:{id:'MP',col:'#5a6878'}, echo:false},
+  {t:'I have named this moment and now I must leave it',                       a:{id:'AD',col:'#786894'}, echo:false},
+  {t:'What the wilderness asks is only: will you stay?',                       a:{id:'YN',col:'#889060'}, echo:false},
+  {t:'We call a thing paradise when we suspect it will not last',              a:{id:'LB',col:'#785888'}, echo:true},
+  {t:'The book of verse the wind makes no one has to carry',                   a:{id:'CA',col:'#5a907c'}, echo:false},
+  {t:'Beside you means the wilderness recedes by half',                        a:{id:'ND',col:'#b8703c'}, echo:true},
+  {t:'Enow — that word alone, entire, still whole',                           a:{id:'PL',col:'#6a7e92'}, echo:true},
+  {t:'The wilderness does not need permission to be paradise',                 a:{id:'VG',col:'#887060'}, echo:false},
+  {t:'We are singing still, into the wilderness, which was always here',       a:{id:'BL',col:'#889078'}, echo:false},
+];
+
+// Line numbers
+const lnDiv = document.getElementById('lnums');
+for (let i=1;i<=14;i++){
+  const d=document.createElement('div'); d.className='lnum'; d.textContent=i; lnDiv.appendChild(d);
+}
+
+const leftCol = document.getElementById('left-col');
+LEFT_LINES.forEach(d => {
+  const div = document.createElement('div');
+  if (d.gap) {
+    div.className = 'poem-line gap';
+    div.innerHTML = `<div class="gap-label">· · ·</div>`;
+  } else {
+    div.className = 'poem-line' + (d.seed ? ' seed-line' : '');
+    const badge = d.seed ? '<span class="seed-badge">→ 2026</span>' : '';
+    div.innerHTML = `<div class="pl-top">${badge}<span class="pl-text">${d.t}</span></div><div class="pl-meta">${d.meta}</div>`;
+  }
+  leftCol.appendChild(div);
+});
+
+const rightLineEls = [];
+const rightCol = document.getElementById('right-col');
+RIGHT_LINES.forEach((d, i) => {
+  const div = document.createElement('div');
+  div.className = 'poem-line' + (d.echo ? ' echo-line' : '');
+  div.style.opacity = '0';
+  div.style.transform = 'translateX(8px)';
+  const badge = d.echo ? '<span class="echo-badge">↻ echo</span>' : '';
+  div.innerHTML = `<div class="pl-top">${badge}<span class="pl-text">${d.t}</span><div class="pl-author"><div class="pl-dot" style="background:${d.a.col}"></div><span class="pl-init" style="color:${d.a.col}bb">${d.a.id}</span></div></div>`;
+  rightLineEls.push(div);
+  rightCol.appendChild(div);
+});
+
+// Cascade right column in after a brief hold
+setTimeout(() => {
+  rightLineEls.forEach((el, i) => {
+    setTimeout(() => {
+      el.style.transition = 'opacity .32s ease, transform .32s ease';
+      el.style.opacity = '1';
+      el.style.transform = 'translateX(0)';
+      if (el.classList.contains('echo-line')) {
+        setTimeout(() => {
+          el.style.transition = 'background .2s ease';
+          el.style.background = 'rgba(74,106,138,.14)';
+          setTimeout(() => { el.style.transition = 'background .7s ease'; el.style.background = ''; }, 280);
+        }, 330);
+      }
+    }, i * 80);
+  });
+}, 900);
+</script>
+<script src="nav-wire.js"></script>
+<div style="position:fixed;bottom:0;left:0;width:100%;background:#523018;color:#e8dec4;text-align:center;font-size:11px;font-weight:700;letter-spacing:.25em;padding:4px 0;z-index:9999">MOCKUP</div>
+</body>
+</html>

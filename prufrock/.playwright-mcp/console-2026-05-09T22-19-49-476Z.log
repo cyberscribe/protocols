@@ -1,0 +1,6 @@
+[    5718ms] TypeError: Cannot read properties of null (reading 'style')
+    at HTMLDivElement.<anonymous> (http://localhost:9191/08-participant.html:367:10)
+    at eval (eval at <anonymous> (eval at evaluate (:302:30)), <anonymous>:3:12)
+    at eval (eval at evaluate (:302:30), <anonymous>:4:50)
+    at UtilityScript.evaluate (<anonymous>:304:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)

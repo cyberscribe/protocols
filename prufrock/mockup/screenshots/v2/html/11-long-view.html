@@ -262,6 +262,13 @@ THEMES.forEach((th, i) => {
 txt((Z2_L+Z2_R)/2, H-12, 'Most concerns persist across 517 years · Memory grows · Mortality fades · Climate and Transhumanism emerge in 2126 — concerns Shakespeare could not have named, yet the verse still recognises the hand',
   {fill:'#262220', 'font-size':'7.5'}, svg);
 
+// Fade in on arrival
+document.body.style.opacity = '0';
+requestAnimationFrame(() => requestAnimationFrame(() => {
+  document.body.style.transition = 'opacity .4s ease';
+  document.body.style.opacity = '1';
+}));
+
 // ═══════════════════════════════════════════════════════════════
 // ANIMATION — clipPath expands left→right, ribbons build through time
 // ═══════════════════════════════════════════════════════════════

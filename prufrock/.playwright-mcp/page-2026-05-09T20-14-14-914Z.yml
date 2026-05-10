@@ -1,0 +1,74 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: The Prufrock Protocol
+      - generic [ref=e5]: Sonnet Experiment Alpha
+    - generic [ref=e6]: Screencast demo · click any card to open screen
+  - generic [ref=e7]:
+    - generic [ref=e8]: Long Now Lab 001.1 — Book of Time
+    - generic [ref=e9]: The Prufrock Protocol
+    - generic [ref=e10]: A protocol for marking time through cryptographically-signed responses to random interruptions, framed by poetic form. Each card below opens a screen in the demo sequence.
+  - generic [ref=e11]: Demo sequence — click in order or jump to any screen
+  - generic [ref=e12]:
+    - generic [ref=e13] [cursor=pointer]:
+      - generic [ref=e14]: Step 01
+      - generic [ref=e15]: The Seed
+      - generic [ref=e16]: Shakespeare's Sonnet 18 as the 1609 root text. Protocol parameters and cohort configuration.
+      - generic [ref=e17]: Timeline
+      - generic [ref=e18]: →
+    - generic [ref=e19] [cursor=pointer]:
+      - generic [ref=e20]: Step 02
+      - generic [ref=e21]: Global Map
+      - generic [ref=e22]: Day 14 complete. 14 poets across 14 countries, 6 continents — all authorship arcs drawn.
+      - generic [ref=e23]: Map
+      - generic [ref=e24]: →
+    - generic [ref=e25] [cursor=pointer]:
+      - generic [ref=e26]: Step 03
+      - generic [ref=e27]: Lineage Trail
+      - generic [ref=e28]: Amara Osei's zigzag path through 14 poems. Latin square distribution visualised.
+      - generic [ref=e29]: Lineage
+      - generic [ref=e30]: →
+    - generic [ref=e31] [cursor=pointer]:
+      - generic [ref=e32]: Step 04
+      - generic [ref=e33]: Participant Profile
+      - generic [ref=e34]: Amara Osei — poet-01. Full contribution trail, concern tags, and mini-timeline.
+      - generic [ref=e35]: Participant
+      - generic [ref=e36]: →
+    - generic [ref=e37] [cursor=pointer]:
+      - generic [ref=e38]: Step 05
+      - generic [ref=e39]: "Poem: 2026 ↔ 2126"
+      - generic [ref=e40]: Poem 01 side-by-side across a century. Seed lines transmitted; 2126 echoes marked.
+      - generic [ref=e41]: Poem
+      - generic [ref=e42]: →
+    - generic [ref=e45]: Concerns & deep time views
+    - generic [ref=e47] [cursor=pointer]:
+      - generic [ref=e48]: Step 06
+      - generic [ref=e49]: Theme Network
+      - generic [ref=e50]: Concern themes flowing from 3 seed themes into 14 poems. New themes emerging mid-experiment.
+      - generic [ref=e51]: Concerns
+      - generic [ref=e52]: →
+    - generic [ref=e53] [cursor=pointer]:
+      - generic [ref=e54]: Step 07
+      - generic [ref=e55]: Long View
+      - generic [ref=e56]: "417-year stacked ribbon: 1609 seed through 2026 experiment to 2126 projection."
+      - generic [ref=e57]: Concerns
+      - generic [ref=e58]: →
+    - generic [ref=e59] [cursor=pointer]:
+      - generic [ref=e60]: Step 08
+      - generic [ref=e61]: Deep Time River
+      - generic [ref=e62]: 1700-year sweep from 800 CE to 2500 CE. Poetic concerns persisting, drifting, and emerging.
+      - generic [ref=e63]: Concerns
+      - generic [ref=e64]: →
+    - generic [ref=e65] [cursor=pointer]:
+      - generic [ref=e66]: Step 09
+      - generic [ref=e67]: Chain of Attention
+      - generic [ref=e68]: Three temporal nodes — 1609, 2026, 2126 — connected by flowing concern streams.
+      - generic [ref=e69]: Poem
+      - generic [ref=e70]: →
+    - generic [ref=e71] [cursor=pointer]:
+      - generic [ref=e72]: Step 10
+      - generic [ref=e73]: The Inheritance
+      - generic [ref=e74]: One line. One hundred years. What was given, what was kept, what is new.
+      - generic [ref=e75]: Poem
+      - generic [ref=e76]: →
+  - generic [ref=e77]: MOCKUP

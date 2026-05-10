@@ -401,23 +401,27 @@ pts.forEach(p=>{
 });
 </script>
 <!-- Dialectic tooltip — populated dynamically on trail item click -->
-<div id="line-detail-08" style="display:none;position:fixed;left:720px;top:110px;z-index:200;width:304px;background:#1a2030;border:1px solid #2e3848;border-radius:6px;padding:14px;box-shadow:0 6px 28px rgba(0,0,0,.75)">
-  <div style="font-size:8px;color:#3c3834;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px" id="tt08-hdr">Prior two lines</div>
-  <div style="margin-bottom:9px;padding-left:8px;border-left:2px solid rgba(168,98,60,.25)">
-    <div style="font-size:7px;font-family:monospace;color:#2e3848;margin-bottom:2px" id="tt08-p1-lbl"></div>
-    <div style="font-family:Georgia,serif;font-style:italic;font-size:11.5px;color:#6a7066;line-height:1.45" id="tt08-p1-txt"></div>
+<div id="line-detail-08" style="display:none;position:fixed;left:750px;top:100px;z-index:200;width:380px;background:#141c28;border:1px solid #2a3848;border-radius:8px;padding:20px;box-shadow:0 8px 40px rgba(0,0,0,.85)">
+  <div style="font-size:9px;font-weight:700;color:#5a6878;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px">
+    <span style="width:24px;height:1px;background:rgba(168,98,60,.4);display:inline-block"></span>
+    <span id="tt08-hdr">Prior two lines</span>
+    <span style="flex:1;height:1px;background:rgba(168,98,60,.15);display:inline-block"></span>
   </div>
-  <div style="margin-bottom:12px;padding-left:8px;border-left:2px solid rgba(168,98,60,.25)">
-    <div style="font-size:7px;font-family:monospace;color:#2e3848;margin-bottom:2px" id="tt08-p2-lbl"></div>
-    <div style="font-family:Georgia,serif;font-style:italic;font-size:11.5px;color:#6a7066;line-height:1.45" id="tt08-p2-txt"></div>
+  <div style="margin-bottom:12px;padding:10px 12px;background:rgba(168,98,60,.04);border-left:2px solid rgba(168,98,60,.35);border-radius:0 3px 3px 0">
+    <div style="font-size:8px;font-family:monospace;color:#6a5848;margin-bottom:5px;letter-spacing:.04em" id="tt08-p1-lbl"></div>
+    <div style="font-family:Georgia,serif;font-style:italic;font-size:13px;color:#8a8070;line-height:1.55" id="tt08-p1-txt"></div>
   </div>
-  <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;padding:5px 8px;background:rgba(168,98,60,.06);border:1px solid rgba(168,98,60,.15);border-radius:3px">
-    <span style="color:#a8623c;font-size:14px;line-height:1">↓</span>
-    <span style="font-size:9px;color:#7a6858;font-family:monospace" id="tt08-ctx"></span>
+  <div style="margin-bottom:16px;padding:10px 12px;background:rgba(168,98,60,.04);border-left:2px solid rgba(168,98,60,.35);border-radius:0 3px 3px 0">
+    <div style="font-size:8px;font-family:monospace;color:#6a5848;margin-bottom:5px;letter-spacing:.04em" id="tt08-p2-lbl"></div>
+    <div style="font-family:Georgia,serif;font-style:italic;font-size:13px;color:#8a8070;line-height:1.55" id="tt08-p2-txt"></div>
   </div>
-  <div style="padding-top:10px;border-top:1px solid #2a3340">
-    <div style="font-size:7px;font-family:monospace;color:#2e3848;margin-bottom:4px">Amara Osei · contributed</div>
-    <div style="font-family:Georgia,serif;font-style:italic;font-size:13px;color:#c49870;line-height:1.5" id="tt08-line"></div>
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;padding:7px 12px;background:rgba(168,98,60,.08);border:1px solid rgba(168,98,60,.2);border-radius:4px">
+    <span style="color:#a8623c;font-size:18px;line-height:1;flex-shrink:0">↓</span>
+    <span style="font-size:9.5px;color:#8a7868;font-family:monospace;letter-spacing:.03em" id="tt08-ctx"></span>
+  </div>
+  <div style="padding-top:14px;border-top:1px solid #2a3848">
+    <div style="font-size:8px;font-family:monospace;color:#a8623c;margin-bottom:7px;letter-spacing:.05em;font-weight:600">Amara Osei · contributed</div>
+    <div style="font-family:Georgia,serif;font-style:italic;font-size:15px;color:#d4b890;line-height:1.55" id="tt08-line"></div>
   </div>
 </div>
 <script src="nav-wire.js"></script>

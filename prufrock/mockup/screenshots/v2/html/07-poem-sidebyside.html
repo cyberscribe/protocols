@@ -235,8 +235,12 @@ const leftCol = document.getElementById('left-col');
 LEFT_LINES.forEach(d => leftCol.appendChild(buildLine(d, !!d.seed, false)));
 
 const rightCol = document.getElementById('right-col');
+const rightLineEls = [];
 RIGHT_LINES.forEach((d, i) => {
   const lineEl = buildLine(d, false, !!d.echo);
+  lineEl.style.opacity = '0';
+  lineEl.style.transform = 'translateX(8px)';
+  rightLineEls.push(lineEl);
   if (i === 7) {
     lineEl.title = 'Click to inspect — Lena Berg echoes 2026 seed line 8';
     lineEl.addEventListener('click', () => {
@@ -264,6 +268,41 @@ RIGHT_LINES.forEach((d, i) => {
   }
   rightCol.appendChild(lineEl);
 });
+
+// Transmission animation: pulse the transmission strip, then cascade right column in
+setTimeout(() => {
+  const ts = document.querySelector('.transmission-strip');
+  if (ts) {
+    ts.style.transition = 'background .25s ease, border-bottom-color .25s ease';
+    ts.style.background = 'rgba(58,128,144,.14)';
+    ts.style.borderBottomColor = 'rgba(58,128,144,.45)';
+    setTimeout(() => {
+      ts.style.transition = 'background .9s ease, border-bottom-color .9s ease';
+      ts.style.background = '';
+      ts.style.borderBottomColor = '';
+    }, 380);
+  }
+}, 700);
+
+setTimeout(() => {
+  rightLineEls.forEach((lineEl, i) => {
+    setTimeout(() => {
+      lineEl.style.transition = 'opacity .32s ease, transform .32s ease';
+      lineEl.style.opacity = '1';
+      lineEl.style.transform = 'translateX(0)';
+      if (lineEl.classList.contains('echo-line')) {
+        setTimeout(() => {
+          lineEl.style.transition = 'background .2s ease';
+          lineEl.style.background = 'rgba(58,128,144,.14)';
+          setTimeout(() => {
+            lineEl.style.transition = 'background .7s ease';
+            lineEl.style.background = '';
+          }, 280);
+        }, 330);
+      }
+    }, i * 75);
+  });
+}, 1150);
 </script>
 <script src="nav-wire.js"></script>
 <div style="position:fixed;bottom:0;left:0;width:100%;background:#523018;color:#e8dec4;text-align:center;font-size:11px;font-weight:700;letter-spacing:.25em;padding:4px 0;z-index:9999">MOCKUP</div>

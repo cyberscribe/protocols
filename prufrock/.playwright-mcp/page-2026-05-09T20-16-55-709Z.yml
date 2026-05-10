@@ -1,0 +1,80 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: The Prufrock Protocol
+      - generic [ref=e5]: Sonnet Experiment Alpha
+    - generic [ref=e6] [cursor=pointer]: Timeline
+    - generic [ref=e7] [cursor=pointer]: Lineage
+    - generic [ref=e8] [cursor=pointer]: Map
+    - generic [ref=e9] [cursor=pointer]: Poem
+    - generic [ref=e10] [cursor=pointer]: Participant
+    - generic [ref=e11] [cursor=pointer]: Concerns
+    - generic [ref=e12]: Seed themes flowing into heir poems · new themes emerging along the way
+  - generic [ref=e13]:
+    - generic [ref=e14]:
+      - generic [ref=e15]: Poets
+      - generic [ref=e16]: Laypeople
+      - generic [ref=e17]: Both
+    - generic [ref=e18]:
+      - generic [ref=e19]: Theme river
+      - generic [ref=e20]: Theme network
+      - generic [ref=e21]: Long view
+      - generic [ref=e22]: Deep Time
+    - generic [ref=e23]: Solid edge = concern inherited from seed · Dotted edge = concern new to this poem, not in seed
+  - generic [ref=e24]:
+    - generic [ref=e25]: Seed
+    - generic [ref=e26]: "Nor shall death brag thou wander'st in his shade, · When in eternal lines to time thou grow'st:"
+    - generic [ref=e27]: W. Shakespeare · 1609
+  - img [ref=e28]:
+    - generic [ref=e31]: SEED THEMES
+    - generic [ref=e33]: NEW THEMES
+    - generic [ref=e100]: WS
+    - generic [ref=e101]: "1609"
+    - generic [ref=e102]: Shakespeare · Sonnet XVIII
+    - generic [ref=e103]: London · 1609
+    - generic [ref=e106]: Mortality / impermanence
+    - generic [ref=e109]: Memory / preservation
+    - generic [ref=e112]: Time / aging
+    - generic [ref=e115]: Love / longing
+    - generic [ref=e118]: Wonder / awe
+    - generic [ref=e121]: Solitude / alienation
+    - generic [ref=e124]: Domestic life
+    - generic [ref=e127]: Grief / loss
+    - generic [ref=e130]: Identity / selfhood
+    - generic [ref=e132]: "01"
+    - generic [ref=e133]: Poem 01
+    - generic [ref=e135]: "02"
+    - generic [ref=e136]: Poem 02
+    - generic [ref=e138]: "03"
+    - generic [ref=e139]: Poem 03
+    - generic [ref=e142]: "04"
+    - generic [ref=e143]: Poem 04
+    - generic [ref=e146]: "05"
+    - generic [ref=e147]: Poem 05
+    - generic [ref=e150]: "06"
+    - generic [ref=e151]: Poem 06
+    - generic [ref=e153]: "07"
+    - generic [ref=e154]: Poem 07
+    - generic [ref=e157]: "08"
+    - generic [ref=e158]: Poem 08
+    - generic [ref=e160]: "09"
+    - generic [ref=e161]: Poem 09
+    - generic [ref=e163]: "10"
+    - generic [ref=e164]: Poem 10
+    - generic [ref=e167]: "11"
+    - generic [ref=e168]: Poem 11
+    - generic [ref=e170]: "12"
+    - generic [ref=e171]: Poem 12
+    - generic [ref=e174]: "13"
+    - generic [ref=e175]: Poem 13
+    - generic [ref=e177]: "14"
+    - generic [ref=e178]: Poem 14
+    - generic [ref=e180]: 5 of 14 poems break
+    - generic [ref=e181]: entirely from seed
+    - generic [ref=e182]: new themes only
+    - generic [ref=e183]: SEED
+    - generic [ref=e184]: POEMS
+    - generic [ref=e186]: Inherited from seed — flows into most poems
+    - generic [ref=e187]: New theme — emerged within the poem corpus, not in seed
+    - generic [ref=e188]: Edge width ∝ concern weight in poem
+  - generic [ref=e189]: MOCKUP

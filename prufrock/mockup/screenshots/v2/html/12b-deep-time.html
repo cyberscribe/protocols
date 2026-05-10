@@ -192,6 +192,29 @@ YEARS.forEach((yr, i) => {
 // ─── Chart border ─────────────────────────────────────────────
 el('rect', {x:CL, y:CT, width:CW, height:CH, fill:'none', stroke:'rgba(255,255,255,.03)', 'stroke-width':'1'}, svg);
 
+// ─── Historical event markers ─────────────────────────────────
+const EVENTS = [
+  {year:800,  label:'Beowulf · Abbasid Golden Age',   alt:false},
+  {year:1020, label:'Murasaki Shikibu · Tale of Genji', alt:true},
+  {year:1320, label:'Dante · Commedia',               alt:false},
+  {year:1387, label:'Chaucer · Canterbury Tales',     alt:true},
+  // 1609 Shakespeare already marked above
+  {year:1798, label:'Wordsworth · Lyrical Ballads',   alt:false},
+  {year:1855, label:'Whitman · Leaves of Grass',      alt:true},
+  {year:1922, label:'Eliot · The Waste Land',         alt:false},
+];
+EVENTS.forEach(ev => {
+  if (ev.year === 1609) return; // already drawn
+  const ex = yearToX(ev.year);
+  const tickY1 = CB + 6, tickY2 = CB + 12;
+  el('line', {x1:ex, y1:tickY1, x2:ex, y2:tickY2,
+    stroke:'rgba(255,255,255,.12)', 'stroke-width':'0.8'}, svg);
+  txt(ex, tickY2 + (ev.alt ? 20 : 10), ev.label, {
+    fill:'rgba(255,255,255,.18)', 'font-size':'6.5', 'font-family':'monospace',
+    'text-anchor':'middle', 'dominant-baseline':'hanging'
+  }, svg);
+});
+
 // ─── Religious devotion fade annotation ─────────────────────
 const relFadeX = COL_X[4] - 30; // around 1609, where it's nearly gone
 const relMidY = cumY(0, 0) + (cumY(0, 1) - cumY(0, 0))/2; // midpoint of Religious band at col 0
@@ -267,6 +290,13 @@ txt(bx, H-8, 'The Prufrock Protocol is a single bright mark in a flow that has n
   }
   requestAnimationFrame(step);
 })();
+
+// Fade in on arrival (transition from Long View)
+document.body.style.opacity = '0';
+requestAnimationFrame(() => requestAnimationFrame(() => {
+  document.body.style.transition = 'opacity .45s ease';
+  document.body.style.opacity = '1';
+}));
 
 // After river reveal (~6.4 s), spotlight the 2026 column briefly
 setTimeout(() => {

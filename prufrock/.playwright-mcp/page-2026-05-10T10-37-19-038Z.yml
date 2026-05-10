@@ -1,0 +1,70 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: The Prufrock Protocol
+      - generic [ref=e5]: Sonnet Experiment Alpha
+    - generic [ref=e6] [cursor=pointer]: Timeline
+    - generic [ref=e7] [cursor=pointer]: Lineage
+    - generic [ref=e8] [cursor=pointer]: Map
+    - generic [ref=e9] [cursor=pointer]: Poem
+    - generic [ref=e10] [cursor=pointer]: Participant
+    - generic [ref=e11] [cursor=pointer]: Concerns
+    - generic [ref=e12]: Day 14 · All arcs drawn · 14 countries · 6 continents
+  - generic [ref=e13]:
+    - generic [ref=e14]:
+      - generic [ref=e15]: Poets
+      - generic [ref=e16]: Laypeople
+      - generic [ref=e17]: Both
+    - generic [ref=e18]:
+      - generic [ref=e19]: Day
+      - generic [ref=e23]: 14 / 14
+    - generic [ref=e24]:
+      - generic [ref=e25]: ● Poet cohort
+      - generic [ref=e26]: ● Layperson cohort
+      - generic [ref=e27]: ★ Seed origin · London · 1609
+  - generic [ref=e28]:
+    - generic [ref=e29]: Seed origin
+    - generic [ref=e30]: London, England · 51.5°N, 0.1°W · 1609
+    - generic [ref=e31]: "Arcs: sequential author handoffs within each poem · Accra → Stockholm → Naples → Hanoi → …"
+  - img [ref=e32]:
+    - generic [ref=e34]: "-60°"
+    - generic [ref=e35]: "-30°"
+    - generic [ref=e36]: 0°
+    - generic [ref=e37]: 30°
+    - generic [ref=e38]: 60°
+    - generic [ref=e110]: Accra
+    - generic [ref=e113]: Kyoto
+    - generic [ref=e116]: B.Aires
+    - generic [ref=e119]: Galway
+    - generic [ref=e122]: Istanbul
+    - generic [ref=e125]: Kochi
+    - generic [ref=e128]: Dakar
+    - generic [ref=e131]: Sapporo
+    - generic [ref=e134]: Berlin
+    - generic [ref=e137]: Lisbon
+    - generic [ref=e140]: J'burg
+    - generic [ref=e143]: Hanoi
+    - generic [ref=e146]: Naples
+    - generic [ref=e149]: Stockholm
+    - generic [ref=e152]: Detroit
+    - generic [ref=e155]: Nairobi
+    - generic [ref=e158]: Chongqing
+    - generic [ref=e161]: Chennai
+    - generic [ref=e164]: Lagos
+    - generic [ref=e167]: Mex.City
+    - generic [ref=e170]: Cork
+    - generic [ref=e173]: Osaka
+    - generic [ref=e176]: St.Pete
+    - generic [ref=e179]: Dakar
+    - generic [ref=e182]: S.Paulo
+    - generic [ref=e185]: Shanghai
+    - generic [ref=e188]: Edinburgh
+    - generic [ref=e191]: Zurich
+    - generic "Click to replay" [ref=e196] [cursor=pointer]: ★
+    - generic [ref=e197]: London · 1609
+    - generic [ref=e198]: ATTENTION ACROSS SPACE AND TIME · London 1609 → 14 Countries · 6 Continents · 2026
+    - generic [ref=e200]: ARC TYPES
+    - generic [ref=e201]: Sequential author handoff within poem (poets)
+    - generic [ref=e202]: Sequential author handoff within poem (laypeople)
+    - generic [ref=e203]: Featured poem journey (Poem 07 · days 1–7)
+  - generic [ref=e204]: MOCKUP

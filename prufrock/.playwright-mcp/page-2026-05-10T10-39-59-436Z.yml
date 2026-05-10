@@ -1,0 +1,281 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: The Prufrock Protocol
+      - generic [ref=e5]: Sonnet Experiment Alpha
+    - generic [ref=e6] [cursor=pointer]: Timeline
+    - generic [ref=e7] [cursor=pointer]: Lineage
+    - generic [ref=e8] [cursor=pointer]: Map
+    - generic [ref=e9] [cursor=pointer]: Poem
+    - generic [ref=e10] [cursor=pointer]: Participant
+    - generic [ref=e11] [cursor=pointer]: Concerns
+    - generic [ref=e12]: Amara Osei · poet-01 · 14 contributions across 14 poems
+  - generic [ref=e13]:
+    - generic [ref=e14]:
+      - generic [ref=e15]: Amara Osei
+      - generic [ref=e16]: ← Prev
+      - generic [ref=e17]: Next →
+    - generic [ref=e18]:
+      - generic [ref=e19]: Day
+      - generic [ref=e23]: 14 / 14
+    - generic [ref=e24]: poet-01 · Accra, Ghana · Poets cohort
+  - generic [ref=e25]:
+    - generic [ref=e26]:
+      - generic [ref=e27]:
+        - generic [ref=e28]:
+          - generic [ref=e29]: AO
+          - generic [ref=e30]:
+            - generic [ref=e31]: Amara Osei
+            - generic [ref=e32]: poet-01 · sonnet-trial-alpha
+            - generic [ref=e33]: Poet Cohort
+        - generic [ref=e34]: ● Accra, Ghana · Africa/Accra (UTC+0)
+        - generic [ref=e35]: Published her first collection at 28 through a Ghanaian indie press. Teaches creative writing at the University of Ghana. Her work circles migration within West Africa.
+        - generic [ref=e36]:
+          - generic [ref=e37]: MFA Michigan
+          - generic [ref=e38]: terse
+          - generic [ref=e39]: deliberate
+          - generic [ref=e40]: Clifton-influenced
+          - generic [ref=e41]: urban
+      - generic [ref=e42]:
+        - generic [ref=e43]: Contribution statistics
+        - generic [ref=e44]:
+          - generic [ref=e45]:
+            - generic [ref=e46]: "14"
+            - generic [ref=e47]: poems contributed to
+          - generic [ref=e48]:
+            - generic [ref=e49]: "14"
+            - generic [ref=e50]: lines written
+          - generic [ref=e51]:
+            - generic [ref=e52]: "0"
+            - generic [ref=e53]: forfeits
+          - generic [ref=e54]:
+            - generic [ref=e55]: 21m
+            - generic [ref=e56]: avg response latency
+      - generic [ref=e57]:
+        - generic [ref=e58]: Contribution timeline (one per poem)
+        - generic [ref=e88]:
+          - generic [ref=e89]: P1
+          - generic [ref=e90]: P2
+          - generic [ref=e91]: P3
+          - generic [ref=e92]: P4
+          - generic [ref=e93]: P5
+          - generic [ref=e94]: P6
+          - generic [ref=e95]: P7
+          - generic [ref=e96]: P8
+          - generic [ref=e97]: P9
+          - generic [ref=e98]: P10
+          - generic [ref=e99]: P11
+          - generic [ref=e100]: P12
+          - generic [ref=e101]: P13
+          - generic [ref=e102]: P14
+      - generic [ref=e103]:
+        - generic [ref=e104]: Response latency by poem (minutes)
+        - generic [ref=e105]:
+          - generic [ref=e106]:
+            - generic [ref=e107]: "60"
+            - generic [ref=e108]: "30"
+            - generic [ref=e109]: "0"
+          - generic [ref=e110]:
+            - generic [ref=e111]:
+              - generic "18 min" [ref=e112] [cursor=pointer]
+              - generic "24 min" [ref=e113] [cursor=pointer]
+              - generic "12 min" [ref=e114] [cursor=pointer]
+              - generic "31 min" [ref=e115] [cursor=pointer]
+              - generic "19 min" [ref=e116] [cursor=pointer]
+              - generic "15 min" [ref=e117] [cursor=pointer]
+              - generic "18 min" [ref=e118] [cursor=pointer]
+              - generic "42 min" [ref=e119] [cursor=pointer]
+              - generic "27 min" [ref=e120] [cursor=pointer]
+              - generic "22 min" [ref=e121] [cursor=pointer]
+              - generic "16 min" [ref=e122] [cursor=pointer]
+              - generic "29 min" [ref=e123] [cursor=pointer]
+              - generic "25 min" [ref=e124] [cursor=pointer]
+              - generic "38 min" [ref=e125] [cursor=pointer]
+            - generic [ref=e126]:
+              - generic [ref=e127]: P1
+              - generic [ref=e128]: P2
+              - generic [ref=e129]: P3
+              - generic [ref=e130]: P4
+              - generic [ref=e131]: P5
+              - generic [ref=e132]: P6
+              - generic [ref=e133]: P7
+              - generic [ref=e134]: P8
+              - generic [ref=e135]: P9
+              - generic [ref=e136]: P10
+              - generic [ref=e137]: P11
+              - generic [ref=e138]: P12
+              - generic [ref=e139]: P13
+              - generic [ref=e140]: P14
+      - generic [ref=e141]:
+        - generic [ref=e142]: Influences
+        - generic [ref=e143]:
+          - generic [ref=e144]: Lucille Clifton
+          - generic [ref=e145]: Kofi Awoonor
+          - generic [ref=e146]: Warsan Shire
+          - generic [ref=e147]: Highlife music lyrics
+    - generic [ref=e148]:
+      - generic [ref=e149]:
+        - heading "Authorial trail — 14 contributions across 14 poems" [level=2] [ref=e150]
+        - generic [ref=e151]: Each line contributed to a different poem · Latin square assignment · read as a sequence to hear her voice across the experiment
+      - generic [ref=e152]:
+        - generic [ref=e153] [cursor=pointer]:
+          - generic [ref=e154]:
+            - text: Poem 01
+            - generic [ref=e155]: Day 1
+          - generic [ref=e156]:
+            - generic [ref=e157]: "\"The summer I remember had no owner\""
+            - generic [ref=e158]:
+              - generic [ref=e159]: Memory
+              - generic [ref=e160]: Domestic
+          - generic [ref=e161]: Seed · Shakespeare
+        - generic [ref=e162] [cursor=pointer]:
+          - generic [ref=e163]:
+            - text: Poem 02
+            - generic [ref=e164]: Day 2
+          - generic [ref=e165]:
+            - generic [ref=e166]: "\"What does the grave forget that the soil keeps?\""
+            - generic [ref=e167]:
+              - generic [ref=e168]: Mortality
+              - generic [ref=e169]: Memory
+          - generic [ref=e170]: L1–2 · Tanaka · Fuentes
+        - generic [ref=e171] [cursor=pointer]:
+          - generic [ref=e172]:
+            - text: Poem 03
+            - generic [ref=e173]: Day 3
+          - generic [ref=e174]:
+            - generic [ref=e175]: "\"I named my grief and it answered to nothing\""
+            - generic [ref=e176]:
+              - generic [ref=e177]: Grief
+              - generic [ref=e178]: Identity
+          - generic [ref=e179]: L1–2 · Fuentes · Tanaka
+        - generic [ref=e180] [cursor=pointer]:
+          - generic [ref=e181]:
+            - text: Poem 04
+            - generic [ref=e182]: Day 4
+          - generic [ref=e183]:
+            - generic [ref=e184]: "\"The words we inherit outlive the mouths that made them\""
+            - generic [ref=e185]:
+              - generic [ref=e186]: Memory
+              - generic [ref=e187]: Mortality
+          - generic [ref=e188]: L1–2 · Ní Faoláin · Fuentes
+        - generic [ref=e189] [cursor=pointer]:
+          - generic [ref=e190]:
+            - text: Poem 05
+            - generic [ref=e191]: Day 5
+          - generic [ref=e192]:
+            - generic [ref=e193]: "\"Even absence has a temperature in this latitude\""
+            - generic [ref=e194]:
+              - generic [ref=e195]: Solitude
+              - generic [ref=e196]: Wonder
+          - generic [ref=e197]: L1–2 · Şahin · Ní Faoláin
+        - generic [ref=e198] [cursor=pointer]:
+          - generic [ref=e199]:
+            - text: Poem 06
+            - generic [ref=e200]: Day 6
+          - generic [ref=e201]:
+            - generic [ref=e202]: "\"She carried the country in her posture, not her speech\""
+            - generic [ref=e203]:
+              - generic [ref=e204]: Identity
+              - generic [ref=e205]: Domestic
+          - generic [ref=e206]: L1–2 · Pillai · Şahin
+        - generic [ref=e207] [cursor=pointer]:
+          - generic [ref=e208]:
+            - text: Poem 07
+            - generic [ref=e209]: Day 7
+          - generic [ref=e210]:
+            - generic [ref=e211]: "\"What is given cannot be taken, only forgotten\""
+            - generic [ref=e212]:
+              - generic [ref=e213]: Memory
+              - generic [ref=e214]: Grief
+          - generic [ref=e215]: L5–6 · Fuentes · Tanaka
+        - generic [ref=e216] [cursor=pointer]:
+          - generic [ref=e217]:
+            - text: Poem 08
+            - generic [ref=e218]: Day 8
+          - generic [ref=e219]:
+            - generic [ref=e220]: "\"The dead know the weather better than the living\""
+            - generic [ref=e221]:
+              - generic [ref=e222]: Mortality
+              - generic [ref=e223]: Grief
+          - generic [ref=e224]: L6–7 · Şahin · Pillai
+        - generic [ref=e225] [cursor=pointer]:
+          - generic [ref=e226]:
+            - text: Poem 09
+            - generic [ref=e227]: Day 9
+          - generic [ref=e228]:
+            - generic [ref=e229]: "\"Everything I owe I owe to someone's silence\""
+            - generic [ref=e230]:
+              - generic [ref=e231]: Solitude
+              - generic [ref=e232]: Grief
+          - generic [ref=e233]: L7–8 · Ní Faoláin · Şahin
+        - generic [ref=e234] [cursor=pointer]:
+          - generic [ref=e235]:
+            - text: Poem 10
+            - generic [ref=e236]: Day 10
+          - generic [ref=e237]:
+            - generic [ref=e238]: "\"The body remembers what the mind consents to forget\""
+            - generic [ref=e239]:
+              - generic [ref=e240]: Memory
+              - generic [ref=e241]: Identity
+          - generic [ref=e242]: L8–9 · Ní Faoláin · Fuentes
+        - generic [ref=e243] [cursor=pointer]:
+          - generic [ref=e244]:
+            - text: Poem 11
+            - generic [ref=e245]: Day 11
+          - generic [ref=e246]:
+            - generic [ref=e247]: "\"Light falls differently on things it has already burned\""
+            - generic [ref=e248]:
+              - generic [ref=e249]: Mortality
+              - generic [ref=e250]: Time
+          - generic [ref=e251]: L9–10 · Lindqvist · Greco
+        - generic [ref=e252] [cursor=pointer]:
+          - generic [ref=e253]:
+            - text: Poem 12
+            - generic [ref=e254]: Day 12
+          - generic [ref=e255]:
+            - generic [ref=e256]: "\"To be chosen is only one way of being seen\""
+            - generic [ref=e257]:
+              - generic [ref=e258]: Identity
+              - generic [ref=e259]: Solitude
+          - generic [ref=e260]: L10–11 · Nakamura · Brandt
+        - generic [ref=e261] [cursor=pointer]:
+          - generic [ref=e262]:
+            - text: Poem 13
+            - generic [ref=e263]: Day 13
+          - generic [ref=e264]:
+            - generic [ref=e265]: "\"I have stopped explaining the country to strangers\""
+            - generic [ref=e266]:
+              - generic [ref=e267]: Identity
+              - generic [ref=e268]: Solitude
+          - generic [ref=e269]: L11–12 · Diallo · Nakamura
+        - generic [ref=e270] [cursor=pointer]:
+          - generic [ref=e271]:
+            - text: Poem 14
+            - generic [ref=e272]: Day 14
+          - generic [ref=e273]:
+            - generic [ref=e274]: "\"The line I write today will outlast the hand that wrote it\""
+            - generic [ref=e275]:
+              - generic [ref=e276]: Mortality
+              - generic [ref=e277]: Time
+              - generic [ref=e278]: Memory
+          - generic [ref=e279]: L12–13 · Pillai · Diallo
+    - generic [ref=e280]:
+      - generic [ref=e281]:
+        - generic [ref=e282]: Voice consistency — non-adjacent pairs
+        - generic [ref=e283]:
+          - generic [ref=e284]: Poem 01 (Day 1) · Poem 05 (Day 5)
+          - generic [ref=e285]: "\"The summer I remember had no owner\""
+          - generic [ref=e286]: "\"Even absence has a temperature in this latitude\""
+        - generic [ref=e287]:
+          - generic [ref=e288]: Poem 08 (Day 8) · Poem 12 (Day 12)
+          - generic [ref=e289]: "\"The dead know the weather better than the living\""
+          - generic [ref=e290]: "\"To be chosen is only one way of being seen\""
+        - generic [ref=e291]:
+          - generic [ref=e292]: Poem 03 (Day 3) · Poem 14 (Day 14)
+          - generic [ref=e293]: "\"I named my grief and it answered to nothing\""
+          - generic [ref=e294]: "\"The line I write today will outlast the hand that wrote it\""
+      - generic [ref=e295]:
+        - generic [ref=e296]: Prompt source locations
+        - generic [ref=e298]: Accra → prompt authors
+        - generic [ref=e306]: Each day Amara received a prompt from a poem built by poets in different locations. Arcs show prompt author locations.
+  - generic [ref=e307]: MOCKUP

@@ -53,13 +53,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // View buttons (Concerns sub-views) — navigate when not active
+  // View buttons (Concerns sub-views) — fade out then navigate
   document.querySelectorAll('.view-btns').forEach(grp => {
     grp.querySelectorAll('.vbt').forEach(btn => {
       const label = btn.textContent.trim();
       const route = VIEW_ROUTES[label];
       if (route && !btn.classList.contains('active')) {
-        btn.addEventListener('click', () => location.href = route);
+        btn.addEventListener('click', () => {
+          document.body.style.transition = 'opacity .3s ease';
+          document.body.style.opacity = '0';
+          setTimeout(() => location.href = route, 300);
+        });
       }
     });
   });
