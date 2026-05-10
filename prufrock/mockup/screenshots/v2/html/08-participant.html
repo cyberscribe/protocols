@@ -236,22 +236,64 @@ const CONCERN_COLORS = {
   Domestic: '#c47048', Grief: '#5a6878', Identity: '#7a9078',
 };
 
-// [poem, day, line, prompt, [concern tags]]
+// Each entry: poem, day, line contributed, prior two lines + location, datetime, concern tags
 const AMARA_LINES = [
-  ['Poem 01','Day 1','The summer I remember had no owner','Seed lines — Shakespeare 1609',['Memory','Domestic']],
-  ['Poem 02','Day 2','What does the grave forget that the soil keeps?','Lines 1–2 of Poem 02 (HT · MF)',['Mortality','Memory']],
-  ['Poem 03','Day 3','I named my grief and it answered to nothing','Lines 1–2 of Poem 03 (MF · HT)',['Grief','Identity']],
-  ['Poem 04','Day 4','The words we inherit outlive the mouths that made them','Lines 1–2 of Poem 04 (SN · MF)',['Memory','Mortality']],
-  ['Poem 05','Day 5','Even absence has a temperature in this latitude','Lines 1–2 of Poem 05 (EŞ · SN)',['Solitude','Wonder']],
-  ['Poem 06','Day 6','She carried the country in her posture, not her speech','Lines 1–2 of Poem 06 (MP · EŞ)',['Identity','Domestic']],
-  ['Poem 07','Day 7','What is given cannot be taken, only forgotten','Lines 5–6 of Poem 07 (MF · HT)',['Memory','Grief']],
-  ['Poem 08','Day 8','The dead know the weather better than the living','Lines 6–7 of Poem 08 (EŞ · MP)',['Mortality','Grief']],
-  ['Poem 09','Day 9','Everything I owe I owe to someone\'s silence','Lines 7–8 of Poem 09 (SN · EŞ)',['Solitude','Grief']],
-  ['Poem 10','Day 10','The body remembers what the mind consents to forget','Lines 8–9 of Poem 10 (SN · MF)',['Memory','Identity']],
-  ['Poem 11','Day 11','Light falls differently on things it has already burned','Lines 9–10 of Poem 11 (BL · VG)',['Mortality','Time']],
-  ['Poem 12','Day 12','To be chosen is only one way of being seen','Lines 10–11 of Poem 12 (YN · LB)',['Identity','Solitude']],
-  ['Poem 13','Day 13','I have stopped explaining the country to strangers','Lines 11–12 of Poem 13 (AD · YN)',['Identity','Solitude']],
-  ['Poem 14','Day 14','The line I write today will outlast the hand that wrote it','Lines 12–13 of Poem 14 (MP · AD)',['Mortality','Time','Memory']],
+  {poem:'Poem 01',day:'Day 1',line:'The summer I remember had no owner',promptLabel:'Seed · Shakespeare',
+   prior1:{text:'Nor shall death brag thou wander\'st in his shade,',author:'W. Shakespeare',loc:'London · 1609'},
+   prior2:{text:'When in eternal lines to time thou grow\'st:',author:'W. Shakespeare',loc:'London · 1609'},
+   datetime:'2026-06-01 · 09:15 WAT',tags:['Memory','Domestic']},
+  {poem:'Poem 02',day:'Day 2',line:'What does the grave forget that the soil keeps?',promptLabel:'L1–2 · Tanaka · Fuentes',
+   prior1:{text:'The map remembers what the border has forgotten',author:'Hiroshi Tanaka',loc:'Kyoto'},
+   prior2:{text:'A city learns its name from those who left it',author:'Marisol Fuentes',loc:'Buenos Aires'},
+   datetime:'2026-06-02 · 11:45 WAT',tags:['Mortality','Memory']},
+  {poem:'Poem 03',day:'Day 3',line:'I named my grief and it answered to nothing',promptLabel:'L1–2 · Fuentes · Tanaka',
+   prior1:{text:'Between two silences, a word is still a door',author:'Marisol Fuentes',loc:'Buenos Aires'},
+   prior2:{text:'The snow does not know the mountain has a name',author:'Hiroshi Tanaka',loc:'Kyoto'},
+   datetime:'2026-06-03 · 09:52 WAT',tags:['Grief','Identity']},
+  {poem:'Poem 04',day:'Day 4',line:'The words we inherit outlive the mouths that made them',promptLabel:'L1–2 · Ní Faoláin · Fuentes',
+   prior1:{text:'My grandmother kept the rain inside her stories',author:'Siobhán Ní Faoláin',loc:'Galway'},
+   prior2:{text:'What the ocean carries it does not claim as cargo',author:'Marisol Fuentes',loc:'Buenos Aires'},
+   datetime:'2026-06-04 · 13:18 WAT',tags:['Memory','Mortality']},
+  {poem:'Poem 05',day:'Day 5',line:'Even absence has a temperature in this latitude',promptLabel:'L1–2 · Şahin · Ní Faoláin',
+   prior1:{text:'The minaret keeps the hour for anyone who listens',author:'Elif Şahin',loc:'Istanbul'},
+   prior2:{text:'Fog is just the sea remembering the land it lost',author:'Siobhán Ní Faoláin',loc:'Galway'},
+   datetime:'2026-06-05 · 10:33 WAT',tags:['Solitude','Wonder']},
+  {poem:'Poem 06',day:'Day 6',line:'She carried the country in her posture, not her speech',promptLabel:'L1–2 · Pillai · Şahin',
+   prior1:{text:'The monsoon teaches patience to the impatient river',author:'Meera Pillai',loc:'Delhi'},
+   prior2:{text:'Two alphabets and one heart — which do you trust?',author:'Elif Şahin',loc:'Istanbul'},
+   datetime:'2026-06-06 · 16:07 WAT',tags:['Identity','Domestic']},
+  {poem:'Poem 07',day:'Day 7',line:'What is given cannot be taken, only forgotten',promptLabel:'L5–6 · Fuentes · Tanaka',
+   prior1:{text:'Even the Andes know that ice is borrowed time',author:'Marisol Fuentes',loc:'Buenos Aires'},
+   prior2:{text:'The plum tree blossoms once and names the year by falling',author:'Hiroshi Tanaka',loc:'Kyoto'},
+   datetime:'2026-06-07 · 14:23 WAT',tags:['Memory','Grief']},
+  {poem:'Poem 08',day:'Day 8',line:'The dead know the weather better than the living',promptLabel:'L6–7 · Şahin · Pillai',
+   prior1:{text:'I speak my grief in the grammar of the disappeared',author:'Elif Şahin',loc:'Istanbul'},
+   prior2:{text:'The river mouth is where the journey learns its name',author:'Meera Pillai',loc:'Delhi'},
+   datetime:'2026-06-08 · 08:41 WAT',tags:['Mortality','Grief']},
+  {poem:'Poem 09',day:'Day 9',line:'Everything I owe I owe to someone\'s silence',promptLabel:'L7–8 · Ní Faoláin · Şahin',
+   prior1:{text:'What I cannot say in Irish I say in apology',author:'Siobhán Ní Faoláin',loc:'Galway'},
+   prior2:{text:'The border made a sound like a name being forgotten',author:'Elif Şahin',loc:'Istanbul'},
+   datetime:'2026-06-09 · 20:55 WAT',tags:['Solitude','Grief']},
+  {poem:'Poem 10',day:'Day 10',line:'The body remembers what the mind consents to forget',promptLabel:'L8–9 · Ní Faoláin · Fuentes',
+   prior1:{text:'She translated her mother into a language she could keep',author:'Siobhán Ní Faoláin',loc:'Galway'},
+   prior2:{text:'The sorrow is not the leaving — it is the staying after',author:'Marisol Fuentes',loc:'Buenos Aires'},
+   datetime:'2026-06-10 · 11:29 WAT',tags:['Memory','Identity']},
+  {poem:'Poem 11',day:'Day 11',line:'Light falls differently on things it has already burned',promptLabel:'L9–10 · Lindqvist · Greco',
+   prior1:{text:'In the archive of the north, winter is the longest chapter',author:'Björn Lindqvist',loc:'Uppsala'},
+   prior2:{text:'Vesuvius watches the city practice its forgetting',author:'Valentina Greco',loc:'Naples'},
+   datetime:'2026-06-11 · 15:44 WAT',tags:['Mortality','Time']},
+  {poem:'Poem 12',day:'Day 12',line:'To be chosen is only one way of being seen',promptLabel:'L10–11 · Nakamura · Brandt',
+   prior1:{text:'The aurora keeps its silence over the abandoned stations',author:'Yuki Nakamura',loc:'Sapporo'},
+   prior2:{text:'What we called the east was someone else\'s west',author:'Lena Brandt',loc:'Leipzig'},
+   datetime:'2026-06-12 · 12:18 WAT',tags:['Identity','Solitude']},
+  {poem:'Poem 13',day:'Day 13',line:'I have stopped explaining the country to strangers',promptLabel:'L11–12 · Diallo · Nakamura',
+   prior1:{text:'The drumbeat is the sentence; the silence is the comma',author:'Antoine Diallo',loc:'Dakar'},
+   prior2:{text:'Cherry blossoms fall indifferently onto the unmarked grave',author:'Yuki Nakamura',loc:'Sapporo'},
+   datetime:'2026-06-13 · 22:39 WAT',tags:['Identity','Solitude']},
+  {poem:'Poem 14',day:'Day 14',line:'The line I write today will outlast the hand that wrote it',promptLabel:'L12–13 · Pillai · Diallo',
+   prior1:{text:'The flood carries no passport; it simply arrives',author:'Meera Pillai',loc:'Delhi'},
+   prior2:{text:'In the baobab\'s shadow, memory is a communal act',author:'Antoine Diallo',loc:'Dakar'},
+   datetime:'2026-06-14 · 17:52 WAT',tags:['Mortality','Time','Memory']},
 ];
 
 const latencies = [18,24,12,31,19,15,18,42,27,22,16,29,25,38];
@@ -264,7 +306,7 @@ for (let i=0;i<14;i++){
   d.className = 'mt-day has-line';
   const dot = document.createElement('div');
   dot.className = 'mt-dot';
-  const dominant = AMARA_LINES[i][4][0];
+  const dominant = AMARA_LINES[i].tags[0];
   dot.style.background = CONCERN_COLORS[dominant] || '#c47048';
   dot.style.opacity = '0.9';
   d.appendChild(dot);
@@ -291,23 +333,47 @@ latencies.forEach((v,i)=>{
   axis.appendChild(lbl);
 });
 
-// Trail list
+// Trail list — click any item to see the full dialectic
 const list = document.getElementById('trail-list');
-AMARA_LINES.forEach(([poem,day,text,prompt,tags])=>{
+let tt08Active = null;
+
+AMARA_LINES.forEach((d) => {
   const item = document.createElement('div');
   item.className = 'trail-item';
-  const lozenges = tags.map(t => {
+  const lozenges = d.tags.map(t => {
     const c = CONCERN_COLORS[t] || '#5a5450';
     return `<span style="font-size:7px;padding:1px 7px;border-radius:8px;background:${c}20;color:${c}cc;border:1px solid ${c}38;white-space:nowrap">${t}</span>`;
   }).join('');
   item.innerHTML = `
-    <div class="ti-poem">${poem}<div class="ti-day">${day}</div></div>
+    <div class="ti-poem">${d.poem}<div class="ti-day">${d.day}</div></div>
     <div style="flex:1;min-width:0">
-      <div class="ti-text">"${text}"</div>
+      <div class="ti-text">"${d.line}"</div>
       <div style="display:flex;flex-wrap:wrap;gap:3px;margin-top:5px">${lozenges}</div>
     </div>
-    <div class="ti-prompt">${prompt}</div>`;
+    <div class="ti-prompt">${d.promptLabel}</div>`;
+  item.addEventListener('click', () => {
+    const tt08 = document.getElementById('line-detail-08');
+    if (!tt08) return;
+    if (tt08Active === item && tt08.style.display !== 'none') {
+      tt08.style.display = 'none'; tt08Active = null; return;
+    }
+    tt08Active = item;
+    document.getElementById('tt08-hdr').textContent = 'Prior two lines · ' + d.poem;
+    document.getElementById('tt08-p1-lbl').textContent = d.prior1.author + ' · ' + d.prior1.loc;
+    document.getElementById('tt08-p1-txt').textContent = '”' + d.prior1.text + '”';
+    document.getElementById('tt08-p2-lbl').textContent = d.prior2.author + ' · ' + d.prior2.loc;
+    document.getElementById('tt08-p2-txt').textContent = '”' + d.prior2.text + '”';
+    document.getElementById('tt08-ctx').textContent = d.datetime + ' · Accra, Ghana';
+    document.getElementById('tt08-line').textContent = '”' + d.line + '”';
+    tt08.style.display = 'block';
+  });
   list.appendChild(item);
+});
+document.addEventListener('click', e => {
+  if (!e.target.closest('.trail-item') && !e.target.closest('#line-detail-08')) {
+    const tt08 = document.getElementById('line-detail-08');
+    if (tt08) { tt08.style.display = 'none'; tt08Active = null; }
+  }
 });
 
 // Mini map (placeholder dots)
@@ -334,6 +400,26 @@ pts.forEach(p=>{
   mp.appendChild(dot);
 });
 </script>
+<!-- Dialectic tooltip — populated dynamically on trail item click -->
+<div id="line-detail-08" style="display:none;position:fixed;left:720px;top:110px;z-index:200;width:304px;background:#1a2030;border:1px solid #2e3848;border-radius:6px;padding:14px;box-shadow:0 6px 28px rgba(0,0,0,.75)">
+  <div style="font-size:8px;color:#3c3834;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px" id="tt08-hdr">Prior two lines</div>
+  <div style="margin-bottom:9px;padding-left:8px;border-left:2px solid rgba(168,98,60,.25)">
+    <div style="font-size:7px;font-family:monospace;color:#2e3848;margin-bottom:2px" id="tt08-p1-lbl"></div>
+    <div style="font-family:Georgia,serif;font-style:italic;font-size:11.5px;color:#6a7066;line-height:1.45" id="tt08-p1-txt"></div>
+  </div>
+  <div style="margin-bottom:12px;padding-left:8px;border-left:2px solid rgba(168,98,60,.25)">
+    <div style="font-size:7px;font-family:monospace;color:#2e3848;margin-bottom:2px" id="tt08-p2-lbl"></div>
+    <div style="font-family:Georgia,serif;font-style:italic;font-size:11.5px;color:#6a7066;line-height:1.45" id="tt08-p2-txt"></div>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;padding:5px 8px;background:rgba(168,98,60,.06);border:1px solid rgba(168,98,60,.15);border-radius:3px">
+    <span style="color:#a8623c;font-size:14px;line-height:1">↓</span>
+    <span style="font-size:9px;color:#7a6858;font-family:monospace" id="tt08-ctx"></span>
+  </div>
+  <div style="padding-top:10px;border-top:1px solid #2a3340">
+    <div style="font-size:7px;font-family:monospace;color:#2e3848;margin-bottom:4px">Amara Osei · contributed</div>
+    <div style="font-family:Georgia,serif;font-style:italic;font-size:13px;color:#c49870;line-height:1.5" id="tt08-line"></div>
+  </div>
+</div>
 <script src="nav-wire.js"></script>
 <div style="position:fixed;bottom:0;left:0;width:100%;background:#523018;color:#e8dec4;text-align:center;font-size:11px;font-weight:700;letter-spacing:.25em;padding:4px 0;z-index:9999">MOCKUP</div>
 </body>

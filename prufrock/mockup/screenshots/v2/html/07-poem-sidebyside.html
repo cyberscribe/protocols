@@ -60,7 +60,7 @@ nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;
 .pl-concerns{display:flex;flex-wrap:wrap;gap:3px;margin-top:4px}
 .pl-loz{font-size:6.5px;padding:1px 6px;border-radius:8px;white-space:nowrap}
 /* Tooltip */
-.line-tooltip{position:fixed;z-index:200;width:296px;background:#1a2030;border:1px solid #2e3848;border-radius:6px;padding:14px;box-shadow:0 6px 28px rgba(0,0,0,.75);top:446px;right:20px;display:none}
+.line-tooltip{position:fixed;z-index:200;width:312px;background:#1a2030;border:1px solid #2e3848;border-radius:6px;padding:14px;box-shadow:0 6px 28px rgba(0,0,0,.75);top:400px;right:20px;display:none}
 .lt-row{font-size:10px;color:#5a5450;display:flex;gap:6px;margin-bottom:5px}
 .lt-lbl{color:#3c3834;width:62px;flex-shrink:0}
 .lt-val{color:#8a8278}
@@ -131,18 +131,27 @@ nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;
   </div>
 </div>
 
-<!-- Tooltip: 2126 line 8 echo — Lena Berg responds to seed -->
+<!-- Tooltip: Lena Berg · 2126 · L8 — click right-col line 8 to show -->
 <div class="line-tooltip">
-  <div class="lt-row"><span class="lt-lbl">Author</span><span class="lt-val" style="color:#3a8090">Lena Berg · Berlin, Germany · 2126</span></div>
-  <div class="lt-row"><span class="lt-lbl">Day written</span><span class="lt-val">Day 8 · 2126-09-08 · 11:22 CET</span></div>
-  <div class="lt-row"><span class="lt-lbl">Echo</span><span class="lt-val">Direct response to 2026 seed line 8</span></div>
-  <div class="lt-row"><span class="lt-lbl">Concerns</span><span class="lt-val">Climate / survival · Grief / loss</span></div>
-  <div class="lt-prompt">
-    <div class="lt-plbl">Seed fragment received from 2026</div>
-    <div class="lt-ptext">
-      "Under the northern lights, the cold is slow and patient"<br>
-      <span style="font-size:9px;color:#2e4858;font-style:normal;margin-top:3px;display:block">Yuki Nakamura · Sapporo · 2026-06-08</span>
-    </div>
+  <div style="font-size:8px;color:#3c3834;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">Prior two lines · 2126 Poem · Lines 6–7</div>
+  <div style="margin-bottom:9px;padding-left:8px;border-left:2px solid rgba(58,128,144,.25)">
+    <div style="font-size:7px;font-family:monospace;color:#2e3848;margin-bottom:2px">L6 · Naledi Dlamini · Johannesburg · 2126</div>
+    <div style="font-family:Georgia,serif;font-style:italic;font-size:11px;color:#3a6878;line-height:1.45">"I wore the overlay of she who wrote before me"</div>
+  </div>
+  <div style="margin-bottom:12px;padding-left:8px;border-left:2px solid rgba(58,128,144,.25)">
+    <div style="font-size:7px;font-family:monospace;color:#2e3848;margin-bottom:2px">L7 · Carlos Andrade · São Paulo · 2126</div>
+    <div style="font-family:Georgia,serif;font-style:italic;font-size:11px;color:#3a6878;line-height:1.45">"In neural commons, longing hath no fixed address"</div>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;padding:5px 8px;background:rgba(58,128,144,.06);border:1px solid rgba(58,128,144,.15);border-radius:3px">
+    <span style="color:#3a8090;font-size:14px;line-height:1">↓</span>
+    <span style="font-size:9px;color:#3a5868;font-family:monospace">2126-09-08 · 11:22 CET · Berlin, Germany</span>
+  </div>
+  <div style="padding-top:10px;border-top:1px solid #2a3340;margin-bottom:10px">
+    <div style="font-size:7px;font-family:monospace;color:#2e3848;margin-bottom:4px">L8 — Lena Berg · contributed</div>
+    <div style="font-family:Georgia,serif;font-style:italic;font-size:12.5px;color:#70a0b8;line-height:1.5">"The patient cold is gone; we mourn the stillness we unmade"</div>
+  </div>
+  <div style="padding-top:8px;border-top:1px solid #1e2a34;font-size:8px">
+    <span style="color:#3a6878;font-weight:600">↻ echo</span><span style="color:#2e4858"> · thematic resonance with 2026 seed L8 — "Under the northern lights, the cold is slow and patient" (Yuki Nakamura · Sapporo · 2026)</span>
   </div>
 </div>
 
@@ -232,7 +241,25 @@ RIGHT_LINES.forEach((d, i) => {
     lineEl.title = 'Click to inspect — Lena Berg echoes 2026 seed line 8';
     lineEl.addEventListener('click', () => {
       const tt = document.querySelector('.line-tooltip');
-      tt.style.display = tt.style.display === 'none' ? 'block' : 'none';
+      const isOpen = tt.style.display === 'block';
+      // Flash the 2026 seed lines to make the cross-century link visible
+      document.querySelectorAll('#left-col .seed-line').forEach(sl => {
+        sl.style.transition = 'background .15s ease';
+        sl.style.background = 'rgba(168,98,60,.3)';
+        setTimeout(() => {
+          sl.style.transition = 'background .8s ease';
+          sl.style.background = '';
+        }, 260);
+      });
+      if (!isOpen) {
+        tt.style.opacity = '0';
+        tt.style.display = 'block';
+        setTimeout(() => { tt.style.transition = 'opacity .3s ease'; tt.style.opacity = '1'; }, 380);
+      } else {
+        tt.style.transition = 'opacity .2s ease';
+        tt.style.opacity = '0';
+        setTimeout(() => { tt.style.display = 'none'; }, 200);
+      }
     });
   }
   rightCol.appendChild(lineEl);

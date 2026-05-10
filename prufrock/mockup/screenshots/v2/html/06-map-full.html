@@ -158,62 +158,61 @@ const poetColor='#c47048', layColor='#607a92', seedColor='#a8623c';
 
 // Seed → all participants (Day 1 prompt, same for all)
 const seedPos = proj(-0.1, 51.5);
+const seedArcs = [];
 [...POET_CITIES, ...LAY_CITIES].forEach(([lon,lat],i)=>{
   const [x2,y2]=proj(lon,lat);
   const [x1,y1]=seedPos;
   const mx=(x1+x2)/2, my=Math.min(y1,y2)-60-Math.abs(x2-x1)*0.04;
   const color=i<14?'rgba(200,120,90,.14)':'rgba(96,122,146,.14)';
-  addEl('path',{d:`M${x1},${y1} Q${mx},${my} ${x2},${y2}`,fill:'none',stroke:color,'stroke-width':.7});
+  seedArcs.push(addEl('path',{d:`M${x1},${y1} Q${mx},${my} ${x2},${y2}`,fill:'none',stroke:color,'stroke-width':.7}));
 });
 
 // Sequential authorial handoffs — arcs connect author of line N to author of line N+1 in same poem
-// Latin square: author of poem p on day d = (p - d + 14) % 14
-// Showing a selection of handoffs across multiple poems (poet cohort)
-// Poem 01: Accra→Stockholm→Naples→Hanoi→Johannesburg→Lisbon→Berlin→…
-const poem01Seq = POET_CITIES.map(([lon,lat])=>proj(lon,lat));
-// handoffs for poem 0: day0→day1: AO(0)→BL(13), day1→2: BL(13)→VG(12), day2→3: VG(12)→PL(11), etc
-// author for poem 0, day d = (0-d+14)%14
-const p01Authors = [0,13,12,11,10,9,8,7,6,5,4,3,2,1]; // indices into POET_CITIES
+const p01Authors = [0,13,12,11,10,9,8,7,6,5,4,3,2,1];
+const poem01Arcs = [];
 for (let d=0; d<13; d++){
   const [x1,y1]=proj(POET_CITIES[p01Authors[d]][0],POET_CITIES[p01Authors[d]][1]);
   const [x2,y2]=proj(POET_CITIES[p01Authors[d+1]][0],POET_CITIES[p01Authors[d+1]][1]);
   const mx=(x1+x2)/2, my=Math.min(y1,y2)-35-d*3;
-  addEl('path',{d:`M${x1},${y1} Q${mx},${my} ${x2},${y2}`,fill:'none',
-    stroke:'rgba(200,120,90,.32)','stroke-width':1.1});
+  poem01Arcs.push(addEl('path',{d:`M${x1},${y1} Q${mx},${my} ${x2},${y2}`,fill:'none',
+    stroke:'rgba(200,120,90,.32)','stroke-width':1.1}));
 }
 
-// Poem 07 handoffs: highlight one poem's geographic journey (different colour)
+// Poem 07 handoffs
 const p07Authors = [6,5,4,3,2,1,0,13,12,11,10,9,8,7];
+const poem07Arcs = [];
 for (let d=0; d<7; d++){
   const [x1,y1]=proj(POET_CITIES[p07Authors[d]][0],POET_CITIES[p07Authors[d]][1]);
   const [x2,y2]=proj(POET_CITIES[p07Authors[d+1]][0],POET_CITIES[p07Authors[d+1]][1]);
   const mx=(x1+x2)/2, my=Math.min(y1,y2)-25-d*4;
-  addEl('path',{d:`M${x1},${y1} Q${mx},${my} ${x2},${y2}`,fill:'none',
-    stroke:'rgba(168,98,60,.28)','stroke-width':1.3});
+  poem07Arcs.push(addEl('path',{d:`M${x1},${y1} Q${mx},${my} ${x2},${y2}`,fill:'none',
+    stroke:'rgba(168,98,60,.28)','stroke-width':1.3}));
 }
 
-// Layperson poem handoffs (a few)
+// Layperson poem handoffs
 const p01LayAuthors = [0,13,12,11,10,9,8,7,6,5,4,3,2,1];
+const layArcs = [];
 for (let d=0; d<9; d++){
   const [x1,y1]=proj(LAY_CITIES[p01LayAuthors[d]][0],LAY_CITIES[p01LayAuthors[d]][1]);
   const [x2,y2]=proj(LAY_CITIES[p01LayAuthors[d+1]][0],LAY_CITIES[p01LayAuthors[d+1]][1]);
   const mx=(x1+x2)/2, my=Math.min(y1,y2)-30-d*2;
-  addEl('path',{d:`M${x1},${y1} Q${mx},${my} ${x2},${y2}`,fill:'none',
-    stroke:'rgba(96,122,146,.28)','stroke-width':1});
+  layArcs.push(addEl('path',{d:`M${x1},${y1} Q${mx},${my} ${x2},${y2}`,fill:'none',
+    stroke:'rgba(96,122,146,.28)','stroke-width':1}));
 }
 
-// City dots
+// City dots — store main dot refs for animation
+const poetDotEls = [], layDotEls = [];
 POET_CITIES.forEach(([lon,lat,name])=>{
   const [cx,cy]=proj(lon,lat);
   addEl('circle',{cx,cy,r:8,fill:poetColor,opacity:.08});
-  addEl('circle',{cx,cy,r:4,fill:poetColor,opacity:.9,filter:'url(#softglow)'});
+  poetDotEls.push(addEl('circle',{cx,cy,r:4,fill:poetColor,opacity:.9,filter:'url(#softglow)'}));
   const anchor=cx<W/2?'start':'end';
   addText(cx<W/2?cx+8:cx-8, cy, name, 'rgba(200,120,90,.6)', 8, anchor);
 });
 LAY_CITIES.forEach(([lon,lat,name])=>{
   const [cx,cy]=proj(lon,lat);
   addEl('circle',{cx,cy,r:7,fill:layColor,opacity:.07});
-  addEl('circle',{cx,cy,r:3.5,fill:layColor,opacity:.85,filter:'url(#softglow)'});
+  layDotEls.push(addEl('circle',{cx,cy,r:3.5,fill:layColor,opacity:.85,filter:'url(#softglow)'}));
   const anchor=cx<W/2?'start':'end';
   addText(cx<W/2?cx+7:cx-7, cy, name.replace('(L)',''), 'rgba(96,122,146,.5)', 7, anchor);
 });
@@ -224,7 +223,8 @@ addEl('circle',{cx:sx,cy:sy,r:18,fill:'none',stroke:seedColor+'33','stroke-width
 addEl('circle',{cx:sx,cy:sy,r:24,fill:'none',stroke:seedColor+'1a','stroke-width':1.5});
 addEl('circle',{cx:sx,cy:sy,r:10,fill:'#1e1a14',stroke:seedColor,'stroke-width':2,filter:'url(#glow)'});
 addEl('circle',{cx:sx,cy:sy,r:5,fill:seedColor,opacity:.9});
-addEl('text',{x:sx,y:sy-20,'text-anchor':'middle','dominant-baseline':'middle',fill:seedColor,'font-size':10,'font-family':'sans-serif'}).textContent='★';
+const seedStar = addEl('text',{x:sx,y:sy-20,'text-anchor':'middle','dominant-baseline':'middle',fill:seedColor,'font-size':10,'font-family':'sans-serif',style:'cursor:pointer',title:'Click to replay'});
+seedStar.textContent='★';
 addText(sx, sy+30, 'London · 1609', seedColor, 9);
 
 // Map title
@@ -240,6 +240,69 @@ addEl('line',{x1:52,y1:H-45,x2:105,y2:H-45,stroke:'rgba(96,122,146,.5)','stroke-
 addText(112, H-45, 'Sequential author handoff within poem (laypeople)', 'rgba(96,122,146,.7)', 8, 'start');
 addEl('line',{x1:52,y1:H-30,x2:105,y2:H-30,stroke:'rgba(168,98,60,.45)','stroke-width':1.3,'stroke-dasharray':'none'});
 addText(112, H-30, 'Featured poem journey (Poem 07 · days 1–7)', 'rgba(168,98,60,.65)', 8, 'start');
+
+// ═══════════════════════════════════════════════════════════════
+// ANIMATION — arcs cascade in sequence; click ★ to replay
+// ═══════════════════════════════════════════════════════════════
+function drawArc(pathEl, delay, duration) {
+  const len = pathEl.getTotalLength();
+  pathEl.style.strokeDasharray = len;
+  pathEl.style.strokeDashoffset = len;
+  setTimeout(() => {
+    pathEl.style.transition = `stroke-dashoffset ${duration}s ease-in-out`;
+    pathEl.style.strokeDashoffset = 0;
+  }, delay * 1000);
+}
+function fadeEl(el, delay, dur, target) {
+  el.style.opacity = 0;
+  setTimeout(() => {
+    el.style.transition = `opacity ${dur}s ease`;
+    el.style.opacity = target;
+  }, delay * 1000);
+}
+
+function startAnim() {
+  // Reset all animatable elements
+  seedArcs.forEach(a => { a.style.transition = 'none'; a.style.opacity = 0; });
+  [...poem01Arcs, ...poem07Arcs, ...layArcs].forEach(a => {
+    const len = a.getTotalLength();
+    a.style.transition = 'none';
+    a.style.strokeDasharray = len;
+    a.style.strokeDashoffset = len;
+  });
+  poetDotEls.forEach(d => { d.style.transition = 'none'; d.style.opacity = 0; });
+  layDotEls.forEach(d => { d.style.transition = 'none'; d.style.opacity = 0; });
+
+  // Brief settle then animate
+  setTimeout(() => {
+    let t = 0;
+
+    // Phase 1: seed→city background arcs fade in together (spiderweb of reach)
+    seedArcs.forEach(a => fadeEl(a, t, 1.1, 1));
+    t += 1.0;
+
+    // Phase 2: city dots pulse in
+    poetDotEls.forEach(d => fadeEl(d, t, 0.5, 0.9));
+    layDotEls.forEach(d => fadeEl(d, t + 0.2, 0.4, 0.85));
+    t += 0.7;
+
+    // Phase 3: Poem 01 handoff arcs cascade one by one (Accra → Stockholm → Naples →…)
+    poem01Arcs.forEach((a, i) => drawArc(a, t + i * 0.38, 0.44));
+    t += poem01Arcs.length * 0.38 + 0.5;
+
+    // Phase 4: Poem 07 arcs cascade (different colour, terracotta)
+    poem07Arcs.forEach((a, i) => drawArc(a, t + i * 0.33, 0.38));
+    t += poem07Arcs.length * 0.33 + 0.4;
+
+    // Phase 5: Layperson arcs cascade
+    layArcs.forEach((a, i) => drawArc(a, t + i * 0.28, 0.32));
+  }, 60);
+}
+
+// Auto-play on page load
+setTimeout(startAnim, 400);
+// Click ★ seed origin to replay
+seedStar.addEventListener('click', startAnim);
 </script>
 <script src="nav-wire.js"></script>
 <div style="position:fixed;bottom:0;left:0;width:100%;background:#523018;color:#e8dec4;text-align:center;font-size:11px;font-weight:700;letter-spacing:.25em;padding:4px 0;z-index:9999">MOCKUP</div>

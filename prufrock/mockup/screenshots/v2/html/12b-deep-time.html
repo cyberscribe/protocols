@@ -118,6 +118,8 @@ function txta(x, y, t, anchor, attrs, parent) {
 
 el('rect', {width:W, height:H, fill:'#1c2530'}, svg);
 const defs = el('defs', {}, svg);
+const deepClipPath = el('clipPath', {id:'deep-reveal'}, defs);
+const deepClipRect = el('rect', {x:0, y:0, width:0, height:H}, deepClipPath);
 
 // Chart geometry
 const CT = 60, CB = 710;
@@ -151,7 +153,8 @@ txt(protX, CT-27, 'Prufrock Protocol · 2026', {fill:'rgba(168,98,60,.8)', 'font
 // Small bracket below the 2026 marker
 el('rect', {x:protX-38, y:CT, width:76, height:CH, fill:'rgba(168,98,60,.015)'}, svg);
 
-// ─── Ribbons ─────────────────────────────────────────────────
+// ─── Ribbons (grouped under reveal clipPath) ──────────────────
+const deepRibbonGroup = el('g', {clipPath:'url(#deep-reveal)'}, svg);
 for (let i = 0; i < COLS - 1; i++) {
   const x0 = COL_X[i], x1 = COL_X[i+1];
   const cx = (x0+x1)/2;
@@ -162,7 +165,7 @@ for (let i = 0; i < COLS - 1; i++) {
     const heightAvg = Math.abs((bot0-top0)+(bot1-top1))/2;
     if (heightAvg < 0.8) continue;
     const d = `M${x0},${bot0} C${cx},${bot0},${cx},${bot1},${x1},${bot1} L${x1},${top1} C${cx},${top1},${cx},${top0},${x0},${top0} Z`;
-    el('path', {d, fill: THEMES[t].color + (isFuture ? '48' : '88'), stroke: THEMES[t].color+'10', 'stroke-width':'0.3'}, svg);
+    el('path', {d, fill: THEMES[t].color + (isFuture ? '48' : '88'), stroke: THEMES[t].color+'10', 'stroke-width':'0.3'}, deepRibbonGroup);
   }
 }
 
@@ -238,6 +241,46 @@ txt(bx, H-22, 'Mortality, Love, Memory and Wonder persist across every era of ve
   {fill:'#262220', 'font-size':'7.5'}, svg);
 txt(bx, H-8, 'The Prufrock Protocol is a single bright mark in a flow that has never paused — and is designed to ensure the flow continues for at least another century',
   {fill:'#222028', 'font-size':'7.5', 'font-style':'italic'}, svg);
+
+// ═══════════════════════════════════════════════════════════════
+// ANIMATION — 1700-year river flows from left (800 CE) to right (2500 CE)
+// ═══════════════════════════════════════════════════════════════
+(function animateDeepTime() {
+  const startX = CL - 5;
+  const endX   = CR + 10;
+  const DURATION = 6000; // 6s — deliberate, epic pace
+  const begin = performance.now() + 400;
+
+  function easeInOut(p) {
+    return p < 0.5 ? 2*p*p : -1 + (4 - 2*p)*p;
+  }
+
+  deepClipRect.setAttribute('x', startX);
+  deepClipRect.setAttribute('width', 0);
+
+  function step(now) {
+    const elapsed = Math.max(0, now - begin);
+    const progress = Math.min(elapsed / DURATION, 1);
+    const w = (endX - startX) * easeInOut(progress);
+    deepClipRect.setAttribute('width', w);
+    if (progress < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+})();
+
+// After river reveal (~6.4 s), spotlight the 2026 column briefly
+setTimeout(() => {
+  const spotlight = el('rect', {x: protX - 38, y: CT, width: 76, height: CH,
+    fill: 'rgba(168,98,60,.15)', rx: 2, opacity: 0}, svg);
+  spotlight.style.transition = 'opacity .5s ease';
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    spotlight.style.opacity = 1;
+    setTimeout(() => {
+      spotlight.style.transition = 'opacity 2.4s ease';
+      spotlight.style.opacity = 0;
+    }, 900);
+  }));
+}, 6700);
 </script>
 <script src="nav-wire.js"></script>
 <div style="position:fixed;bottom:0;left:0;width:100%;background:#523018;color:#e8dec4;text-align:center;font-size:11px;font-weight:700;letter-spacing:.25em;padding:4px 0;z-index:9999">MOCKUP</div>

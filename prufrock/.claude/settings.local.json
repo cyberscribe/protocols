@@ -14,7 +14,13 @@
       "Bash(python3 *)",
       "Bash(awk '{print $5, $9}')",
       "Bash(awk '{print $5\"\\\\t\"$9}')",
-      "Bash(sort -k2)"
+      "Bash(sort -k2)",
+      "mcp__plugin_playwright_playwright__browser_navigate",
+      "mcp__plugin_playwright_playwright__browser_take_screenshot",
+      "mcp__plugin_playwright_playwright__browser_click",
+      "mcp__plugin_playwright_playwright__browser_snapshot",
+      "mcp__plugin_playwright_playwright__browser_evaluate",
+      "Bash(curl *)"
     ]
   }
 }

@@ -18,7 +18,7 @@ const VIEW_ROUTES = {
 
 const POEM_ROUTES = {
   '2026 ↔ 2126':      '07-poem-sidebyside.html',
-  'Chain of Attention': '12a-long-chain.html',
+  'Chain of Attention': '12b-deep-time.html',
   'The Inheritance':    '12c-handoff.html',
 };
 

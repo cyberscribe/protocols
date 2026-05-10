@@ -144,6 +144,7 @@ txt(THEME_X, NEW_Y_TOP-8, 'NEW THEMES', {fill:'rgba(192,120,72,.35)', 'font-size
 
 // ─── Seed → theme connections ───────────────────────────────
 const SEED_THRESH = 0.02;
+const seedThemeArcs = [];
 for (let t = 0; t < T; t++) {
   const w = THEMES[t].seedW;
   if (w < SEED_THRESH) continue;
@@ -151,10 +152,10 @@ for (let t = 0; t < T; t++) {
   const cx1 = SEED_X + (THEME_X - SEED_X) * 0.55;
   const cx2 = SEED_X + (THEME_X - SEED_X) * 0.45;
   const sw = Math.max(0.5, w * 14);
-  el('path', {
+  seedThemeArcs.push(el('path', {
     d: `M${SEED_X},${SEED_Y} C${cx1},${SEED_Y},${cx2},${ty},${THEME_X},${ty}`,
     stroke: THEMES[t].color, 'stroke-width': sw, 'stroke-opacity': 0.55, fill:'none'
-  }, svg);
+  }, svg));
 }
 
 // ─── Theme → poem connections ─────────────────────────────────
@@ -162,6 +163,8 @@ const DIVERGENT_SET = new Set([3,4,5,7,10,12]); // P04,P05,P06,P08,P11,P13
 const INHERITED_THRESH = 0.08;
 const NEW_THRESH = 0.07;
 
+// Store per-poem arc arrays for sequential animation
+const poemArcGroups = Array.from({length: N_POEMS}, () => []);
 for (let p = 0; p < N_POEMS; p++) {
   const py = poemY(p);
   const isDivergent = DIVERGENT_SET.has(p);
@@ -176,14 +179,14 @@ for (let p = 0; p < N_POEMS; p++) {
     const cx2 = THEME_X + (POEM_X - THEME_X) * 0.55;
     const sw = Math.max(0.4, w * (isDivergent ? 10 : 6));
     const opacity = isDivergent ? Math.min(0.8, w * 3.5) : Math.min(0.4, w * 2.0);
-    el('path', {
+    poemArcGroups[p].push(el('path', {
       d: `M${THEME_X},${ty} C${cx1},${ty},${cx2},${py},${POEM_X},${py}`,
       stroke: th.color,
       'stroke-width': sw,
       'stroke-opacity': opacity,
       'stroke-dasharray': isNew ? '4 3' : 'none',
       fill: 'none'
-    }, svg);
+    }, svg));
   }
 }
 
@@ -208,15 +211,16 @@ for (let i = 0; i < T; i++) {
 }
 
 // ─── Poem nodes ───────────────────────────────────────────────
+const poemNodeEls = [];
 for (let p = 0; p < N_POEMS; p++) {
   const py = poemY(p);
   const isDivergent = DIVERGENT_SET.has(p);
   const r = isDivergent ? 10 : 7;
   if (isDivergent) el('circle', {cx:POEM_X, cy:py, r:r+6, fill:'rgba(192,120,72,.06)'}, svg);
-  el('circle', {cx:POEM_X, cy:py, r:r,
+  poemNodeEls.push(el('circle', {cx:POEM_X, cy:py, r:r,
     fill: isDivergent ? 'rgba(192,120,72,.25)' : '#20262e',
     stroke: isDivergent ? '#c47048' : '#2e3640',
-    'stroke-width': isDivergent ? '1.5' : '0.8'}, svg);
+    'stroke-width': isDivergent ? '1.5' : '0.8'}, svg));
   txt(POEM_X, py, String(p+1).padStart(2,'0'), {fill: isDivergent ? '#c47048' : '#5a5450', 'font-size':'7', 'font-family':'monospace', 'font-weight':isDivergent?'700':'400'}, svg);
   txt(POEM_X+r+8, py, `Poem ${String(p+1).padStart(2,'0')}`, {fill: isDivergent ? '#c47048bb' : '#34302c', 'font-size':'7.5', 'font-family':'monospace', 'text-anchor':'start'}, svg);
 }
@@ -242,6 +246,50 @@ txt(410, H-29, 'New theme — emerged within the poem corpus, not in seed', {fil
 
 // Bottom note
 txt(W-200, H-14, 'Edge width ∝ concern weight in poem', {fill:'#262220', 'font-size':'7.5', 'text-anchor':'end'}, svg);
+
+// ═══════════════════════════════════════════════════════════════
+// ANIMATION — seed → themes → poems cascading in
+// ═══════════════════════════════════════════════════════════════
+function drawEdge(pathEl, delay, duration) {
+  const len = pathEl.getTotalLength();
+  pathEl.style.strokeDasharray = len;
+  pathEl.style.strokeDashoffset = len;
+  setTimeout(() => {
+    pathEl.style.transition = `stroke-dashoffset ${duration}s ease-in-out`;
+    pathEl.style.strokeDashoffset = 0;
+  }, delay * 1000);
+}
+function fadeNode(el, delay, dur) {
+  el.style.opacity = 0;
+  setTimeout(() => {
+    el.style.transition = `opacity ${dur}s ease`;
+    el.style.opacity = 1;
+  }, delay * 1000);
+}
+
+function startNetAnim() {
+  // Reset
+  seedThemeArcs.forEach(a => { const l=a.getTotalLength(); a.style.transition='none'; a.style.strokeDasharray=l; a.style.strokeDashoffset=l; });
+  poemArcGroups.flat().forEach(a => { const l=a.getTotalLength(); a.style.transition='none'; a.style.strokeDasharray=l; a.style.strokeDashoffset=l; });
+  poemNodeEls.forEach(n => { n.style.transition='none'; n.style.opacity=0; });
+
+  setTimeout(() => {
+    let t = 0.2;
+
+    // Seed → theme arcs draw in sequence (Mortality, Memory, Time)
+    seedThemeArcs.forEach((a, i) => drawEdge(a, t + i * 0.3, 0.5));
+    t += seedThemeArcs.length * 0.3 + 0.5;
+
+    // Theme → poem arcs + poem nodes cascade by poem (P01 → P14)
+    poemArcGroups.forEach((arcs, p) => {
+      const delay = t + p * 0.25;
+      arcs.forEach(a => drawEdge(a, delay, 0.35));
+      fadeNode(poemNodeEls[p], delay + 0.1, 0.25);
+    });
+  }, 60);
+}
+
+setTimeout(startNetAnim, 400);
 </script>
 <script src="nav-wire.js"></script>
 <div style="position:fixed;bottom:0;left:0;width:100%;background:#523018;color:#e8dec4;text-align:center;font-size:11px;font-weight:700;letter-spacing:.25em;padding:4px 0;z-index:9999">MOCKUP</div>

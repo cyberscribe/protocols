@@ -123,7 +123,7 @@ function drawStream(x0, y0, x1, y1, color, width, opacity, dash) {
     stroke: color, 'stroke-width': width, 'stroke-opacity': opacity, fill:'none'
   };
   if (dash) attrs['stroke-dasharray'] = dash;
-  el('path', attrs, svg);
+  return el('path', attrs, svg);
 }
 
 // Shakespeare → 2026 concern streams (emerging from right edge of 1609 card)
@@ -134,7 +134,7 @@ const s1streams = [
   {color:CC.Time,      y0:TL_Y+30, y1:TL_Y+20, w:5, op:0.30},
   {color:CC.Love,      y0:TL_Y+70, y1:TL_Y+60, w:4, op:0.22},
 ];
-s1streams.forEach(s => drawStream(s1x, s.y0, s2x, s.y1, s.color, s.w, s.op, null));
+const s1paths = s1streams.map(s => drawStream(s1x, s.y0, s2x, s.y1, s.color, s.w, s.op, null));
 
 // 2026 seed lines → 2126 concern streams (from right edge of 2026 seed card section)
 const s3x = X2 + 188, s4x = X3 - 160;
@@ -144,7 +144,7 @@ const s2streams = [
   {color:CC.Climate,  y0:TL_Y+30, y1:TL_Y+80, w:7, op:0.40, dash:'5 4'},
   {color:CC.Trans,    y0:TL_Y+80, y1:TL_Y+130, w:6, op:0.38, dash:'5 4'},
 ];
-s2streams.forEach(s => drawStream(s3x, s.y0, s4x, s.y1, s.color, s.w, s.op, s.dash||null));
+const s2paths = s2streams.map(s => drawStream(s3x, s.y0, s4x, s.y1, s.color, s.w, s.op, s.dash||null));
 
 // ─── 1609 Shakespeare card ───────────────────────────────────
 const c1x = X1 - 160, c1y = TL_Y - CARD_H/2 - 30, c1w = 320, c1h = CARD_H;
@@ -275,6 +275,44 @@ const bx = W/2, by = H - 46;
 el('rect', {x:bx-460, y:by-16, width:920, height:36, rx:4, fill:'rgba(0,0,0,.45)', stroke:'#232a32', 'stroke-width':'1'}, svg);
 txt(bx, by-4, 'Poetry is one of the longest long nows in human history — each line is an act of attention passed forward in time', {fill:'#5a5450', 'font-size':'10', 'font-style':'italic', 'font-family':'Georgia,serif'}, svg);
 txt(bx, by+12, 'The Prufrock Protocol makes that inheritance explicit: 2026 poems become seeds for 2126 poets, who will seed 2226, and so on without end', {fill:'#3a3632', 'font-size':'8.5'}, svg);
+
+// ─── Stream animation ────────────────────────────────────────
+(function animateChain() {
+  const PHASE1_START = 500;   // ms — Shakespeare→2026 streams
+  const STEP1 = 320;          // ms between each s1 stream
+  const DUR1  = 0.9;          // s per stream draw
+  const PHASE2_START = PHASE1_START + s1paths.length * STEP1 + 480;
+  const STEP2 = 300;
+  const DUR2  = 0.85;
+
+  [...s1paths, ...s2paths].forEach(p => { p.style.opacity = 0; });
+
+  function animSolid(p, delay, duration) {
+    const len = p.getTotalLength();
+    p.style.strokeDasharray = len + ' ' + len;
+    p.style.strokeDashoffset = len;
+    setTimeout(() => {
+      p.style.opacity = 1;
+      p.style.transition = `stroke-dashoffset ${duration}s ease-in-out`;
+      p.style.strokeDashoffset = 0;
+    }, delay);
+  }
+
+  function animFade(p, delay, duration) {
+    setTimeout(() => {
+      p.style.transition = `opacity ${duration}s ease`;
+      p.style.opacity = 1;
+    }, delay);
+  }
+
+  s1paths.forEach((p, i) => animSolid(p, PHASE1_START + i * STEP1, DUR1));
+
+  s2paths.forEach((p, i) => {
+    const isDashed = !!s2streams[i].dash;
+    const delay = PHASE2_START + i * STEP2;
+    (isDashed ? animFade : animSolid)(p, delay, DUR2);
+  });
+})();
 
 // ─── Concern legend (bottom-right) ──────────────────────────
 const legX = W - 150, legY = H - 160;
