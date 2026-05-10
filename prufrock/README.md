@@ -23,7 +23,7 @@ In a world forever changed by generative AI, where words and images can be synth
 
 One answer is to retreat to private and analogue approaches — a handwritten journal, a face-to-face conversation, a photograph taken on film. Though more verifiable and incorruptible, these methods abandon the advances that digitisation and network distribution afford us for communicating quickly, globally, and for archiving artefacts at scale.
 
-The Prufrock Protocol takes inspiration from poetry-time to provide a solution. It defines a means for provoking authentic expression to produce a verifiable record of situated human experience across a network of participants over time. 
+The Prufrock Protocol takes inspiration from poetry-time to provide an essential counterpoise to the meteoric rise of generative AI. It defines a means for provoking authentic expression to produce a verifiable record of situated human experience across a network of participants over time. 
 
 The protocol is medium-agnostic: its first domain is poetry, but its formal structure applies wherever the goal is to record verifiable human artefacts digitally and at scale in an era where this has suddenly become endangered.
 
@@ -50,8 +50,6 @@ Generative AI models also compress human culture, but do so statistically and an
 The moment — a situated, timestamped, geolocated instant of individual experience — is precisely what generative models discard in favour of associational patterns. A timestamp or a person's name is just another optional variable in a probability distribution. 
 
 In poetry, the moment is the central element preserved: poetry creates space for inference and interpretation within the consciousness of the reader. This is the space that generative models attempt to fill with statistically quantifiable certainty, whereas poetry attempts to preserve its framing as negative space. Generative AI has ready answers; poetry has questions.
-
-The Prufrock Protocol provides an essential counterpoise to the meteoric rise of generative AI, as a means to provoke and preserve authenticated, situated, human-originated cultural artefacts longitudinally and at scale.
 ## Beyond Sonnets
 
 The sonnet trial is the first experiment. The protocol's parameterisation supports  free-form writing and non-textual media, such as audio, image, or video as response medium. The protocol's authentication, lineage, and tamper-evidence properties hold uniformly regardless of medium — a photograph, cryptographically signed and hash-chained to a prior photograph, satisfies the same invariants as a line of verse.
