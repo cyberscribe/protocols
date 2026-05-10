@@ -1,0 +1,2 @@
+ - [cognitive debt](https://margaretstorey.com/blog/2026/02/09/cognitive-debt/
+ - 

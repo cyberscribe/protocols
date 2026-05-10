@@ -365,11 +365,11 @@ Follow his thread. The three-part structure is prep, not a script. If he wants t
 | FPT Positioning | `prufrock/fpt-positioning.md` | Concept mapping to SIG, novel contributions, presentation angles |
 | Parameterisation | `prufrock/mockup/spec/protocol-parameterisation.md` | Parameter space, experiment definitions for ghazal, sestina, haiku-relay |
 | Long Now Lab 001.1 | `prufrock/memory/projects/long-now-lab-001-1.md` | Timeline, application fields, sibling labs, review panel |
-| Application concept | `prufrock/to-review/concept.md` | 500-word Long Now application text |
-| Artefact + v1 spec | `prufrock/to-review/artefact-and-v1.md` | Named deliverable, pace layers, institutional pairing, scoped v1 |
-| Protocol Reader distillation | `protocol-reader-distillation.md` | 27-essay review, promotion shortlist |
-| FPT SIG distillation | `fptsig-distillation.md` | Reference catalogue scored against human-AI thesis |
-| FPT SIG references | `fptsig-references.md` | Thematic grouping of SIG sources |
+| Application concept | `to-review/prufrock/concept.md` | 500-word Long Now application text |
+| Artefact + v1 spec | `to-review/prufrock/artefact-and-v1.md` | Named deliverable, pace layers, institutional pairing, scoped v1 |
+| Protocol Reader distillation | `transhuman-protocols/protocol-reader/distillation.md` | 27-essay review, promotion shortlist |
+| FPT SIG distillation | `transhuman-protocols/fptsig/distillation.md` | Reference catalogue scored against human-AI thesis |
+| FPT SIG references | `transhuman-protocols/fptsig/references.md` | Thematic grouping of SIG sources |
 | Research statement | `STATEMENT.md` | Broader programme: effective protocols for human-AI collaboration |
 | Poetry protocols talk | `poetry-talk/poetry-protocols-notes.pdf` | 40-slide talk: compression, Gestalt, Fermi-Dyson, infinite game |
 | PI General Assembly | `pi/20260429 1600 Transcription.txt` | Venkat on "new nature," Timber on PI launch, member round-robin |

@@ -36,12 +36,12 @@ These framings are load-bearing. Every artefact (concept, ln-situating, artefact
 | `pitch.md` | Long-form essay. **Reference voice; do not alter.** |
 | `formalisation.md` | Protocol formal specification, parameterised over experiment configurations. Sonnet trial in §9.1. |
 | `protocol-diagram.svg` | Dispersed-authorship diagram (5×5 illustrative slice of the 14×14 trial). |
-| `to-review/` | Drafts awaiting Robert's review pass: `concept.md`, `previous-work.md`, `ln-situating.md`, `artefact-and-v1.md`, `scope-ideas.md`, `website-faq.md`. |
 | `application.pdf`, `callout.pdf` | Long Now Lab 001.1 brief and Google Form export. |
 | `poetry-blockchain-precedents.md` | Comparative review of 7 prior poetry-on-blockchain projects (Po.et, Mirror, Etherpoems, theVERSEverse, POEM, TECHNELEGY, Cord). |
 | `TASKS.md` | Three-lane (Human / Cowork / Code) critical-path task list. |
+| `../to-review/prufrock/` | Drafts awaiting Robert's review pass (workspace-wide review queue): `concept.md`, `previous-work.md`, `ln-situating.md`, `artefact-and-v1.md`, `website-faq.md`, `pitch-draft-v1.md`, `pre-reading-for-rao.md`, `judges-notes.md`, `audit-and-mitigations.md`, `board-member-analysis-grounded.md`, `substack-the-infinite-game-of-poetry.md`, `TODO.md`. |
 
-Sibling directory `00-protocols/` contains adjacent project material that may occasionally be useful.
+Sibling material outside `prufrock/`: `../poetry-talk/` (archival), `../transhuman-protocols/` (broader research thread that may be useful as adjacent context), `../blogs/`.
 
 ## Preferences (durable)
 
@@ -58,4 +58,4 @@ Sibling directory `00-protocols/` contains adjacent project material that may oc
 - Default working directory: `prufrock/` within `00-protocols/`.
 - All dates expressed in Long Now Zero (02026, 02028) when addressing Long Now.
 - Default identifiers in formalisation: $n$ cohort size, $m$ poem length, $D$ duration, $r$ rounds/day, $k$ prompt depth, $\Theta$ parent tuple, $\phi$ permutation.
-- **`to-review/` is human-review staging.** Documents parked in `prufrock/to-review/` are awaiting Robert's review. Cowork should not auto-edit them once parked — only update on Robert's explicit instruction or to apply his returned feedback. Treat them as paused, not final.
+- **Review queue.** Prufrock review drafts live at the workspace-wide `../to-review/prufrock/` (not `prufrock/to-review/` — moved 2026-05-10). Cowork must not auto-edit anything under `to-review/` once parked — only update on Robert's explicit instruction or to apply his returned feedback. Treat parked items as paused, not final.

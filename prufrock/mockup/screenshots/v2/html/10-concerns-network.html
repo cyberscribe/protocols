@@ -191,8 +191,8 @@ for (let p = 0; p < N_POEMS; p++) {
 }
 
 // Start hidden — animation reveals from blank graph
-seedThemeArcs.forEach(a => { const l=a.getTotalLength(); a.style.strokeDasharray=l; a.style.strokeDashoffset=l; });
-poemArcGroups.flat().forEach(a => { const l=a.getTotalLength(); a.style.strokeDasharray=l; a.style.strokeDashoffset=l; });
+seedThemeArcs.forEach(a => { a.style.opacity = '0'; });
+poemArcGroups.flat().forEach(a => { a.style.opacity = '0'; });
 
 // ─── Seed node ────────────────────────────────────────────────
 el('circle', {cx:SEED_X, cy:SEED_Y, r:32, fill:'rgba(168,98,60,.06)', stroke:'rgba(168,98,60,.25)', 'stroke-width':'1.5'}, svg);
@@ -276,8 +276,8 @@ function fadeNode(el, delay, dur) {
 
 function startNetAnim() {
   // Reset
-  seedThemeArcs.forEach(a => { const l=a.getTotalLength(); a.style.transition='none'; a.style.strokeDasharray=l; a.style.strokeDashoffset=l; });
-  poemArcGroups.flat().forEach(a => { const l=a.getTotalLength(); a.style.transition='none'; a.style.strokeDasharray=l; a.style.strokeDashoffset=l; });
+  seedThemeArcs.forEach(a => { const l=a.getTotalLength(); a.style.transition='none'; a.style.strokeDasharray=l; a.style.strokeDashoffset=l; a.style.opacity='1'; });
+  poemArcGroups.flat().forEach(a => { const l=a.getTotalLength(); a.style.transition='none'; a.style.strokeDasharray=l; a.style.strokeDashoffset=l; a.style.opacity='1'; });
   poemNodeEls.forEach(n => { n.style.transition='none'; n.style.opacity=0; });
 
   setTimeout(() => {

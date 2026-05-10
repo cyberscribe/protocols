@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Prufrock Protocol — Line Detail: P01 · L08 · 2126</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1440px;height:900px;overflow:hidden;background:#1c2530;color:#e8dec4;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px;opacity:0}
+nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;align-items:center;padding:0 24px;gap:2px}
+.brand{display:flex;align-items:baseline;gap:10px;margin-right:28px}
+.brand-name{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.brand-sub{font-size:10px;letter-spacing:.06em;color:#a8623c;opacity:.75}
+.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#5a5450;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.nav-tab.active{color:#e8dec4;border-bottom-color:#a8623c}
+.nav-right{margin-left:auto;font-size:10px;color:#3c3834}
+.info-strip{height:36px;background:#1c2028;border-bottom:1px solid #232a32;display:flex;align-items:center;padding:0 24px;gap:0}
+.is-crumb{display:flex;align-items:center;gap:8px;font-size:10px}
+.is-seg{color:#3c3834}
+.is-sep{color:#2a3340;padding:0 2px}
+.is-active{color:#8a8278}
+.is-right{margin-left:auto;font-size:9px;color:#2e3848;font-style:italic}
+.main-body{height:820px;display:flex}
+
+/* Left panel */
+.left-panel{width:448px;flex-shrink:0;border-right:1px solid #232a32;padding:26px 24px;display:flex;flex-direction:column;gap:0;overflow:hidden}
+.lp-top{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.lp-lnum{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#a8623c;background:rgba(168,98,60,.1);border:1px solid rgba(168,98,60,.22);border-radius:3px;padding:2px 9px}
+.lp-echo{font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(58,128,144,.85);background:rgba(58,128,144,.1);border:1px solid rgba(58,128,144,.28);border-radius:10px;padding:2px 9px}
+.lp-line-text{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:17px;line-height:1.55;color:#c4baa6;letter-spacing:.005em;margin-bottom:20px}
+.lp-divider{height:1px;background:#1e2530;margin:14px 0}
+.lp-author-row{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.lp-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.lp-name{font-size:14px;font-weight:600;color:#e8dec4;line-height:1.2}
+.lp-sub{font-size:10px;color:#5a5450}
+.meta-row{display:flex;align-items:center;gap:0;margin-bottom:5px}
+.meta-lbl{font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#2c3240;width:68px;flex-shrink:0}
+.meta-val{font-size:9px;font-family:monospace;color:#505868}
+.meta-hash{font-size:8px;font-family:monospace;color:#303844;letter-spacing:.04em}
+.concern-row{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.ctag{font-size:8px;padding:2px 9px;border-radius:10px;font-weight:500;border:1px solid}
+.pos-header{font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#2c3240;margin-bottom:8px}
+.pos-strip{display:flex;flex-direction:column;gap:3px}
+.pos-row{height:15px;display:flex;align-items:center;gap:6px;border-radius:2px;padding:0 4px}
+.pos-row.cur{background:rgba(58,128,144,.1);border-left:2px solid rgba(58,128,144,.45)}
+.pos-lnum{font-size:7px;font-family:monospace;color:#2a3240;width:16px;flex-shrink:0}
+.pos-bar-wrap{flex:1;height:3px;background:#1e2530;border-radius:2px;overflow:hidden}
+.pos-fill{height:3px;border-radius:2px}
+.pos-cur-lbl{font-size:7px;color:#3a7888;font-family:monospace;white-space:nowrap}
+
+/* Right panel */
+.right-panel{flex:1;padding:26px 32px;overflow:hidden;display:flex;flex-direction:column}
+.rp-sec-hdr{font-size:8px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#2e3848;margin-bottom:16px;padding-bottom:6px;border-bottom:1px solid #1e2530;display:flex;align-items:center;gap:12px}
+.rp-hdr-note{font-size:8px;font-weight:400;letter-spacing:.03em;text-transform:none;color:#2a3848;font-style:italic;margin-left:auto}
+.parent-cards{display:flex;flex-direction:column;gap:10px;margin-bottom:14px}
+.pcard{background:#1c2028;border:1px solid #232a32;border-radius:5px;padding:14px 18px;position:relative;transition:border-color .15s,background .15s}
+.pcard.nav{cursor:pointer}
+.pcard.nav:hover{border-color:#3a5068;background:#1e2634}
+.pcard.nav:hover .pcard-arrow{opacity:1;right:16px}
+.pcard.nav:hover .pcard-navlbl{opacity:1}
+.pcard.nav:hover .pcard-text{color:#9a9080}
+.pcard-hdr{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.pcard-lnum{font-size:8px;font-weight:700;letter-spacing:.08em;color:#3c3834;font-family:monospace}
+.pcard-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.pcard-name{font-size:12px;font-weight:600;color:#8a8278}
+.pcard-loc{font-size:9px;color:#3c3834;font-family:monospace}
+.pcard-text{font-family:Georgia,serif;font-style:italic;font-size:13px;line-height:1.45;color:#6a6860;transition:color .15s}
+.pcard-navlbl{position:absolute;right:36px;top:50%;transform:translateY(-50%);font-size:8px;color:#3a5068;opacity:0;transition:opacity .15s;white-space:nowrap;pointer-events:none}
+.pcard-arrow{position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:13px;color:#3a5068;opacity:0;transition:opacity .15s, right .15s;pointer-events:none}
+.chain-join{display:flex;align-items:center;gap:12px;margin:10px 0 12px}
+.cj-line{flex:1;height:1px;background:linear-gradient(90deg,rgba(58,128,144,.18),rgba(58,128,144,.06))}
+.cj-label{font-size:8px;color:#2e3848;font-family:monospace;letter-spacing:.04em;white-space:nowrap}
+.contrib-card{background:rgba(58,128,144,.04);border:1px solid rgba(58,128,144,.15);border-left:3px solid rgba(58,128,144,.35);border-radius:4px;padding:14px 18px;margin-bottom:20px}
+.contrib-hdr{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+.contrib-lnum{font-size:8px;font-weight:700;letter-spacing:.08em;color:#3a8090;font-family:monospace}
+.contrib-text{font-family:Georgia,serif;font-style:italic;font-size:13px;line-height:1.45;color:#5a9090}
+.seed-ctx{background:rgba(168,98,60,.03);border:1px solid rgba(168,98,60,.12);border-radius:5px;padding:16px 18px 14px}
+.seed-ctx-hdr{font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(168,98,60,.5);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.seed-ctx-span{font-size:8px;font-weight:400;text-transform:none;letter-spacing:0;color:rgba(168,98,60,.35);font-style:italic}
+.seed-line{padding:7px 0;border-bottom:1px solid rgba(168,98,60,.08)}
+.seed-line:last-of-type{border-bottom:none;padding-bottom:0}
+.seed-lnum{font-size:7.5px;font-family:monospace;color:rgba(168,98,60,.4);margin-bottom:3px}
+.seed-text{font-family:Georgia,serif;font-style:italic;font-size:12px;color:rgba(168,98,60,.62);line-height:1.4}
+.echo-note{margin-top:10px;padding-top:9px;border-top:1px solid rgba(58,128,144,.12);font-size:9px;color:#3a6878;line-height:1.6}
+.echo-note strong{color:#4a8898;font-weight:600}
+</style>
+</head>
+<body>
+<nav>
+  <div class="brand"><span class="brand-name">The Prufrock Protocol</span><span class="brand-sub">Sonnet Experiment Alpha</span></div>
+  <div class="nav-tab">Timeline</div>
+  <div class="nav-tab">Lineage</div>
+  <div class="nav-tab">Map</div>
+  <div class="nav-tab active">Poem</div>
+  <div class="nav-tab">Participant</div>
+  <div class="nav-tab">Concerns</div>
+  <div class="nav-right">Line detail · Poem 01 · L08 · 2126 cohort</div>
+</nav>
+<div class="info-strip">
+  <div class="is-crumb">
+    <span class="is-seg">Poem 01</span>
+    <span class="is-sep"> › </span>
+    <span class="is-seg">2126 Cohort</span>
+    <span class="is-sep"> › </span>
+    <span class="is-active">Line 08 · Lena Berg</span>
+  </div>
+  <div class="is-right">Click a parent line to follow the chain ↗</div>
+</div>
+
+<div class="main-body">
+  <!-- Left panel -->
+  <div class="left-panel">
+    <div class="lp-top">
+      <span class="lp-lnum">L08</span>
+      <span class="lp-echo">↻ echo</span>
+    </div>
+    <div class="lp-line-text">"The patient cold is gone; we mourn the stillness we unmade"</div>
+
+    <div class="lp-divider"></div>
+
+    <div class="lp-author-row">
+      <div class="lp-dot" style="background:#785888"></div>
+      <div>
+        <div class="lp-name">Lena Berg</div>
+        <div class="lp-sub">Berlin, Germany</div>
+      </div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-lbl">Signed</span>
+      <span class="meta-val">2126-09-08 · 11:22 CET</span>
+    </div>
+    <div class="meta-row">
+      <span class="meta-lbl">Protocol</span>
+      <span class="meta-val">v2.1 · Poem 01 · Day 08</span>
+    </div>
+    <div class="meta-row" style="margin-bottom:10px">
+      <span class="meta-lbl">SHA-3</span>
+      <span class="meta-hash">a9f2c4d8e1b7…3c17</span>
+    </div>
+    <div class="concern-row" style="margin-bottom:0">
+      <span class="ctag" style="color:#4a9878;border-color:rgba(74,152,120,.28);background:rgba(74,152,120,.1)">Climate</span>
+      <span class="ctag" style="color:#5a8090;border-color:rgba(90,128,144,.28);background:rgba(90,128,144,.1)">Grief</span>
+    </div>
+
+    <div class="lp-divider"></div>
+
+    <div class="pos-header">Position in poem</div>
+    <div class="pos-strip" id="pos-strip"></div>
+  </div>
+
+  <!-- Right panel -->
+  <div class="right-panel">
+    <div class="rp-sec-hdr">
+      Prompted by
+      <span class="rp-hdr-note">Two preceding lines received · protocol dialectic</span>
+    </div>
+
+    <div class="parent-cards">
+      <div class="pcard">
+        <div class="pcard-hdr">
+          <span class="pcard-lnum">L06</span>
+          <div class="pcard-dot" style="background:#b8703c"></div>
+          <span class="pcard-name">Naledi Dlamini</span>
+          <span class="pcard-loc">Johannesburg · 2126</span>
+        </div>
+        <div class="pcard-text">"I wore the overlay of she who wrote before me"</div>
+      </div>
+      <div class="pcard nav" onclick="navigateToParent()">
+        <div class="pcard-hdr">
+          <span class="pcard-lnum">L07</span>
+          <div class="pcard-dot" style="background:#5a907c"></div>
+          <span class="pcard-name">Carlos Andrade</span>
+          <span class="pcard-loc">São Paulo · 2126</span>
+        </div>
+        <div class="pcard-text">"In neural commons, longing hath no fixed address"</div>
+        <div class="pcard-navlbl">View line detail</div>
+        <div class="pcard-arrow">→</div>
+      </div>
+    </div>
+
+    <div class="chain-join">
+      <div class="cj-line"></div>
+      <div class="cj-label">received both · wrote the following</div>
+      <div class="cj-line" style="background:linear-gradient(90deg,rgba(58,128,144,.06),rgba(58,128,144,.18))"></div>
+    </div>
+
+    <div class="contrib-card">
+      <div class="contrib-hdr">
+        <span class="contrib-lnum">L08 — contributed</span>
+        <div class="pcard-dot" style="background:#785888"></div>
+        <span style="font-size:10px;color:#5a6878;font-weight:600">Lena Berg</span>
+      </div>
+      <div class="contrib-text">"The patient cold is gone; we mourn the stillness we unmade"</div>
+    </div>
+
+    <div class="seed-ctx">
+      <div class="seed-ctx-hdr">
+        Seed context
+        <span class="seed-ctx-span">— received from the 02026 cohort, one century prior</span>
+      </div>
+      <div class="seed-line">
+        <div class="seed-lnum">L07 · Lars Bergmann · Oslo · 02026</div>
+        <div class="seed-text">"The wall came down but the frontier remained in my dreaming"</div>
+      </div>
+      <div class="seed-line">
+        <div class="seed-lnum">L08 · Yuki Nakamura · Sapporo · 02026 · → seed line</div>
+        <div class="seed-text">"Under the northern lights, the cold is slow and patient"</div>
+      </div>
+      <div class="echo-note">
+        <strong>↻ echo detected</strong> — "the cold is slow and patient" (02026 · L08 · Nakamura) resonates with "we mourn the stillness we unmade" (2126 · L08 · Berg). The 2126 line inherits the image and inverts its tense: the cold that was patient is now gone.
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Position strip
+const LINE_COUNT = 14;
+const strip = document.getElementById('pos-strip');
+for (let i = 1; i <= LINE_COUNT; i++) {
+  const row = document.createElement('div');
+  const isCur = i === 8;
+  row.className = 'pos-row' + (isCur ? ' cur' : '');
+  const w = isCur ? 100 : [58,48,72,38,62,50,54,100,44,51,60,39,56,48][i-1];
+  const fill = isCur ? '#3a8090' : '#273040';
+  row.innerHTML = `<span class="pos-lnum">${String(i).padStart(2,'0')}</span><div class="pos-bar-wrap"><div class="pos-fill" style="width:${w}%;background:${fill}"></div></div>${isCur ? '<span class="pos-cur-lbl">← this line</span>' : ''}`;
+  strip.appendChild(row);
+}
+
+function navigateToParent() {
+  document.body.style.transition = 'opacity .28s ease';
+  document.body.style.opacity = '0';
+  setTimeout(() => location.href = '15b-line-detail-parent.html', 290);
+}
+
+requestAnimationFrame(() => requestAnimationFrame(() => {
+  document.body.style.transition = 'opacity .38s ease';
+  document.body.style.opacity = '1';
+}));
+</script>
+<script src="nav-wire.js"></script>
+<div style="position:fixed;bottom:0;left:0;width:100%;background:#523018;color:#e8dec4;text-align:center;font-size:11px;font-weight:700;letter-spacing:.25em;padding:4px 0;z-index:9999">MOCKUP</div>
+</body>
+</html>

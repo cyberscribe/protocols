@@ -51,11 +51,20 @@ optional - map the interconnection of the lines as an interactive infographic
 
 optional - make film-poems from the results
 
----
+implications for PI to discuss with Venkat:
 
-Notes 2026-05-09:
+ - stigmergic 
+ - autocurricular
+ - drift by design
+ - novel conceptualisations of:
+  * compression (words transcend words)
+  *  nondimensionalisation (negative space)
 
-1. Stop worrying about the name Prufrock — Eliot transcended Prufrock's quotidian malaise and milquetoast middling by making it art
-2. The starter lines will be from poems 100, 1000, etc. years ago
-3. Sonnets (14 lines, the only modern constraint) are just one experiment
-4. More likely we will give poets 2 lines (neither their own) as starters for sense of trajectory
+
+also
+ - forefit handling
+ - signed parent/child relationship
+ - signed spatiotemporal tuple
+
+ - gets away from state machines 
+ - more toward process calculus, actor models
