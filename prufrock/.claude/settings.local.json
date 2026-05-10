@@ -21,7 +21,10 @@
       "mcp__plugin_playwright_playwright__browser_snapshot",
       "mcp__plugin_playwright_playwright__browser_evaluate",
       "Bash(curl *)",
-      "WebFetch(domain:longnow.org)"
+      "WebFetch(domain:longnow.org)",
+      "Bash(ffmpeg -version)",
+      "Bash(ffprobe -v quiet -print_format json -show_format -show_streams /Users/rpeake/Desktop/project-support/00-protocols/prufrock/mockup/screenshots/v2/html/prufrock-demo.webm)",
+      "Bash(xargs ls -la)"
     ]
   }
 }

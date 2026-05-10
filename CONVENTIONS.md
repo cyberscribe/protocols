@@ -2,7 +2,7 @@
 
 *Last updated: 2026-05-10*
 
-This repository holds materials across four threads. Future sessions and scheduled tasks should read this before adding files. Thread-specific conventions live inside each thread's own folder where applicable.
+This repository holds materials under the umbrella of *humane protocols for the transhuman age*. Three peer research threads sit under that umbrella, plus supporting material. Future sessions and scheduled tasks should read this before adding files. Thread-specific conventions live inside each thread's own folder where applicable.
 
 ---
 
@@ -11,13 +11,13 @@ This repository holds materials across four threads. Future sessions and schedul
 | Path | Purpose |
 |---|---|
 | `README.md` | Public landing page (served via GitHub Pages). |
-| `poetry-talk/` | Archival materials and assets for the *Poetry as Protocol* talk that opened the door at the Protocols Institute (July 2025). |
-| `transhuman-protocols/` | The core research thread — *Effective Protocols for Human-AI Collaboration*. Sources, distillations, daily research digests, FPT SIG materials, and the read pipeline live here. See `transhuman-protocols/CONVENTIONS.md` for the read-flow conventions specific to that thread. |
-| `prufrock/` | Active project — *The Prufrock Protocol* pitch to The Long Now Foundation (Lab 001.1, Book of Time). Deadline 2026-06-05. |
-| `blogs/` | Drafts and published blog posts. |
+| `poetry-talk/` | Materials and assets for *The Infinite Game of Poetry* (talk, July 2025) — one of the three threads. Opened the door at the Protocols Institute. |
+| `prufrock/` | *The Prufrock Protocol* — pitch in development for The Long Now Foundation Lab 001.1 (Book of Time). Deadline 2026-06-05. |
+| `transhuman-protocols/` | *Protocols for Effective Human-AI Collaboration* — the broad research thread on transposing human collaboration paradigms into transhuman protocols. Holds the read pipeline, daily research digests, distillations, and adjacent reference material. See `transhuman-protocols/CONVENTIONS.md` for thread-specific read-flow conventions. |
+| `blogs/` | Drafts and published blog posts. Supporting material; not promoted in the public README. |
 | `to-review/` | Single workspace-wide review queue. Subfolders are by thread (e.g. `to-review/prufrock/`). |
 
-`.obsidian/` and `.git/` are housekeeping.
+The three threads are peers, not nested — Prufrock is **not** a subset of the human-AI collaboration thread, and vice versa. They are distinct projects sharing the same umbrella. `.obsidian/` and `.git/` are housekeeping.
 
 ---
 

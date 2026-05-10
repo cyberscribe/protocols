@@ -41,7 +41,7 @@ These framings are load-bearing. Every artefact (concept, ln-situating, artefact
 | `TASKS.md` | Three-lane (Human / Cowork / Code) critical-path task list. |
 | `../to-review/prufrock/` | Drafts awaiting Robert's review pass (workspace-wide review queue): `concept.md`, `previous-work.md`, `ln-situating.md`, `artefact-and-v1.md`, `website-faq.md`, `pitch-draft-v1.md`, `pre-reading-for-rao.md`, `judges-notes.md`, `audit-and-mitigations.md`, `board-member-analysis-grounded.md`, `substack-the-infinite-game-of-poetry.md`, `TODO.md`. |
 
-Sibling material outside `prufrock/`: `../poetry-talk/` (archival), `../transhuman-protocols/` (broader research thread that may be useful as adjacent context), `../blogs/`.
+Sibling threads under the same umbrella (*humane protocols for the transhuman age*) — peers of Prufrock, not parents or supersets: `../poetry-talk/` (*The Infinite Game of Poetry*) and `../transhuman-protocols/` (*Protocols for Effective Human-AI Collaboration*). Material from these threads may be useful as adjacent context but each project sits on its own. `../blogs/` is supporting material.
 
 ## Preferences (durable)
 
