@@ -16,8 +16,6 @@ depends_on = None
 
 
 def upgrade() -> None:
-    # pgvector extension — no-op if already present
-    op.execute("CREATE EXTENSION IF NOT EXISTS vector")
 
     op.create_table(
         "participants",
