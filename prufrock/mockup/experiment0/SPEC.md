@@ -54,6 +54,8 @@ Default window: 09:00–22:00 local, configurable per user. If Robert does not r
 
 If a day is missed, the protocol does not advance: day `N` re-fires the next morning with the same antithesis. This preserves the 14-line invariant and lets us observe how recovery feels.
 
+**Scheduling correctness.** When the bot starts mid-day (initial deploy, host reboot, service restart), the random draw must clamp the window start to `max(now, today_at(W_start))` to avoid scheduling a fire in the past. If `now >= today_at(W_end)`, draw from tomorrow's full window instead. APScheduler will silently drop missed-grace-period jobs otherwise — this exact bug ate day 1 of the experiment-0 cycle on 2026-05-11.
+
 ### 1.5 Reply discipline
 
 A response is captured by extracting the **first non-blank line** of the Telegram message, after `.strip()`. Subsequent lines in the same message are discarded for the purposes of `R_N` but the **full raw Telegram `Update` payload is persisted** to `responses.raw_update_json` for later analysis.
@@ -369,7 +371,7 @@ Build in this sequence. Each step should be independently runnable and testable 
 
 1. **Scaffold** the repo per §5. `pyproject.toml` with dependencies pinned to minor versions. `ruff` and `pyright` configured. `.env.example` with every required var documented.
 2. **Config** (`config.py`) — `pydantic-settings` `Settings` class reading `DATABASE_URL`, `TELEGRAM_BOT_TOKEN`, `TELEGRAM_USER_ID`, `TIMEZONE`, `LOG_LEVEL`. Fail loudly on missing required vars.
-3. **DB layer** — SQLAlchemy 2.x declarative models per §4. Alembic init + initial migration `0001_initial.py`. `pgvector` extension created in the migration (no-op if already present).
+3. **DB layer** — SQLAlchemy 2.x declarative models per §4. Alembic init + initial migration `0001_initial.py`. **Do not** include `CREATE EXTENSION vector` in the default migration: pgvector is unused in experiment 0 and breaks `alembic upgrade head` on any cluster that doesn't already have the extension package installed (e.g. Debian's stock `postgresql-15`). If pgvector becomes needed later, add a separate optional migration gated by a config flag, or install `postgresql-15-pgvector` from PGDG ahead of running migrations.
 4. **Sonnet ingestion** — `voltas.py` + `cli seed-sonnets` command. Idempotent. Includes the §6 exception handling for sonnets 99 and 126.
 5. **Protocol layer** — `arc.py`:
    * `start_experiment(participant) -> Experiment` — picks a random sonnet (excluding 126), creates the experiment row, returns it.
@@ -377,13 +379,13 @@ Build in this sequence. Each step should be independently runnable and testable 
    * `record_response(prompt, text, raw_update) -> Response` — appends to `responses`, computes parent hashes, advances state (i.e. clears the active prompt and schedules tomorrow's).
    * `is_complete(experiment) -> bool` — true when 14 responses are recorded.
    * `assemble_poem(experiment) -> str` — returns the 16-line text for final delivery.
-6. **Scheduler** — `fire_window.py` for the random-time-in-window logic (use `secrets.SystemRandom` not `random` for the draw). `tasks.py` for the APScheduler jobs: a daily `00:01` reseed that books the day's fire time, and the fire job itself that calls into `arc.build_antithesis` and dispatches via the bot.
+6. **Scheduler** — `fire_window.py` for the random-time-in-window logic. Use `secrets.SystemRandom` not `random` for the draw. **Clamp the draw to `[max(now, today_at(W_start)), today_at(W_end)]`** per §1.4 so mid-day startups don't pick past times; if `now >= today_at(W_end)`, draw from tomorrow's full window instead. `tasks.py` for the APScheduler jobs: a daily `00:01` reseed that books the day's fire time, and the fire job itself that calls into `arc.build_antithesis` and dispatches via the bot.
 7. **Bot** — `handlers.py` with two handlers:
    * `/start` — registers / acknowledges the participant.
    * Default message handler — treats any text from the registered chat as a response to the open prompt for the participant's active experiment. Validates there is an open prompt; rejects silently with a polite reply otherwise.
 
    `runner.py` builds the `Application`, attaches handlers, kicks off the APScheduler, calls `run_polling()`.
-8. **CLI** — `typer`-based, exposing `seed-sonnets`, `start-experiment`, `status` (prints current experiment state and assembled poem so far), `abandon-experiment`.
+8. **CLI** — `typer`-based, exposing `seed-sonnets`, `start-experiment`, `status` (prints current experiment state and assembled poem so far), `abandon-experiment`, `fire-now` (manual day-N fire for smoke testing). In any command that prints summary output, **capture ORM field values to locals inside the `with db_session() as session:` block** before the session closes, or set `expire_on_commit=False` on the session. Accessing ORM attributes after session close raises `DetachedInstanceError` even when the underlying commit succeeded.
 9. **Tests** — at minimum:
    * `test_arc.py`: 14-day end-to-end with a stubbed bot, verifying antithesis pairs match the adjacent-pair rule.
    * `test_fire_window.py`: distribution check on `secrets.SystemRandom` draws within window.
@@ -430,9 +432,19 @@ Experiment 0 is shippable when:
 
 ## 11. Decisions log
 
-Both previously open questions are closed (2026-05-11):
+### Previously open questions, closed 2026-05-11
 
 1. **Sonnet selection across experiments — always fresh.** Per §6.4, each new experiment draws from the set of sonnets the participant has not been seeded with before (excluding 126). Wrap to the full pool when exhausted.
 2. **Reply discipline — permissive capture, raw preservation.** Per §1.5, the first non-blank line of the Telegram message is captured as `R_N`; the full raw `Update` payload is preserved in `responses.raw_update_json` for later analysis.
+
+### Deploy learnings, recorded 2026-05-11
+
+Three bugs surfaced during the actual experiment-0 deploy on `peake`. All three were patched in place to unblock the cycle; the spec amendments above lock the fixes in for any future build. Deferred for code-level fix until after the 14-day cycle (do not touch the running daemon).
+
+1. **Scheduler did not clamp the draw window to `now`** (`scheduler/fire_window.py`). On the initial deploy at 19:01 BST, the scheduler drew 15:43 BST — already in the past — and APScheduler dropped the job after the misfire grace period. Day 1 of the live cycle was lost this way. The protocol's missed-day recovery (§1.4) re-books day 1 on the next 00:01 reseed, so the cycle is intact but extended by one calendar day. Spec §1.4 and §8 task 6 amended.
+2. **`start_experiment` raised `DetachedInstanceError` after a successful commit** (`cli.py:179`). Echoing ORM attributes after the `with db_session()` block closes triggers an expired-attribute refresh against a non-existent session. Cosmetic — the DB state was correctly committed before the echo failed. Spec §8 task 8 amended.
+3. **Default Alembic migration broke on a cluster without pgvector.** SPEC.md §4 originally instructed `CREATE EXTENSION vector` in `0001_initial.py`. This breaks `alembic upgrade head` if the extension files aren't on disk, even with `IF NOT EXISTS` (which only handles "already present", not "package missing"). Hand-patched out of the migration on this slice. Spec §8 task 3 amended to drop the extension creation from the default migration.
+
+### Reference
 
 Operator-facing setup is in [SETUP.md](./SETUP.md). §7 in this spec is the abbreviated reference; SETUP.md is the runbook.

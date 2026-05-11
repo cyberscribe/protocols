@@ -24,6 +24,10 @@ The mechanic has evolved through three iterations:
 
 Each iteration was a refinement — same dialectic (situated experience meets disruption produces synthesis), same cryptographic backbone, same time-marking goal.
 
+## Rollout
+
+Before opening the mechanic to a cohort, Robert will road-test it solo: **experiment 0** — an n=0 self-test. One participant (Robert), one Shakespearean sonnet, 14 days, one line per day submitted via Telegram against state held on Robert's Proxmox slice. Purpose: surface lived-experience friction in the daily-prompt loop — notification timing, prompt phrasing, mobile input ergonomics, the felt experience of being interrupted by a poem — before adding the combinatorial scaffolding of a multi-participant cohort in experiment 1. Combinatorial properties are out of scope here; they are independently testable in simulation. Self-exclusion is suspended (n=1) and Ed25519 signing + H3 anchors are deferred to experiment 1. Full spec and reference implementation live in `mockup/experiment0/` (SPEC.md, SETUP.md, README.md).
+
 ## Key files
 
 - `README.md` — long-form essay (voice reference; do not alter). Absorbed the previous `pitch.md`.

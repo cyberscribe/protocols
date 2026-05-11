@@ -4,6 +4,39 @@ Operator-facing runbook for Robert. Walks through provisioning a Debian 12 LXC c
 
 Estimated time: **~30–45 minutes** end to end, of which maybe 10 is actual typing.
 
+## Variant: deploying onto the existing container 101 (`peake`)
+
+For the actual experiment-0 deployment, Robert is repurposing the existing Debian 12 LXC (formerly `iot`, renamed to `peake`) which already has Postgres 15 running alongside an `iot-telemetry` Flask app and nginx. The following stages of the canonical runbook below are **skipped or modified** for this deployment:
+
+| Stage | Status for the `peake` deployment |
+|---|---|
+| §1 Create the LXC container | **Skip.** Container 101 exists. |
+| §2 Base system | **Skip.** Already provisioned; only the hostname rename `iot` → `peake` is needed. |
+| §3 Tailscale | Optional but recommended; install as written. |
+| §4 PostgreSQL 16 with pgvector | **Modified.** Stay on existing Postgres 15. Skip pgvector entirely for experiment 0 (unused). When creating the `prufrock` database, **explicitly use UTF-8 from `template0`** because the cluster is initialised as `SQL_ASCII`: `CREATE DATABASE prufrock OWNER prufrock ENCODING 'UTF8' LC_COLLATE 'C' LC_CTYPE 'C' TEMPLATE template0;` |
+| §5 Service user and directory | **Apply as written.** |
+| §6 Create the Telegram bot | **Apply as written.** |
+| §7 Deploy the application | **Apply as written.** |
+| §8 Smoke test | **Apply as written.** |
+| Operations | **Apply as written.** |
+
+Coexistence notes:
+
+* The `prufrock` Postgres role/DB are separate from the existing `iot` role/DB. No permission overlap, no port conflict (both share localhost:5432).
+* The prufrock bot uses no inbound ports (long polling), so does not conflict with nginx (:80), iot-telemetry (:5000), or openclaw-gateway (:18789–18791).
+* Memory: bumped from 2 GiB to 4 GiB during deploy because Claude Code's native installer was OOM-killed at 2 GiB. 4 GiB has comfortable headroom for the bot, iot-telemetry, Postgres, and a Claude Code session running concurrently.
+* Tailscale required loading the `tun` kernel module on the Proxmox host and bind-mounting `/dev/net/tun` into the unprivileged LXC via `/etc/pve/lxc/101.conf`. The two `lxc.cgroup2.devices.allow` and `lxc.mount.entry` lines must live in the **active config section** (above any `[snapshot-name]` header), or they are silently ignored.
+
+### Actual deploy outcome (2026-05-11)
+
+What got built diverged from the canonical fresh-LXC runbook below in three ways. None of these are wrong; they're documented here so the next deployer knows what to expect.
+
+1. **Install location:** the repo was cloned to `/home/prufrock/protocols/prufrock/mockup/experiment0/` (inside the 00-protocols workspace clone, so spec and code stay colocated) rather than `/opt/prufrock`. The systemd unit was repathed accordingly via `sed -i 's|/opt/prufrock|/home/prufrock/protocols/prufrock/mockup/experiment0|g' deploy/prufrock.service` before installation. Functionally equivalent; just non-canonical.
+2. **Migration patched in place:** the initial Alembic migration was generated with `CREATE EXTENSION vector` per SPEC.md §4 (now fixed in spec, see §11 deploy learnings). It was hand-patched out before `alembic upgrade head` succeeded: `sed -i '/# pgvector extension/d;/CREATE EXTENSION.*vector/d' alembic/versions/0001_initial.py`. The next build from spec won't need this patch.
+3. **Day 1 fire dropped** by the scheduler bug logged in SPEC.md §11. The protocol's missed-day recovery handles it; day 1 re-fires on the next 00:01 reseed.
+
+The canonical fresh-LXC runbook follows below for the general case and for reference.
+
 ## Conventions used below
 
 * Commands prefixed `pve#` are run on the **Proxmox host** (as root).
