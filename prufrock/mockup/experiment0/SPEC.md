@@ -8,6 +8,10 @@ It exists to surface lived-experience friction in the daily-prompt loop — noti
 
 It is **not** trying to validate the protocol's combinatorial properties; those are independently testable in simulation. It is trying to validate that the mechanic is *liveable* daily before recruiting other humans into it.
 
+## 0.1 Deployed deviations (2026-05-11)
+
+Experiment 0 was deployed on the `prufrock` LXC on 2026-05-11 with one operator-side deviation from this spec: `pgvector` was removed from `alembic/versions/0001_initial.py` because the host Postgres cluster does not have the extension installed and experiment 0 makes no use of it. The §2 stack table and §7 install list still nominate pgvector; treat as forward-looking for experiment 1+. The spec-side resolution (gate behind a config flag, or drop from the default migration) is tracked in [`KNOWN_ISSUES.md`](./KNOWN_ISSUES.md) alongside two other deferred bugs.
+
 ## 1. Protocol semantics
 
 Aligned to the project glossary (`memory/glossary.md`). Terms are used in their existing protocol senses.
