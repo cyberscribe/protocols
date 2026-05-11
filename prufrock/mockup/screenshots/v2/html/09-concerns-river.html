@@ -5,28 +5,28 @@
 <title>The Prufrock Protocol — Concerns: Theme River</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{width:1440px;height:900px;overflow:hidden;background:#1c2530;color:#e8dec4;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px}
-nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;align-items:center;padding:0 24px;gap:2px}
+html,body{width:1440px;height:900px;overflow:hidden;background:#f5f0e8;color:#1a1410;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px}
+nav{height:44px;background:#ece7db;border-bottom:1px solid #c0b090;display:flex;align-items:center;padding:0 24px;gap:2px}
 .brand{display:flex;align-items:baseline;gap:10px;margin-right:28px}
 .brand-name{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
 .brand-sub{font-size:10px;letter-spacing:.06em;color:#a8623c;opacity:.75}
-.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#5a5450;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
-.nav-tab.active{color:#e8dec4;border-bottom-color:#a8623c}
-.nav-right{margin-left:auto;font-size:10px;color:#3c3834}
-.controls{height:40px;background:#1c2028;border-bottom:1px solid #232a32;display:flex;align-items:center;padding:0 24px;gap:20px}
-.cohort-btns{display:flex;border:1px solid #2a3340;border-radius:3px;overflow:hidden}
-.cbt{padding:4px 11px;font-size:10px;color:#5a5450;border-right:1px solid #2a3340}
+.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#7a6a58;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.nav-tab.active{color:#1a1410;border-bottom-color:#a8623c}
+.nav-right{margin-left:auto;font-size:10px;color:#9a8878}
+.controls{height:40px;background:#ece7db;border-bottom:1px solid #c8b898;display:flex;align-items:center;padding:0 24px;gap:20px}
+.cohort-btns{display:flex;border:1px solid #c0b090;border-radius:3px;overflow:hidden}
+.cbt{padding:4px 11px;font-size:10px;color:#7a6a58;border-right:1px solid #c0b090}
 .cbt:last-child{border-right:none}
-.cbt.active{background:rgba(255,255,255,.05);color:#e8dec4}
-.view-btns{display:flex;border:1px solid #2a3340;border-radius:3px;overflow:hidden}
-.vbt{padding:4px 11px;font-size:10px;color:#5a5450;border-right:1px solid #2a3340}
+.cbt.active{background:rgba(0,0,0,.06);color:#1a1410}
+.view-btns{display:flex;border:1px solid #c0b090;border-radius:3px;overflow:hidden}
+.vbt{padding:4px 11px;font-size:10px;color:#7a6a58;border-right:1px solid #c0b090}
 .vbt:last-child{border-right:none}
-.vbt.active{background:rgba(255,255,255,.05);color:#e8dec4}
-.ctrl-right{margin-left:auto;font-size:10px;color:#5a5450}
+.vbt.active{background:rgba(0,0,0,.06);color:#1a1410}
+.ctrl-right{margin-left:auto;font-size:10px;color:#7a6a58}
 .seed-strip{height:36px;background:rgba(168,98,60,.06);border-bottom:1px solid rgba(168,98,60,.15);display:flex;align-items:center;padding:0 24px;gap:16px}
 .ss-tag{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#a8623c;opacity:.7}
 .ss-line{font-family:Georgia,serif;font-style:italic;font-size:12px;color:rgba(168,98,60,.7)}
-.ss-right{margin-left:auto;font-size:10px;color:#5a5450}
+.ss-right{margin-left:auto;font-size:10px;color:#7a6a58}
 #chart{display:block}
 </style>
 </head>
@@ -64,7 +64,7 @@ const THEMES = [
   {name:'Wonder / awe',             short:'Wonder',     color:'#6a9580'},
   {name:'Solitude / alienation',    short:'Solitude',   color:'#7a7080'},
   {name:'Domestic life',            short:'Domestic',   color:'#c47048'},
-  {name:'Grief / loss',             short:'Grief',      color:'#5a6878'},
+  {name:'Grief / loss',             short:'Grief',      color:'#7a6858'},
   {name:'Identity / selfhood',      short:'Identity',   color:'#7a9078'},
 ];
 
@@ -125,7 +125,7 @@ function txt(x, y, t, attrs, parent) {
   return e;
 }
 
-el('rect', {width:W, height:H, fill:'#1c2530'}, svg);
+el('rect', {width:W, height:H, fill:'#f5f0e8'}, svg);
 const defs = el('defs', {}, svg);
 
 // Gradient for seed column highlight
@@ -136,9 +136,9 @@ el('rect', {x:colX(0)-10, y:CT-8, width:colX(1)-colX(0)+10, height:CH+24, fill:'
 
 // Future zone (right of the dashed line)
 const futureLineX = (colX(COLS-2) + colX(COLS-1)) / 2;
-el('rect', {x:futureLineX, y:CT-30, width:W-futureLineX, height:CH+60, fill:'rgba(28,37,48,.55)'}, svg);
+el('rect', {x:futureLineX, y:CT-30, width:W-futureLineX, height:CH+60, fill:'rgba(58,128,144,.06)'}, svg);
 el('line', {x1:futureLineX, y1:CT-28, x2:futureLineX, y2:CB+20, stroke:'#2a262c', 'stroke-width':'1', 'stroke-dasharray':'3 4'}, svg);
-txt(futureLineX + 42, CT-20, '→ projected', {fill:'#2c2826', 'font-size':'7.5', 'font-family':'monospace', 'letter-spacing':'.05em'}, svg);
+txt(futureLineX + 42, CT-20, '→ projected', {fill:'#a09080', 'font-size':'7.5', 'font-family':'monospace', 'letter-spacing':'.05em'}, svg);
 
 // Ribbons between adjacent columns
 for (let i = 0; i < COLS-1; i++) {
@@ -172,7 +172,7 @@ for (let i = 0; i < COLS; i++) {
   const isDivergent = (i === 6);
   const isSeed = (i === 0);
   txt(x, CB+16, LABELS[i], {
-    fill: isSeed ? 'rgba(168,98,60,.65)' : (isDivergent ? '#c47048dd' : '#3a3632'),
+    fill: isSeed ? 'rgba(168,98,60,.65)' : (isDivergent ? '#c47048dd' : '#b0a090'),
     'font-size': isDivergent ? '9' : '8',
     'font-weight': (isDivergent || isSeed) ? '700' : '400',
     'font-family': 'monospace'
@@ -180,25 +180,25 @@ for (let i = 0; i < COLS; i++) {
 }
 
 // Chart border
-el('rect', {x:CL, y:CT, width:CW, height:CH, fill:'none', stroke:'rgba(255,255,255,.03)', 'stroke-width':'1'}, svg);
+el('rect', {x:CL, y:CT, width:CW, height:CH, fill:'none', stroke:'rgba(0,0,0,.04)', 'stroke-width':'1'}, svg);
 
 // Poem 06 annotation callout
-el('rect', {x:p6x-88, y:CT-50, width:176, height:40, rx:3, fill:'rgba(28,24,18,.95)', stroke:'rgba(192,120,72,.35)', 'stroke-width':'1'}, svg);
+el('rect', {x:p6x-88, y:CT-50, width:176, height:40, rx:3, fill:'rgba(244,239,232,.96)', stroke:'rgba(192,120,72,.35)', 'stroke-width':'1'}, svg);
 txt(p6x, CT-36, 'Poem 06 — unexpected voice', {fill:'#c47048', 'font-size':'9', 'font-weight':'600'}, svg);
-txt(p6x, CT-21, 'Domestic ↑22%  ·  Solitude ↑16%  ·  Mortality ↓11%', {fill:'#7a7066', 'font-size':'7.5', 'font-family':'monospace'}, svg);
+txt(p6x, CT-21, 'Domestic ↑22%  ·  Solitude ↑16%  ·  Mortality ↓11%', {fill:'#6a5848', 'font-size':'7.5', 'font-family':'monospace'}, svg);
 el('line', {x1:p6x, y1:CT-10, x2:p6x, y2:CT+2, stroke:'rgba(192,120,72,.4)', 'stroke-width':'1'}, svg);
 
 // Legend (right panel)
 const LX = CR + 28;
-txt(LX + 62, CT+4, 'UNIVERSAL CONCERNS', {fill:'#2c2826', 'font-size':'7', 'font-weight':'700', 'letter-spacing':'.1em', 'text-anchor':'middle'}, svg);
+txt(LX + 62, CT+4, 'UNIVERSAL CONCERNS', {fill:'#a09080', 'font-size':'7', 'font-weight':'700', 'letter-spacing':'.1em', 'text-anchor':'middle'}, svg);
 
 const legStep = (CB - CT - 20) / T;
 THEMES.forEach((th, i) => {
   const ly = CT + 22 + i * legStep + legStep/2;
   el('rect', {x:LX, y:ly-6, width:10, height:10, rx:2, fill:th.color+'99'}, svg);
-  txt(LX+16, ly, th.name, {fill:'#7a7066', 'font-size':'8', 'text-anchor':'start'}, svg);
+  txt(LX+16, ly, th.name, {fill:'#6a5848', 'font-size':'8', 'text-anchor':'start'}, svg);
   const seedPct = Math.round(norm[0][i] * 100);
-  txt(LX+16, ly+12, `seed: ${seedPct}%`, {fill:'#322e2a', 'font-size':'6.5', 'font-family':'monospace', 'text-anchor':'start'}, svg);
+  txt(LX+16, ly+12, `seed: ${seedPct}%`, {fill:'#a09080', 'font-size':'6.5', 'font-family':'monospace', 'text-anchor':'start'}, svg);
 });
 
 // Bottom note

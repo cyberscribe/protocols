@@ -5,35 +5,35 @@
 <title>The Prufrock Protocol — Single Line · All Layers · Amara Osei · L01 · 2026</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{width:1440px;height:900px;overflow:hidden;background:#1c2530;color:#e8dec4;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px}
+html,body{width:1440px;height:900px;overflow:hidden;background:#f5f0e8;color:#1a1410;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px}
 body{opacity:0}
 
 /* ── Nav ────────────────────────────────────────────── */
-nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;align-items:center;padding:0 24px;gap:2px}
+nav{height:44px;background:#ece7db;border-bottom:1px solid #c0b090;display:flex;align-items:center;padding:0 24px;gap:2px}
 .brand{display:flex;align-items:baseline;gap:10px;margin-right:28px}
 .brand-name{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
 .brand-sub{font-size:10px;letter-spacing:.06em;color:#a8623c;opacity:.75}
-.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#5a5450;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
-.nav-tab.active{color:#e8dec4;border-bottom-color:#a8623c}
-.nav-right{margin-left:auto;font-size:10px;color:#3c3834}
+.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#7a6a58;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.nav-tab.active{color:#1a1410;border-bottom-color:#a8623c}
+.nav-right{margin-left:auto;font-size:10px;color:#9a8878}
 
 /* ── Info strip ─────────────────────────────────────── */
-.info-strip{height:36px;background:#1c2028;border-bottom:1px solid #232a32;display:flex;align-items:center;padding:0 24px}
-.is-left{font-size:10px;color:#5a5450;display:flex;align-items:center;gap:6px}
-.is-sep{color:#2a3340;padding:0 2px}
-.is-accent{color:#8a8278}
-.is-right{margin-left:auto;font-size:9px;color:#2e3848;font-style:italic}
+.info-strip{height:36px;background:#ece7db;border-bottom:1px solid #c8b898;display:flex;align-items:center;padding:0 24px}
+.is-left{font-size:10px;color:#7a6a58;display:flex;align-items:center;gap:6px}
+.is-sep{color:#c0b090;padding:0 2px}
+.is-accent{color:#5a4838}
+.is-right{margin-left:auto;font-size:9px;color:#a09080;font-style:italic}
 
 /* ── Main body ──────────────────────────────────────── */
 .main-body{height:820px;display:flex}
 
 /* ── Left panel (core sample) ───────────────────────── */
-.left-panel{width:460px;flex-shrink:0;border-right:1px solid #232a32;background:#1c2028;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:28px 0 0}
-.lp-heading{font-size:8px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#3a4050;margin-bottom:18px;text-align:center}
+.left-panel{width:460px;flex-shrink:0;border-right:1px solid #c8b898;background:#ece7db;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:28px 0 0}
+.lp-heading{font-size:8px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#9a8a78;margin-bottom:18px;text-align:center}
 .core-svg{display:block}
 
 /* ── Right panel (annotations) ──────────────────────── */
-.right-panel{flex:1;background:#1c2028;display:flex;flex-direction:column;padding:0;overflow:hidden}
+.right-panel{flex:1;background:#ece7db;display:flex;flex-direction:column;padding:0;overflow:hidden}
 .rp-inner{padding:22px 32px 0;flex:1;display:flex;flex-direction:column;gap:0}
 
 /* ── Annotation rows ────────────────────────────────── */
@@ -42,7 +42,7 @@ nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;
 .ann-body{flex:1;padding:8px 14px 8px 12px}
 .ann-layer{font-size:8px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-bottom:2px}
 .ann-scale{font-size:8px;font-family:monospace;letter-spacing:.04em;margin-bottom:5px}
-.ann-text{font-size:10px;line-height:1.55;color:#6a6860}
+.ann-text{font-size:10px;line-height:1.55;color:#7a6858}
 .ann-hash{display:inline;font-family:monospace;font-size:8px;letter-spacing:.04em;color:#3a4a5a}
 
 /* Layer colour tints for right rows */
@@ -103,7 +103,7 @@ nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;
     <svg class="core-svg" width="460" height="776" xmlns="http://www.w3.org/2000/svg">
 
       <!-- Central spine line -->
-      <line x1="230" y1="0" x2="230" y2="776" stroke="rgba(255,255,255,.08)" stroke-width="0.8"/>
+      <line x1="230" y1="0" x2="230" y2="776" stroke="rgba(0,0,0,.10)" stroke-width="0.8"/>
 
       <!--
         Layer polygons — each is a trapezoid, centred at x=230.
@@ -129,10 +129,10 @@ nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;
         stroke="rgba(200,130,80,.25)" stroke-width="0.8"/>
       <!-- Layer 1 label -->
       <text x="230" y="43" text-anchor="middle" dominant-baseline="middle"
-        fill="rgba(255,255,255,.60)" font-size="7" font-family="monospace" letter-spacing=".08em">ART</text>
+        fill="rgba(0,0,0,.70)" font-size="7" font-family="monospace" letter-spacing=".08em">ART</text>
       <!-- The line text in Layer 1 -->
       <text x="230" y="59" text-anchor="middle" dominant-baseline="middle"
-        fill="rgba(255,255,255,.80)" font-size="9" font-family="Georgia,'Times New Roman',serif" font-style="italic">"The summer I remember had no owner"</text>
+        fill="rgba(0,0,0,.80)" font-size="9" font-family="Georgia,'Times New Roman',serif" font-style="italic">"The summer I remember had no owner"</text>
 
       <!-- Layer 2 — Poem -->
       <polygon
@@ -140,7 +140,7 @@ nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;
         fill="rgba(155,112,60,.60)"
         stroke="rgba(185,142,80,.20)" stroke-width="0.8"/>
       <text x="230" y="120" text-anchor="middle" dominant-baseline="middle"
-        fill="rgba(255,255,255,.60)" font-size="7" font-family="monospace" letter-spacing=".08em">POEM</text>
+        fill="rgba(0,0,0,.70)" font-size="7" font-family="monospace" letter-spacing=".08em">POEM</text>
 
       <!-- Layer 3 — Experiment -->
       <polygon
@@ -148,7 +148,7 @@ nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;
         fill="rgba(120,108,74,.50)"
         stroke="rgba(155,140,100,.18)" stroke-width="0.8"/>
       <text x="230" y="193" text-anchor="middle" dominant-baseline="middle"
-        fill="rgba(255,255,255,.60)" font-size="7" font-family="monospace" letter-spacing=".08em">EXPERIMENT</text>
+        fill="rgba(0,0,0,.70)" font-size="7" font-family="monospace" letter-spacing=".08em">EXPERIMENT</text>
 
       <!-- Layer 4 — Protocol -->
       <polygon
@@ -156,7 +156,7 @@ nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;
         fill="rgba(80,104,118,.50)"
         stroke="rgba(110,134,148,.18)" stroke-width="0.8"/>
       <text x="230" y="270" text-anchor="middle" dominant-baseline="middle"
-        fill="rgba(255,255,255,.60)" font-size="7" font-family="monospace" letter-spacing=".08em">PROTOCOL</text>
+        fill="rgba(0,0,0,.70)" font-size="7" font-family="monospace" letter-spacing=".08em">PROTOCOL</text>
 
       <!-- Layer 5 — Seed text -->
       <polygon
@@ -164,7 +164,7 @@ nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;
         fill="rgba(60,90,124,.52)"
         stroke="rgba(90,120,154,.18)" stroke-width="0.8"/>
       <text x="230" y="354" text-anchor="middle" dominant-baseline="middle"
-        fill="rgba(255,255,255,.60)" font-size="7" font-family="monospace" letter-spacing=".08em">SEED TEXT</text>
+        fill="rgba(0,0,0,.70)" font-size="7" font-family="monospace" letter-spacing=".08em">SEED TEXT</text>
 
       <!-- Layer 6 — Concern -->
       <polygon
@@ -172,7 +172,7 @@ nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;
         fill="rgba(46,76,108,.55)"
         stroke="rgba(76,106,138,.18)" stroke-width="0.8"/>
       <text x="230" y="446" text-anchor="middle" dominant-baseline="middle"
-        fill="rgba(255,255,255,.60)" font-size="7" font-family="monospace" letter-spacing=".08em">CONCERN</text>
+        fill="rgba(0,0,0,.70)" font-size="7" font-family="monospace" letter-spacing=".08em">CONCERN</text>
 
       <!-- Layer 7 — Language (widest, full-bleed) -->
       <polygon
@@ -180,28 +180,28 @@ nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;
         fill="rgba(32,58,84,.62)"
         stroke="rgba(62,88,114,.18)" stroke-width="0.8"/>
       <text x="230" y="549" text-anchor="middle" dominant-baseline="middle"
-        fill="rgba(255,255,255,.60)" font-size="7" font-family="monospace" letter-spacing=".08em">LANGUAGE</text>
+        fill="rgba(0,0,0,.70)" font-size="7" font-family="monospace" letter-spacing=".08em">LANGUAGE</text>
 
       <!-- Layer boundary dividers (thin white hairlines at each trapezoid join) -->
-      <line x1="170" y1="84" x2="290" y2="84" stroke="rgba(255,255,255,.06)" stroke-width="0.5"/>
-      <line x1="147.5" y1="156" x2="312.5" y2="156" stroke="rgba(255,255,255,.06)" stroke-width="0.5"/>
-      <line x1="122.5" y1="230" x2="337.5" y2="230" stroke="rgba(255,255,255,.06)" stroke-width="0.5"/>
-      <line x1="91" y1="310" x2="369" y2="310" stroke="rgba(255,255,255,.06)" stroke-width="0.5"/>
-      <line x1="54" y1="398" x2="406" y2="398" stroke="rgba(255,255,255,.06)" stroke-width="0.5"/>
-      <line x1="10" y1="494" x2="450" y2="494" stroke="rgba(255,255,255,.06)" stroke-width="0.5"/>
-      <line x1="0" y1="604" x2="460" y2="604" stroke="rgba(255,255,255,.04)" stroke-width="0.5"/>
+      <line x1="170" y1="84" x2="290" y2="84" stroke="rgba(0,0,0,.07)" stroke-width="0.5"/>
+      <line x1="147.5" y1="156" x2="312.5" y2="156" stroke="rgba(0,0,0,.07)" stroke-width="0.5"/>
+      <line x1="122.5" y1="230" x2="337.5" y2="230" stroke="rgba(0,0,0,.07)" stroke-width="0.5"/>
+      <line x1="91" y1="310" x2="369" y2="310" stroke="rgba(0,0,0,.07)" stroke-width="0.5"/>
+      <line x1="54" y1="398" x2="406" y2="398" stroke="rgba(0,0,0,.07)" stroke-width="0.5"/>
+      <line x1="10" y1="494" x2="450" y2="494" stroke="rgba(0,0,0,.07)" stroke-width="0.5"/>
+      <line x1="0" y1="604" x2="460" y2="604" stroke="rgba(0,0,0,.05)" stroke-width="0.5"/>
 
       <!-- Scale legend below the layers -->
       <text x="230" y="630" text-anchor="middle" dominant-baseline="middle"
-        fill="rgba(255,255,255,.12)" font-size="7" font-family="monospace" letter-spacing=".08em">FAST</text>
-      <line x1="100" y1="630" x2="200" y2="630" stroke="rgba(255,255,255,.07)" stroke-width="0.6" stroke-dasharray="2 3"/>
-      <line x1="260" y1="630" x2="360" y2="630" stroke="rgba(255,255,255,.07)" stroke-width="0.6" stroke-dasharray="2 3"/>
+        fill="rgba(0,0,0,.15)" font-size="7" font-family="monospace" letter-spacing=".08em">FAST</text>
+      <line x1="100" y1="630" x2="200" y2="630" stroke="rgba(0,0,0,.08)" stroke-width="0.6" stroke-dasharray="2 3"/>
+      <line x1="260" y1="630" x2="360" y2="630" stroke="rgba(0,0,0,.08)" stroke-width="0.6" stroke-dasharray="2 3"/>
 
       <text x="230" y="655" text-anchor="middle" dominant-baseline="middle"
-        fill="rgba(255,255,255,.08)" font-size="7" font-family="monospace" letter-spacing=".06em">↕ widening = deeper time</text>
+        fill="rgba(0,0,0,.10)" font-size="7" font-family="monospace" letter-spacing=".06em">↕ widening = deeper time</text>
 
       <text x="230" y="676" text-anchor="middle" dominant-baseline="middle"
-        fill="rgba(255,255,255,.12)" font-size="7" font-family="monospace" letter-spacing=".08em">SLOW</text>
+        fill="rgba(0,0,0,.15)" font-size="7" font-family="monospace" letter-spacing=".08em">SLOW</text>
 
       <!-- Pace annotation — fast/slow arrows -->
       <text x="12" y="50" text-anchor="start" dominant-baseline="middle"
@@ -317,6 +317,6 @@ rows.forEach((row, i) => {
 });
 </script>
 <script src="nav-wire.js"></script>
-<div style="position:fixed;bottom:0;left:0;width:100%;background:#523018;color:#e8dec4;text-align:center;font-size:11px;font-weight:700;letter-spacing:.25em;padding:4px 0;z-index:9999">MOCKUP</div>
+<div style="position:fixed;bottom:0;left:0;width:100%;background:#c07838;color:#1a1410;text-align:center;font-size:11px;font-weight:700;letter-spacing:.25em;padding:4px 0;z-index:9999">MOCKUP</div>
 </body>
 </html>

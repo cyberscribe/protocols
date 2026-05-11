@@ -5,31 +5,31 @@
 <title>The Prufrock Protocol — Lineage: Multi-poem Overview</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{width:1440px;height:900px;overflow:hidden;background:#1c2530;color:#e8dec4;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px}
-nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;align-items:center;padding:0 24px;gap:2px}
+html,body{width:1440px;height:900px;overflow:hidden;background:#f5f0e8;color:#1a1410;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px}
+nav{height:44px;background:#ece7db;border-bottom:1px solid #c0b090;display:flex;align-items:center;padding:0 24px;gap:2px}
 .brand{display:flex;align-items:baseline;gap:10px;margin-right:28px}
 .brand-name{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
 .brand-sub{font-size:10px;letter-spacing:.06em;color:#a8623c;opacity:.75}
-.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#5a5450;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
-.nav-tab.active{color:#e8dec4;border-bottom-color:#a8623c}
-.nav-right{margin-left:auto;font-size:10px;color:#3c3834}
-.controls{height:40px;background:#1c2028;border-bottom:1px solid #232a32;display:flex;align-items:center;padding:0 24px;gap:20px}
-.cohort-btns{display:flex;border:1px solid #2a3340;border-radius:3px;overflow:hidden}
-.cbt{padding:4px 11px;font-size:10px;color:#5a5450;border-right:1px solid #2a3340}
+.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#7a6a58;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.nav-tab.active{color:#1a1410;border-bottom-color:#a8623c}
+.nav-right{margin-left:auto;font-size:10px;color:#9a8878}
+.controls{height:40px;background:#ece7db;border-bottom:1px solid #c8b898;display:flex;align-items:center;padding:0 24px;gap:20px}
+.cohort-btns{display:flex;border:1px solid #c0b090;border-radius:3px;overflow:hidden}
+.cbt{padding:4px 11px;font-size:10px;color:#7a6a58;border-right:1px solid #c0b090}
 .cbt:last-child{border-right:none}
-.cbt.active{background:rgba(255,255,255,.05);color:#e8dec4}
+.cbt.active{background:rgba(0,0,0,.06);color:#1a1410}
 .slider-group{display:flex;align-items:center;gap:8px;flex:1;max-width:400px}
-.slider-lbl{font-size:10px;color:#5a5450;white-space:nowrap}
-.track{flex:1;height:3px;background:#232a32;border-radius:2px;position:relative}
+.slider-lbl{font-size:10px;color:#7a6a58;white-space:nowrap}
+.track{flex:1;height:3px;background:#c8b898;border-radius:2px;position:relative}
 .fill{position:absolute;left:0;top:0;height:100%;background:#a8623c;border-radius:2px;width:100%}
-.thumb{position:absolute;top:50%;left:100%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:#a8623c;border:2px solid #1c2530}
-.ctrl-right{margin-left:auto;font-size:10px;color:#5a5450;display:flex;gap:12px;align-items:center}
-.view-btn{padding:3px 9px;border:1px solid #2a3340;border-radius:3px;font-size:9px;cursor:pointer}
-.view-btn.active{background:rgba(255,255,255,.06);color:#e8dec4;border-color:#2e3640}
+.thumb{position:absolute;top:50%;left:100%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:#a8623c;border:2px solid #f5f0e8}
+.ctrl-right{margin-left:auto;font-size:10px;color:#7a6a58;display:flex;gap:12px;align-items:center}
+.view-btn{padding:3px 9px;border:1px solid #c0b090;border-radius:3px;font-size:9px;cursor:pointer}
+.view-btn.active{background:rgba(0,0,0,.07);color:#1a1410;border-color:#b8a888}
 .seed-strip{height:36px;background:rgba(168,98,60,.06);border-bottom:1px solid rgba(168,98,60,.15);display:flex;align-items:center;padding:0 24px;gap:16px}
 .ss-tag{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#a8623c;opacity:.7}
 .ss-line{font-family:Georgia,serif;font-style:italic;font-size:12px;color:rgba(168,98,60,.7)}
-.ss-right{margin-left:auto;font-size:10px;color:#5a5450}
+.ss-right{margin-left:auto;font-size:10px;color:#7a6a58}
 #tree-svg{display:block}
 </style>
 </head>
@@ -87,12 +87,12 @@ function txt(x, y, t, attrs, parent) {
 }
 
 // Background
-el('rect', {width: W, height: H, fill: '#1c2530'}, svg);
+el('rect', {width: W, height: H, fill: '#f5f0e8'}, svg);
 // Subtle gradient
 const defs = el('defs', {}, svg);
 const grad = el('radialGradient', {id:'bg', cx:'50%', cy:'10%', r:'70%'}, defs);
-el('stop', {'offset':'0%', 'stop-color':'#1e2530', 'stop-opacity':'1'}, grad);
-el('stop', {'offset':'100%', 'stop-color':'#1c2530', 'stop-opacity':'1'}, grad);
+el('stop', {'offset':'0%', 'stop-color':'#ece7db', 'stop-opacity':'1'}, grad);
+el('stop', {'offset':'100%', 'stop-color':'#f5f0e8', 'stop-opacity':'1'}, grad);
 el('rect', {width: W, height: H, fill: 'url(#bg)'}, svg);
 
 const glowF = el('filter', {id:'glow'}, defs);
@@ -123,7 +123,7 @@ txt(W / 2, SEED_Y, 'W. Shakespeare · Sonnet XVIII · London 1609 · "Nor shall 
 // Column labels (poem numbers)
 for (let p = 0; p < N; p++) {
   txt(colX(p), NODE_START_Y - 26, 'P' + String(p + 1).padStart(2, '0'),
-    {fill: '#3c3834', 'font-size': '8', 'font-family': 'monospace', 'letter-spacing': '.04em'}, svg);
+    {fill: '#9a8878', 'font-size': '8', 'font-family': 'monospace', 'letter-spacing': '.04em'}, svg);
 }
 
 // Seed → day-1 connections (thin gold lines)
@@ -137,7 +137,7 @@ for (let p = 0; p < N; p++) {
 // Day labels on left
 for (let d = 0; d < N; d++) {
   txt(MARGIN_L - 14, nodeY(d), 'D' + (d + 1),
-    {fill: '#2c2826', 'font-size': '7.5', 'font-family': 'monospace', 'text-anchor': 'end'}, svg);
+    {fill: '#a09080', 'font-size': '7.5', 'font-family': 'monospace', 'text-anchor': 'end'}, svg);
 }
 
 // Within-poem connections (vertical lines between nodes in same poem)
@@ -163,7 +163,7 @@ for (let p = 0; p < N; p++) {
 
 // Author legend (right side)
 const LEG_X = W - MARGIN_R + 16;
-txt(LEG_X + 30, 52, 'Authors', {fill:'#3c3834','font-size':'8','font-weight':'700','letter-spacing':'.1em','text-transform':'uppercase','text-anchor':'middle'}, svg);
+txt(LEG_X + 30, 52, 'Authors', {fill:'#9a8878','font-size':'8','font-weight':'700','letter-spacing':'.1em','text-transform':'uppercase','text-anchor':'middle'}, svg);
 AUTHORS.forEach((a, i) => {
   const ly = 68 + i * 44;
   el('circle', {cx: LEG_X + 6, cy: ly, r: 5, fill: a.color + 'c0', stroke: a.color + '60', 'stroke-width': '1'}, svg);
@@ -172,7 +172,7 @@ AUTHORS.forEach((a, i) => {
 
 // Annotation: "each column is one collaborative poem; each row is one day; colour = author"
 txt(MARGIN_L + USABLE_W / 2, H - 14, 'Each column is one collaborative poem · Each row is one day · Colour indicates author · Latin square: each author appears exactly once per poem and once per day',
-  {fill:'#2c2826','font-size':'8','font-family':'sans-serif'}, svg);
+  {fill:'#a09080','font-size':'8','font-family':'sans-serif'}, svg);
 </script>
 </body>
 </html>

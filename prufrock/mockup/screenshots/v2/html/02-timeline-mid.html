@@ -5,71 +5,71 @@
 <title>The Prufrock Protocol — Timeline Day 7</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{width:1440px;height:900px;overflow:hidden;background:#1c2530;color:#e8dec4;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px}
-nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;align-items:center;padding:0 24px;gap:2px}
+html,body{width:1440px;height:900px;overflow:hidden;background:#f5f0e8;color:#1a1410;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px}
+nav{height:44px;background:#ece7db;border-bottom:1px solid #c0b090;display:flex;align-items:center;padding:0 24px;gap:2px}
 .brand{display:flex;align-items:baseline;gap:10px;margin-right:28px}
 .brand-name{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
 .brand-sub{font-size:10px;letter-spacing:.06em;color:#a8623c;opacity:.75}
-.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#5a5450;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
-.nav-tab.active{color:#e8dec4;border-bottom-color:#a8623c}
-.nav-right{margin-left:auto;font-size:10px;color:#3c3834}
-.controls{height:40px;background:#1c2028;border-bottom:1px solid #232a32;display:flex;align-items:center;padding:0 24px;gap:20px}
-.cohort-btns{display:flex;border:1px solid #2a3340;border-radius:3px;overflow:hidden}
-.cbt{padding:4px 11px;font-size:10px;color:#5a5450;border-right:1px solid #2a3340}
+.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#7a6a58;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.nav-tab.active{color:#1a1410;border-bottom-color:#a8623c}
+.nav-right{margin-left:auto;font-size:10px;color:#9a8878}
+.controls{height:40px;background:#ece7db;border-bottom:1px solid #c8b898;display:flex;align-items:center;padding:0 24px;gap:20px}
+.cohort-btns{display:flex;border:1px solid #c0b090;border-radius:3px;overflow:hidden}
+.cbt{padding:4px 11px;font-size:10px;color:#7a6a58;border-right:1px solid #c0b090}
 .cbt:last-child{border-right:none}
-.cbt.active{background:rgba(255,255,255,.05);color:#e8dec4}
+.cbt.active{background:rgba(0,0,0,.06);color:#1a1410}
 .slider-group{display:flex;align-items:center;gap:8px;flex:1;max-width:400px}
-.slider-lbl{font-size:10px;color:#5a5450;white-space:nowrap}
-.track{flex:1;height:3px;background:#232a32;border-radius:2px;position:relative}
+.slider-lbl{font-size:10px;color:#7a6a58;white-space:nowrap}
+.track{flex:1;height:3px;background:#c8b898;border-radius:2px;position:relative}
 .fill{position:absolute;left:0;top:0;height:100%;background:#a8623c;border-radius:2px;width:50%}
-.thumb{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:#a8623c;border:2px solid #1c2530}
-.play{width:22px;height:22px;border-radius:50%;background:#232a32;border:1px solid #2a3340;display:flex;align-items:center;justify-content:center;color:#a8623c;font-size:8px}
-.ctrl-right{margin-left:auto;font-size:10px;color:#5a5450;display:flex;gap:12px;align-items:center}
+.thumb{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:#a8623c;border:2px solid #f5f0e8}
+.play{width:22px;height:22px;border-radius:50%;background:#c8b898;border:1px solid #c0b090;display:flex;align-items:center;justify-content:center;color:#a8623c;font-size:8px}
+.ctrl-right{margin-left:auto;font-size:10px;color:#7a6a58;display:flex;gap:12px;align-items:center}
 .selected-tag{background:rgba(200,120,80,.12);border:1px solid rgba(200,120,80,.3);border-radius:3px;padding:2px 9px;color:#c47048;font-size:9px;font-weight:600;letter-spacing:.04em}
 .seed-strip{height:36px;background:rgba(168,98,60,.06);border-bottom:1px solid rgba(168,98,60,.15);display:flex;align-items:center;padding:0 24px;gap:16px}
 .ss-tag{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#a8623c;opacity:.7}
 .ss-line{font-family:Georgia,serif;font-style:italic;font-size:12px;color:rgba(168,98,60,.7)}
-.ss-right{margin-left:auto;font-size:10px;color:#5a5450}
+.ss-right{margin-left:auto;font-size:10px;color:#7a6a58}
 .view{height:780px;display:flex;flex-direction:column;padding:12px 0 0}
 .tl-header{display:flex;align-items:center;padding:0 20px 8px 20px}
 .tl-h-spacer{width:128px;flex-shrink:0}
 .tl-days{display:flex;flex:1;gap:2px}
-.day-col{flex:1;text-align:center;font-size:8px;color:#3c3834;letter-spacing:.04em;font-weight:600;text-transform:uppercase;padding-bottom:2px}
-.day-col.past{color:#7a7066}
+.day-col{flex:1;text-align:center;font-size:8px;color:#9a8878;letter-spacing:.04em;font-weight:600;text-transform:uppercase;padding-bottom:2px}
+.day-col.past{color:#6a5848}
 .day-col.current{color:#a8623c;font-weight:700}
 .tl-body{flex:1;overflow:hidden;padding:0 20px;display:flex;flex-direction:column;gap:0}
 .cohort-section{margin-bottom:6px}
-.cohort-label{display:flex;align-items:center;gap:8px;padding:5px 0 4px;border-bottom:1px solid #1e2228}
+.cohort-label{display:flex;align-items:center;gap:8px;padding:5px 0 4px;border-bottom:1px solid #eae5d9}
 .cohort-dot{width:7px;height:7px;border-radius:2px}
 .cohort-dot.poet{background:#c47048}
 .cohort-dot.lay{background:#607a92}
-.cohort-name{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5a5450}
-.cohort-note{font-size:9px;color:#2c2826;margin-left:auto}
+.cohort-name{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#7a6a58}
+.cohort-note{font-size:9px;color:#a09080;margin-left:auto}
 .poem-row{display:flex;align-items:center;height:32px;margin-bottom:2px}
 .p-label{width:128px;flex-shrink:0;display:flex;align-items:center;gap:6px;padding-right:8px}
-.p-num{font-size:8px;font-family:monospace;color:#3c3834;white-space:nowrap}
+.p-num{font-size:8px;font-family:monospace;color:#9a8878;white-space:nowrap}
 .cells{display:flex;flex:1;gap:2px;height:26px}
 .cell{flex:1;height:100%;border-radius:2px;display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer;transition:filter .1s}
 .cell.filled{border:none}
-.cell.future{background:#1c2530;border:1px dashed #20262e;opacity:.35}
-.cell-init{font-size:7px;font-weight:700;color:rgba(255,255,255,.5);letter-spacing:0;line-height:1;font-family:monospace}
+.cell.future{background:#f5f0e8;border:1px dashed #20262e;opacity:.35}
+.cell-init{font-size:7px;font-weight:700;color:rgba(0,0,0,.60);letter-spacing:0;line-height:1;font-family:monospace}
 .cell.selected-trail{box-shadow:0 0 0 1.5px rgba(200,120,80,.9),0 0 8px rgba(200,120,80,.4);z-index:2}
 .cell.current-col{position:relative}
 /* tooltip */
-.tooltip{position:absolute;z-index:100;width:330px;background:#232a32;border:1px solid #2e3640;border-radius:6px;padding:16px;box-shadow:0 8px 32px rgba(0,0,0,.7);top:230px;left:520px}
+.tooltip{position:absolute;z-index:100;width:330px;background:#c8b898;border:1px solid #b8a888;border-radius:6px;padding:16px;box-shadow:0 8px 32px rgba(0,0,0,.7);top:230px;left:520px}
 .tt-header{display:flex;align-items:center;gap:8px;margin-bottom:11px}
 .tt-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
-.tt-name{font-size:12px;color:#e8dec4;font-weight:500}
-.tt-day{font-size:9px;color:#5a5450;margin-left:auto;letter-spacing:.04em}
-.tt-poem{font-size:9px;color:#7a7066;margin-top:-8px;margin-bottom:8px;padding-left:17px}
-.tt-line{font-family:Georgia,serif;font-style:italic;font-size:15px;color:#d4cab2;line-height:1.45;margin-bottom:12px;padding:10px 12px;background:#1c1f26;border-left:3px solid currentColor;border-radius:2px}
+.tt-name{font-size:12px;color:#1a1410;font-weight:500}
+.tt-day{font-size:9px;color:#7a6a58;margin-left:auto;letter-spacing:.04em}
+.tt-poem{font-size:9px;color:#6a5848;margin-top:-8px;margin-bottom:8px;padding-left:17px}
+.tt-line{font-family:Georgia,serif;font-style:italic;font-size:15px;color:#d4cab2;line-height:1.45;margin-bottom:12px;padding:10px 12px;background:#eee9dd;border-left:3px solid currentColor;border-radius:2px}
 .tt-meta{display:flex;flex-direction:column;gap:5px}
 .tt-row{display:flex;gap:6px;font-size:10px}
-.tt-lbl{color:#3c3834;width:66px;flex-shrink:0}
-.tt-val{color:#8a8278}
-.tt-prompt-section{margin-top:10px;padding-top:10px;border-top:1px solid #2a3340}
-.tt-plbl{font-size:9px;color:#3c3834;letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px}
-.tt-plines{font-family:Georgia,serif;font-style:italic;font-size:11px;color:#7a7066;line-height:1.6}
+.tt-lbl{color:#9a8878;width:66px;flex-shrink:0}
+.tt-val{color:#5a4838}
+.tt-prompt-section{margin-top:10px;padding-top:10px;border-top:1px solid #c0b090}
+.tt-plbl{font-size:9px;color:#9a8878;letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px}
+.tt-plines{font-family:Georgia,serif;font-style:italic;font-size:11px;color:#6a5848;line-height:1.6}
 </style>
 </head>
 <body>
@@ -96,8 +96,8 @@ nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;
   </div>
   <div class="ctrl-right">
     <div class="selected-tag">● Amara Osei — authorial trail</div>
-    <span style="color:#2c2826">|</span>
-    <span style="color:#3c3834;font-size:9px">✕ Forfeit</span>
+    <span style="color:#a09080">|</span>
+    <span style="color:#9a8878;font-size:9px">✕ Forfeit</span>
   </div>
 </div>
 <div class="seed-strip">
@@ -219,7 +219,7 @@ const body = document.getElementById('tl-body');
 const poetSec = makeSection('Poets', 'poet', '14 poems · collectively authored · Latin square assignment');
 for (let p = 0; p < SHOW_POEMS; p++) poetSec.appendChild(makeRow(p));
 const moreP = document.createElement('div');
-moreP.style.cssText = 'padding:4px 0;font-size:9px;color:#2c2826;letter-spacing:.06em';
+moreP.style.cssText = 'padding:4px 0;font-size:9px;color:#a09080;letter-spacing:.06em';
 moreP.textContent = '· · · 7 more poems';
 poetSec.appendChild(moreP);
 body.appendChild(poetSec);
@@ -228,7 +228,7 @@ body.appendChild(poetSec);
 const laySec = makeSection('Laypeople', 'lay', '14 poems · collectively authored · Latin square assignment');
 for (let p = 0; p < 4; p++) laySec.appendChild(makeRow(p));
 const moreL = document.createElement('div');
-moreL.style.cssText = 'padding:4px 0;font-size:9px;color:#2c2826;letter-spacing:.06em';
+moreL.style.cssText = 'padding:4px 0;font-size:9px;color:#a09080;letter-spacing:.06em';
 moreL.textContent = '· · · 10 more poems';
 laySec.appendChild(moreL);
 body.appendChild(laySec);

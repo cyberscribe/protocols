@@ -1,0 +1,23 @@
+[Unit]
+Description=Prufrock Experiment 0 — daily-interrupt poetry bot
+After=network-online.target postgresql.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=prufrock
+WorkingDirectory=/opt/prufrock
+EnvironmentFile=/opt/prufrock/.env
+ExecStart=/opt/prufrock/.venv/bin/prufrock-bot
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=prufrock
+
+# Harden the service: no new privileges, private /tmp
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

@@ -5,20 +5,20 @@
 <title>The Prufrock Protocol — Pace Layer Stack</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{width:1440px;height:900px;overflow:hidden;background:#1c2530;color:#e8dec4;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px}
+html,body{width:1440px;height:900px;overflow:hidden;background:#f5f0e8;color:#1a1410;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px}
 body{opacity:0}
-nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;align-items:center;padding:0 24px;gap:2px}
+nav{height:44px;background:#ece7db;border-bottom:1px solid #c0b090;display:flex;align-items:center;padding:0 24px;gap:2px}
 .brand{display:flex;align-items:baseline;gap:10px;margin-right:28px}
 .brand-name{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
 .brand-sub{font-size:10px;letter-spacing:.06em;color:#a8623c;opacity:.75}
-.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#5a5450;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
-.nav-tab.active{color:#e8dec4;border-bottom-color:#a8623c}
-.nav-right{margin-left:auto;font-size:10px;color:#3c3834}
-.info-strip{height:36px;background:#1c2028;border-bottom:1px solid #232a32;display:flex;align-items:center;padding:0 24px}
-.is-left{font-size:10px;color:#3c3834}
-.is-right{margin-left:auto;font-size:9px;color:#2e3848;font-style:italic}
+.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#7a6a58;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.nav-tab.active{color:#1a1410;border-bottom-color:#a8623c}
+.nav-right{margin-left:auto;font-size:10px;color:#9a8878}
+.info-strip{height:36px;background:#ece7db;border-bottom:1px solid #c8b898;display:flex;align-items:center;padding:0 24px}
+.is-left{font-size:10px;color:#9a8878}
+.is-right{margin-left:auto;font-size:9px;color:#a09080;font-style:italic}
 #chart{display:block}
-.note-box{position:fixed;bottom:26px;right:24px;width:340px;background:#141c28;border:1px solid rgba(168,98,60,.2);border-radius:4px;padding:12px 14px;font-size:9px;color:#4a5468;line-height:1.65;z-index:100}
+.note-box{position:fixed;bottom:26px;right:24px;width:340px;background:#f0ebe0;border:1px solid rgba(168,98,60,.2);border-radius:4px;padding:12px 14px;font-size:9px;color:#8a7868;line-height:1.65;z-index:100}
 </style>
 </head>
 <body>
@@ -60,7 +60,7 @@ function txt(x, y, t, attrs, parent) {
 }
 
 // Background
-el('rect', {width:W, height:H, fill:'#1c2530'}, svg);
+el('rect', {width:W, height:H, fill:'#f5f0e8'}, svg);
 
 // ── Layer definitions ─────────────────────────────────────────────
 const LAYERS = [
@@ -249,7 +249,7 @@ LAYERS.forEach((layer, i) => {
 
   // Line 2: time scale
   txt(annX, annBandMidY + 7, layer.scale, {
-    fill: '#3c4050',
+    fill: '#9a8a78',
     'font-size': '9',
     'font-family': 'monospace',
     'dominant-baseline': 'middle',
@@ -260,7 +260,7 @@ LAYERS.forEach((layer, i) => {
   const leftX = 170;
   const leftY = ty + bh / 2;
   txt(leftX, leftY, layer.scaleKey, {
-    fill: '#3c4050',
+    fill: '#9a8a78',
     'font-size': '8',
     'font-family': 'monospace',
     'dominant-baseline': 'middle',
@@ -308,10 +308,10 @@ el('circle', {cx: connX, cy: connBot, r: '2.5',
 const mostArtX = BAND_LEFT + 30;
 const mostArtY = bandY[0] - 12;
 el('rect', {x: mostArtX - 6, y: mostArtY - 9, width: 200, height: 18,
-  rx: 2, fill: 'rgba(20,28,40,.85)', stroke: 'rgba(168,98,60,.12)',
+  rx: 2, fill: 'rgba(244,239,232,.92)', stroke: 'rgba(168,98,60,.2)',
   'stroke-width': '1'}, svg);
 txt(mostArtX, mostArtY, '← most art and media operates only here', {
-  fill: 'rgba(168,98,60,.35)',
+  fill: 'rgba(168,98,60,.7)',
   'font-size': '8',
   'font-family': 'monospace',
   'dominant-baseline': 'middle',
@@ -337,6 +337,6 @@ requestAnimationFrame(() => requestAnimationFrame(() => {
 }));
 </script>
 <script src="nav-wire.js"></script>
-<div style="position:fixed;bottom:0;left:0;width:100%;background:#523018;color:#e8dec4;text-align:center;font-size:11px;font-weight:700;letter-spacing:.25em;padding:4px 0;z-index:9999">MOCKUP</div>
+<div style="position:fixed;bottom:0;left:0;width:100%;background:#c07838;color:#1a1410;text-align:center;font-size:11px;font-weight:700;letter-spacing:.25em;padding:4px 0;z-index:9999">MOCKUP</div>
 </body>
 </html>

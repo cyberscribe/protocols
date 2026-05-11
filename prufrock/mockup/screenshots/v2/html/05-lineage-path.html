@@ -5,43 +5,43 @@
 <title>The Prufrock Protocol — Lineage: Authorial Trail</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{width:1440px;height:900px;overflow:hidden;background:#1c2530;color:#e8dec4;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px}
-nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;align-items:center;padding:0 24px;gap:2px}
+html,body{width:1440px;height:900px;overflow:hidden;background:#f5f0e8;color:#1a1410;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px}
+nav{height:44px;background:#ece7db;border-bottom:1px solid #c0b090;display:flex;align-items:center;padding:0 24px;gap:2px}
 .brand{display:flex;align-items:baseline;gap:10px;margin-right:28px}
 .brand-name{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
 .brand-sub{font-size:10px;letter-spacing:.06em;color:#a8623c;opacity:.75}
-.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#5a5450;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
-.nav-tab.active{color:#e8dec4;border-bottom-color:#a8623c}
-.nav-right{margin-left:auto;font-size:10px;color:#3c3834}
-.controls{height:40px;background:#1c2028;border-bottom:1px solid #232a32;display:flex;align-items:center;padding:0 24px;gap:20px}
-.cohort-btns{display:flex;border:1px solid #2a3340;border-radius:3px;overflow:hidden}
-.cbt{padding:4px 11px;font-size:10px;color:#5a5450;border-right:1px solid #2a3340}
+.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#7a6a58;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.nav-tab.active{color:#1a1410;border-bottom-color:#a8623c}
+.nav-right{margin-left:auto;font-size:10px;color:#9a8878}
+.controls{height:40px;background:#ece7db;border-bottom:1px solid #c8b898;display:flex;align-items:center;padding:0 24px;gap:20px}
+.cohort-btns{display:flex;border:1px solid #c0b090;border-radius:3px;overflow:hidden}
+.cbt{padding:4px 11px;font-size:10px;color:#7a6a58;border-right:1px solid #c0b090}
 .cbt:last-child{border-right:none}
-.cbt.active{background:rgba(255,255,255,.05);color:#e8dec4}
+.cbt.active{background:rgba(0,0,0,.06);color:#1a1410}
 .slider-group{display:flex;align-items:center;gap:8px;flex:1;max-width:400px}
-.slider-lbl{font-size:10px;color:#5a5450;white-space:nowrap}
-.track{flex:1;height:3px;background:#232a32;border-radius:2px;position:relative}
+.slider-lbl{font-size:10px;color:#7a6a58;white-space:nowrap}
+.track{flex:1;height:3px;background:#c8b898;border-radius:2px;position:relative}
 .fill{position:absolute;left:0;top:0;height:100%;background:#a8623c;border-radius:2px;width:100%}
-.thumb{position:absolute;top:50%;left:100%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:#a8623c;border:2px solid #1c2530}
-.ctrl-right{margin-left:auto;font-size:10px;color:#5a5450;display:flex;gap:12px;align-items:center}
+.thumb{position:absolute;top:50%;left:100%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:#a8623c;border:2px solid #f5f0e8}
+.ctrl-right{margin-left:auto;font-size:10px;color:#7a6a58;display:flex;gap:12px;align-items:center}
 .selected-tag{background:rgba(200,120,80,.12);border:1px solid rgba(200,120,80,.3);border-radius:3px;padding:2px 10px;color:#c47048;font-size:9px;font-weight:600}
 .seed-strip{height:36px;background:rgba(168,98,60,.06);border-bottom:1px solid rgba(168,98,60,.15);display:flex;align-items:center;padding:0 24px;gap:16px}
 .ss-tag{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#a8623c;opacity:.7}
 .ss-line{font-family:Georgia,serif;font-style:italic;font-size:12px;color:rgba(168,98,60,.7)}
-.ss-right{margin-left:auto;font-size:10px;color:#5a5450}
+.ss-right{margin-left:auto;font-size:10px;color:#7a6a58}
 .main{height:780px;display:flex}
 #svg-col{flex:1}
-.trail-panel{width:340px;border-left:1px solid #232a32;background:#1c2028;display:flex;flex-direction:column;overflow:hidden}
-.tp-header{padding:16px 18px;border-bottom:1px solid #232a32}
+.trail-panel{width:340px;border-left:1px solid #c8b898;background:#ece7db;display:flex;flex-direction:column;overflow:hidden}
+.tp-header{padding:16px 18px;border-bottom:1px solid #c8b898}
 .tp-avatar{width:36px;height:36px;border-radius:50%;background:rgba(200,120,80,.15);border:1.5px solid rgba(200,120,80,.5);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#c47048;margin-bottom:8px}
-.tp-name{font-size:15px;color:#e8dec4;font-weight:400;margin-bottom:2px}
-.tp-sub{font-size:10px;color:#7a7066}
+.tp-name{font-size:15px;color:#1a1410;font-weight:400;margin-bottom:2px}
+.tp-sub{font-size:10px;color:#6a5848}
 .tp-badge{display:inline-block;font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#c47048;background:rgba(200,120,80,.1);padding:2px 7px;border-radius:10px;margin-top:6px}
-.tp-label{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#3c3834;padding:10px 18px 6px}
+.tp-label{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9a8878;padding:10px 18px 6px}
 .trail-list{flex:1;overflow:hidden;padding:0 0 8px}
-.trail-item{display:flex;align-items:flex-start;gap:10px;padding:7px 18px;border-bottom:1px solid #1e2530;cursor:pointer;transition:background .1s}
+.trail-item{display:flex;align-items:flex-start;gap:10px;padding:7px 18px;border-bottom:1px solid #ece7db;cursor:pointer;transition:background .1s}
 .trail-item:hover{background:rgba(200,120,80,.04)}
-.ti-num{font-size:8px;font-family:monospace;color:#5a5450;width:44px;flex-shrink:0;padding-top:2px}
+.ti-num{font-size:8px;font-family:monospace;color:#7a6a58;width:44px;flex-shrink:0;padding-top:2px}
 .ti-text{font-family:Georgia,serif;font-style:italic;font-size:12px;color:#a89e88;line-height:1.4}
 .ti-dot{width:5px;height:5px;border-radius:50%;background:#c47048;margin-top:5px;flex-shrink:0}
 </style>
@@ -66,7 +66,7 @@ nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;
   </div>
   <div class="ctrl-right">
     <div class="selected-tag">● Amara Osei · 14 contributions across 14 poems</div>
-    <div style="font-size:9px;color:#2c2826">Click any node to select</div>
+    <div style="font-size:9px;color:#a09080">Click any node to select</div>
   </div>
 </div>
 <div class="seed-strip">
@@ -151,10 +151,10 @@ const gf2 = el('filter', {id:'glow-sm'}, defs);
 el('feGaussianBlur', {stdDeviation:'2.5', result:'blur'}, gf2);
 el('feComposite', {in:'SourceGraphic', in2:'blur', operator:'over'}, gf2);
 
-el('rect', {width: W, height: H, fill: '#1c2530'}, svg);
+el('rect', {width: W, height: H, fill: '#f5f0e8'}, svg);
 const grad = el('radialGradient', {id:'bg', cx:'50%', cy:'5%', r:'80%'}, defs);
-el('stop', {'offset':'0%', 'stop-color':'#1e2530'}, grad);
-el('stop', {'offset':'100%', 'stop-color':'#1c2530'}, grad);
+el('stop', {'offset':'0%', 'stop-color':'#ece7db'}, grad);
+el('stop', {'offset':'100%', 'stop-color':'#f5f0e8'}, grad);
 el('rect', {width: W, height: H, fill: 'url(#bg)'}, svg);
 
 const MARGIN_L = 52, MARGIN_R = 40;
@@ -179,7 +179,7 @@ txt(W / 2 - 20, SEED_Y, '"Nor shall death brag…When in eternal lines to time t
 // Column labels
 for (let p = 0; p < N; p++) {
   txt(colX(p), NODE_START_Y - 24, 'P' + String(p+1).padStart(2,'0'),
-    {fill:'#3c3834','font-size':'7.5','font-family':'monospace'}, svg);
+    {fill:'#9a8878','font-size':'7.5','font-family':'monospace'}, svg);
 }
 
 // Day labels
@@ -271,7 +271,7 @@ for (let p = 0; p < N; p++) {
 
 // Annotation
 txt(W/2-20, H-10, 'Amara\'s 14 contributions zigzag across 14 poems — one per poem, one per day — shuffled Latin square ensures no two consecutive contributions land in adjacent poems',
-  {fill:'#2c2826','font-size':'8'}, svg);
+  {fill:'#a09080','font-size':'8'}, svg);
 
 // Trail list (right panel)
 const list = document.getElementById('trail-list');
@@ -281,33 +281,33 @@ AMARA_LINES.forEach((line, i) => {
   item.className = 'trail-item';
   item.innerHTML = `
     <div class="ti-dot"></div>
-    <div class="ti-num">Poem ${String(i+1).padStart(2,'0')}<br><span style="color:#2c2826;font-size:7px">Day ${day}</span></div>
+    <div class="ti-num">Poem ${String(i+1).padStart(2,'0')}<br><span style="color:#a09080;font-size:7px">Day ${day}</span></div>
     <div class="ti-text">"${line}"</div>`;
   list.appendChild(item);
 });
 </script>
 
 <!-- Tooltip: Amara · Poem 07 · dialectic — click Poem 07 node to show -->
-<div id="amara-tooltip" style="display:none;position:fixed;top:310px;left:398px;z-index:200;width:312px;background:#1a2030;border:1px solid #2e3848;border-radius:6px;padding:14px;box-shadow:0 6px 28px rgba(0,0,0,.75)">
-  <div style="font-size:8px;color:#3c3834;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">Prior two lines · Poem 07 · Lines 5–6</div>
+<div id="amara-tooltip" style="display:none;position:fixed;top:310px;left:398px;z-index:200;width:312px;background:rgba(244,239,232,.98);border:1px solid #c8b898;border-radius:6px;padding:14px;box-shadow:0 4px 18px rgba(0,0,0,.18)">
+  <div style="font-size:8px;color:#9a8878;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">Prior two lines · Poem 07 · Lines 5–6</div>
   <div style="margin-bottom:9px;padding-left:8px;border-left:2px solid rgba(168,98,60,.25)">
-    <div style="font-size:7px;font-family:monospace;color:#2e3848;margin-bottom:2px">L5 · Marisol Fuentes · Buenos Aires</div>
+    <div style="font-size:7px;font-family:monospace;color:#a09080;margin-bottom:2px">L5 · Marisol Fuentes · Buenos Aires</div>
     <div style="font-family:Georgia,serif;font-style:italic;font-size:11.5px;color:#6a7066;line-height:1.45">"Even the Andes know that ice is borrowed time"</div>
   </div>
   <div style="margin-bottom:12px;padding-left:8px;border-left:2px solid rgba(168,98,60,.25)">
-    <div style="font-size:7px;font-family:monospace;color:#2e3848;margin-bottom:2px">L6 · Hiroshi Tanaka · Kyoto</div>
+    <div style="font-size:7px;font-family:monospace;color:#a09080;margin-bottom:2px">L6 · Hiroshi Tanaka · Kyoto</div>
     <div style="font-family:Georgia,serif;font-style:italic;font-size:11.5px;color:#6a7066;line-height:1.45">"The plum tree blossoms once and names the year by falling"</div>
   </div>
   <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;padding:5px 8px;background:rgba(168,98,60,.06);border:1px solid rgba(168,98,60,.15);border-radius:3px">
     <span style="color:#a8623c;font-size:14px;line-height:1">↓</span>
     <span style="font-size:9px;color:#7a6858;font-family:monospace">2026-06-07 · 14:23 WAT · Accra, Ghana</span>
   </div>
-  <div style="padding-top:10px;border-top:1px solid #2a3340">
-    <div style="font-size:7px;font-family:monospace;color:#2e3848;margin-bottom:4px">L7 — Amara Osei · contributed</div>
-    <div style="font-family:Georgia,serif;font-style:italic;font-size:13px;color:#c49870;line-height:1.5">"What is given cannot be taken, only forgotten"</div>
+  <div style="padding-top:10px;border-top:1px solid #c0b090">
+    <div style="font-size:7px;font-family:monospace;color:#a09080;margin-bottom:4px">L7 — Amara Osei · contributed</div>
+    <div style="font-family:Georgia,serif;font-style:italic;font-size:13px;color:#8a5828;line-height:1.5">"What is given cannot be taken, only forgotten"</div>
   </div>
 </div>
 <script src="nav-wire.js"></script>
-<div style="position:fixed;bottom:0;left:0;width:100%;background:#523018;color:#e8dec4;text-align:center;font-size:11px;font-weight:700;letter-spacing:.25em;padding:4px 0;z-index:9999">MOCKUP</div>
+<div style="position:fixed;bottom:0;left:0;width:100%;background:#c07838;color:#1a1410;text-align:center;font-size:11px;font-weight:700;letter-spacing:.25em;padding:4px 0;z-index:9999">MOCKUP</div>
 </body>
 </html>

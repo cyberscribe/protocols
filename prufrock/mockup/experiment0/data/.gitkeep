@@ -1,0 +1,4 @@
+# shakespeare_sonnets.json is generated here by:
+#   prufrock seed-sonnets --regenerate data/shakespeare_sonnets.json
+# Run this once on the Proxmox slice (or locally) before deployment.
+# The JSON is not checked in because it is fetchable from Project Gutenberg #1041 (public domain).

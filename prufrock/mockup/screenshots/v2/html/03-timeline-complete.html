@@ -5,57 +5,57 @@
 <title>The Prufrock Protocol — Timeline Complete</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{width:1440px;height:900px;overflow:hidden;background:#1c2530;color:#e8dec4;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px}
-nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;align-items:center;padding:0 24px;gap:2px}
+html,body{width:1440px;height:900px;overflow:hidden;background:#f5f0e8;color:#1a1410;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px}
+nav{height:44px;background:#ece7db;border-bottom:1px solid #c0b090;display:flex;align-items:center;padding:0 24px;gap:2px}
 .brand{display:flex;align-items:baseline;gap:10px;margin-right:28px}
 .brand-name{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
 .brand-sub{font-size:10px;letter-spacing:.06em;color:#a8623c;opacity:.75}
-.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#5a5450;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
-.nav-tab.active{color:#e8dec4;border-bottom-color:#a8623c}
-.nav-right{margin-left:auto;font-size:10px;color:#7a7066}
-.controls{height:40px;background:#1c2028;border-bottom:1px solid #232a32;display:flex;align-items:center;padding:0 24px;gap:20px}
-.cohort-btns{display:flex;border:1px solid #2a3340;border-radius:3px;overflow:hidden}
-.cbt{padding:4px 11px;font-size:10px;color:#5a5450;border-right:1px solid #2a3340}
+.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#7a6a58;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.nav-tab.active{color:#1a1410;border-bottom-color:#a8623c}
+.nav-right{margin-left:auto;font-size:10px;color:#6a5848}
+.controls{height:40px;background:#ece7db;border-bottom:1px solid #c8b898;display:flex;align-items:center;padding:0 24px;gap:20px}
+.cohort-btns{display:flex;border:1px solid #c0b090;border-radius:3px;overflow:hidden}
+.cbt{padding:4px 11px;font-size:10px;color:#7a6a58;border-right:1px solid #c0b090}
 .cbt:last-child{border-right:none}
-.cbt.active{background:rgba(255,255,255,.05);color:#e8dec4}
+.cbt.active{background:rgba(0,0,0,.06);color:#1a1410}
 .slider-group{display:flex;align-items:center;gap:8px;flex:1;max-width:400px}
-.slider-lbl{font-size:10px;color:#5a5450;white-space:nowrap}
-.track{flex:1;height:3px;background:#232a32;border-radius:2px;position:relative}
+.slider-lbl{font-size:10px;color:#7a6a58;white-space:nowrap}
+.track{flex:1;height:3px;background:#c8b898;border-radius:2px;position:relative}
 .fill{position:absolute;left:0;top:0;height:100%;background:#a8623c;border-radius:2px;width:100%}
-.thumb{position:absolute;top:50%;left:100%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:#a8623c;border:2px solid #1c2530}
-.play{width:22px;height:22px;border-radius:50%;background:#232a32;border:1px solid #2a3340;display:flex;align-items:center;justify-content:center;color:#7a7066;font-size:7px}
-.ctrl-right{margin-left:auto;font-size:10px;color:#5a5450;display:flex;gap:14px;align-items:center}
+.thumb{position:absolute;top:50%;left:100%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:#a8623c;border:2px solid #f5f0e8}
+.play{width:22px;height:22px;border-radius:50%;background:#c8b898;border:1px solid #c0b090;display:flex;align-items:center;justify-content:center;color:#6a5848;font-size:7px}
+.ctrl-right{margin-left:auto;font-size:10px;color:#7a6a58;display:flex;gap:14px;align-items:center}
 .legend-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.leg{display:flex;align-items:center;gap:4px;font-size:9px;color:#5a5450}
+.leg{display:flex;align-items:center;gap:4px;font-size:9px;color:#7a6a58}
 .leg-sq{width:8px;height:8px;border-radius:1px;flex-shrink:0}
 .seed-strip{height:36px;background:rgba(168,98,60,.06);border-bottom:1px solid rgba(168,98,60,.15);display:flex;align-items:center;padding:0 24px;gap:16px}
 .ss-tag{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#a8623c;opacity:.7}
 .ss-line{font-family:Georgia,serif;font-style:italic;font-size:12px;color:rgba(168,98,60,.7)}
-.ss-right{margin-left:auto;font-size:10px;color:#5a5450}
+.ss-right{margin-left:auto;font-size:10px;color:#7a6a58}
 .view{height:780px;display:flex;flex-direction:column;padding:10px 0 0}
 .tl-header{display:flex;align-items:center;padding:0 20px 6px 20px}
 .tl-h-spacer{width:128px;flex-shrink:0}
 .tl-days{display:flex;flex:1;gap:2px}
-.day-col{flex:1;text-align:center;font-size:8px;color:#7a7066;letter-spacing:.04em;font-weight:600;text-transform:uppercase}
+.day-col{flex:1;text-align:center;font-size:8px;color:#6a5848;letter-spacing:.04em;font-weight:600;text-transform:uppercase}
 .tl-body{flex:1;overflow:hidden;padding:0 20px;display:flex;flex-direction:column}
 .cohort-section{margin-bottom:4px}
-.cohort-label{display:flex;align-items:center;gap:8px;padding:4px 0 3px;border-bottom:1px solid #1e2228}
+.cohort-label{display:flex;align-items:center;gap:8px;padding:4px 0 3px;border-bottom:1px solid #eae5d9}
 .cohort-dot{width:7px;height:7px;border-radius:2px}
 .cohort-dot.poet{background:#c47048}
 .cohort-dot.lay{background:#607a92}
-.cohort-name{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5a5450}
-.cohort-stats{font-size:9px;color:#322e2a;margin-left:auto}
+.cohort-name{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#7a6a58}
+.cohort-stats{font-size:9px;color:#a09080;margin-left:auto}
 .poem-row{display:flex;align-items:center;height:27px;margin-bottom:2px}
 .p-label{width:128px;flex-shrink:0}
-.p-num{font-size:8px;font-family:monospace;color:#3c3834}
+.p-num{font-size:8px;font-family:monospace;color:#9a8878}
 .cells{display:flex;flex:1;gap:2px;height:21px}
 .cell{flex:1;height:100%;border-radius:2px;display:flex;align-items:center;justify-content:center}
-.cell-init{font-size:6px;font-weight:700;color:rgba(255,255,255,.45);font-family:monospace}
-.summary-bar{height:44px;background:#1c2028;border-top:1px solid #232a32;display:flex;align-items:center;padding:0 24px;gap:32px;flex-shrink:0}
+.cell-init{font-size:6px;font-weight:700;color:rgba(0,0,0,.55);font-family:monospace}
+.summary-bar{height:44px;background:#ece7db;border-top:1px solid #c8b898;display:flex;align-items:center;padding:0 24px;gap:32px;flex-shrink:0}
 .sb-stat{display:flex;flex-direction:column}
-.sb-n{font-size:18px;font-weight:200;color:#e8dec4;line-height:1}
-.sb-l{font-size:8px;color:#3c3834;letter-spacing:.08em;text-transform:uppercase;margin-top:1px}
-.sb-div{width:1px;height:28px;background:#232a32}
+.sb-n{font-size:18px;font-weight:200;color:#1a1410;line-height:1}
+.sb-l{font-size:8px;color:#9a8878;letter-spacing:.08em;text-transform:uppercase;margin-top:1px}
+.sb-div{width:1px;height:28px;background:#c8b898}
 </style>
 </head>
 <body>
@@ -168,8 +168,8 @@ function makeRow(pIdx) {
     const isForfeit = (pIdx === 2 && d === 9);
     cell.className = 'cell';
     if (isForfeit) {
-      cell.style.cssText = 'background:#1c1f26;border:1px dashed #2e3640;opacity:.5';
-      cell.innerHTML = '<span class="cell-init" style="color:#3c3834">✕</span>';
+      cell.style.cssText = 'background:#eee9dd;border:1px dashed #b8a888;opacity:.5';
+      cell.innerHTML = '<span class="cell-init" style="color:#9a8878">✕</span>';
     } else {
       cell.style.background = a.color + '28';
       cell.innerHTML = `<span class="cell-init" style="color:${a.color}bb">${a.id}</span>`;

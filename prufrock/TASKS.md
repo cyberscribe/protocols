@@ -76,7 +76,7 @@ Cycle time is dominated by the video (script → review → record → edit → 
 - [ ] **[CRIT] Package final submission bundle** — folder of named files (or zip) respecting form's 10-file / 10-GB-per-file limits
 - [ ] **Word-count validator** for `../to-review/prufrock/concept.md` — script (`wc -w` with title/epigraph excluded) confirming body ≤ 500
 - [ ] **Latin-square validator** for §9.1 — generate a 13-row Latin rectangle on 14 poems with no fixed points; output the assignment matrix as a table; sanity-check that the dispersion design is realisable
-- [ ] Optional: **reference simulation** — small Python notebook running one cohort end-to-end, verifying authorship-dispersion arithmetic and rendering the resulting matrix as a chart.
+- [x] ~~Optional: **reference simulation**~~ — `scripts/synthesise_data.py`; generates `data/sim-output.json` (14 poems × 14 lines, Latin-square derangement, lineage metadata, concern tagging); `--dry-run` mode for structural validation; `--output` + `--seed` flags; live mode calls Claude API for poetic line generation (2026-05-11)
 
 ## Waiting On
 
@@ -108,3 +108,6 @@ Cycle time is dominated by the video (script → review → record → edit → 
 - [x] ~~HTML mockup suite v2~~ — 17 screens built and indexed: seed panel, map, lineage, participant, poem 2026↔2126, concerns network, long view, deep time river, handoff, Khayyám seed, Gilgamesh seed, line detail (×2), pace layer stack, deep time overlay, single line / all layers (2026-05-10)
 - [x] ~~Pace layers visualisations~~ — 3 screens mapping protocol temporal architecture to Brand/Long Now framework; deep time river annotated with pace layer legend (2026-05-10)
 - [x] ~~Demo video recorded~~ — `prufrock-demo.webm` (3:15, 10 screens, 1440×900 @ 25fps); `prufrock-demo.mp4` (H.264, 6 MB); `prufrock-demo-prores.mov` (ProRes 422 HQ, 1 GB, FCP-ready) (2026-05-10)
+- [x] ~~Demo server startup script~~ — `mockup/serve.sh`; serves `screenshots/v2/html/` on port 8080, opens browser automatically (2026-05-11)
+- [x] ~~Mockup light-mode conversion~~ — all 22 screens converted from dark to Long Now warm parchment palette (`#f5f0e8`/`#ece7db` backgrounds, `#1a1410` text, `#a8623c` copper accent); `mockup/convert-to-light.py` applied globally; dark annotation boxes, era cards, tooltips, left panels, and poem columns normalised across 9 files individually (2026-05-11)
+- [x] ~~Experiment 0 implementation~~ — full Python application in `mockup/experiment0/`: PTB 21 bot (long-poll, no inbound HTTP), SQLAlchemy 2 ORM + Alembic migration (participants, sonnets, experiments, prompts, responses, poem\_state view), protocol arc (`start_experiment`, `build_antithesis`, `record_response`, `is_complete`, `assemble_poem`), APScheduler 3 `AsyncIOScheduler` with 00:01 daily reseed + random fire window, CLI (`seed-sonnets`, `register-participant`, `start-experiment`, `fire-now`, `status`, `abandon-experiment`, `export`), systemd unit, `deploy/smoke-test-telegram.py` pre-deployment validator; 14 automated tests passing (fire\_window + voltas parser); 6 DB tests ready for Proxmox via `--pg-url` (2026-05-11)

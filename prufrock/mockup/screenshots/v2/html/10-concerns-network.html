@@ -5,28 +5,28 @@
 <title>The Prufrock Protocol — Concerns: Theme Network</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{width:1440px;height:900px;overflow:hidden;background:#1c2530;color:#e8dec4;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px}
-nav{height:44px;background:#1e2530;border-bottom:1px solid #2a3340;display:flex;align-items:center;padding:0 24px;gap:2px}
+html,body{width:1440px;height:900px;overflow:hidden;background:#f5f0e8;color:#1a1410;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:13px}
+nav{height:44px;background:#ece7db;border-bottom:1px solid #c0b090;display:flex;align-items:center;padding:0 24px;gap:2px}
 .brand{display:flex;align-items:baseline;gap:10px;margin-right:28px}
 .brand-name{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
 .brand-sub{font-size:10px;letter-spacing:.06em;color:#a8623c;opacity:.75}
-.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#5a5450;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
-.nav-tab.active{color:#e8dec4;border-bottom-color:#a8623c}
-.nav-right{margin-left:auto;font-size:10px;color:#3c3834}
-.controls{height:40px;background:#1c2028;border-bottom:1px solid #232a32;display:flex;align-items:center;padding:0 24px;gap:20px}
-.cohort-btns{display:flex;border:1px solid #2a3340;border-radius:3px;overflow:hidden}
-.cbt{padding:4px 11px;font-size:10px;color:#5a5450;border-right:1px solid #2a3340}
+.nav-tab{height:44px;padding:0 14px;display:flex;align-items:center;font-size:11px;letter-spacing:.05em;color:#7a6a58;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.nav-tab.active{color:#1a1410;border-bottom-color:#a8623c}
+.nav-right{margin-left:auto;font-size:10px;color:#9a8878}
+.controls{height:40px;background:#ece7db;border-bottom:1px solid #c8b898;display:flex;align-items:center;padding:0 24px;gap:20px}
+.cohort-btns{display:flex;border:1px solid #c0b090;border-radius:3px;overflow:hidden}
+.cbt{padding:4px 11px;font-size:10px;color:#7a6a58;border-right:1px solid #c0b090}
 .cbt:last-child{border-right:none}
-.cbt.active{background:rgba(255,255,255,.05);color:#e8dec4}
-.view-btns{display:flex;border:1px solid #2a3340;border-radius:3px;overflow:hidden}
-.vbt{padding:4px 11px;font-size:10px;color:#5a5450;border-right:1px solid #2a3340}
+.cbt.active{background:rgba(0,0,0,.06);color:#1a1410}
+.view-btns{display:flex;border:1px solid #c0b090;border-radius:3px;overflow:hidden}
+.vbt{padding:4px 11px;font-size:10px;color:#7a6a58;border-right:1px solid #c0b090}
 .vbt:last-child{border-right:none}
-.vbt.active{background:rgba(255,255,255,.05);color:#e8dec4}
-.ctrl-right{margin-left:auto;font-size:10px;color:#5a5450}
+.vbt.active{background:rgba(0,0,0,.06);color:#1a1410}
+.ctrl-right{margin-left:auto;font-size:10px;color:#7a6a58}
 .seed-strip{height:36px;background:rgba(168,98,60,.06);border-bottom:1px solid rgba(168,98,60,.15);display:flex;align-items:center;padding:0 24px;gap:16px}
 .ss-tag{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#a8623c;opacity:.7}
 .ss-line{font-family:Georgia,serif;font-style:italic;font-size:12px;color:rgba(168,98,60,.7)}
-.ss-right{margin-left:auto;font-size:10px;color:#5a5450}
+.ss-right{margin-left:auto;font-size:10px;color:#7a6a58}
 #chart{display:block}
 </style>
 </head>
@@ -66,7 +66,7 @@ const THEMES = [
   {name:'Wonder / awe',             short:'Wonder',     color:'#6a9580', inSeed:false, seedW:0.00},
   {name:'Solitude / alienation',    short:'Solitude',   color:'#7a7080', inSeed:false, seedW:0.00},
   {name:'Domestic life',            short:'Domestic',   color:'#c47048', inSeed:false, seedW:0.00},
-  {name:'Grief / loss',             short:'Grief',      color:'#5a6878', inSeed:false, seedW:0.00},
+  {name:'Grief / loss',             short:'Grief',      color:'#7a6858', inSeed:false, seedW:0.00},
   {name:'Identity / selfhood',      short:'Identity',   color:'#7a9078', inSeed:false, seedW:0.00},
 ];
 
@@ -109,7 +109,7 @@ function txt(x, y, t, attrs, parent) {
   return e;
 }
 
-el('rect', {width:W, height:H, fill:'#1c2530'}, svg);
+el('rect', {width:W, height:H, fill:'#f5f0e8'}, svg);
 const defs = el('defs', {}, svg);
 
 // Layout positions
@@ -196,7 +196,7 @@ poemArcGroups.flat().forEach(a => { a.style.opacity = '0'; });
 
 // ─── Seed node ────────────────────────────────────────────────
 el('circle', {cx:SEED_X, cy:SEED_Y, r:32, fill:'rgba(168,98,60,.06)', stroke:'rgba(168,98,60,.25)', 'stroke-width':'1.5'}, svg);
-el('circle', {cx:SEED_X, cy:SEED_Y, r:20, fill:'#1a1612', stroke:'rgba(168,98,60,.5)', 'stroke-width':'1.5'}, svg);
+el('circle', {cx:SEED_X, cy:SEED_Y, r:20, fill:'#b4a898', stroke:'rgba(168,98,60,.5)', 'stroke-width':'1.5'}, svg);
 txt(SEED_X, SEED_Y-5, 'WS', {fill:'rgba(168,98,60,.9)', 'font-size':'12', 'font-weight':'700', 'font-family':'Georgia,serif'}, svg);
 txt(SEED_X, SEED_Y+8, '1609', {fill:'rgba(168,98,60,.5)', 'font-size':'7', 'font-family':'monospace'}, svg);
 txt(SEED_X, SEED_Y-52, 'Shakespeare · Sonnet XVIII', {fill:'rgba(168,98,60,.55)', 'font-size':'8.5'}, svg);
@@ -223,10 +223,10 @@ for (let p = 0; p < N_POEMS; p++) {
   if (isDivergent) el('circle', {cx:POEM_X, cy:py, r:r+6, fill:'rgba(192,120,72,.06)'}, svg);
   poemNodeEls.push(el('circle', {cx:POEM_X, cy:py, r:r,
     fill: isDivergent ? 'rgba(192,120,72,.25)' : '#20262e',
-    stroke: isDivergent ? '#c47048' : '#2e3640',
+    stroke: isDivergent ? '#c47048' : '#b8a888',
     'stroke-width': isDivergent ? '1.5' : '0.8'}, svg));
-  txt(POEM_X, py, String(p+1).padStart(2,'0'), {fill: isDivergent ? '#c47048' : '#5a5450', 'font-size':'7', 'font-family':'monospace', 'font-weight':isDivergent?'700':'400'}, svg);
-  txt(POEM_X+r+8, py, `Poem ${String(p+1).padStart(2,'0')}`, {fill: isDivergent ? '#c47048bb' : '#34302c', 'font-size':'7.5', 'font-family':'monospace', 'text-anchor':'start'}, svg);
+  txt(POEM_X, py, String(p+1).padStart(2,'0'), {fill: isDivergent ? '#c47048' : '#7a6a58', 'font-size':'7', 'font-family':'monospace', 'font-weight':isDivergent?'700':'400'}, svg);
+  txt(POEM_X+r+8, py, `Poem ${String(p+1).padStart(2,'0')}`, {fill: isDivergent ? '#c47048bb' : '#a09080', 'font-size':'7.5', 'font-family':'monospace', 'text-anchor':'start'}, svg);
 }
 
 // Hide poem nodes initially
@@ -235,24 +235,24 @@ poemNodeEls.forEach(n => { n.style.opacity = '0'; });
 // Divergent poems callout (P04, P05, P06, P08, P11, P13 — 5 of 14 drop seed themes)
 const p6y = poemY(5);
 el('rect', {x:POEM_X+56, y:poemY(3)-18, width:160, height:34+poemY(5)-poemY(3), rx:3,
-  fill:'rgba(28,24,18,.7)', stroke:'rgba(192,120,72,.25)', 'stroke-width':'1', 'stroke-dasharray':'3 3'}, svg);
+  fill:'rgba(244,239,232,.92)', stroke:'rgba(192,120,72,.35)', 'stroke-width':'1', 'stroke-dasharray':'3 3'}, svg);
 txt(POEM_X+136, poemY(3)+4, '5 of 14 poems break', {fill:'#c47048', 'font-size':'8', 'font-weight':'600'}, svg);
 txt(POEM_X+136, poemY(3)+16, 'entirely from seed', {fill:'#c47048', 'font-size':'8', 'font-weight':'600'}, svg);
 txt(POEM_X+136, poemY(5)-4, 'new themes only', {fill:'#6a5e58', 'font-size':'7.5'}, svg);
 
 // Section headers
-txt(SEED_X, 54, 'SEED', {fill:'#2c2826', 'font-size':'7', 'font-weight':'700', 'letter-spacing':'.12em'}, svg);
-txt(POEM_X, 54, 'POEMS', {fill:'#2c2826', 'font-size':'7', 'font-weight':'700', 'letter-spacing':'.12em'}, svg);
+txt(SEED_X, 54, 'SEED', {fill:'#a09080', 'font-size':'7', 'font-weight':'700', 'letter-spacing':'.12em'}, svg);
+txt(POEM_X, 54, 'POEMS', {fill:'#a09080', 'font-size':'7', 'font-weight':'700', 'letter-spacing':'.12em'}, svg);
 
 // Legend strip at bottom
-el('rect', {x:40, y:H-44, width:700, height:30, rx:3, fill:'rgba(0,0,0,.5)', stroke:'#232a32', 'stroke-width':'0.8'}, svg);
+el('rect', {x:40, y:H-44, width:700, height:30, rx:3, fill:'rgba(0,0,0,.5)', stroke:'#c8b898', 'stroke-width':'0.8'}, svg);
 el('line', {x1:56, y1:H-29, x2:100, y2:H-29, stroke:'#6a6878', 'stroke-width':'2', 'stroke-opacity':'0.6'}, svg);
-txt(106, H-29, 'Inherited from seed — flows into most poems', {fill:'#7a7066', 'font-size':'8', 'text-anchor':'start'}, svg);
+txt(106, H-29, 'Inherited from seed — flows into most poems', {fill:'#6a5848', 'font-size':'8', 'text-anchor':'start'}, svg);
 el('line', {x1:360, y1:H-29, x2:404, y2:H-29, stroke:'#c47048', 'stroke-width':'2', 'stroke-opacity':'0.7', 'stroke-dasharray':'4 3'}, svg);
-txt(410, H-29, 'New theme — emerged within the poem corpus, not in seed', {fill:'#7a7066', 'font-size':'8', 'text-anchor':'start'}, svg);
+txt(410, H-29, 'New theme — emerged within the poem corpus, not in seed', {fill:'#6a5848', 'font-size':'8', 'text-anchor':'start'}, svg);
 
 // Bottom note
-txt(W-200, H-14, 'Edge width ∝ concern weight in poem', {fill:'#262220', 'font-size':'7.5', 'text-anchor':'end'}, svg);
+txt(W-200, H-14, 'Edge width ∝ concern weight in poem', {fill:'#b0a090', 'font-size':'7.5', 'text-anchor':'end'}, svg);
 
 // ═══════════════════════════════════════════════════════════════
 // ANIMATION — seed → themes → poems cascading in
@@ -299,6 +299,6 @@ function startNetAnim() {
 setTimeout(startNetAnim, 400);
 </script>
 <script src="nav-wire.js"></script>
-<div style="position:fixed;bottom:0;left:0;width:100%;background:#523018;color:#e8dec4;text-align:center;font-size:11px;font-weight:700;letter-spacing:.25em;padding:4px 0;z-index:9999">MOCKUP</div>
+<div style="position:fixed;bottom:0;left:0;width:100%;background:#c07838;color:#1a1410;text-align:center;font-size:11px;font-weight:700;letter-spacing:.25em;padding:4px 0;z-index:9999">MOCKUP</div>
 </body>
 </html>
