@@ -203,6 +203,8 @@ your-laptop$ tailscale ssh root@prufrock
 
 ## Stage 4 — Install PostgreSQL 16 with pgvector
 
+> **Note for the 2026-05-11 deployed slice.** The current experiment-0 slice does **not** install `pgvector` and uses a hand-patched `alembic/versions/0001_initial.py` with the `CREATE EXTENSION vector` line removed. The instructions in this stage still install pgvector for forward-compatibility with experiment 1+; if you are reproducing the current slice exactly (or deploying onto a cluster without pgvector available), skip the `postgresql-16-pgvector` package in §4.2 and the `CREATE EXTENSION` line in §4.3, and confirm the migration matches. See [`KNOWN_ISSUES.md`](./KNOWN_ISSUES.md) for the spec-side resolution slated for experiment 1.
+
 We use the PGDG (PostgreSQL Global Development Group) apt repo because it ships pgvector packages for every supported Postgres version, which Debian's main repo does not for Postgres 16.
 
 ### 4.1 Add the PGDG repo

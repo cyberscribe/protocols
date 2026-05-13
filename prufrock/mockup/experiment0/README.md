@@ -2,10 +2,21 @@
 
 Single-participant self-test of the daily-interrupt mechanic. One person (Robert), one Shakespearean sonnet, 14 days, one line per day submitted via Telegram. Full run-it instructions are in [SETUP.md](SETUP.md); this file is the quick-start for once the Proxmox LXC is provisioned.
 
+## Slice state (2026-05-11)
+
+Currently deployed on the `prufrock` LXC on Robert's Proxmox slice:
+
+- `prufrock.service` running under `systemd`, long-polling Telegram. No inbound HTTP.
+- PostgreSQL 16 on `localhost:5432`, UTF-8, owned by the `prufrock` role — co-tenanted with the existing `iot` database and `iot-telemetry` service on the same cluster.
+- `pgvector` is **not** installed on this slice; `alembic/versions/0001_initial.py` was hand-patched to remove `CREATE EXTENSION vector`. The spec retains pgvector forward-compatibility for experiment 1+ — see [`KNOWN_ISSUES.md`](KNOWN_ISSUES.md).
+- Tailscale is up; `prufrock status` and `journalctl` reads are reachable from anywhere.
+
+Experiment `b35f4d95-d549-46a0-9e35-4605037609ba` is active: sonnet 96, day 1 of 14, 0 responses recorded. Day 1 was deferred (start at 19:01 BST after the random window had already drawn 15:43 BST); the 00:01 daily reseed will re-book day 1 for tomorrow per `SPEC.md` §1.4. Operating posture during the 14-day cycle is **observation only** — see [`journal/experiment0.md`](journal/experiment0.md) for meta-observations and [`KNOWN_ISSUES.md`](KNOWN_ISSUES.md) for the three deferred bugs.
+
 ## Prerequisites
 
 - Debian 12 LXC container running on Proxmox (see `SETUP.md` §1–3)
-- PostgreSQL 16 with `postgresql-16-pgvector` installed (§4)
+- PostgreSQL 16 (§4 — `postgresql-16-pgvector` only required for forward-compatibility with experiment 1+; not used by experiment 0)
 - A Telegram bot token and your numeric user ID (§6)
 
 ## Quick start

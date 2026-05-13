@@ -6,9 +6,9 @@ Wants=network-online.target
 [Service]
 Type=simple
 User=prufrock
-WorkingDirectory=/opt/prufrock
-EnvironmentFile=/opt/prufrock/.env
-ExecStart=/opt/prufrock/.venv/bin/prufrock-bot
+WorkingDirectory=/home/prufrock/protocols/prufrock/mockup/experiment0
+EnvironmentFile=/home/prufrock/protocols/prufrock/mockup/experiment0/.env
+ExecStart=/home/prufrock/protocols/prufrock/mockup/experiment0/.venv/bin/prufrock-bot
 Restart=on-failure
 RestartSec=10
 StandardOutput=journal
