@@ -1,0 +1,59 @@
+The Cognitive Cost of Transhuman Working
+
+AI is set to teach us more about how our own brains work, but but not in the way you might expect.
+
+Revised and updated from a 2023 article to address the agentic AI
+
+https://www.robertpeake.com/archives/102992-the-hidden-cost-of-cyborg-working.html
+
+Generative AI is already automating many intellectual activities at work. The benefits and drawbacks are becoming more obvious and stark, but amidst all the debate about machines  being intelligent, a key component seems to be missing from the conversation: the impact on our own dear minds.
+
+The benefits of automation are usually stated in terms of time, since “time is money”, and work is a financial activity. However, truly high-performing individuals and teams know that time is only one factor to manage. Together with greater awareness of the importance of mental health, an understanding of the significance of “cognitive load” has been emerging in science and psychology.
+
+The truth is, in knowledge work, cognitive load is money, too. Faced with myriad decisions, a mentally tired worker is a less effective worker, whose resourcefulness and decision-making are as critical, if not more critical, to their effectiveness than sheer hours spent behind a screen.
+
+Since cognitive load is simply cognitive effort over time, it can be useful to separate the two dimensions. Existing forms of automation have been helping us save time and cognitive effort for a while now. Here is a plot of some of these activities:
+
+
+Find-and-replace, for example, saves us time in the mindless activity of substituting one piece of text for another. Playing speed chess with the help of AI can now get us to a winning game against any human every time, saving us strenuous thinking in a fixed amount of time. Motion lights save us the tiny amount of both time and effort required to remember to flick a switch.
+
+Computers also excel at vast amounts of tricky math, which, combined with vast amounts of content to encode into math and manipulate, is precisely what has led to present advances in the usefulness of AI. Generative AI is currently only useful, however, under human supervision.
+
+I recently undertook three activities as a “transhuman”–that is, one part AI to generate the content, one part person to validate the result. I found that the amount of time and cognitive effort saved by AI, combined with the amount of time and cognitive effort required by me to supervise and validate the result, varied considerably:
+
+
+Note that none of this accounts for other important dimensions–such as the pleasure involved in playing chess or the talent involved with making visual imagery. This is just about seconds and synapses.
+
+Generating placeholder images for a video game using stable diffusion, for example, was largely just a matter of fiddling with prompts and hitting refresh, since generative AI is based on statistics and therefore produces a different result every time, even with the same prompt.
+
+It took time but little effort to arrive at something that represented the feel I was after and allowed me to continue developing the game. I have since hired a human artist to re-draw the AI placeholders in their own unique and consistent style.
+
+The problem I foresee in transhuman working is the extent to which our obsession with speed will lead to a false economy and perpetuate the epidemic of burned-out knowledge workers making bad decisions.
+
+Consider one recent experience writing code:
+
+
+For non-trivial coding, it is often harder to edit someone else’s code than it is to write it yourself. So, while AI undoubtedly saved me a lot of typing time, the cognitive load imposed by having to check it for accuracy more than cancelled this out.
+
+So how do we drive down the time and cognitive effort required to validate AI results? With the rise of agentic coding, I recommend the safeguards most large, mixed-experience teams impose: automated regression testing, code reviews, and extensive documentation. All of this helps AI loop faster and require less human tending. 
+
+But tending is still required, and when agents are running in parallel, their constant "pings" -- for permission to run an obscure perl command, or for a high-level complex architectural decision -- compress the activities of a senior team lead from days into hours. It can quickly blow your circuits.
+
+Along with cognitive load, the concept of "cognitive sovereignty" is emerging in transhuman work. Staying in control of the final decision-making process can be elusive when working alongside a truly convincing partner with zero real-world experience. 
+
+Yet the results of ceding cognitive sovereignty lead to "cognitive debt". Borrowed from the software world, where the gap that eventually widens between the code base and what's best practice today, cognitive debt simply means that you failed to follow the workings out along the way to the result. It's like using a calculator without knowing how to do arithmetic. It not only leads to dependence, but robs you of essential context.
+
+And given that AI needs context to do meaningful work, if we no longer are able to supply it, both sides of the transhuman equation collapse.
+
+Coming back to basics, the factors influencing the real power of what AI generates are threefold: how accurate it is, how suitable it is, and how much we can have confidence in it as a result.
+
+
+Generative AI is a cocktail of statistics and internet data, which is to say that anything it mixes up needs to be checked, followed, and overridden when wrong. Because its results are based on statistics, “100% accurate” will never be on the cards. Furthermore, because this technology’s power lies in consuming large data sets, the caveats of information gathered from open sources such as the internet all apply. 
+
+Validation is the new super-skill. Yet validation takes not only subject matter expertise, but meta-awareness -- of your own limitations, and those of AI.
+
+There is tremendous promise ahead for our AI-agent-enhanced transhuman lives -- the same promise as traditional automation: greater output and less grunt work. All the same socioeconomic perils apply to this revolution as they did to the industrial revolution. However, unlike past waves of automation, this one is going to hit us where we live -- our minds.
+
+Continually evaluating what our use of these vast but naive thinking partners are doing to our own minds will be a skill to survive and thrive as a transhuman. With each output, we must ask: Is it accurate? Is it fit-for-purpose? Is "good enough" really good enough in this case?
+
+Mind your mind in the era ahead. After all, you can’t just fix it by turning it off and on again.
