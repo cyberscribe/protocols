@@ -20,7 +20,7 @@ Use a three-tier rights model:
 
 For poet-facing prompts, only use global_pd_confident unless explicitly running a jurisdiction-limited edition.
 
-Important: Standard Ebooks works from US-public-domain texts and dedicates its own ebook files to CC0/public domain, but its collection policy is US-public-domain-focused, not global-public-domain-focused.
+Standard Ebooks works from US-public-domain texts and dedicates its own ebook files to CC0/public domain, but its collection policy is US-public-domain-focused, not global-public-domain-focused.
 
 ## 3. Source priority
 

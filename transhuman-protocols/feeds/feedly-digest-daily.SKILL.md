@@ -7,7 +7,7 @@ Run the feeds-surveillance skill against Robert's Feedly OPML to produce a perso
 
 **Skill spec to read first:** `/Users/rpeake/.openclaw/workspace/skills/feeds-surveillance/SKILL.md`. Follow it exactly.
 
-**Mandatory parser** (do NOT parse XML manually):
+**Parser** (manual XML parsing is not part of this workflow):
 
 ```
 python3 /Users/rpeake/.openclaw/workspace/skills/feeds-surveillance/scripts/parse-feed.py <feed_url> --limit 10
