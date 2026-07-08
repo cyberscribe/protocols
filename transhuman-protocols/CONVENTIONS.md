@@ -19,6 +19,7 @@ Conventions specific to the *Effective Protocols for Human-AI Collaboration* res
 | `pi/` | Protocols Institute general-assembly transcripts and PI-facing artefacts. |
 | `fptsig/` | Formal Protocol Theory SIG materials — distillation, references, urls-with-context, plus a local Roam graph dump (`fptsig/roam/`, gitignored). |
 | `protocol-reader/` | The Protocol Reader anthology distillation and citation list. |
+| `venture/` | Consulting/training business strand — mission statement, naming, positioning. "Transhuman Protocols" is a placeholder name here. |
 | `considerations.{canvas,opml,mindnode}` | Brainstorm / mind-map artefacts mapping the broader theme tree. |
 | `sources.md` | Lightweight pointer file. |
 
