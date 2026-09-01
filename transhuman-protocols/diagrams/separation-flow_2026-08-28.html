@@ -1,0 +1,331 @@
+<title>Unscrambling the Omelette</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@600&display=swap">
+<style>
+:root{
+  --ground:#F1F4F0; --panel:#FCFCFB; --panel-2:#E9EEE9;
+  --ink:#16211C; --ink-2:#4A574F; --ink-3:#7C8A82; --rule:#D6DCD7; --rule-2:#C2CBC4;
+  --k-standards:#1E3A8A; --k-general:#2563EB; --k-project:#60A5FA;
+  --k-templates:#B45309; --k-projects:#15803D; --k-status:#9333EA;
+  --mixed:#94A29A;
+  --serif:"IBM Plex Serif",Georgia,serif;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#121714; --panel:#1B211D; --panel-2:#232B26;
+  --ink:#E5EAE5; --ink-2:#B3BEB7; --ink-3:#8A968E; --rule:#2C342E; --rule-2:#3A443D;
+  --k-standards:#5B8DEE; --k-general:#85AFF5; --k-project:#AECFFB;
+  --k-templates:#E0902F; --k-projects:#4ADE80; --k-status:#C084FC; --mixed:#6E7C74;
+}}
+:root[data-theme="dark"]{
+  --ground:#121714; --panel:#1B211D; --panel-2:#232B26;
+  --ink:#E5EAE5; --ink-2:#B3BEB7; --ink-3:#8A968E; --rule:#2C342E; --rule-2:#3A443D;
+  --k-standards:#5B8DEE; --k-general:#85AFF5; --k-project:#AECFFB;
+  --k-templates:#E0902F; --k-projects:#4ADE80; --k-status:#C084FC; --mixed:#6E7C74;
+}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16px;
+  line-height:1.55;margin:0;padding:40px 22px 72px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1060px;margin:0 auto;display:flex;flex-direction:column;gap:32px}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--ink-3);margin:0}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,4.6vw,46px);line-height:1.08;
+  letter-spacing:-.015em;margin:10px 0 0;text-wrap:balance}
+.thesis{font-size:18px;color:var(--ink-2);max-width:64ch;margin:14px 0 0;text-wrap:pretty}
+.stage{background:var(--panel);border:1px solid var(--rule);border-radius:3px;padding:18px}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:16px}
+button{font-family:var(--sans);font-size:13.5px;font-weight:500;color:var(--ink);
+  background:var(--panel-2);border:1px solid var(--rule-2);border-radius:2px;
+  padding:8px 15px;cursor:pointer}
+button[aria-pressed="true"]{background:var(--ink);color:var(--panel);border-color:var(--ink)}
+button:focus-visible{outline:2px solid var(--k-general);outline-offset:2px}
+.mode-note{font-size:13px;color:var(--ink-3);margin-left:auto;font-family:var(--mono)}
+.viewport{position:relative;width:100%;aspect-ratio:1000/640;min-width:0}
+canvas{position:absolute;inset:0;width:100%;height:100%}
+.lay{position:absolute;inset:0;pointer-events:none}
+.box{position:absolute;border:1px solid var(--rule-2);border-radius:3px;background:var(--panel-2);
+  overflow:hidden}
+.box .nm{position:absolute;left:9px;top:6px;font-size:12px;font-weight:600;line-height:1.25}
+.box .sub{position:absolute;left:9px;bottom:5px;font-size:9.5px;font-family:var(--mono);
+  color:var(--ink-3);letter-spacing:.05em}
+.lvl{position:absolute;left:0;bottom:0;width:100%;opacity:.24}
+.hall{position:absolute;font-family:var(--mono);font-size:11px;letter-spacing:.22em;
+  color:var(--ink-3);opacity:.7}
+figcaption{margin-top:16px;padding-top:14px;border-top:1px solid var(--rule);font-size:14px;
+  color:var(--ink-2);max-width:78ch}
+.finds{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px}
+.finds h2{font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:400;margin:0 0 10px}
+.finds p{margin:0 0 11px;font-size:15px;color:var(--ink-2);max-width:54ch}
+.finds p:last-child{margin-bottom:0}
+.finds b{color:var(--ink);font-weight:600}
+.pull{font-family:var(--serif);font-size:21px;line-height:1.35;color:var(--ink);
+  border-left:3px solid var(--k-standards);padding:4px 0 4px 20px;margin:0;max-width:36ch}
+footer{font-size:13px;color:var(--ink-3);border-top:1px solid var(--rule);padding-top:18px;
+  max-width:78ch}
+@media (prefers-reduced-motion:reduce){.viewport{--rm:1}}
+</style>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Session plumbing &middot; where knowledge gets sorted</p>
+    <h1>Unscrambling the omelette</h1>
+    <p class="thesis">Knowledge leaves a working session <em>entangled</em> &mdash; one undifferentiated
+      mixture. Separating it into the things it is actually made of is the work, and it is the only
+      place the person gets anything back.</p>
+  </header>
+
+  <figure class="stage" style="margin:0">
+    <div class="controls">
+      <button id="mode" aria-pressed="true">Separate it</button>
+      <button id="pause" aria-pressed="false">Pause</button>
+      <span class="mode-note" id="note">human and AI both sorting</span>
+    </div>
+    <div class="viewport" id="vp">
+      <canvas id="cv"></canvas>
+      <div class="lay" id="lay"></div>
+    </div>
+    <figcaption id="cap"></figcaption>
+  </figure>
+
+  <p class="pull">Working memory is the only vessel with a hole in it.</p>
+
+  <section class="finds">
+    <div>
+      <h2>Separation is the work</h2>
+      <p>Particles leave the session grey. They acquire their colour <b>in the separator</b>, not
+        before &mdash; because what kind of thing a fragment is gets decided in the act of sorting it.
+        That is why promotion is effortful and why it cannot be handed over wholesale.</p>
+      <p>Switch to <b>Let it flow through</b> and the stores still fill. They fill with grey.</p>
+    </div>
+    <div>
+      <h2>Two streams come back to you</h2>
+      <p>A thin mixed stream &mdash; <b>rehearsal</b>, a sample of everything you sorted, the by-product
+        of having handled it.</p>
+      <p>And a full stream of <b>working standards</b>, which is a different thing entirely: standards
+        ground <em>you</em>, scaling the exchange to terms you already hold. General reference never
+        comes back &mdash; it only ever travels toward the AI. <b>That is what separates those two
+        types, and it is a difference in plumbing, not in policy.</b></p>
+    </div>
+    <div>
+      <h2>The leak has no valve</h2>
+      <p>Working memory drains continuously, whether or not anything changed in the world. Every other
+        vessel here only goes wrong when the world moves &mdash; and one write repairs it.</p>
+      <p>Turn separation off and watch which vessel empties. Nothing else does.</p>
+    </div>
+    <div>
+      <h2>Status is drawn off, not sent up</h2>
+      <p>The volatile fractions &mdash; status, and to a lesser degree projects &mdash; stay on your
+        side and near the top. They are not context that hasn&rsquo;t been written down yet.</p>
+      <p>Sending a transient fraction down into the durable vessels is not untidiness. It is how the
+        durable vessels get contaminated.</p>
+    </div>
+  </section>
+
+  <footer>Vessel fill levels are illustrative, not model output: inflow is set by the sorting rate and
+    working memory drains at a fixed rate standing in for autonomous decay. The claim being drawn is
+    structural &mdash; which streams exist, which direction they run, and which vessel leaks.</footer>
+</div>
+
+<script>
+const VW = 1000, VH = 640;
+const cv = document.getElementById('cv'), ctx = cv.getContext('2d');
+const lay = document.getElementById('lay'), vp = document.getElementById('vp');
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+
+const BOXES = [
+  {id:'wm',    side:'H', x:40,  y:56,  w:262, h:96, name:'Working memory',   sub:'LEAKS',      k:'mixed'},
+  {id:'status',side:'H', x:40,  y:176, w:262, h:62, name:'status',           sub:'MINUTES',    k:'status'},
+  {id:'projs', side:'H', x:40,  y:254, w:262, h:62, name:'projects',         sub:'WEEKS',      k:'projects'},
+  {id:'proj',  side:'A', x:698, y:56,  w:262, h:62, name:'Project reference',sub:'PER PROJECT',k:'project'},
+  {id:'gen',   side:'A', x:698, y:134, w:262, h:62, name:'General reference',sub:'AS-NEEDED',  k:'general'},
+  {id:'tmpl',  side:'A', x:698, y:212, w:262, h:62, name:'Templates',        sub:'AS-NEEDED',  k:'templates'},
+  {id:'std',   side:'A', x:698, y:290, w:262, h:62, name:'Working standards',sub:'ALWAYS',     k:'standards'},
+];
+const SEP = {x:352, y:404, w:296, h:78};
+const SESS = {x:352, y:540, w:296, h:78};
+const B = {}; BOXES.forEach(b => B[b.id] = b);
+
+// build the static layer
+function layout(){
+  lay.innerHTML = '';
+  const mk = (o, cls) => {
+    const d = document.createElement('div');
+    d.className = cls; d.style.left = o.x/VW*100+'%'; d.style.top = o.y/VH*100+'%';
+    d.style.width = o.w/VW*100+'%'; d.style.height = o.h/VH*100+'%';
+    lay.appendChild(d); return d;
+  };
+  BOXES.forEach(b => {
+    const d = mk(b, 'box');
+    d.innerHTML = '<div class="lvl" id="lvl-'+b.id+'"></div>'
+      + '<div class="nm" style="color:var(--k-'+b.k+',var(--ink))">'+b.name+'</div>'
+      + '<div class="sub">'+b.sub+'</div>';
+  });
+  const s = mk(SEP, 'box');
+  s.style.background = 'transparent'; s.style.borderStyle = 'dashed';
+  s.style.borderColor = 'var(--ink-3)';
+  s.innerHTML = '<div class="nm" style="color:var(--ink)">Separation</div>'
+    + '<div class="sub">HUMAN + AI, TOGETHER</div>';
+  const q = mk(SESS, 'box');
+  q.innerHTML = '<div class="nm" style="color:var(--ink)">Working session</div>'
+    + '<div class="sub">ENTANGLED</div>';
+  const h = document.createElement('div'); h.className = 'hall';
+  h.textContent = 'HUMAN'; h.style.left = '4%'; h.style.top = '95%'; lay.appendChild(h);
+  const ai = document.createElement('div'); ai.className = 'hall';
+  ai.textContent = 'AI'; ai.style.left = '92%'; ai.style.top = '95%'; lay.appendChild(ai);
+}
+layout();
+
+// ---- flows: waypoint polylines in virtual coords ---------------------------
+const P = (x,y)=>({x,y});
+const sepTop = P(500, SEP.y), sepBot = P(500, SEP.y+SEP.h);
+function toBox(b){
+  const midY = b.y + b.h/2;
+  if (b.side === 'A') return [P(560,SEP.y+18), P(660,SEP.y+10), P(668,midY), P(b.x-2,midY)];
+  return [P(440,SEP.y+18), P(336,SEP.y+10), P(328,midY), P(b.x+b.w+2,midY)];
+}
+const FLOWS = {
+  feed:   [P(500,SESS.y+10), sepBot],
+  ground: [P(430,SEP.y+30), P(330,SEP.y+46), P(318,B.wm.y+B.wm.h-18), P(B.wm.x+B.wm.w+2,B.wm.y+B.wm.h-18)],
+  rehear: [P(452,SEP.y+30), P(346,SEP.y+58), P(310,B.wm.y+B.wm.h-6),  P(B.wm.x+B.wm.w+2,B.wm.y+B.wm.h-6)],
+};
+BOXES.forEach(b => FLOWS['to_'+b.id] = toBox(b));
+// loading: the AI stores back down into the session, automatic
+FLOWS.load = [P(B.std.x-6, B.std.y+B.std.h+6), P(676,470), P(672,560), P(SESS.x+SESS.w+2,SESS.y+30)];
+// consult: the human side back down into the session, gated
+FLOWS.consult = [P(B.projs.x+B.projs.w+6, B.projs.y+B.projs.h+6), P(322,470), P(326,560), P(SESS.x-2,SESS.y+30)];
+
+function walk(pts, t){
+  let L = 0, seg = [];
+  for (let i=1;i<pts.length;i++){ const d = Math.hypot(pts[i].x-pts[i-1].x, pts[i].y-pts[i-1].y);
+    seg.push(d); L += d; }
+  let want = t*L;
+  for (let i=0;i<seg.length;i++){
+    if (want <= seg[i]) { const u = seg[i] ? want/seg[i] : 0;
+      return {x: pts[i].x+(pts[i+1].x-pts[i].x)*u, y: pts[i].y+(pts[i+1].y-pts[i].y)*u}; }
+    want -= seg[i];
+  }
+  return pts[pts.length-1];
+}
+
+// ---- particles -------------------------------------------------------------
+const DEST = [
+  {box:'std',   k:'standards', w:.13}, {box:'gen',  k:'general',   w:.15},
+  {box:'proj',  k:'project',   w:.19}, {box:'tmpl', k:'templates', w:.09},
+  {box:'projs', k:'projects',  w:.16}, {box:'status',k:'status',   w:.18},
+];
+const LEVEL = {}; BOXES.forEach(b => LEVEL[b.id] = {v:0, k:b.k});
+let parts = [], mode = 'sep', paused = false, t0 = performance.now();
+
+function pick(){ let r = Math.random()*DEST.reduce((s,d)=>s+d.w,0);
+  for (const d of DEST){ if ((r -= d.w) <= 0) return d; } return DEST[0]; }
+
+function spawn(){
+  parts.push({leg:'feed', t:0, sp:0.30+Math.random()*0.12, k:'mixed', d:null, r:2.6+Math.random()*1.3});
+}
+function advance(p, dt){
+  p.t += p.sp*dt;
+  if (p.t < 1) return true;
+  if (p.leg === 'feed'){
+    if (mode === 'sep'){
+      const d = pick(); p.d = d; p.k = d.k; p.leg = 'to_'+d.box; p.t = 0;
+      if (Math.random() < .5) parts.push({leg: Math.random()<.35?'ground':'rehear', t:0,
+        sp:0.34, k: Math.random()<.45?'standards':'mixed', d:{box:'wm'}, r:2.2});
+    } else {                                  // unsorted: straight on, still grey
+      const d = pick(); p.d = d; p.k = 'mixed'; p.leg = 'to_'+d.box; p.t = 0;
+    }
+    return true;
+  }
+  const id = p.d ? p.d.box : null;
+  if (id && LEVEL[id]) LEVEL[id].v = Math.min(1, LEVEL[id].v + (id==='wm' ? .030 : .012));
+  if (id && mode !== 'sep' && id !== 'wm') LEVEL[id].k = 'mixed';
+  if (id && mode === 'sep' && id !== 'wm') LEVEL[id].k = B[id].k;
+  return false;
+}
+
+function frame(now){
+  const dt = Math.min(0.05, (now - t0)/1000); t0 = now;
+  const sc = cv.width / VW;
+  ctx.clearRect(0,0,cv.width,cv.height);
+
+  if (!paused){
+    if (Math.random() < dt*22) spawn();
+    parts = parts.filter(p => advance(p, dt));
+    LEVEL.wm.v = Math.max(0, LEVEL.wm.v - dt*0.085);        // the leak, always running
+  }
+
+  // flow guides
+  ctx.strokeStyle = css('--rule-2'); ctx.globalAlpha = .5; ctx.lineWidth = 1*sc;
+  for (const k in FLOWS){
+    const pts = FLOWS[k]; ctx.beginPath();
+    ctx.moveTo(pts[0].x*sc, pts[0].y*sc);
+    for (let i=1;i<pts.length;i++) ctx.lineTo(pts[i].x*sc, pts[i].y*sc);
+    ctx.setLineDash(k==='load'||k==='consult' ? [5*sc,5*sc] : []); ctx.stroke();
+  }
+  ctx.setLineDash([]); ctx.globalAlpha = 1;
+
+  // the divider stops where the session begins -- that is the point
+  ctx.strokeStyle = css('--rule-2'); ctx.globalAlpha = .8; ctx.lineWidth = 2*sc;
+  ctx.setLineDash([8*sc,8*sc]); ctx.beginPath();
+  ctx.moveTo(500*sc, 20*sc); ctx.lineTo(500*sc, (SEP.y-14)*sc); ctx.stroke();
+  ctx.setLineDash([]); ctx.globalAlpha = 1;
+
+  // the leak
+  if (!paused){
+    const wm = B.wm;
+    for (let i=0;i<3;i++){
+      const x = (wm.x+30+Math.random()*(wm.w-60))*sc;
+      const y = (wm.y+wm.h+Math.random()*46)*sc;
+      ctx.globalAlpha = .5*(1-(y/sc-wm.y-wm.h)/46);
+      ctx.fillStyle = css('--mixed');
+      ctx.beginPath(); ctx.arc(x,y,2.1*sc,0,7); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  for (const p of parts){
+    const pt = walk(FLOWS[p.leg], Math.min(p.t,1));
+    ctx.fillStyle = css(p.k==='mixed' ? '--mixed' : '--k-'+p.k);
+    ctx.beginPath(); ctx.arc(pt.x*sc, pt.y*sc, p.r*sc, 0, 7); ctx.fill();
+  }
+
+  for (const b of BOXES){
+    const el = document.getElementById('lvl-'+b.id); if (!el) continue;
+    el.style.height = (LEVEL[b.id].v*100).toFixed(1)+'%';
+    el.style.background = 'var(--'+(LEVEL[b.id].k==='mixed'?'mixed':'k-'+LEVEL[b.id].k)+')';
+  }
+  requestAnimationFrame(frame);
+}
+
+function resize(){
+  const r = vp.getBoundingClientRect(), dpr = Math.min(2, devicePixelRatio||1);
+  cv.width = r.width*dpr; cv.height = r.width*(VH/VW)*dpr;
+}
+addEventListener('resize', resize); resize();
+
+const CAPS = {
+  sep: 'Grey particles leave the session entangled and acquire their colour in the separator — the '
+     + 'sorting is what assigns the type. Two streams return to the person: a thin mixed one '
+     + '(rehearsal) and a full standards one (grounding). Working memory drains the whole time.',
+  raw: 'Nothing is being sorted. The stores still fill — with grey. No stream returns to the person, '
+     + 'and working memory empties, because sorting was the only thing feeding it.'
+};
+function setMode(m){
+  mode = m;
+  const btn = document.getElementById('mode');
+  btn.textContent = m==='sep' ? 'Separate it' : 'Let it flow through';
+  btn.setAttribute('aria-pressed', m==='sep');
+  document.getElementById('note').textContent =
+    m==='sep' ? 'human and AI both sorting' : 'nobody sorting';
+  document.getElementById('cap').textContent = CAPS[m==='sep'?'sep':'raw'];
+  BOXES.forEach(b => { if (b.id!=='wm') LEVEL[b.id].k = m==='sep' ? b.k : 'mixed'; });
+}
+document.getElementById('mode').onclick = () => setMode(mode==='sep' ? 'raw' : 'sep');
+document.getElementById('pause').onclick = e => {
+  paused = !paused; e.target.textContent = paused ? 'Play' : 'Pause';
+  e.target.setAttribute('aria-pressed', paused);
+};
+setMode('sep');
+if (matchMedia('(prefers-reduced-motion: reduce)').matches) paused = true;
+requestAnimationFrame(frame);
+</script>

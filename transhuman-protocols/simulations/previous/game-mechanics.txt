@@ -1,0 +1,84 @@
+
+Cognitive sovereignty is an invisible subsidy to AI output. Load is what holding it costs. Debt is what letting it go costs. Trust is what decides.
+
+Trust follows results, and results arrive late. High trust says sovereignty is unnecessary; high load says it is expensive. Both arrive together, because the same sovereignty that produced the results is what made the worker tired — so letting go looks right twice over.
+
+Letting go compounds. As debt rises, the read on the AI stops coming from the work and starts coming from trust, until the belief that caused the withdrawal is the only evidence left for it.
+
+By the time results fall and trust follows them down, reclaiming sovereignty costs more than remains. Giving it up is free; taking it back is not. But it is taken back, results recover, trust rises on the strength of them, and the whole thing goes round again.
+
+Sovereignty makes AI look self-sufficient. Externalisation makes it attributable, persistent, and affordable.
+
+---
+
+A worker using AI faces a dilemma with each new piece of work: attend and pay in cognitive load, or wave through and pay in cognitive debt -- a gradient choice. The reason to attend is to increase total value by adding worker value to AI's basis value, which varies, but the basis value's true number is better judged by one with lower debt. Debt decides how well you discern; trust decides what you assume when you don't.
+
+Cognitive capacity (consumed by cognitive load) is budgeted. The worker is motivated to maximise total value using cognitive load. Total value per piece of work is capped. The budget gradually replenishes.
+
+Increasing total value is reflected back with a delay =>
+This increases trust in the basis value, causing overestimation of its true value =>
+This motivates lower attention and higher debt over time due to budgeting cognitive capacity =>
+This harms total value, both because lower attention reduces value added and because higher debt reduces judgment of true basis value as overestimates =>
+Decreasing total value is reflected back with a delay =>
+This decreases trust in the basis value, causing underestimation of its true value =>
+This motivates higher attention and lower debt debt over time to increase total value =>
+This pays down debt, reducing underestimation, while adding more value to basis value, increasing total value [back to top]
+
+In the context of David Allen’s Getting Things Done (GTD) methodology, the busy trap is the counterproductive state of being constantly reactive while failing to make real progress or strategic choices , and the way out is externalisation to allow for prioritisation.
+
+Our trust trap loop is somewhat analogous in that we contend that investing in externalisation frees one from the load/debt and trust/sovereignty oscillation through accurate validation of AI's side of the work equation and appropriate allocation of worker resources to improve it.
+
+The way out of the trap is to begin to trust the externalisation mechanisms that a) improve judgment of AI value and b) allow one to add value with less attention rather than placing inaccurate trust on AI based on priors.
+
+Here is a proposed endogenous relaxation oscillator:
+
+High attention and practice produce latent joint value above the observable cap. At a delay, the worker sees only the clipped total, without a reliable trace of their own contribution, and updates trust as though the outcome measured AI basis value. Trust overshoots. As trust rises, the perceived marginal value of both production attention and practice falls. Practice drops below maintenance; debt grows; and hidden headroom is consumed while observed output remains pinned to the ceiling. Rising debt reduces the precision of immediate judgment, so estimates increasingly fall back on the trust prior, reinforcing the error. Once headroom reaches zero, observed output falls. Those poor outcomes continue arriving after the worker changes course, driving trust into undershoot. Low trust raises both production attention and debt service, which compete for the same renewable budget; some present work is under-served while capability is rebuilt. Debt falls, direct evidence regains weight, and output recovers. The delayed joint recovery is again attributed disproportionately to AI, restarting the cycle.
+
+The fundamental purpose here is to illustrate a theory that without externalisation (debrief leading to tooling, systems, methods, behaviours, etc. outside the relationship as reusable aids) that worker-AI work oscillates more wildly with variable results, and that with these aids one can produce more value more consistently while keeping load and debt within a tighter range.
+
+Can this oscillator serve as the no-externalisation baseline? How would it be simulated? How would it be extended to include investment in externalisation?
+
+---
+
+Proposed way out of the trap is to evolve through investing in externalisations that for all subsequent units of work do one of:
+
+improve fit for that unit (definition aids)
+decrease debt cost for that unit (study aids)
+reduce load cost for that unit (thought aid)
+
+improve ability to judge AI contribution correctly (validation aids)
+
+These can be represented as badges next to the display of that variable as a total amount, and they stack/accumulate.
+
+For purposes of the simulation, the scoring accounts for game mechanics factors:
+
+The output value score equation is: Σ((fit·corr|corr iff corr <= 0) / leverage iff manual). 
+The output costs score is Σ(load+debt). 
+The effectiveness score is: Σ(output value)/Σ(output cost). 
+
+The simulation is a race between different concurrent workload and externalisation investment configurations, where workers are motivated to maximise output value within an allotted amount of time.
+
+However, the effectiveness score is also represented alongside the output value and output cost as a "true" measure that factors in their wellbeing. Sims are not trying to maximise this score, but it is the score that picks the winner and ranks them.
+
+Fit is a judgment call about what to do with AI that rests with the worker.
+Correctness depends on domain knowledge, which is affected by debt, reducing a user's ability to detect it.
+
+Units of work are initiated by the worker with a fit score ranging from 0 to 1. They can choose to work on this manually, in which case they spend full load (no debt), correctness is set to 1, and the result is multiplied by (1/leverage) for purposes of scoring the final value.
+
+Leverage represents the force multiplier for working with AI versus working alone.
+
+The worker can also choose to co-work with AI, in which case the work is assigned a random corr value from -1 (most detrimental) to +1 (most beneficial), which is hidden from the worker.
+
+The worker has a probability of revealing the corr value before deciding to iterate on the task further. This probability is determined by their level of accrued debt; they can also spend load to improve their probability.
+
+Based on probability, the worker is either given the reveal of the real corr or a random value from -1 to +1
+
+At this point, they can choose having seen the reveal to cancel the work (no score, initiate a new piece of work that either retains the existing fit value or generates a new one), or complete the work
+
+The cost to the worker for co-working with AI to complete each unit of work is load. Spent load improves the real corr (whether or not it was revealed). However, all unspent load creates debt as (1-unspent load).
+
+Fit does not amplify a detrimental corr value by increasing its negativeness. if corr <=0 the output value for that unit is simply corr.
+
+Accumulated load and debt decay over time. On a tick representing a work session, a player can choose to rest, allowing decay without accumulating value. The probability that a sim will choose to rest (pass on their turn) is determined by load. Past a certain threshold, that probability becomes 1 (until load drops down below the threshold again).
+
+Again, the goal is to show that effectiveness score for sims aided by investment outstrips that of the unaided over time. We theorise that this gap widens on concurrent work. We also theorise that output value will show a gap in favour of the aided. We also theorise that based on personality factors the unaided will oscillate between accruing load and debt as per the "trap" loop.

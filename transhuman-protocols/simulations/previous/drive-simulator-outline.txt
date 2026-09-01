@@ -1,0 +1,155 @@
+DRIVE simulator
+
+ceding sovereignty increases throughput at expense of debt
+manual validation increases accuracy at expense of load
+
+Score: 
+ - outputs - good / bad (increases)
+ - throughput (number of outputs over time, varies)
+
+Human:
+State variables:
+ - Trust in AI
+ - Cognitive Sovereignty
+ - Cognitive Debt
+ - Cognitive Load
+
+Posture (based on state)
+
+Traits:
+ - Desire for sovereignty
+ - Desire for trust
+ - Desire for accuracy
+ - Desire for throughput
+ - Aversion to load
+ - Aversion to debt
+ 
+ Abilities
+  - Define
+  - Request
+  - Iterate
+  - Validate
+ 
+ AI:
+ 
+ State variables
+  - Intermediate output probability of good/bad
+ 
+ Traits
+  - Context
+  - Sophistication
+
+Produces final output with probability of being good / bad
+
+Task:
+ - stakes
+
+Loop:
+D - define - affected by ability; affects R, I, V
+R - request - affected by ability and D, debt, affects I
+I - iterate - affected by ability, debt, cost load(trust), affects intermediate output
+V - validate - affected by ability, debt, costs load(trust), context, sophistication
+ -> affects ability to determine if intermediate output is good / bad
+IF known bad, return to I
+OTHERWISE, consequence: 
+ - score good / bad
+ - update throughput based on I cycles as time ticks
+ - good/bad outcomes affect trust
+E - evolve - invest in human abilities, context, mitigate debt
+
+---
+
+v 2
+
+DRIVE simulator v0.4 (consolidated outline, for inspection)
+
+ceding sovereignty increases throughput at expense of debt AND calibration
+ (perceived accuracy stays high while true accuracy detaches — you stop knowing)
+manual validation increases accuracy AND calibration at expense of load
+external tooling increases accuracy AND calibration at ~no load
+ (the only move that breaks the trade)
+decisions run on FELT costs; score runs on TRUE costs
+
+three currencies:
+ - capability (skill / debt)
+ - attention  (load)
+ - knowledge  (calibration: believed vs true accuracy)
+
+Score:
+ - outputs good / bad (accuracy)
+ - throughput (outputs over time)
+ - value (stakes-weighted; late-discovered bads cost more than caught bads)
+
+Task (the object run through the model):
+ - stakes
+ - difficulty
+ carries: iterations, verdict, true good/bad, shipped time, discovered time (the lag)
+
+Human:
+State variables:
+ - Trust in AI (belief from evidence; unchecked ships add weak pseudo-evidence
+     -> borrowed trust, widening calibration gap)
+ - Skill (domain competence; Cognitive Debt = its deficit;
+     grows with checking + practice, shrinks with unchecked accepts)
+ - Cognitive Load (finite budget; chronic overrun sheds checking first — the cycle motor)
+ - Felt debt (bumped by discovery / unaided events, decays; the only debt the policy sees)
+Readouts (computed, never causal):
+ - Cognitive Sovereignty (share of ship decisions made on own verdict)
+ - Posture · Trust quality (share of evidence checked)
+ - Calibration gap (believed minus true accuracy; widens through decay,
+     snaps shut at discovery)
+
+Traits (3 wants x 2 avoids, + noise):
+ - Desire for throughput
+ - Desire for accuracy
+ - Desire for sovereignty (intrinsic reward for the verdict being YOURS,
+     independent of accuracy gain)
+ - Aversion to load (grows when chronically loaded)
+ - Aversion to debt (applies to FELT debt only)
+ - Decision noise
+ dial: ownership credit of tooled checks (does your tooling's verdict count as yours?
+   default YES per trust-migration; set LOW -> the artisan pattern:
+   tooling-averse, load-bound, permanent Vigilance)
+
+Capabilities:
+ - Direction (drive the AI: define + request + iterate, one ability)
+ - Skill (doubles as verification capability — high debt = can't hold it to account)
+
+Capital ({internal, external} x {generate, verify}):
+ - internal-generate: Direction        (decays with disuse; load-bearing to build)
+ - internal-verify:   Skill / practice (decays with disuse; load-bearing to build)
+ - external-generate: Context          (decays with churn; cheap in load; shareable)
+ - external-verify:   Tooling          (decays with churn; cheap in load; shareable)
+
+AI:
+ - intermediate output probability good/bad — affected by sophistication, context,
+   direction, difficulty, iterations (diminishing)
+ - Sophistication (drifts upward = churn; depreciates external capital)
+
+Loop (two decisions only):
+D/R/I - direct - affected by Direction, context; affects intermediate output
+  decision 1: iterate again vs ship — costs time + some load
+V - check vs skip — decision 2, chosen on felt utility
+    detection affected by Skill(debt), TOOLING, difficulty
+    appetite affected by trust (more trust -> checks less),
+      load (overloaded -> skips), sovereignty desire (-> checks / owns anyway)
+    costs load (unless tooled) + time
+ -> catch (known bad)   -> return to I; earned trust evidence
+    false alarm         -> wasted rework (the cost of over-checking)
+    miss                -> ships as believed-good (poisoned evidence)
+IF skipped: ship on trust alone (= cede) -> debt grows; trust gains pseudo-evidence;
+    calibration gap widens
+consequence:
+ - score at TRUE quality; throughput from time ticks
+ - checked outcomes -> earned trust update
+ - escaped bads discovered with LAG -> stakes-scaled penalty + over-weighted trust shock
+   + felt-debt spike + calibration gap snaps shut
+E - evolve - invest a slice of time (costs throughput now, pays later):
+ - Direction | Practice | Context | Tooling
+   (internal pair load-bearing to build; external pair affordable even when overloaded)
+
+Run harness:
+ - single agent, no investment: the cycle must EMERGE
+ - sweeps: investment share x channel x starting posture -> outcome surfaces (routing)
+ - population: bell / usage invariance / earned-vs-borrowed null with later divergence
+ - new target: calibration sawtooth (gap widens through decay, snaps shut at discovery)

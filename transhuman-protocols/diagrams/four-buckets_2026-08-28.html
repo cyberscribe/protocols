@@ -1,0 +1,457 @@
+<title>Four Buckets</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@600&display=swap">
+<style>
+:root{
+  --ground:#F1F4F0; --panel:#FCFCFB; --panel-2:#E9EEE9;
+  --ink:#16211C; --ink-2:#4A574F; --ink-3:#7C8A82; --rule:#D6DCD7; --rule-2:#C2CBC4;
+  --human:#1F6FB2; --ai:#C4622D; --poison:#A81F35;
+  --serif:"IBM Plex Serif",Georgia,serif;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#121714; --panel:#1B211D; --panel-2:#232B26;
+  --ink:#E5EAE5; --ink-2:#B3BEB7; --ink-3:#8A968E; --rule:#2C342E; --rule-2:#3A443D;
+  --human:#4C9AD6; --ai:#CE7433; --poison:#EE6076;
+}}
+:root[data-theme="dark"]{
+  --ground:#121714; --panel:#1B211D; --panel-2:#232B26;
+  --ink:#E5EAE5; --ink-2:#B3BEB7; --ink-3:#8A968E; --rule:#2C342E; --rule-2:#3A443D;
+  --human:#4C9AD6; --ai:#CE7433; --poison:#EE6076;
+}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16px;
+  line-height:1.55;margin:0;padding:40px 22px 72px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;display:flex;flex-direction:column;gap:30px}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--ink-3);margin:0}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,4.6vw,44px);line-height:1.08;
+  letter-spacing:-.015em;margin:10px 0 0}
+.thesis{font-size:18px;color:var(--ink-2);max-width:64ch;margin:14px 0 0;text-wrap:pretty}
+.stage{background:var(--panel);border:1px solid var(--rule);border-radius:3px;padding:20px}
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:18px}
+button{font-family:var(--sans);font-size:13.5px;font-weight:500;color:var(--ink);
+  background:var(--panel-2);border:1px solid var(--rule-2);border-radius:2px;padding:8px 15px;
+  cursor:pointer}
+button:focus-visible{outline:2px solid var(--human);outline-offset:2px}
+.tick{margin-left:auto;font-family:var(--mono);font-size:13px;color:var(--ink-3);
+  font-variant-numeric:tabular-nums}
+
+.head{display:grid;grid-template-columns:210px 1fr;gap:26px;align-items:center;
+  padding-bottom:22px;margin-bottom:20px;border-bottom:1px solid var(--rule)}
+.ring{position:relative;width:210px;height:210px}
+.ring svg{width:100%;height:100%;display:block}
+.score{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;pointer-events:none}
+.score b{font-family:var(--mono);font-size:38px;font-weight:600;line-height:1;
+  font-variant-numeric:tabular-nums}
+.score span{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--ink-3);
+  margin-top:6px;text-transform:uppercase}
+.meter{margin-bottom:16px}
+.meter label{display:flex;justify-content:space-between;align-items:baseline;font-size:13.5px;
+  font-weight:600;margin-bottom:6px}
+.meter label span{font-family:var(--mono);font-weight:500;font-variant-numeric:tabular-nums}
+.track{height:9px;background:var(--panel-2);border-radius:5px;overflow:hidden}
+.track div{height:100%;border-radius:5px;transition:width .35s ease}
+.meter p{margin:6px 0 0;font-size:12px;color:var(--ink-3);line-height:1.4}
+.eq{font-family:var(--mono);font-size:12.5px;color:var(--ink-2);margin:14px 0 0;
+  padding-top:12px;border-top:1px dashed var(--rule-2)}
+.grid{display:grid;grid-template-columns:1fr 74px 1fr;gap:0 0;align-items:stretch}
+.side{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--ink-3);
+  text-align:center;padding-bottom:10px}
+.cell{padding:0 14px}
+.mid{border-left:1px dashed var(--rule-2);border-right:1px dashed var(--rule-2)}
+.bkt{border:1px solid var(--rule-2);border-radius:3px;background:var(--panel-2);position:relative;
+  height:132px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
+.bkt .fill{width:100%;transition:height .35s ease}
+.bkt .psn{width:100%;background:var(--poison);transition:height .35s ease;
+  background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.32) 0 3px,transparent 3px 7px)}
+.bkt .cap{position:absolute;left:11px;top:9px;font-size:13px;font-weight:600}
+.bkt .note{position:absolute;left:11px;top:29px;font-size:10.5px;font-family:var(--mono);
+  color:var(--ink-3);letter-spacing:.05em}
+.bkt .num{position:absolute;right:11px;top:9px;font-family:var(--mono);font-size:15px;
+  font-weight:600;font-variant-numeric:tabular-nums}
+.arrows{display:flex;align-items:center;justify-content:space-around;height:56px;
+  font-family:var(--mono);font-size:9.5px;color:var(--ink-3);letter-spacing:.04em}
+.arrows span{text-align:center;line-height:1.35}
+.big{font-size:17px;line-height:1;display:block;margin-bottom:3px;color:var(--ink-2)}
+
+.ctls{display:grid;grid-template-columns:repeat(auto-fit,minmax(196px,1fr));gap:18px 24px;
+  margin-top:24px;padding-top:20px;border-top:1px solid var(--rule)}
+.ctl label{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-size:13px;
+  font-weight:500}
+.ctl .v{font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;height:20px;margin:6px 0 0}
+#p_decay{accent-color:var(--human)} #p_ext{accent-color:var(--human)}
+#p_dh{accent-color:var(--human)} #p_poison{accent-color:var(--poison)}
+#p_da{accent-color:var(--ai)}
+input[type=range]:focus-visible{outline:2px solid var(--human);outline-offset:3px}
+
+.chartwrap{margin-top:22px;padding-top:18px;border-top:1px solid var(--rule)}
+svg.spark{width:100%;height:auto;display:block}
+.leg{display:flex;gap:18px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-2);margin-top:10px}
+.leg i{display:inline-block;width:20px;height:3px;vertical-align:middle;margin-right:7px}
+.finds{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:26px}
+.finds h2{font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:400;margin:0 0 10px}
+.finds p{margin:0 0 10px;font-size:14.5px;color:var(--ink-2);max-width:54ch}
+.finds p:last-child{margin-bottom:0}
+.finds b{color:var(--ink);font-weight:600}
+.rules{background:var(--panel-2);border-radius:2px;padding:16px 18px;font-family:var(--mono);
+  font-size:12.5px;line-height:1.85;color:var(--ink-2);overflow-x:auto}
+.rules b{color:var(--ink);font-weight:600}
+footer{font-size:13px;color:var(--ink-3);border-top:1px solid var(--rule);padding-top:18px;
+  max-width:78ch}
+</style>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Four buckets &middot; one cycle &middot; five parameters</p>
+    <h1>Four buckets</h1>
+    <p class="thesis">Two working memories and two durable stores. The human&rsquo;s working memory
+      <em>decays</em>; the AI&rsquo;s is <em>overwritten</em> every cycle. What the person does about
+      it is governed by one thing: whether the ritual runs on felt need, or runs regardless.</p>
+  </header>
+
+  <section class="stage">
+    <div class="bar">
+      <button id="run">Pause</button>
+      <button id="reset">Reset</button>
+      <span class="tick">session <b id="t">0</b> &nbsp;&middot;&nbsp; felt need
+        <b id="per">50</b>% &nbsp;&middot;&nbsp; ritual running at <b id="rit">50</b>%</span>
+    </div>
+
+    <div class="head">
+      <div class="ring">
+        <svg id="ring" viewBox="0 0 210 210" role="img"
+             aria-label="The session cycle: feel, reference, work, promote, externalise, decay — with
+             the current session's output score at its centre."></svg>
+        <div class="score"><b id="sc">&mdash;</b><span>session output</span></div>
+      </div>
+      <div>
+        <div class="meter">
+          <label for="m_fit">Fit <span id="v_fit">0%</span></label>
+          <div class="track"><div id="m_fit" style="background:var(--human);width:0"></div></div>
+          <p>Was it the thing you actually needed? <b>You</b> supply this &mdash; it falls as your
+            working memory thins.</p>
+        </div>
+        <div class="meter">
+          <label for="m_cor">Correctness <span id="v_cor">0%</span></label>
+          <div class="track"><div id="m_cor" style="background:var(--ai);width:0"></div></div>
+          <p>Was it true? <b>The AI</b> supplies this &mdash; it falls as its durable store takes on
+            poison.</p>
+        </div>
+        <p class="eq">session output = fit &times; correctness &nbsp;&mdash;&nbsp; neither side can
+          carry it alone</p>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="side" style="color:var(--human)">HUMAN</div><div></div>
+      <div class="side" style="color:var(--ai)">AI</div>
+
+      <div class="cell"><div class="bkt">
+        <div class="cap">Working memory</div><div class="note">DECAYS</div>
+        <div class="num" id="n_wh">0</div>
+        <div class="fill" id="f_wh" style="background:var(--human);height:0"></div>
+      </div></div>
+      <div class="cell mid"></div>
+      <div class="cell"><div class="bkt">
+        <div class="cap">Working memory</div><div class="note">OVERWRITTEN</div>
+        <div class="num" id="n_wa">0</div>
+        <div class="psn" id="f_wap" style="height:0"></div>
+        <div class="fill" id="f_wa" style="background:var(--ai);height:0"></div>
+      </div></div>
+
+      <div class="cell"><div class="arrows">
+        <span><b class="big">&darr;</b>externalise</span>
+        <span><b class="big">&uarr;</b>load</span>
+        <span style="color:var(--poison)"><b class="big">&#8600;</b>decay</span>
+      </div></div>
+      <div class="cell mid"></div>
+      <div class="cell"><div class="arrows">
+        <span><b class="big">&darr;</b>promote</span>
+        <span><b class="big">&uarr;</b>load</span>
+        <span style="color:var(--poison)"><b class="big">&#8598;</b>poison in</span>
+      </div></div>
+
+      <div class="cell"><div class="bkt">
+        <div class="cap">Durable memory</div><div class="note">YOU WRITE IT</div>
+        <div class="num" id="n_dh">0</div>
+        <div class="fill" id="f_dh" style="background:var(--human);height:0;opacity:.62"></div>
+      </div></div>
+      <div class="cell mid"></div>
+      <div class="cell"><div class="bkt">
+        <div class="cap">Durable memory</div><div class="note">BOTH PROMOTE</div>
+        <div class="num" id="n_da">0</div>
+        <div class="psn" id="f_dap" style="height:0"></div>
+        <div class="fill" id="f_da" style="background:var(--ai);height:0;opacity:.62"></div>
+      </div></div>
+    </div>
+
+    <div class="ctls">
+      <div class="ctl"><label for="p_decay">Human memory decay<span class="v" id="v_decay"></span></label>
+        <input type="range" id="p_decay" min="0" max="40" value="14"></div>
+      <div class="ctl"><label for="p_ext">Discipline<span class="v" id="v_ext"></span></label>
+        <input type="range" id="p_ext" min="0" max="100" value="35">
+        <div style="font-size:11.5px;color:var(--ink-3);margin-top:5px;line-height:1.35">
+          keeping the ritual whether or not you feel you need to</div></div>
+      <div class="ctl"><label for="p_poison">AI poison per cycle<span class="v" id="v_poison"></span></label>
+        <input type="range" id="p_poison" min="0" max="40" value="4"></div>
+      <div class="ctl"><label for="p_dh">Human discernment<span class="v" id="v_dh"></span></label>
+        <input type="range" id="p_dh" min="0" max="100" value="45"></div>
+      <div class="ctl"><label for="p_da">AI discernment<span class="v" id="v_da"></span></label>
+        <input type="range" id="p_da" min="0" max="100" value="35"></div>
+    </div>
+
+    <div class="chartwrap">
+      <svg class="spark" id="spark" viewBox="0 0 900 200" role="img"
+           aria-label="Three lines over sessions: how full the human's working memory is, how full the
+        human's durable store is, and what share of the AI's durable store is poisoned."></svg>
+      <div class="leg">
+        <span><i style="background:var(--human)"></i>human working memory, % full</span>
+        <span><i style="background:var(--human);opacity:.55"></i>human durable, % full</span>
+        <span><i style="background:var(--poison)"></i>AI durable, % poisoned</span>
+        <span><i style="background:var(--ink);height:4px"></i>session output</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="finds">
+    <div>
+      <h2>Discipline is not effort</h2>
+      <p>At <b>discipline 0</b> the ritual tracks felt need — you write and you go back and look when
+        you feel you should. That is what people actually do, and it is not irrational.</p>
+      <p>But the feeling is <b>wrong in a specific way</b>: you notice a gap only if you have enough
+        left to notice it with. So felt need is under-read exactly when it is highest, and it lags on
+        top of that. Discipline is the degree to which the act stops asking the feeling for
+        permission.</p>
+      <p><b>The lag alone is not enough.</b> Delay it but keep it accurate and a confidence-driven
+        person equilibrates to the same place as a disciplined one — discipline only bites because the
+        signal is <em>biased</em>, not merely late. That is a result of the model, and an assumption
+        of it: the bias is a dial (<span style="font-family:var(--mono)">BLIND</span>), not a
+        finding.</p>
+    </div>
+    <div>
+      <h2>Each side breaks the other half of the score</h2>
+      <p>Poison can only ever cost you <b>correctness</b>; a thin head can only ever cost you
+        <b>fit</b>. Neither failure shows up in the other&rsquo;s number, which is why a single
+        quality measure hides both.</p>
+      <p>And because output is a <em>product</em>, whichever is worse dominates. Perfect correctness
+        on the wrong problem still scores near zero.</p>
+    </div>
+    <div>
+      <h2>Poison settles, it doesn&rsquo;t ratchet</h2>
+      <p>Contamination reaches a <b>fixed point</b>, not saturation: roughly the poison rate scaled
+        down by how well the two gates catch. At zero discernment the store converges on the poison
+        rate itself; at the default 64% combined catch rate, a 40% poison rate settles near 6%.</p>
+      <p>An earlier version ratcheted to 100% regardless of rate. That was an artefact of the store
+        growing rather than being replaced at capacity, and it has been corrected.</p>
+    </div>
+    <div>
+      <h2>Two gates, and they multiply</h2>
+      <p>Both parties inspect at promotion, so a bad item survives only if <em>both</em> miss it. At
+        45% and 35% that is a 64% catch rate — and 36% of everything bad still lands.</p>
+      <p>Neither slider alone gets you clean. That is an argument for two reviewers rather than one
+        better one.</p>
+    </div>
+    <div>
+      <h2>Two limbs, one ritual</h2>
+      <p>Discipline governs both <b>externalising</b> (writing it down) and <b>referencing</b> (going
+        back to what you wrote for context and orientation). Writing without referencing does nothing
+        for the bucket that leaks &mdash; the store fills and the head still empties.</p>
+      <p>Still not modelled: whether discipline raises <b>discernment</b>, which would connect the
+        human side to the AI side for the first time. Deliberately left open, because a positive loop
+        produces spirals by construction.</p>
+    </div>
+  </section>
+
+  <div class="rules">
+    <b>Every rule in the model, per session:</b><br>
+    0 &nbsp;feel &nbsp;&nbsp;&nbsp;need is <b>under-read when you are depleted</b>, then chased
+      slowly &middot;
+      ritual = (1&minus;<b>D</b>)&times;felt + <b>D</b> &nbsp; — discipline decouples act from feeling<br>
+    1 &nbsp;<b>reference</b> human WM &larr; up to 12 items &times; ritual &middot; AI WM is
+      <b>replaced</b> by AI durable<br>
+    2 &nbsp;work &nbsp;&nbsp;&nbsp;4 new items into each working memory<br>
+    3 &nbsp;poison &nbsp;an item in AI WM turns bad with probability p<br>
+    4 &nbsp;promote 3 items AI WM &rarr; AI durable; a bad one is caught unless
+      <b>both</b> miss: 1&minus;(1&minus;h)(1&minus;a)<br>
+    5 &nbsp;<b>externalise</b> human WM &rarr; human durable &times; ritual &nbsp; — the same
+      ritual, other limb<br>
+    6 &nbsp;decay &nbsp;&nbsp;human WM &times;(1&minus;d) &nbsp; — <b>nothing else in the model
+      loses anything</b><br>
+    &nbsp;&nbsp;&nbsp;score &nbsp;&nbsp;fit = (wh/40)<sup>0.8</sup> &middot; correctness =
+      (1&minus;poison share)<sup>1.6</sup> &middot; <b>output = fit &times; correctness</b><br>
+    &nbsp;&nbsp;&nbsp;<b>fixed point</b> poison share settles near
+      p&times;(1&minus;c)/(1&minus;0.75(1&minus;c)), c = combined catch rate &nbsp; — it does not
+      ratchet to 100%
+  </div>
+
+  <footer>An illustrative dynamical toy, not a fitted model: capacities, the six-items-per-session
+    work rate, the three-per-session promotion rate and the quarter-of-durable reload are set for
+    legibility. What it is claiming is structural — that only one bucket leaks, that only one
+    accumulates irreversibly, and that the two review gates combine rather than substitute.</footer>
+</div>
+
+<script>
+const CAP_W = 40, CAP_D = 200, NEW = 4, PROMO = 3, REF_MAX = 0.5, EXT_MAX = 0.5, LAG = 0.12;
+const REF_ITEMS = 12;  // you can only re-absorb so much per session. Without this cap,
+                      // referencing = durable x ritual saturated a 24-slot bucket at ANY
+                      // ritual level, and discipline had literally no effect -- fixed 2026-08-28.
+                      // Capacity was also raised 24 -> 40 and session yield cut 6 -> 4: with a
+                      // small cap and large inflow, working memory just pinned at cap x (1-decay)
+                      // and every parameter washed out. The cap must not be the binding constraint.
+const BLIND = 0.35;   // MISCALIBRATION. You notice a gap only if you have enough left to
+                      // notice it with, so felt need is attenuated when you are depleted.
+                      // This is an assumption, and it is load-bearing: with lag alone, felt
+                      // need reads true need accurately in steady state and discipline is inert.
+const FIT_EXP = 0.8;  // near-linear. A saturating curve here floored fit at ~88% and made
+                      // every human-side parameter inert -- fixed 2026-08-28
+const G_POISON = 1.6; // damage is superlinear -- one bad premise does more than its share (S12)
+const PERIOD = 0.62;  // seconds per session
+const STEPS = ['feel','reference','work','promote','externalise','decay'];
+let S = null, hist = [], running = true, acc = 0;
+const $ = id => document.getElementById(id);
+const P = () => ({
+  decay:  +$('p_decay').value/100,  disc: +$('p_ext').value/100,
+  poison: +$('p_poison').value/100, dh:   +$('p_dh').value/100, da: +$('p_da').value/100
+});
+
+function reset(){
+  S = {t:0, wh:8, dh:0, wa:0, wap:0, da:0, dap:0, per:0.5, rit:0.5,
+     fit:0, cor:1, score:0, flash:0};
+  hist = []; draw(); paint();
+}
+
+function step(){
+  const p = P();
+  // 0 what you need vs what you feel — and the feeling lags the need
+  const need = (1 - S.wh / CAP_W) * (BLIND + (1 - BLIND) * S.wh / CAP_W);
+  S.per += LAG * (need - S.per);
+  // discipline decouples the act from the feeling: at 0 you follow the felt need,
+  // at 1 you keep the ritual regardless
+  S.rit = (1 - p.disc) * S.per + p.disc;
+  // 1 reference — going back to what you wrote. Not automatic; it is half the ritual
+  S.wh = Math.min(CAP_W, S.wh + Math.min(S.dh, REF_ITEMS) * S.rit);
+  const share = S.da ? S.dap / S.da : 0;
+  const reload = Math.min(CAP_W - NEW, S.da * 0.25);
+  S.wa  = reload + NEW;              // replaced outright: what was kept, plus this session
+  S.wap = reload * share;            // it comes back carrying whatever the store carries
+  // 2 work
+  S.wh = Math.min(CAP_W, S.wh + NEW);
+  // 3 poison — EACH new item can be bad, not one per session. One-per-session could never
+  //   outrun dilution, so the store had no reachable fixed point.
+  let fresh = 0;
+  for (let i = 0; i < NEW; i++) if (Math.random() < p.poison) fresh++;
+  if (fresh) { S.wap += fresh; S.flash = 1; }
+  S.wap = Math.min(S.wa, S.wap);
+  // 4 promote, gated by BOTH parties
+  const catchP = 1 - (1 - p.dh) * (1 - p.da);
+  const frac = S.wa ? S.wap / S.wa : 0;
+  let bad = 0;
+  for (let i = 0; i < PROMO; i++) if (Math.random() < frac && Math.random() > catchP) bad++;
+  if (S.da < CAP_D) { S.da += PROMO; S.dap += bad; }
+  else { S.dap += bad - PROMO * share; }   // at capacity it REPLACES; what leaves is average
+  S.dap = Math.max(0, Math.min(S.da, S.dap));
+  // 5 externalise — the other half of the same ritual
+  S.dh = Math.min(CAP_D, S.dh + S.wh * EXT_MAX * S.rit);
+  // 6 decay — the only outflow anywhere in the model
+  S.wh *= (1 - p.decay);
+  // what the session actually produced
+  S.fit = Math.pow(S.wh/CAP_W, FIT_EXP);
+  S.cor = Math.pow(1 - (S.wa ? S.wap/S.wa : 0), G_POISON);
+  S.score = S.fit * S.cor;
+  S.t++;
+  hist.push([S.wh/CAP_W*100, S.dh/CAP_D*100, S.da ? S.dap/S.da*100 : 0, S.score*100]);
+  if (hist.length > 160) hist.shift();
+}
+
+function paint(){
+  const set = (f, n, v, cap) => { $(f).style.height = Math.max(0, Math.min(100, v/cap*100))+'%';
+    $(n).textContent = Math.round(v); };
+  set('f_wh','n_wh', S.wh, CAP_W); set('f_dh','n_dh', S.dh, CAP_D);
+  set('f_wa','n_wa', S.wa - S.wap, CAP_W); set('f_da','n_da', S.da - S.dap, CAP_D);
+  $('f_wap').style.height = Math.min(100, S.wap/CAP_W*100)+'%';
+  $('f_dap').style.height = Math.min(100, S.dap/CAP_D*100)+'%';
+  $('t').textContent = S.t;
+  $('sc').textContent = S.t ? Math.round(S.score*100)+'%' : '—';
+  $('m_fit').style.width = (S.fit*100).toFixed(1)+'%';
+  $('m_cor').style.width = (S.cor*100).toFixed(1)+'%';
+  $('v_fit').textContent = Math.round(S.fit*100)+'%';
+  $('v_cor').textContent = Math.round(S.cor*100)+'%';
+  const p = P();
+  $('v_decay').textContent  = (p.decay*100).toFixed(0)+'% / session';
+  $('v_ext').textContent    = (p.disc*100).toFixed(0)+'%';
+  $('rit').textContent      = (S.rit*100).toFixed(0)+'%';
+  $('per').textContent      = (S.per*100).toFixed(0)+'%';
+  $('v_poison').textContent = (p.poison*100).toFixed(0)+'%';
+  $('v_dh').textContent     = (p.dh*100).toFixed(0)+'%';
+  $('v_da').textContent     = (p.da*100).toFixed(0)+'%';
+}
+
+function draw(){
+  const W = 900, H = 200, L = 40, R = 892, T = 12, B = 176;
+  const cs = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const x = i => L + (i/(Math.max(hist.length,2)-1))*(R-L);
+  const y = v => B - v/100*(B-T);
+  let o = '';
+  for (let v = 0; v <= 100; v += 25)
+    o += `<line x1="${L}" y1="${y(v)}" x2="${R}" y2="${y(v)}" stroke="${cs('--rule')}"
+      stroke-width="1"/><text x="${L-8}" y="${y(v)+4}" text-anchor="end" font-size="10.5"
+      fill="${cs('--ink-3')}" font-family="ui-monospace,monospace">${v}%</text>`;
+  const series = [[0, cs('--human'), .85, 1.8], [1, cs('--human'), .45, 1.8],
+                  [2, cs('--poison'), .85, 1.8], [3, cs('--ink'), 1, 3.2]];
+  for (const [k, col, op, w] of series){
+    if (hist.length < 2) continue;
+    const pts = hist.map((h,i) => `${x(i).toFixed(1)},${y(h[k]).toFixed(1)}`).join(' ');
+    o += `<polyline points="${pts}" fill="none" stroke="${col}" stroke-width="${w}"
+      opacity="${op}" stroke-linejoin="round" stroke-linecap="round"/>`;
+  }
+  $('spark').innerHTML = o;
+}
+
+const CX = 105, CY = 105, RAD = 74;
+const nodeAt = i => { const a = -Math.PI/2 + i*Math.PI/3;
+  return {x: CX + RAD*Math.cos(a), y: CY + RAD*Math.sin(a), a}; };
+
+function ring(phase){
+  const cs = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  let o = `<circle cx="${CX}" cy="${CY}" r="${RAD}" fill="none" stroke="${cs('--rule-2')}"
+    stroke-width="1.5" stroke-dasharray="3 5"/>`;
+  const cur = Math.floor(phase * 6) % 6;
+  STEPS.forEach((nm, i) => {
+    const n = nodeAt(i), on = i === cur;
+    const poisonNode = (i === 2 && S.flash > 0);
+    const col = poisonNode ? cs('--poison') : (on ? cs('--ink') : cs('--rule-2'));
+    o += `<circle cx="${n.x.toFixed(1)}" cy="${n.y.toFixed(1)}" r="${on?6.5:4}" fill="${col}"/>`;
+    const lx = CX + (RAD+16)*Math.cos(n.a), ly = CY + (RAD+16)*Math.sin(n.a);
+    const anch = Math.abs(lx-CX) < 6 ? 'middle' : (lx > CX ? 'start' : 'end');
+    o += `<text x="${lx.toFixed(1)}" y="${(ly+3.2).toFixed(1)}" text-anchor="${anch}"
+      font-size="9" font-family="ui-monospace,monospace" letter-spacing="0.6"
+      fill="${on ? cs('--ink') : cs('--ink-3')}" opacity="${on?1:.7}">${nm}</text>`;
+  });
+  const a = -Math.PI/2 + phase*2*Math.PI;
+  o += `<circle cx="${(CX+RAD*Math.cos(a)).toFixed(1)}" cy="${(CY+RAD*Math.sin(a)).toFixed(1)}"
+    r="3.2" fill="${cs('--human')}"/>`;
+  $('ring').innerHTML = o;
+}
+
+let last = performance.now();
+function loop(now){
+  const dt = (now - last)/1000; last = now;
+  if (running){
+    acc += dt;
+    while (acc > PERIOD){ acc -= PERIOD; step(); }
+    S.flash = Math.max(0, S.flash - dt*1.6);
+    paint(); draw();
+  }
+  ring(running ? acc/PERIOD : 0);
+  requestAnimationFrame(loop);
+}
+$('run').onclick = e => { running = !running; e.target.textContent = running ? 'Pause' : 'Run'; };
+$('reset').onclick = reset;
+['p_decay','p_ext','p_poison','p_dh','p_da'].forEach(id => $(id).addEventListener('input', paint));
+if (matchMedia('(prefers-reduced-motion: reduce)').matches) running = false;
+reset(); requestAnimationFrame(loop);
+</script>

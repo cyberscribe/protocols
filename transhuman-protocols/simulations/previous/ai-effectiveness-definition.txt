@@ -1,0 +1,22 @@
+# Definition of AI Co-Working Effectiveness
+
+"Working with AI to get more of the right things done right, in less time, while staying sane"
+
+ => "Working with AI to get more of the right things done right, in less time, while staying relaxed and in control"
+
+## Terms
+"more of ... in less time" => throughput
+"right things" => fit
+"done right" => correctness
+"sane" => 1 / load * debt
+"relaxed" => 1 / load
+"in control" => 1 / debt
+
+## unit effectiveness:
+work value / work cost =>
+accuracy / (load * debt) =>
+(correctness * fit) / (load * debt)
+
+## total effectiveness (individual or team):
+throughput * unit effectiveness =>
+SUM ( (correctness * fit) / (load + debt) ) / time
