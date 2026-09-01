@@ -99,3 +99,17 @@ A blank `_TEMPLATE.md` lives in `read-and-review/` so new items can be cloned cl
 - **Distilled lookup material** (cross-reference compilations, glossaries, "everything Gwern said about X") goes in `resources/`, not `read/`.
 - **Working drafts of corpus writing** go wherever the corpus lives — not here.
 - **Generic AI / productivity links Robert won't return to** — drop them or note them in the appropriate session, don't pollute `read-and-review/`.
+
+---
+
+## Settled questions
+
+`externalisation-evidence-ledger.md` holds the evidence audit for externalisation — what the published
+literature already substantiates on both the human (GTD/Kanban) and AI (cascading memory) sides.
+
+Its **operational short form**, for agents working anywhere on this research line, is
+`../../peakepro-diagnostics/cognition-assessment/settled-questions.md`: assume-and-cite rows, the three
+open claims that are actually ours, and the citation traps (Miller's seven, GTD-as-evidence, Little's
+Law, self-report inflation).
+
+**Rule:** amend the ledger first, then the register. Never fork a claim between them.
