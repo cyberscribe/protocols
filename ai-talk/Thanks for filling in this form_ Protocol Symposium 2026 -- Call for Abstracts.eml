@@ -1,0 +1,562 @@
+Delivered-To: forms-receipts-noreply@google.com
+Received: by 2002:a05:7412:238a:b0:1e0:18e7:f73c with SMTP id a10csp3307643rdb;
+        Mon, 10 Aug 2026 12:37:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20251104; t=1786390622; x=1786995422; dara=google.com;
+        h=content-type:to:from:subject:date:message-id:feedback-id
+         :mime-version:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=ZZ+/qOFbB2TyitmGpQSuUCxW7zxilZOt0wDCYmARiz4=;
+        b=m/0eOFeXSDsnGUoTzv18pBlpipDp10mlGFsAmFO/zFR5bmCaD+Xdd2Hrquq3QK02pe
+         4YNU67/wWfqITNT8Ke+KsvoIbHvDwsLa87BECQ0V9jsuGB1zYr9P4hf02EtpHL7DoPuJ
+         fxAD4ZORRnFVsqObRkrnqlPlFQ/609Q8Q3L0iAUcYkyPfMzm8p6rSXpapLv8uC9nTuc6
+         H7Svat1DRdXImwBFI1G/b2xOhNJL2+RBVBV+I21zfZ5VMPSl84xySSqAi65qV0xVLpU9
+         eP74jyd0day4PJrvis0qHvm15jr3icAns7AnwVIyp/cZlmiFAjmmAB3k3UU5oqMk88KC
+         y3wA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1786390622; x=1786995422;
+        h=content-type:to:from:subject:date:message-id:feedback-id
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=ZZ+/qOFbB2TyitmGpQSuUCxW7zxilZOt0wDCYmARiz4=;
+        b=mLc2OVRagdfXjBPYY+/quY2httStqRSqi2A4z8wx7mQVNcL8eYK3YZnOrHsS1bKZKS
+         je2UjLiHhimVEcrMzxJaL2ODRqfNPwnG+pv2H1nytHF0EfdEi/jycYDyC64rkkaSDLpV
+         lpOrltxRuYhYFcux5rVdagp7X9+x3WxWQz32fZisWZKvpzwwn3FnJVw++If2NV2Q6Las
+         9us9UeZ+m6hPZvW1AgsF0Kl5DLP0oIXyS95H2bcodAVc8t8uaR2xrymCmRqrdx9w8/Ns
+         sumxYH7SsVOwIe8aEdpsQRQDGvGlgCurc6yzY9AEzZEyVCaYiMWkifAAhNhIR4ybGznS
+         FsrA==
+X-Forwarded-Encrypted: i=1; AHgh+RqYV8cKdFZoaCFys1BsHlP6rqEz4mGG1lthcgDKt+g4nV4kDu18ODaNyyChaW5Fcye7QoN7GohZylfa0FeHnTo6TpFOz6qX@google.com
+X-Received: by 2002:a05:6820:1527:b0:6ae:9661:fcd1 with SMTP id 006d021491bc7-6ae96d31578mr25924312eaf.16.1786390621281;
+        Mon, 10 Aug 2026 12:37:01 -0700 (PDT)
+X-Gm-Message-State: AOJu0YxSTfD973nf9tZZUU1axeKbJ8hUryUGkzhK5YPVAMM22xyJ/D7y
+	Qg5ggWaRcorQCYMN7tPthwpft68XvloW7AXW3V7yNZlWXVDP88pQXfz0AjVS2BEEmElelHeCozZ
+	prNagny7UFssyGhultO6zUVVvVXpiAt/Rm9Xw0LDPQFhvgDYAMockZD6Tx4fiDzTcK+b85ovB+M
+	N02YFIWoDu3UxamYz4E4ZF7cgJ7wSaTUDkE2HNUKZoH96rCEs=
+MIME-Version: 1.0
+X-Received: by 2002:a05:6820:1527:b0:6ae:9661:fcd1 with SMTP id
+ 006d021491bc7-6ae96d31578mr25924284eaf.16.1786390620862; Mon, 10 Aug 2026
+ 12:37:00 -0700 (PDT)
+Feedback-ID: MailTypeResponseReceipt:GoogleForms
+X-GoogleForms-FormId: e/1FAIpQLSeSQz3ZYtKl9nZw3r4ZTdgZJGyYafXR6aIEh6CyYHw7L8xZEg
+X-GoogleForms-CustomerDisplayName: Protocol Institute
+Message-ID: <autogen-java-33dbcdc0-5fa1-47c4-bb9c-1c115be64c1b@google.com>
+Date: Mon, 10 Aug 2026 19:37:00 +0000
+Subject: Thanks for filling in this form: Protocol Symposium 2026 -- Call for Abstracts
+From: Forms response receipts <forms-receipts-noreply@google.com>
+To: robert@peakepro.com
+Content-Type: multipart/alternative; boundary="000000000000630fda0658b67a59"
+
+--000000000000630fda0658b67a59
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+R29vZ2xlIEZvcm1zDQoNCg0KVGhhbmtzIGZvciBmaWxsaW5nIGluIHRoaXMgZm9ybTogUHJvdG9j
+b2wgU3ltcG9zaXVtIDIwMjYgLS0gQ2FsbCBmb3IgIA0KQWJzdHJhY3RzDQoNCg0KWW91J3JlIHJl
+Y2VpdmluZyB0aGlzIGVtYWlsIGJlY2F1c2UgeW91IGZpbGxlZCBpbiB0aGUgZm9sbG93aW5nIGZv
+cm0gdXNpbmcgIA0KeW91ciBlbWFpbCBhZGRyZXNzLiBUaGlzIGZvcm0gaXMgb3duZWQgYnkgUHJv
+dG9jb2wgSW5zdGl0dXRlLiBNYWtlIHN1cmUgIA0KdGhhdCB5b3UgcmVjb2duaXNlIGFuZCB0cnVz
+dCB0aGlzIGZvcm0gYmVmb3JlIGNvcHlpbmcgb3IgY2xpY2tpbmcgb24gYW55ICANCmxpbmtzLiBJ
+ZiBpdCBsb29rcyBzdXNwaWNpb3VzLCByZXBvcnQgaXQuDQoNCkhlcmUncyB3aGF0IHdhcyByZWNl
+aXZlZC4NCg0KRWRpdCByZXNwb25zZQ0KDQoNClByb3RvY29sIFN5bXBvc2l1bSAyMDI2IC0tIENh
+bGwgZm9yIEFic3RyYWN0cw0KDQpUaGUgUHJvdG9jb2wgU3ltcG9zaXVtIGlzIHRoZSBmbGFnc2hp
+cCByZXNlYXJjaCBnYXRoZXJpbmcgb2YgdGhlIGVtZXJnaW5nICANCmZpZWxkIG9mIFByb3RvY29s
+IFN0dWRpZXMsIGhvc3RlZCBieSB0aGUgUHJvdG9jb2wgSW5zdGl0dXRlIChQSSkuIFRoaXMgIA0K
+eWVhcidzIHN5bXBvc2l1bSB3aWxsIGJlIGhlbGQgU2VwdGVtYmVyIDIxLTI1LCBmdWxseSBvbmxp
+bmUsIG9uIHRoZSB0aGVtZSAgDQpvZiBOZXcgTmF0dXJlLg0KDQoNCg0KVGhlcmUgd2lsbCBiZSAy
+IGRheXMgb2Ygd29ya3Nob3BzIChTZXB0IDIxLTIyKSBhbmQgMyBkYXlzIG9mIHNpbmdsZS10cmFj
+ayAgDQozMC1taW51dGUgdGFsa3MgKFNlcHQgMjMtMjUpLiBXZSB3aWxsIGJlIGFibGUgdG8gaG9z
+dCB1cCB0byA0IHdvcmtzaG9wcyBhbmQgIA0KfjMwIHRhbGtzLiBBbGwgdGFsa3MgYW5kIHdvcmtz
+aG9wIHNlc3Npb25zIHdpbGwgYmUgcmVjb3JkZWQsIHRyYW5zY3JpYmVkLCAgDQphbmQgYWRkZWQg
+dG8gdGhlIGNvcnB1cyB0aGF0IFBJJ3MgQUkgaW5mcmFzdHJ1Y3R1cmUgaXMgdHJhaW5lZCBvbi4N
+Cg0KDQpXb3Jrc2hvcHM6IFRoZSBmb3JtYXQgaXMgNC02IFpvb20gc2Vzc2lvbnMgb2YgfjYwLTkw
+IG1pbnV0ZXMgZWFjaCBvdmVyIDIgIA0KZGF5cywgd2l0aCBzb21lIHNvcnQgb2YgYXN5bmNocm9u
+b3VzIGNvLXdvcmtpbmcgYW5kIGRpc2N1c3Npb24gb24gRGlzY29yZCAgDQpiZXR3ZWVuIHNlc3Np
+b25zLiBUaGUgdGFyZ2V0IHdvcmtzaG9wIHNpemUgaXMgMzAtNTAgcGFydGljaXBhbnRzLiBUaGVy
+ZSAgDQpzaG91bGQgYmUgYSBjbGVhciBsZWFybmluZyBvciBza2lsbCBkZXZlbG9wbWVudCBvdXRj
+b21lIGZvciBwYXJ0aWNpcGFudHMsICANCmF0IHRoZSBmcm9udGllcnMgb2YgcHJvdG9jb2wgd3Jh
+bmdsaW5nIG9yIHRoZW9yeSAoaWUgaW4gZW1lcmdpbmcgYXJlYXMsIG5vdCAgDQplc3RhYmxpc2hl
+ZCBvbmVzKS4gQW4gaG9ub3Jhcml1bSB3aWxsIGJlIGF2YWlsYWJsZSBmb3Igd29ya3Nob3Agb3Jn
+YW5pemVycy4gIA0KVG8gZW5zdXJlIGEgcmVzaWxpZW50IGFnZW5kYSwgZXZlcnkgd29ya3Nob3Ag
+cHJvcG9zYWwgcmVxdWlyZXMgYXQgbGVhc3QgdHdvICANCm9yZ2FuaXplcnMuDQpUYWxrczogRm9y
+IHBhcGVycywgdGhlIGV4cGVjdGF0aW9uIGlzIGEgcmVzZWFyY2hlZCAyNSBtaW51dGUgdGFsayB3
+aXRoIDUgIA0KbWludXRlIFEmQSwgcHJlZmVyYWJseSBhY2NvbXBhbmllZCBieSBlaXRoZXIgYSBw
+cmVwcmludCAoYWNhZGVtaWMgYXJYaXYgIA0Kc3R5bGUpIGFpbWVkIGF0IGEgc3BlY2lhbGlzdCBh
+dWRpZW5jZSBvciBkcmFmdCBtYWdhemluZSBmZWF0dXJlIHN0eWxlIGFpbWVkICANCmF0IGEgZ2Vu
+ZXJhbCBhdWRpZW5jZS4gUHJpemVzIHRvdGFsaW5nICQ2MDAwIHdpbGwgYmUgYXdhcmRlZCB0byB0
+aGUgYmVzdCAgDQp0YWxrcy4gV2UgbWF5IG9mZmVyIHB1Ymxpc2hpbmcgb3Bwb3J0dW5pdGllcyBp
+biBvdXIgbWFnYXppbmUsIFByb3RvY29saXplZCwgIA0KZm9yIHNlbGVjdGVkIHRhbGtzLCBhYnN0
+cmFjdHMgYW5kIGFydGljbGVzLg0KDQpPdGhlciB0aGluZ3MgYmVpbmcgZXF1YWwsIHdlIHdpbGwg
+cHJpb3JpdGl6ZSB3b3Jrc2hvcCBhbmQgdGFsayBwcm9wb3NhbHMgIA0KdGhhdCBhbGlnbiB3aXRo
+IG9uZSBvZiBvdXIgU3BlY2lhbCBJbnRlcmVzdCBHcm91cHMg4oCTIEZvcm1hbCBUaGVvcnkgb2Yg
+IA0KUHJvdG9jb2xzLCBNZW1vcnksIEJ1c2luZXNzLCBGaWN0aW9uLCBEaXN0cmlidXRlZCBSb2Jv
+dGljcywgb3IgSGlzdG9yaWNhbCAgDQpNb2RlbGluZy4NCg0KDQoNClRhbGsgYWJzdHJhY3RzIGFu
+ZCB3b3Jrc2hvcCBwcm9wb3NhbHMgYXJlIGR1ZSBieSBtaWRuaWdodCwgUGFjaWZpYyBUaW1lLCAg
+DQpTdW5kYXksIEp1bmUgMTR0aCwgYW5kIGFjY2VwdGFuY2UgZGVjaXNpb25zIHdpbGwgYmUgY29t
+bXVuaWNhdGVkIGJ5IEp1bmUgIA0KMzB0aC4gUGFydGljaXBhbnQgcmVnaXN0cmF0aW9uIHdpbGwg
+b3BlbiBpbiBKdWx5IOKAkyBhYnN0cmFjdHMgb2YgYWxsICANCmFjY2VwdGVkIHRhbGtzIGFuZCB3
+b3Jrc2hvcHMgd2lsbCBiZSBmZWF0dXJlZCBvbiB0aGUgU3ltcG9zaXVtIHBhZ2UuDQoNCg0KRW1h
+aWwgKg0KDQoNCnJvYmVydEBwZWFrZXByby5jb20NCg0KDQpXaGljaCBTSUcgb3Igb3RoZXIgUEkg
+YWN0aXZpdHkgc3RyZWFtL2NvbGxhYm9yYXRpb24gc3RyZWFtIGRvZXMgeW91ciB0YWxrICANCm9y
+IHdvcmtzaG9wIHByb3Bvc2FsIGZpdCBpbnRvICoNCg0KTm90IHJlcXVpcmVkLCBidXQgaGlnaGx5
+IHJlY29tbWVuZGVkIHRoYXQgeW91IGFsaWduIHdpdGggYW4gZXhpc3Rpbmcgb3IgIA0KdXBjb21p
+bmcgU0lHIG9yIG90aGVyIHRyYWNrDQoNCg0KU0lHRlBUIChGb3JtYWwgUHJvdG9jb2wgVGhlb3J5
+KQ0KDQoNClNJR1A0QiAoUHJvdG9jb2xzIGZvciBCdXNpbmVzcykNCg0KDQpNUkcgKE1lbW9yeSBS
+ZXNlYXJjaCBHcm91cCkNCg0KDQpEUkcgKERpc3RyaWJ1dGVkIFJvYm90aWNzIEdyb3VwKQ0KDQoN
+ClNJR0ZJQyAoUHJvdG9jb2wgRmljdGlvbikNCg0KDQpTSUdQU1kgKEhpc3RvcmljYWwgTW9kZWxp
+bmcgLyBQc3ljaGlzdG9yeSkNCg0KDQpMb25nIE5vdyBMYWJzDQoNCg0KU291dGhlYXN0IEFzaWEg
+dHJhY2sNCg0KDQpMYXRpbiBBbWVyaWNhIHRyYWNrDQoNCg0KR0NDIChHbG9iYWwgQ2hpbmVzZSBD
+b21tdW5pdHkpDQoNCg0KTm90IHBhcnQgb2YgYW4gZXhpc3RpbmcgYWN0aXZpdHkgc3RyZWFtDQoN
+Cg0KQ29udGludWluZyBhbHVtbmkgcmVzZWFyY2ggKFNvUCAyMy0yNSBjb2hvcnRzKQ0KDQoNCldo
+YXQgaXMgeW91ciBhYnN0cmFjdCBmb3I/ICoNCg0KDQpUYWxrDQoNCg0KV29ya3Nob3ANCg0KDQpU
+YWxrIEFic3RyYWN0DQoNClRhbGtzIHNob3VsZCBiZSAyNSBtaW51dGVzLiBEZXRhaWxzIHlvdSBw
+cm92aWRlLCBleGNlcHQgZm9yIGVtYWlsLCB3aWxsIGJlICANCnB1Ymxpc2hlZCBpbiB0aGUgcHJv
+Z3JhbSBpZiBhY2NlcHRlZC4NCg0KDQpTcGVha2VyIG5hbWUgKg0KDQoNClJvYmVydCBQZWFrZQ0K
+DQoNClNwZWFrZXIgZW1haWwgKg0KDQoNCnJvYmVydEBwZWFrZXByby5jb20NCg0KDQpTcGVha2Vy
+IHdlYnNpdGUgKg0KDQpQcm92aWRlIHNvbWV0aGluZyBsaWtlIGEgcGVyc29uYWwgb3IgaW5zdGl0
+dXRpb25hbCBiaW9ncmFwaHkgcGFnZSBsaW5rDQoNCg0KaHR0cHM6Ly93d3cucm9iZXJ0cGVha2Uu
+Y29tL2FpDQoNCg0KQWRkaXRpb25hbCBhdXRob3JzICoNCg0KQWRkIG5hbWVzIGFuZCBlbWFpbHMg
+b2YgYW55IGFkZGl0aW9uYWwgYXV0aG9ycyB3aG8gd2lsbCBjb250cmlidXRlIHRvIHRoZSAgDQpj
+b250ZW50IG9mIHRoZSB0YWxrIG9yIGFjY29tcGFueWluZyB3cml0dGVuIGFydGlmYWN0IGlmIGFu
+eS4gSWYgbm9uZSwgIA0KdHlwZSAiTi9BIg0KDQoNCk4vQQ0KDQoNClRpdGxlIG9mIHRhbGsgKg0K
+DQoNClByb3RvY29scyBmb3IgQ28tQ29nbml0aW9uOiBUaGUgTmV3IE5hdHVyZSBvZiBDb2xsYWJv
+cmF0aW9uIGluIHRoZSBBSSBFcmENCg0KDQpBYnN0cmFjdCAod2lsbCBiZSBwdWJsaXNoZWQgaWYg
+YWNjZXB0ZWQpICoNCg0KUGxlYXNlIGRlc2NyaWJlIHlvdXIgcHJvcG9zZWQgdGFsayBhbmQgYXJ0
+aWZhY3QgaW4gMTUwLTI1MCB3b3JkcywgZm9ybWF0dGVkICANCmFzIGEgc2luZ2xlIHBhcmFncmFw
+aC4gSWYgeW91ciBwcm9wb3NhbCBpcyBhY2NlcHRlZCwgdGhpcyBhYnN0cmFjdCB3aWxsICANCmFw
+cGVhciBvbiB0aGUgb2ZmaWNpYWwgc3ltcG9zaXVtIHBhZ2UgbGVhZGluZyB1cCB0byB0aGUgZXZl
+bnQuDQoNCg0KV2hlbiBodW1hbnMgd29yayBhbG9uZ3NpZGUgQUksIHRoZSB0ZXJtcyBvZiBjb2xs
+YWJvcmF0aW9uIGFyZSByZW5lZ290aWF0ZWQgIA0KaW4gcmVhbCB0aW1lLCBpbXBsaWNpdGx5LCBh
+bmQgaGV0ZXJvZ2VuZW91c2x5IGFjcm9zcyBncm91cHMgb2YgaW5kaXZpZHVhbHMuICANCkRyYXdp
+bmcgb24gYSBsaXZlIHBzeWNob21ldHJpYyBpbnN0cnVtZW50ICh0aGUgQUkgQ28tV29ya2luZyBF
+ZmZlY3RpdmVuZXNzICANClN1cnZleSwgYWRtaW5pc3RlcmVkIGFjcm9zcyBnZW5lcmFsLXBvcHVs
+YXRpb24gYW5kIGVudGVycHJpc2Ugc2FtcGxlcyksICANCnRoaXMgdGFsayBhcmd1ZXMgdGhhdCBl
+dmVyeSBodW1hbuKAk0FJIHdvcmtpbmcgcmVsYXRpb25zaGlwIGFscmVhZHkgcnVucyBvbiBhICAN
+CnByb3RvY29sOiBhIHNldHRsZWQgcGF0dGVybiBvZiB0cnVzdCBhbmQgdmVyaWZpY2F0aW9uIHRo
+YXQgY2FuIGJlIG1lYXN1cmVkICANCmFzIGNvZ25pdGl2ZSBwb3N0dXJlLiBUaGUgaW5zdHJ1bWVu
+dCBsb2NhdGVzIHJlc3BvbmRlbnRzIG9uIGEgU292ZXJlaWdudHkgIA0KdmVyc3VzIFRydXN0IGdy
+aWQgeWllbGRpbmcgZm91ciBwb3N0dXJlczogUGFydG5lcnNoaXAsIEh5cGVydmlnaWxhbmNlLCAg
+DQpPdmVycmVsaWFuY2UsIGFuZCBDb21wbGlhbmNlLCBhbmQgdGhlbiBzY29yZXMgZm91ciB1bmRl
+cmx5aW5nIGNvbnN0cnVjdHM6ICANCmNvZ25pdGl2ZSBsb2FkICh3aGF0IHlvdSBjYXJyeSksIGNv
+Z25pdGl2ZSBkZWJ0ICh3aGF0IHlvdSBvd2UpLCBkaXNzb25hbmNlICANCihtaXNjYWxpYnJhdGVk
+IHRydXN0KSwgYW5kIHNvdmVyZWlnbnR5ICh3aGF0IHlvdSBrZWVwIG9yIGNlZGUpLiBUaGUgIA0K
+aGVhZGxpbmUgZW1waXJpY2FsIGZpbmRpbmcgaXMgdGhhdCBhZG9wdGlvbiBsZXZlbCBkb2VzIG5v
+dCBwcmVkaWN0ICANCmNvZ25pdGl2ZSBjb3N0OiBwb3N0dXJlLCBub3QgZG9zZSwgZGlmZmVyZW50
+aWF0ZXMgc3VzdGFpbmFibGUgY28tY29nbml0aW9uICANCmZyb20gc2lsZW50IGRlc2tpbGxpbmc7
+IGNvZ25pdGl2ZSBkZWJ0IHBlYWtzIHVuZGVyIE92ZXJyZWxpYW5jZSBhbmQgYm90dG9tcyAgDQp1
+bmRlciBIeXBlcnZpZ2lsYW5jZSwgd2hpY2ggcGF5cyBmb3Igc2VjdXJpdHkgd2l0aCBsb2FkLiBB
+aGVhZCBvZiB0aGUgIA0Kc3ltcG9zaXVtIEkgd2lsbCBydW4gdGhlIHN1cnZleSBhY3Jvc3MgdGhl
+IFByb3RvY29sIEluc3RpdHV0ZSdzIHdpZGVyICANCmNvbW11bml0eSBhbmQgcHJlc2VudCBpdHMg
+YWdncmVnYXRlLCBhbm9ueW1pc2VkIHBvc3R1cmUgcHJvZmlsZSBhZ2FpbnN0ICANCmNvbnRyYXN0
+IGdyb3VwcywgYXNraW5nIHdoYXQgdGhlIHJlc3VsdHMgaW1wbHkgZm9yIHRoZSBkZXNpZ24gb2Yg
+ZXhwbGljaXQgIA0KcHJvdG9jb2xzIGZvciBjby1jb2duaXRpb246IGR1cmFibGUsIHBzeWNob2xv
+Z3ktYW5jaG9yZWQgd29ya2luZyBhZ3JlZW1lbnRzICANCmJldHdlZW4gaHVtYW5zIGFuZCB0aGVp
+ciBhZ2VudHMgdGhhdCBzdXJ2aXZlIHByb21wdGluZyB0cmlja3MgYW5kIG1vZGVsICANCmNodXJu
+IHRoZSB3YXkgZWFybGllciB3b3JrIHByb3RvY29scyBzdWNoIGFzIEthbmJhbiBhbmQgR1REIHN1
+cnZpdmVkIHRoZSAgDQphcnJpdmFsIG9mIGVtYWlsLCBncm91cHdhcmUsIGFuZCBtb2JpbGUgcGhv
+bmVzLg0KDQoNCldoYXQga2luZCBvZiBhcnRpZmFjdCB3aWxsIGFjY29tcGFueSB5b3VyIHRhbGs/
+ICoNCg0KDQpBY2FkZW1pYyBwcmVwcmludCAoYXJYaXYgc3R5bGUpDQoNCg0KR2VuZXJhbCBhdWRp
+ZW5jZSBlc3NheSBkcmFmdA0KDQoNCk90aGVyIHR5cGUgb2YgYXJ0aWZhY3QgKGVnOiBkZW1vLCB3
+ZWJzaXRlLCBldGMuKQ0KDQoNCk9ubHkgdGFsaywgbm8gYXJ0aWZhY3QgcGxhbm5lZA0KDQoNClN1
+Ym1pdA0KDQoNCkFueSBnZW5lcmFsIGNvbW1lbnRzPyAqDQoNCg0KVGhlIGdyb3VwIHJlcG9ydCB3
+aWxsIGFsc28gYWNjb21wYW55IHRoZSB0YWxrIGFzIGFuIGFydGlmYWN0DQoNCg0KQ3JlYXRlIHlv
+dXIgb3duIEdvb2dsZSBGb3JtDQoNCkRvZXMgdGhpcyBmb3JtIGxvb2sgc3VzcGljaW91cz8gUmVw
+b3J0DQoNCg0K
+--000000000000630fda0658b67a59
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html><head><style nonce=3D"rCJJrAGEfjm7LRSNyBHkKA">@import url(https://fon=
+ts.googleapis.com/css?family=3DGoogle+Sans:400,500|Roboto:300,400,400i,500,=
+700&subset=3Dlatin,vietnamese,latin-ext,cyrillic,greek,cyrillic-ext,greek-e=
+xt);</style><style nonce=3D"rCJJrAGEfjm7LRSNyBHkKA">[class=3D"x_body-conten=
+t-wrapper"] * {white-space: normal !important;}</style></head><body dir=3D"=
+ltr" style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif=
+;font-size: 14px; font-weight: 400; line-height: 20px;text-align: start; wo=
+rd-wrap: break-word; margin: 0; padding: 0; height: 100%; width: 100%;"><ta=
+ble border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"background-co=
+lor:rgb(87,70,227);" width=3D"100%" role=3D"presentation"><tbody><tr height=
+=3D"64px"><td style=3D"padding: 0 24px;"><img alt=3D"Google Forms" height=
+=3D"26px" style=3D"display: inline-block; margin: 0; vertical-align: middle=
+;" width=3D"143px" src=3D"https://www.gstatic.com/docs/forms/google_forms_l=
+ogo_lockup_white_2x.png"></td></tr></tbody></table><div class=3D"body-conte=
+nt-wrapper" style=3D"padding: 12px; background-color: rgb(237,231,246);"><d=
+iv style=3D"margin: 0 auto; max-width: 640px; min-width: 154px;"><div style=
+=3D"border: 1px solid #dadce0; padding: 20px 12px;background-color: #fff; b=
+order-radius: 8px; margin-bottom: 12px;padding: 20px;"><h1 style=3D"color: =
+#202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-size: 20px; fon=
+t-weight: 400; line-height: 28px;margin: 0 0 12px;">Thanks for filling in t=
+his form: <a href=3D"https://docs.google.com/forms/d/e/1FAIpQLSeSQz3ZYtKl9n=
+Zw3r4ZTdgZJGyYafXR6aIEh6CyYHw7L8xZEg/viewform?usp=3Dmail_form_link" target=
+=3D"_blank" style=3D"white-space: pre-wrap;">Protocol Symposium 2026 -- Cal=
+l for Abstracts</a></h1><table role=3D"status" border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0" width=3D"100%" class=3D"freebirdEmailPersistentBannerC=
+ontainer " style=3D"font-size: 13px; font-family: &#39;Roboto&#39;; font-we=
+ight: 400; line-height: 16px; background-color: #f2f2f2; padding: 2px; marg=
+in-bottom: 10px; border-radius: 8px; color: black; text-align: left; "><tr>=
+<td class=3D"freebirdEmailPersistentBannerMessage" style=3D"flex-grow: 1; p=
+adding: 10px;">You=E2=80=99re receiving this email because you filled in th=
+e following form using your email address.<b> This form is owned by Protoco=
+l Institute.</b> Make sure that you recognise and trust this form before co=
+pying or clicking on any links. If it looks suspicious, <b><a href=3D"https=
+://drive.google.com/abuse?id=3DAKkXjoxLZ92-isCCQqLQKwemLeAeau0v9PgJXOywraWY=
+ckL0Z820ss7__zSBpcMQZ-h4U1xZnlZo7JQTBipYhuo:0&amp;rt=3DAYg7rXSt-9qdBuJcJpe2=
+8EZUjN-lLdZqMJwBe7rYryYjYrH_t6ztg_TmCPGlSowmqOUZHrTQtnIEqTRL-_izHtiaxFW7tWg=
+FWZE4KQX_S6XTYchtFw7sD-gzuAL6aIcW_fXuSJ5dMp5nZVu0HOD1_n1y22TErLjQimu4j9630v=
+hpEfyAeIfHb8pfW-7SkYd784vn3sk6lIJP:1&amp;usp=3Dmail_receipt_abuse" target=
+=3D"_blank" style=3D"color: inherit;">report it</a></b>. </td></tr></table>=
+Here's what was received.<div style=3D"margin-top: 16px;"><div style=3D"mar=
+gin-top: 24px"><a href=3D"https://docs.google.com/forms/d/e/1FAIpQLSeSQz3ZY=
+tKl9nZw3r4ZTdgZJGyYafXR6aIEh6CyYHw7L8xZEg/viewform?edit2=3D2_ABaOnuflzaph0k=
+5HDZ3UT8V32Dyf-QKK4ZPaedMC5UyYH5umStrC8IaZzltkRoX6WuH6aL4" target=3D"_blank=
+" style=3D"border-radius: 4px;font-family: &#39;Google Sans&#39;,Roboto,Hel=
+vetica,Arial,sans-serif;font-size: 14px; font-weight: 500; padding: 8px 24p=
+x; text-align: center; text-decoration: none;background-color: rgb(87,70,22=
+7); color: #fff;">Edit response</a></div><div itemprop=3D"action" itemscope=
+ itemtype=3D"http://schema.org/ViewAction"><meta itemprop=3D"url" content=
+=3D"https://docs.google.com/forms/d/e/1FAIpQLSeSQz3ZYtKl9nZw3r4ZTdgZJGyYafX=
+R6aIEh6CyYHw7L8xZEg/viewform?edit2=3D2_ABaOnuflzaph0k5HDZ3UT8V32Dyf-QKK4ZPa=
+edMC5UyYH5umStrC8IaZzltkRoX6WuH6aL4&amp;usp=3Dmail_goto_form"><meta itempro=
+p=3D"name" content=3D"Edit your response"></div></div></div><div style=3D"b=
+order-bottom: 1px solid #dadce0; border-left: 1px solid #dadce0; border-rig=
+ht: 1px solid #dadce0; border-top: 8px solid rgb(87,70,227); padding: 20px;=
+background-color: #fff; border-radius: 8px; margin-bottom: 12px;"><h1 dir=
+=3D"ltr" style=3D"font-family: Roboto,Helvetica,Arial,sans-serif;font-size:=
+ 32px; font-weight: 400; line-height: 42px;white-space: pre-wrap;margin: 0 =
+0 12px;">Protocol Symposium 2026 -- Call for Abstracts</h1><div style=3D"wh=
+ite-space: pre-wrap;margin-bottom: 12px;">The Protocol Symposium is the fla=
+gship research gathering of the emerging field of Protocol Studies, hosted =
+by the Protocol Institute (PI). This year's symposium will be held <b>Septe=
+mber 21-25, fully online</b>, on the theme of <b><a href=3D"https://protoco=
+lized.summerofprotocols.com/p/inventing-new-nature">New Nature</a></b>.=C2=
+=A0<div><br></div><div>There will be 2 days of workshops (Sept 21-22) and 3=
+ days of single-track 30-minute talks (Sept 23-25). We will be able to host=
+ <b>up to 4 workshops</b> and <b>~30 talks. </b>All talks and workshop sess=
+ions will be recorded, transcribed, and added to the corpus that PI's AI in=
+frastructure is trained on.<div><ul><li><b>Workshops</b>: The format is 4-6=
+ Zoom sessions of ~60-90 minutes each over 2 days, with some sort of asynch=
+ronous co-working and discussion on Discord between sessions. The target wo=
+rkshop size is 30-50 participants. There should be a clear learning or skil=
+l development outcome for participants, at the frontiers of protocol wrangl=
+ing or theory (ie in emerging areas, not established ones). An honorarium w=
+ill be available for workshop organizers. To ensure a resilient agenda, eve=
+ry workshop proposal <b>requires at least two organizers</b>.</li><li><b>Ta=
+lks</b>: For papers, the expectation is a researched 25 minute talk with 5 =
+minute Q&amp;A, preferably accompanied by either a preprint (academic arXiv=
+ style) aimed at a specialist audience or draft magazine feature style aime=
+d at a general audience. Prizes totaling $6000 will be awarded to the best =
+talks. We may offer publishing opportunities in our magazine,=C2=A0<i>Proto=
+colized,=C2=A0</i>for selected talks, abstracts and articles.</li></ul><spa=
+n><div>Other things being equal, we will prioritize workshop and talk propo=
+sals that align with one of our <a href=3D"https://protocol-institute.org/s=
+igs/">Special Interest Groups</a>=C2=A0=E2=80=93 Formal Theory of Protocols=
+, Memory, Business, Fiction, Distributed Robotics, or Historical Modeling.<=
+/div><div><br></div>Talk abstracts and workshop proposals are due by midnig=
+ht, Pacific Time,=C2=A0<b>Sunday,=C2=A0 June 14th</b>, and acceptance decis=
+ions will be communicated by <b>June 30th</b>. Participant registration wil=
+l open in July =E2=80=93 abstracts of all accepted talks and workshops will=
+ be featured on the Symposium page.</span></div></div></div></div><div styl=
+e=3D"border: 1px solid #dadce0; padding: 20px 12px;background-color: #fff; =
+border-radius: 8px; margin-bottom: 12px;margin-bottom: 12px;"><div style=3D=
+"padding: 0 12px;"><h2 dir=3D"auto" style=3D"color: #202124;font-family: Ro=
+boto,Helvetica,Arial,sans-serif;font-size: 16px; font-weight: 400; line-hei=
+ght: 24px;white-space: pre-wrap;margin: 0 0 16px;">Email<span style=3D"colo=
+r: #d93025;" aria-label=3D"Required question"> *</span></h2></div><div styl=
+e=3D"padding: 0 12px;"><div style=3D"width: 100%;"><div dir=3D"auto" style=
+=3D"white-space: pre-wrap;border-bottom: 1px dotted rgba(0,0,0,0.38);margin=
+: 12px 0 8px; min-height: 20px;display: inline-block; max-width: 100%; min-=
+width: 50%;">robert@peakepro.com</div></div></div></div><div style=3D"borde=
+r: 1px solid #dadce0; padding: 20px 12px;background-color: #fff; border-rad=
+ius: 8px; margin-bottom: 12px;margin-bottom: 12px;"><div style=3D"padding: =
+0 12px;"><h2 dir=3D"auto" style=3D"color: #202124;font-family: Roboto,Helve=
+tica,Arial,sans-serif;font-size: 16px; font-weight: 400; line-height: 24px;=
+white-space: pre-wrap;margin: 0;">Which SIG or other PI activity stream/col=
+laboration stream does your talk or workshop proposal fit into<span style=
+=3D"color: #d93025;" aria-label=3D"Required question"> *</span></h2><div st=
+yle=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-s=
+ize: 12px; font-weight: 400; letter-spacing: .25px; line-height: 16px;white=
+-space: pre-wrap;margin: 4px 0 20px;" dir=3D"auto">Not required, but highly=
+ recommended that you align with an existing or upcoming SIG or other track=
+</div></div><div style=3D"padding: 0 12px;"><div style=3D"margin-top: 16px;=
+"><table style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-s=
+erif;font-size: 14px; font-weight: 400; line-height: 20px;color: #70757a;ma=
+rgin-top: 8px; table-layout: fixed;"><tr><td><div role=3D"radio" aria-check=
+ed=3D"false" aria-label=3D"SIGFPT (Formal Protocol Theory)" style=3D"border=
+: solid 2px #9aa0a6; height: 16px; width: 16px; border-radius: 50%;"></div>=
+</td><td style=3D"min-width: 8px;"></td><td style=3D"word-break: break-word=
+;">SIGFPT (Formal Protocol Theory)</td></tr></table></div><div style=3D"mar=
+gin-top: 16px;"><table style=3D"color: #202124;font-family: Roboto,Helvetic=
+a,Arial,sans-serif;font-size: 14px; font-weight: 400; line-height: 20px;mar=
+gin-top: 8px; table-layout: fixed;"><tr><td><div role=3D"radio" aria-checke=
+d=3D"true" aria-label=3D"SIGP4B (Protocols for Business)" style=3D"border: =
+solid 2px #5f6368; height: 16px; width: 16px; border-radius: 50%;"><div sty=
+le=3D"background-color: #5f6368; border: solid 5px #5f6368; border-radius: =
+50%; margin: 3px; height: 0; width: 0;"></div></div></td><td style=3D"min-w=
+idth: 8px;"></td><td style=3D"word-break: break-word;">SIGP4B (Protocols fo=
+r Business)</td></tr></table></div><div style=3D"margin-top: 16px;"><table =
+style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font=
+-size: 14px; font-weight: 400; line-height: 20px;color: #70757a;margin-top:=
+ 8px; table-layout: fixed;"><tr><td><div role=3D"radio" aria-checked=3D"fal=
+se" aria-label=3D"MRG (Memory Research Group)" style=3D"border: solid 2px #=
+9aa0a6; height: 16px; width: 16px; border-radius: 50%;"></div></td><td styl=
+e=3D"min-width: 8px;"></td><td style=3D"word-break: break-word;">MRG (Memor=
+y Research Group)</td></tr></table></div><div style=3D"margin-top: 16px;"><=
+table style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-seri=
+f;font-size: 14px; font-weight: 400; line-height: 20px;color: #70757a;margi=
+n-top: 8px; table-layout: fixed;"><tr><td><div role=3D"radio" aria-checked=
+=3D"false" aria-label=3D"DRG (Distributed Robotics Group)" style=3D"border:=
+ solid 2px #9aa0a6; height: 16px; width: 16px; border-radius: 50%;"></div><=
+/td><td style=3D"min-width: 8px;"></td><td style=3D"word-break: break-word;=
+">DRG (Distributed Robotics Group)</td></tr></table></div><div style=3D"mar=
+gin-top: 16px;"><table style=3D"color: #202124;font-family: Roboto,Helvetic=
+a,Arial,sans-serif;font-size: 14px; font-weight: 400; line-height: 20px;col=
+or: #70757a;margin-top: 8px; table-layout: fixed;"><tr><td><div role=3D"rad=
+io" aria-checked=3D"false" aria-label=3D"SIGFIC (Protocol Fiction)" style=
+=3D"border: solid 2px #9aa0a6; height: 16px; width: 16px; border-radius: 50=
+%;"></div></td><td style=3D"min-width: 8px;"></td><td style=3D"word-break: =
+break-word;">SIGFIC (Protocol Fiction)</td></tr></table></div><div style=3D=
+"margin-top: 16px;"><table style=3D"color: #202124;font-family: Roboto,Helv=
+etica,Arial,sans-serif;font-size: 14px; font-weight: 400; line-height: 20px=
+;color: #70757a;margin-top: 8px; table-layout: fixed;"><tr><td><div role=3D=
+"radio" aria-checked=3D"false" aria-label=3D"SIGPSY (Historical Modeling / =
+Psychistory)" style=3D"border: solid 2px #9aa0a6; height: 16px; width: 16px=
+; border-radius: 50%;"></div></td><td style=3D"min-width: 8px;"></td><td st=
+yle=3D"word-break: break-word;">SIGPSY (Historical Modeling / Psychistory)<=
+/td></tr></table></div><div style=3D"margin-top: 16px;"><table style=3D"col=
+or: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-size: 14px;=
+ font-weight: 400; line-height: 20px;color: #70757a;margin-top: 8px; table-=
+layout: fixed;"><tr><td><div role=3D"radio" aria-checked=3D"false" aria-lab=
+el=3D"Long Now Labs" style=3D"border: solid 2px #9aa0a6; height: 16px; widt=
+h: 16px; border-radius: 50%;"></div></td><td style=3D"min-width: 8px;"></td=
+><td style=3D"word-break: break-word;">Long Now Labs</td></tr></table></div=
+><div style=3D"margin-top: 16px;"><table style=3D"color: #202124;font-famil=
+y: Roboto,Helvetica,Arial,sans-serif;font-size: 14px; font-weight: 400; lin=
+e-height: 20px;color: #70757a;margin-top: 8px; table-layout: fixed;"><tr><t=
+d><div role=3D"radio" aria-checked=3D"false" aria-label=3D"Southeast Asia t=
+rack" style=3D"border: solid 2px #9aa0a6; height: 16px; width: 16px; border=
+-radius: 50%;"></div></td><td style=3D"min-width: 8px;"></td><td style=3D"w=
+ord-break: break-word;">Southeast Asia track</td></tr></table></div><div st=
+yle=3D"margin-top: 16px;"><table style=3D"color: #202124;font-family: Robot=
+o,Helvetica,Arial,sans-serif;font-size: 14px; font-weight: 400; line-height=
+: 20px;color: #70757a;margin-top: 8px; table-layout: fixed;"><tr><td><div r=
+ole=3D"radio" aria-checked=3D"false" aria-label=3D"Latin America track" sty=
+le=3D"border: solid 2px #9aa0a6; height: 16px; width: 16px; border-radius: =
+50%;"></div></td><td style=3D"min-width: 8px;"></td><td style=3D"word-break=
+: break-word;">Latin America track</td></tr></table></div><div style=3D"mar=
+gin-top: 16px;"><table style=3D"color: #202124;font-family: Roboto,Helvetic=
+a,Arial,sans-serif;font-size: 14px; font-weight: 400; line-height: 20px;col=
+or: #70757a;margin-top: 8px; table-layout: fixed;"><tr><td><div role=3D"rad=
+io" aria-checked=3D"false" aria-label=3D"GCC (Global Chinese Community)" st=
+yle=3D"border: solid 2px #9aa0a6; height: 16px; width: 16px; border-radius:=
+ 50%;"></div></td><td style=3D"min-width: 8px;"></td><td style=3D"word-brea=
+k: break-word;">GCC (Global Chinese Community)</td></tr></table></div><div =
+style=3D"margin-top: 16px;"><table style=3D"color: #202124;font-family: Rob=
+oto,Helvetica,Arial,sans-serif;font-size: 14px; font-weight: 400; line-heig=
+ht: 20px;color: #70757a;margin-top: 8px; table-layout: fixed;"><tr><td><div=
+ role=3D"radio" aria-checked=3D"false" aria-label=3D"Not part of an existin=
+g activity stream" style=3D"border: solid 2px #9aa0a6; height: 16px; width:=
+ 16px; border-radius: 50%;"></div></td><td style=3D"min-width: 8px;"></td><=
+td style=3D"word-break: break-word;">Not part of an existing activity strea=
+m</td></tr></table></div><div style=3D"margin-top: 16px;"><table style=3D"c=
+olor: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-size: 14p=
+x; font-weight: 400; line-height: 20px;color: #70757a;margin-top: 8px; tabl=
+e-layout: fixed;"><tr><td><div role=3D"radio" aria-checked=3D"false" aria-l=
+abel=3D"Continuing alumni research (SoP 23-25 cohorts)" style=3D"border: so=
+lid 2px #9aa0a6; height: 16px; width: 16px; border-radius: 50%;"></div></td=
+><td style=3D"min-width: 8px;"></td><td style=3D"word-break: break-word;">C=
+ontinuing alumni research (SoP 23-25 cohorts)</td></tr></table></div></div>=
+</div><div style=3D"border: 1px solid #dadce0; padding: 20px 12px;backgroun=
+d-color: #fff; border-radius: 8px; margin-bottom: 12px;margin-bottom: 12px;=
+"><div style=3D"padding: 0 12px;"><h2 dir=3D"auto" style=3D"color: #202124;=
+font-family: Roboto,Helvetica,Arial,sans-serif;font-size: 16px; font-weight=
+: 400; line-height: 24px;white-space: pre-wrap;margin: 0 0 16px;">What is y=
+our abstract for?<span style=3D"color: #d93025;" aria-label=3D"Required que=
+stion"> *</span></h2></div><div style=3D"padding: 0 12px;"><div style=3D"ma=
+rgin-top: 16px;"><table style=3D"color: #202124;font-family: Roboto,Helveti=
+ca,Arial,sans-serif;font-size: 14px; font-weight: 400; line-height: 20px;ma=
+rgin-top: 8px; table-layout: fixed;"><tr><td><div role=3D"radio" aria-check=
+ed=3D"true" aria-label=3D"Talk" style=3D"border: solid 2px #5f6368; height:=
+ 16px; width: 16px; border-radius: 50%;"><div style=3D"background-color: #5=
+f6368; border: solid 5px #5f6368; border-radius: 50%; margin: 3px; height: =
+0; width: 0;"></div></div></td><td style=3D"min-width: 8px;"></td><td style=
+=3D"word-break: break-word;">Talk</td></tr></table></div><div style=3D"marg=
+in-top: 16px;"><table style=3D"color: #202124;font-family: Roboto,Helvetica=
+,Arial,sans-serif;font-size: 14px; font-weight: 400; line-height: 20px;colo=
+r: #70757a;margin-top: 8px; table-layout: fixed;"><tr><td><div role=3D"radi=
+o" aria-checked=3D"false" aria-label=3D"Workshop" style=3D"border: solid 2p=
+x #9aa0a6; height: 16px; width: 16px; border-radius: 50%;"></div></td><td s=
+tyle=3D"min-width: 8px;"></td><td style=3D"word-break: break-word;">Worksho=
+p</td></tr></table></div></div></div><div style=3D"border-bottom: 1px solid=
+ #dadce0; border-left: 1px solid #dadce0; border-right: 1px solid #dadce0; =
+border-top: 8px solid rgb(87,70,227); padding: 0;background-color: #fff; bo=
+rder-radius: 8px; margin-bottom: 12px;margin-bottom: 12px;"><div style=3D"p=
+adding: 0 ;"><h2 dir=3D"auto" style=3D"color: #fff;font-family: Roboto,Helv=
+etica,Arial,sans-serif;font-size: 16px; font-weight: 400; line-height: 24px=
+;background-color: rgb(87,70,227); margin: 0; padding: 4px 24px 12px;">Talk=
+ Abstract<span></span></h2><div dir=3D"auto" style=3D"color: #202124;font-f=
+amily: Roboto,Helvetica,Arial,sans-serif;font-size: 12px; font-weight: 400;=
+ letter-spacing: .25px; line-height: 16px;white-space: pre-wrap;margin: 24p=
+x 17px;">Talks should be 25 minutes. Details you provide, except for email,=
+ will be published in the program if accepted.</div></div><div style=3D"pad=
+ding: 0 12px;"></div></div><div style=3D"border: 1px solid #dadce0; padding=
+: 20px 12px;background-color: #fff; border-radius: 8px; margin-bottom: 12px=
+;margin-bottom: 12px;"><div style=3D"padding: 0 12px;"><h2 dir=3D"auto" sty=
+le=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-si=
+ze: 16px; font-weight: 400; line-height: 24px;white-space: pre-wrap;margin:=
+ 0 0 16px;">Speaker name<span style=3D"color: #d93025;" aria-label=3D"Requi=
+red question"> *</span></h2></div><div style=3D"padding: 0 12px;"><div styl=
+e=3D"width: 100%;"><div dir=3D"auto" style=3D"white-space: pre-wrap;border-=
+bottom: 1px dotted rgba(0,0,0,0.38);margin: 12px 0 8px; min-height: 20px;di=
+splay: inline-block; max-width: 100%; min-width: 50%;">Robert Peake</div></=
+div></div></div><div style=3D"border: 1px solid #dadce0; padding: 20px 12px=
+;background-color: #fff; border-radius: 8px; margin-bottom: 12px;margin-bot=
+tom: 12px;"><div style=3D"padding: 0 12px;"><h2 dir=3D"auto" style=3D"color=
+: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-size: 16px; f=
+ont-weight: 400; line-height: 24px;white-space: pre-wrap;margin: 0 0 16px;"=
+>Speaker email<span style=3D"color: #d93025;" aria-label=3D"Required questi=
+on"> *</span></h2></div><div style=3D"padding: 0 12px;"><div dir=3D"auto" s=
+tyle=3D"white-space: pre-wrap;border-bottom: 1px dotted rgba(0,0,0,0.38);ma=
+rgin: 12px 0 8px; min-height: 20px;width: 100%;">robert@peakepro.com</div><=
+/div></div><div style=3D"border: 1px solid #dadce0; padding: 20px 12px;back=
+ground-color: #fff; border-radius: 8px; margin-bottom: 12px;margin-bottom: =
+12px;"><div style=3D"padding: 0 12px;"><h2 dir=3D"auto" style=3D"color: #20=
+2124;font-family: Roboto,Helvetica,Arial,sans-serif;font-size: 16px; font-w=
+eight: 400; line-height: 24px;white-space: pre-wrap;margin: 0;">Speaker web=
+site<span style=3D"color: #d93025;" aria-label=3D"Required question"> *</sp=
+an></h2><div style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sa=
+ns-serif;font-size: 12px; font-weight: 400; letter-spacing: .25px; line-hei=
+ght: 16px;white-space: pre-wrap;margin: 4px 0 20px;" dir=3D"auto">Provide s=
+omething like a personal or institutional biography page link</div></div><d=
+iv style=3D"padding: 0 12px;"><div style=3D"width: 100%;"><div dir=3D"auto"=
+ style=3D"white-space: pre-wrap;border-bottom: 1px dotted rgba(0,0,0,0.38);=
+margin: 12px 0 8px; min-height: 20px;display: inline-block; max-width: 100%=
+; min-width: 50%;">https://www.robertpeake.com/ai</div></div></div></div><d=
+iv style=3D"border: 1px solid #dadce0; padding: 20px 12px;background-color:=
+ #fff; border-radius: 8px; margin-bottom: 12px;margin-bottom: 12px;"><div s=
+tyle=3D"padding: 0 12px;"><h2 dir=3D"auto" style=3D"color: #202124;font-fam=
+ily: Roboto,Helvetica,Arial,sans-serif;font-size: 16px; font-weight: 400; l=
+ine-height: 24px;white-space: pre-wrap;margin: 0;">Additional authors<span =
+style=3D"color: #d93025;" aria-label=3D"Required question"> *</span></h2><d=
+iv style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;f=
+ont-size: 12px; font-weight: 400; letter-spacing: .25px; line-height: 16px;=
+white-space: pre-wrap;margin: 4px 0 20px;" dir=3D"auto">Add names and email=
+s of any additional authors who will contribute to the content of the talk =
+or accompanying written artifact if any. If none, type "N/A"</div></div><di=
+v style=3D"padding: 0 12px;"><div dir=3D"auto" style=3D"white-space: pre-wr=
+ap;border-bottom: 1px dotted rgba(0,0,0,0.38);margin: 12px 0 8px; min-heigh=
+t: 20px;width: 100%;">N/A</div></div></div><div style=3D"border: 1px solid =
+#dadce0; padding: 20px 12px;background-color: #fff; border-radius: 8px; mar=
+gin-bottom: 12px;margin-bottom: 12px;"><div style=3D"padding: 0 12px;"><h2 =
+dir=3D"auto" style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sa=
+ns-serif;font-size: 16px; font-weight: 400; line-height: 24px;white-space: =
+pre-wrap;margin: 0 0 16px;">Title of talk<span style=3D"color: #d93025;" ar=
+ia-label=3D"Required question"> *</span></h2></div><div style=3D"padding: 0=
+ 12px;"><div style=3D"width: 100%;"><div dir=3D"auto" style=3D"white-space:=
+ pre-wrap;border-bottom: 1px dotted rgba(0,0,0,0.38);margin: 12px 0 8px; mi=
+n-height: 20px;display: inline-block; max-width: 100%; min-width: 50%;">Pro=
+tocols for Co-Cognition: The New Nature of Collaboration in the AI Era</div=
+></div></div></div><div style=3D"border: 1px solid #dadce0; padding: 20px 1=
+2px;background-color: #fff; border-radius: 8px; margin-bottom: 12px;margin-=
+bottom: 12px;"><div style=3D"padding: 0 12px;"><h2 dir=3D"auto" style=3D"co=
+lor: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-size: 16px=
+; font-weight: 400; line-height: 24px;white-space: pre-wrap;margin: 0;">Abs=
+tract (will be published if accepted)<span style=3D"color: #d93025;" aria-l=
+abel=3D"Required question"> *</span></h2><div style=3D"color: #202124;font-=
+family: Roboto,Helvetica,Arial,sans-serif;font-size: 12px; font-weight: 400=
+; letter-spacing: .25px; line-height: 16px;white-space: pre-wrap;margin: 4p=
+x 0 20px;" dir=3D"auto">Please describe your proposed talk and artifact in =
+150-250 words, formatted as a single paragraph. If your proposal is accepte=
+d, this abstract will appear on the official symposium page leading up to t=
+he event.</div></div><div style=3D"padding: 0 12px;"><div dir=3D"auto" styl=
+e=3D"white-space: pre-wrap;border-bottom: 1px dotted rgba(0,0,0,0.38);margi=
+n: 12px 0 8px; min-height: 20px;width: 100%;">When humans work alongside AI=
+, the terms of collaboration are renegotiated in real time, implicitly, and=
+ heterogeneously across groups of individuals. Drawing on a live psychometr=
+ic instrument (the AI Co-Working Effectiveness Survey, administered across =
+general-population and enterprise samples), this talk argues that every hum=
+an=E2=80=93AI working relationship already runs on a protocol: a settled pa=
+ttern of trust and verification that can be measured as cognitive posture. =
+The instrument locates respondents on a Sovereignty versus Trust grid yield=
+ing four postures: Partnership, Hypervigilance, Overreliance, and Complianc=
+e, and then scores four underlying constructs: cognitive load (what you car=
+ry), cognitive debt (what you owe), dissonance (miscalibrated trust), and s=
+overeignty (what you keep or cede). The headline empirical finding is that =
+adoption level does not predict cognitive cost: posture, not dose, differen=
+tiates sustainable co-cognition from silent deskilling; cognitive debt peak=
+s under Overreliance and bottoms under Hypervigilance, which pays for secur=
+ity with load. Ahead of the symposium I will run the survey across the Prot=
+ocol Institute&#39;s wider community and present its aggregate, anonymised =
+posture profile against contrast groups, asking what the results imply for =
+the design of explicit protocols for co-cognition: durable, psychology-anch=
+ored working agreements between humans and their agents that survive prompt=
+ing tricks and model churn the way earlier work protocols such as Kanban an=
+d GTD survived the arrival of email, groupware, and mobile phones.</div></d=
+iv></div><div style=3D"border: 1px solid #dadce0; padding: 20px 12px;backgr=
+ound-color: #fff; border-radius: 8px; margin-bottom: 12px;margin-bottom: 12=
+px;"><div style=3D"padding: 0 12px;"><h2 dir=3D"auto" style=3D"color: #2021=
+24;font-family: Roboto,Helvetica,Arial,sans-serif;font-size: 16px; font-wei=
+ght: 400; line-height: 24px;white-space: pre-wrap;margin: 0 0 16px;">What k=
+ind of artifact will accompany your talk?<span style=3D"color: #d93025;" ar=
+ia-label=3D"Required question"> *</span></h2></div><div style=3D"padding: 0=
+ 12px;"><div style=3D"margin-top: 16px;"><table style=3D"color: #202124;fon=
+t-family: Roboto,Helvetica,Arial,sans-serif;font-size: 14px; font-weight: 4=
+00; line-height: 20px;margin-top: 8px; table-layout: fixed;"><tr><td><div r=
+ole=3D"radio" aria-checked=3D"true" aria-label=3D"Academic preprint (arXiv =
+style)" style=3D"border: solid 2px #5f6368; height: 16px; width: 16px; bord=
+er-radius: 50%;"><div style=3D"background-color: #5f6368; border: solid 5px=
+ #5f6368; border-radius: 50%; margin: 3px; height: 0; width: 0;"></div></di=
+v></td><td style=3D"min-width: 8px;"></td><td style=3D"word-break: break-wo=
+rd;">Academic preprint (arXiv style)</td></tr></table></div><div style=3D"m=
+argin-top: 16px;"><table style=3D"color: #202124;font-family: Roboto,Helvet=
+ica,Arial,sans-serif;font-size: 14px; font-weight: 400; line-height: 20px;c=
+olor: #70757a;margin-top: 8px; table-layout: fixed;"><tr><td><div role=3D"r=
+adio" aria-checked=3D"false" aria-label=3D"General audience essay draft" st=
+yle=3D"border: solid 2px #9aa0a6; height: 16px; width: 16px; border-radius:=
+ 50%;"></div></td><td style=3D"min-width: 8px;"></td><td style=3D"word-brea=
+k: break-word;">General audience essay draft</td></tr></table></div><div st=
+yle=3D"margin-top: 16px;"><table style=3D"color: #202124;font-family: Robot=
+o,Helvetica,Arial,sans-serif;font-size: 14px; font-weight: 400; line-height=
+: 20px;color: #70757a;margin-top: 8px; table-layout: fixed;"><tr><td><div r=
+ole=3D"radio" aria-checked=3D"false" aria-label=3D"Other type of artifact (=
+eg: demo, website, etc.)" style=3D"border: solid 2px #9aa0a6; height: 16px;=
+ width: 16px; border-radius: 50%;"></div></td><td style=3D"min-width: 8px;"=
+></td><td style=3D"word-break: break-word;">Other type of artifact (eg: dem=
+o, website, etc.)</td></tr></table></div><div style=3D"margin-top: 16px;"><=
+table style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-seri=
+f;font-size: 14px; font-weight: 400; line-height: 20px;color: #70757a;margi=
+n-top: 8px; table-layout: fixed;"><tr><td><div role=3D"radio" aria-checked=
+=3D"false" aria-label=3D"Only talk, no artifact planned" style=3D"border: s=
+olid 2px #9aa0a6; height: 16px; width: 16px; border-radius: 50%;"></div></t=
+d><td style=3D"min-width: 8px;"></td><td style=3D"word-break: break-word;">=
+Only talk, no artifact planned</td></tr></table></div></div></div><div styl=
+e=3D"border-bottom: 1px solid #dadce0; border-left: 1px solid #dadce0; bord=
+er-right: 1px solid #dadce0; border-top: 8px solid rgb(87,70,227); padding:=
+ 0;background-color: #fff; border-radius: 8px; margin-bottom: 12px;margin-b=
+ottom: 12px;"><div style=3D"padding: 0 ;"><h2 dir=3D"auto" style=3D"color: =
+#fff;font-family: Roboto,Helvetica,Arial,sans-serif;font-size: 16px; font-w=
+eight: 400; line-height: 24px;background-color: rgb(87,70,227); margin: 0; =
+padding: 4px 24px 12px;border-bottom-left-radius: 8px; border-bottom-right-=
+radius: 8px;">Submit</h2></div><div style=3D"padding: 0 12px;"></div></div>=
+<div style=3D"border: 1px solid #dadce0; padding: 20px 12px;background-colo=
+r: #fff; border-radius: 8px; margin-bottom: 12px;margin-bottom: 12px;"><div=
+ style=3D"padding: 0 12px;"><h2 dir=3D"auto" style=3D"color: #202124;font-f=
+amily: Roboto,Helvetica,Arial,sans-serif;font-size: 16px; font-weight: 400;=
+ line-height: 24px;white-space: pre-wrap;margin: 0 0 16px;">Any general com=
+ments?<span style=3D"color: #d93025;" aria-label=3D"Required question"> *</=
+span></h2></div><div style=3D"padding: 0 12px;"><div dir=3D"auto" style=3D"=
+white-space: pre-wrap;border-bottom: 1px dotted rgba(0,0,0,0.38);margin: 12=
+px 0 8px; min-height: 20px;width: 100%;">The group report will also accompa=
+ny the talk as an artifact</div></div></div></div><table align=3D"center" c=
+ellpadding=3D"0" cellspacing=3D"0" style=3D"max-width: 672px; min-width: 15=
+4px; border-collapse: separate; border-spacing: 0 0.2em;" width=3D"100%" ro=
+le=3D"presentation"><tbody><tr height=3D"24px"><td></td></tr><tr><td><a hre=
+f=3D"https://docs.google.com/forms?usp=3Dmail_form_link" style=3D"color: #4=
+24242; font-size: 13px;">Create your own Google Form</a></td></tr><tr><td>D=
+oes this form look suspicious? <a href=3D"https://drive.google.com/abuse?id=
+=3DAKkXjoxLZ92-isCCQqLQKwemLeAeau0v9PgJXOywraWYckL0Z820ss7__zSBpcMQZ-h4U1xZ=
+nlZo7JQTBipYhuo:0&amp;rt=3DAYg7rXSt-9qdBuJcJpe28EZUjN-lLdZqMJwBe7rYryYjYrH_=
+t6ztg_TmCPGlSowmqOUZHrTQtnIEqTRL-_izHtiaxFW7tWgFWZE4KQX_S6XTYchtFw7sD-gzuAL=
+6aIcW_fXuSJ5dMp5nZVu0HOD1_n1y22TErLjQimu4j9630vhpEfyAeIfHb8pfW-7SkYd784vn3s=
+k6lIJP:1&amp;usp=3Dmail_receipt_abuse" target=3D"_blank" style=3D"color: #4=
+24242; font-size: 13px;">Report</a></td></tr></tbody></table></div></body><=
+/html>
+--000000000000630fda0658b67a59--

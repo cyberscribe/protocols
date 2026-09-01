@@ -1,0 +1,47 @@
+Intro of assessment beats:
+
+Intro of self:
+ - Anecdote about making a haiku generator at Berkley in the 90s, then getting a degree in poetry
+ - Since then CTO of startups/scale ups, now consulting
+ - Also practitioner and consultant/coach for individual and team effectiveness
+(GTD, agile/scrum, KANBAN, etc.)
+
+Individual effectiveness -> driven by executive function
+Team effectiveness -> driven by psychological safety and communication standards
+Language effectiveness -> driven by navigating implicit and explicit use
+
+=> AI effectiveness (increasing probability of goal attainment)
+
+Landed on DRIVE loop paralleling GTD
+Why not hammer seeking a nail? Kam et. al. similar place from occupational analysis (DACUM) of Google engineers. 
+
+My exploration: how can we take what senior engineers at Google do to get good results with AI, and make these protocols available to everyone?
+
+Look at universal cognitive dynamics, not just domain-specific behaviours
+ - Cognitive load
+ - Cognitive debt
+ - Cognitive sovereignty
+ - Cognitive dissonance - in progress... (feeling like you "cheated" as possible precursor sign to cognitive debt; retired after measurement)
+
+Theory:
+ - Checking outputs to improve trust drives up cognitive load
+   * main measurement challenge: trust as behaviour-driven v. trust as naiveté
+ - Ceding control over decision-making drives up cognitive debt
+   * main measurement challenge: lag time before debt consequences show up
+
+Postures:
+Four buckets labelling a two axis continuum, not a categoriser (i.e. a 2d bell curve, not a four leaf clover of curves)
+
+Why is this not a horoscope (Forer/Barnum effect)?
+Every question belongs demonstrably to the dimension it was written for (trust, sovereignty, load, debt) ("two costs, not one" slide)
+Posture results do not map to degree of AI usage (show backup)
+Posture results to not map to job role (show engineers v. not chart)
+Differential response to differential content
+
+Back to question: how can we take what senior engineers at Google do to get good results with AI, and make these protocols available to everyone?
+
+Posture results to not map to job role (show engineers v. not chart)
+Posture predicts what costs you are paying most
+
+Load - at the boundary of results and accountability
+Debt - within the loop as you overreach and over-rely
