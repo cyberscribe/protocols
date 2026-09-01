@@ -1,0 +1,39 @@
+Externalised Protocols for Effective Human-AI Co-Cognition: Mapping the New Nature of Knowledge Work
+
+We want to model a task-level theory of how cognitive functions are allocated between human and AI: how load distorts trust updating, and whether protocols plus externalisation preserve judgment and delayed capability without imposing continuous supervisory effort.
+
+Our goal is to eventually discover which allocations and externalised protocols allow professional knowledge workers to capture immediate AI value while preserving calibrated judgment and delayed unaided capability, and determine whether they can they damp the load/trust/debt oscillation.
+
+Consider two load-dependent update pathways:
+
+$$
+T_{t+1}=T_t+
+w_p(L_t,E_t)\,\text{process evidence}+
+w_o(L_t)\,\text{outcome evidence}
+$$
+
+where:
+
+* \(w_p\) falls as Load rises;
+* \(w_o\) rises as Load rises;
+* externalisation \(E\) restores process evidence by making criteria, AI contributions, checks and failures visible.
+
+This makes externalisation much more precise. It is not merely a memory aid or load reducer. It is hypothesised to preserve the evidential basis on which trust is calibrated.
+
+Debt should likewise become an objective counterfactual:
+
+$$
+D_t=K^{\text{expected without substitutive AI}}_t-K^{\text{observed unaided}}_t
+$$
+
+
+Promise lies in existing research:
+
+ * Under high cognitive load, participants became less sensitive to evidence about whether the AI recommendation was correct, relied more heavily on outcomes, and showed higher trust and behavioural reliance. ([Chen et al., 2026](https://journals.sagepub.com/doi/10.1177/00187208261477486))
+
+* Unguarded GPT assistance can improve immediate practice while worsening subsequent unaided performance; teacher-designed hint guardrails largely mitigated the harm in a preregistered field experiment of nearly 1,000 students. ([Bastani et al., PNAS 2025](https://pmc.ncbi.nlm.nih.gov/articles/PMC12232635/))
+* A recent series of RCTs across 1,222 participants found impaired independent performance and persistence after brief AI assistance, particularly among people obtaining direct solutions. It remains a preprint and tested immediate removal rather than durable occupational effects. ([Liu et al., 2026](https://arxiv.org/html/2604.04721v4))
+* A newly posted, HCOMP-accepted experiment found that lower request costs increased AI use and that independent reasoning predicted greater subsequent skill gain. ([Wu et al., 2026](https://arxiv.org/abs/2608.23543))
+* “Cognitive sovereignty,” “Sovereignty Trap,” and “cognitive debt” already have adjacent published or preprint formulations. ([Klein & Klein, 2025](https://pmc.ncbi.nlm.nih.gov/articles/PMC12738859/), [Meng, 2026](https://arxiv.org/html/2606.15078v1))
+
+
