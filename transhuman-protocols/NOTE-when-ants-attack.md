@@ -146,9 +146,11 @@ on the claim. And the interaction, rather than either dial, is the result:
 
 **Ceding sovereignty is not a weak defence. Until somebody lies to you it is a better one than
 vigilance**, because an uncorrupted claim is a perfect signal and review is not. Then it goes to
-nothing. And while it goes to nothing the catch rate the gate reports drifts by about a point —
-that drift being the store changing size, not the gate noticing anything. A defence that is
-superior right up until it is worthless, with no local signal that the regime has changed.
+nothing. And while it goes to nothing the catch rate the gate reports does not fall — at the
+visualiser's opening settings it *rises*, 32% to 47%, because binning good work slows the store's
+growth and store size is a term in the catch rate. The gate's own health indicator improves as the
+gate stops working. A defence that is superior right up until it is worthless, reported by an
+instrument that reads high while it fails.
 
 That is a better sentence about the trust trap than the one this note set out to write, and it came
 from taking the paper's third attack seriously instead of filing it as out of scope.
