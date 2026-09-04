@@ -6,7 +6,7 @@
   --ink:#16211C; --ink-2:#4A574F; --ink-3:#7C8A82; --rule:#D6DCD7; --rule-2:#C2CBC4;
   --k-standards:#1E3A8A; --k-general:#2563EB; --k-project:#60A5FA;
   --k-templates:#B45309; --k-projects:#15803D; --k-status:#9333EA;
-  --mixed:#94A29A;
+  --mixed:#94A29A; --clean:#2E9E6B;
   --serif:"IBM Plex Serif",Georgia,serif;
   --sans:"IBM Plex Sans",system-ui,-apple-system,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
@@ -15,13 +15,13 @@
   --ground:#121714; --panel:#1B211D; --panel-2:#232B26;
   --ink:#E5EAE5; --ink-2:#B3BEB7; --ink-3:#8A968E; --rule:#2C342E; --rule-2:#3A443D;
   --k-standards:#5B8DEE; --k-general:#85AFF5; --k-project:#AECFFB;
-  --k-templates:#E0902F; --k-projects:#4ADE80; --k-status:#C084FC; --mixed:#6E7C74;
+  --k-templates:#E0902F; --k-projects:#4ADE80; --k-status:#C084FC; --mixed:#6E7C74; --clean:#2E9E6B;
 }}
 :root[data-theme="dark"]{
   --ground:#121714; --panel:#1B211D; --panel-2:#232B26;
   --ink:#E5EAE5; --ink-2:#B3BEB7; --ink-3:#8A968E; --rule:#2C342E; --rule-2:#3A443D;
   --k-standards:#5B8DEE; --k-general:#85AFF5; --k-project:#AECFFB;
-  --k-templates:#E0902F; --k-projects:#4ADE80; --k-status:#C084FC; --mixed:#6E7C74;
+  --k-templates:#E0902F; --k-projects:#4ADE80; --k-status:#C084FC; --mixed:#6E7C74; --clean:#2E9E6B;
 }
 *{box-sizing:border-box}
 body{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16px;
@@ -41,6 +41,26 @@ button[aria-pressed="true"]{background:var(--ink);color:var(--panel);border-colo
 button:focus-visible{outline:2px solid var(--k-general);outline-offset:2px}
 .mode-note{font-size:13px;color:var(--ink-3);margin-left:auto;font-family:var(--mono)}
 .viewport{position:relative;width:100%;aspect-ratio:1000/640;min-width:0}
+.atk{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:16px 0 4px;
+  padding-top:16px;border-top:1px solid var(--rule)}
+.atk .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-3);margin-right:2px}
+button.a{border-color:var(--poison);color:var(--poison);font-weight:600}
+button.a[aria-pressed="true"]{background:var(--poison);color:#fff;border-color:var(--poison)}
+.banner{position:absolute;left:0;right:0;top:0;background:var(--poison);color:#fff;
+  font-family:var(--mono);font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+  text-align:center;padding:7px 4px;z-index:5;font-weight:600}
+.banner[hidden]{display:none!important}
+.score{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;
+  margin-top:16px}
+.sc{background:var(--panel-2);border-radius:3px;padding:12px 14px}
+.sc b{display:block;font-family:var(--mono);font-size:27px;line-height:1;font-weight:600;
+  font-variant-numeric:tabular-nums;margin-bottom:5px}
+.sc span{font-size:12px;color:var(--ink-3);line-height:1.3;display:block}
+.bad b{color:var(--poison)}
+.box .psn{position:absolute;left:0;width:100%;background:var(--poison);opacity:.85;
+  background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.35) 0 3px,transparent 3px 7px);
+  transition:height .3s ease}
 canvas{position:absolute;inset:0;width:100%;height:100%}
 .lay{position:absolute;inset:0;pointer-events:none}
 .box{position:absolute;border:1px solid var(--rule-2);border-radius:3px;background:var(--panel-2);
@@ -81,9 +101,23 @@ footer{font-size:13px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
       <button id="pause" aria-pressed="false">Pause</button>
       <span class="mode-note" id="note">human and AI both sorting</span>
     </div>
+    <div class="atk">
+      <span class="lbl">Attacks</span>
+      <button class="a" id="fab" aria-pressed="false">Fabricate</button>
+      <button class="a" id="drop" aria-pressed="false">Drop</button>
+      <button class="a" id="tamp" aria-pressed="false">Tamper</button>
+      <button id="clear">Clear the stores</button>
+    </div>
     <div class="viewport" id="vp">
+      <div class="banner" id="banner" hidden></div>
       <canvas id="cv"></canvas>
       <div class="lay" id="lay"></div>
+    </div>
+    <div class="score">
+      <div class="sc"><b id="s_caught">0</b><span>caught at the gate</span></div>
+      <div class="sc bad"><b id="s_in">0</b><span>wrong, and sitting in a store</span></div>
+      <div class="sc bad"><b id="s_lost">0</b><span>good work destroyed</span></div>
+      <div class="sc bad"><b id="s_dis">0</b><span>waved through in disguise</span></div>
     </div>
     <figcaption id="cap"></figcaption>
   </figure>
@@ -91,6 +125,23 @@ footer{font-size:13px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
   <p class="pull">Working memory is the only vessel with a hole in it.</p>
 
   <section class="finds">
+    <div>
+      <h2>Three ways it goes wrong</h2>
+      <p><b>Fabricate.</b> Bogus traces arrive from outside and fly straight into a store. They never
+        pass the gate, so nothing checks them. Watch which side of the picture they come from.</p>
+      <p><b>Drop.</b> Good work is plucked out of the flow before it lands. Nothing is added and
+        nothing looks wrong &mdash; the store just quietly stops representing what actually happened.</p>
+      <p><b>Tamper.</b> The content is bad and the label says clean. <b>The gate can only read the
+        label.</b> Turn this on and watch the catch rate collapse while the traffic looks identical.</p>
+    </div>
+    <div>
+      <h2>Read the ring, not the dot</h2>
+      <p>Every particle carries two things: a <b>core</b>, which is what it actually is, and a
+        <b>ring</b>, which is what it claims to be. Normally they agree.</p>
+      <p>Tampering breaks them apart &mdash; a red core inside a clean ring. Every defence in the
+        picture reads the ring. That is why tampering is the dangerous one and why it is the attack
+        we have never modelled: it does not corrupt the store, it corrupts the thing we check with.</p>
+    </div>
     <div>
       <h2>Separation is the work</h2>
       <p>Particles leave the session grey. They acquire their colour <b>in the separator</b>, not
@@ -122,7 +173,10 @@ footer{font-size:13px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
     </div>
   </section>
 
-  <footer>Vessel fill levels are illustrative, not model output: inflow is set by the sorting rate and
+  <footer>The three attacks are from Zhong &amp; Evans, <i>When Ants Attack: Security Issues for
+    Stigmergic Systems</i> (UVA CS, 2001), which studies ant-colony routing &mdash; an analogy for
+    this, not evidence about people. Our own model represents only the first of the three. Vessel fill
+    levels are illustrative, not model output: inflow is set by the sorting rate and
     working memory drains at a fixed rate standing in for autonomous decay. The claim being drawn is
     structural &mdash; which streams exist, which direction they run, and which vessel leaks.</footer>
 </div>
@@ -158,6 +212,7 @@ function layout(){
   BOXES.forEach(b => {
     const d = mk(b, 'box');
     d.innerHTML = '<div class="lvl" id="lvl-'+b.id+'"></div>'
+      + '<div class="psn" id="psn-'+b.id+'" style="height:0"></div>'
       + '<div class="nm" style="color:var(--k-'+b.k+',var(--ink))">'+b.name+'</div>'
       + '<div class="sub">'+b.sub+'</div>';
   });
@@ -214,33 +269,79 @@ const DEST = [
   {box:'proj',  k:'project',   w:.19}, {box:'tmpl', k:'templates', w:.09},
   {box:'projs', k:'projects',  w:.16}, {box:'status',k:'status',   w:.18},
 ];
-const LEVEL = {}; BOXES.forEach(b => LEVEL[b.id] = {v:0, k:b.k});
-let parts = [], mode = 'sep', paused = false, t0 = performance.now();
+const AI_DEST = DEST.filter(d => B[d.box].side === 'A');
+const LEVEL = {}; BOXES.forEach(b => LEVEL[b.id] = {v:0, bad:0, k:b.k});
+const BASE_BAD = 0.08, CATCH = 0.9;
+let parts = [], fx = [], mode = 'sep', paused = false, t0 = performance.now();
+let atk = {fab:false, drop:false, tamp:false};
+let N = {caught:0, inStore:0, lost:0, disguised:0};
+
+// fabricated traces arrive from OUTSIDE and never pass the gate at all
+AI_DEST.forEach(d => { const b = B[d.box];
+  FLOWS['inj_'+d.box] = [P(VW+40, b.y+b.h/2), P(b.x+b.w+2, b.y+b.h/2)]; });
 
 function pick(){ let r = Math.random()*DEST.reduce((s,d)=>s+d.w,0);
   for (const d of DEST){ if ((r -= d.w) <= 0) return d; } return DEST[0]; }
 
 function spawn(){
-  parts.push({leg:'feed', t:0, sp:0.30+Math.random()*0.12, k:'mixed', d:null, r:2.6+Math.random()*1.3});
+  const bad = Math.random() < BASE_BAD;
+  parts.push({leg:'feed', t:0, sp:0.30+Math.random()*0.12, k:'mixed', d:null,
+              r:2.6+Math.random()*1.3, bad, ring: bad ? 'bad' : 'clean'});
 }
+function inject(){
+  const d = AI_DEST[Math.floor(Math.random()*AI_DEST.length)];
+  parts.push({leg:'inj_'+d.box, t:0, sp:0.42, k:d.k, d, r:4.2, bad:true, ring:'bad', injected:true});
+}
+function burst(x, y, col){ fx.push({x, y, t:0, col}); }
+
+function land(p){
+  const id = p.d ? p.d.box : null;
+  if (!id || !LEVEL[id]) return;
+  const L = LEVEL[id];
+  L.v = Math.min(1, L.v + (id==='wm' ? .030 : .012));
+  if (p.bad && id !== 'wm'){ L.bad = Math.min(1, L.bad + .022); N.inStore++; }
+  if (id !== 'wm') L.k = (mode === 'sep') ? B[id].k : 'mixed';
+}
+
 function advance(p, dt){
   p.t += p.sp*dt;
+  const pos = walk(FLOWS[p.leg], Math.min(p.t,1));
+
+  // DROPPING — good work plucked out of the flow on its way to the store
+  if (atk.drop && !p.bad && p.leg.startsWith('to_') && p.t > .25 && Math.random() < dt*1.5){
+    burst(pos.x, pos.y, css('--poison')); N.lost++; return false;
+  }
   if (p.t < 1) return true;
+
   if (p.leg === 'feed'){
-    if (mode === 'sep'){
-      const d = pick(); p.d = d; p.k = d.k; p.leg = 'to_'+d.box; p.t = 0;
-      if (Math.random() < .5) parts.push({leg: Math.random()<.35?'ground':'rehear', t:0,
-        sp:0.34, k: Math.random()<.45?'standards':'mixed', d:{box:'wm'}, r:2.2});
-    } else {                                  // unsorted: straight on, still grey
-      const d = pick(); p.d = d; p.k = 'mixed'; p.leg = 'to_'+d.box; p.t = 0;
+    const d = pick();
+    // TAMPERING — the trace lies about itself. Content bad, label clean.
+    if (atk.tamp && p.bad && Math.random() < .75) p.ring = 'clean';
+    // THE GATE can only read the label, never the content
+    if (mode === 'sep' && p.ring === 'bad' && Math.random() < CATCH){
+      burst(pos.x, pos.y, css('--ink-3')); N.caught++; return false;
     }
+    if (mode === 'sep' && p.bad && p.ring === 'clean'){ N.disguised++; }
+    p.d = d; p.k = (mode === 'sep') ? d.k : 'mixed'; p.leg = 'to_'+d.box; p.t = 0;
+    if (mode === 'sep' && !p.bad && Math.random() < .5)
+      parts.push({leg: Math.random()<.35?'ground':'rehear', t:0, sp:0.34,
+        k: Math.random()<.45?'standards':'mixed', d:{box:'wm'}, r:2.2, bad:false, ring:'clean'});
     return true;
   }
-  const id = p.d ? p.d.box : null;
-  if (id && LEVEL[id]) LEVEL[id].v = Math.min(1, LEVEL[id].v + (id==='wm' ? .030 : .012));
-  if (id && mode !== 'sep' && id !== 'wm') LEVEL[id].k = 'mixed';
-  if (id && mode === 'sep' && id !== 'wm') LEVEL[id].k = B[id].k;
-  return false;
+  land(p); return false;
+}
+
+function drawParticle(p, sc){
+  const pt = walk(FLOWS[p.leg], Math.min(p.t,1));
+  const x = pt.x*sc, y = pt.y*sc, r = p.r*sc;
+  // the ring is what the gate sees; the core is what is actually true
+  if (p.ring === 'bad' || p.bad){
+    ctx.beginPath(); ctx.arc(x, y, r+2.6*sc, 0, 7);
+    ctx.strokeStyle = p.ring === 'bad' ? css('--poison') : css('--clean');
+    ctx.lineWidth = 2*sc; ctx.stroke();
+  }
+  ctx.fillStyle = p.bad ? css('--poison') : css(p.k==='mixed' ? '--mixed' : '--k-'+p.k);
+  ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.fill();
 }
 
 function frame(now){
@@ -250,13 +351,15 @@ function frame(now){
 
   if (!paused){
     if (Math.random() < dt*22) spawn();
+    if (atk.fab && Math.random() < dt*9) inject();
     parts = parts.filter(p => advance(p, dt));
+    fx = fx.filter(f => (f.t += dt) < .45);
     LEVEL.wm.v = Math.max(0, LEVEL.wm.v - dt*0.085);        // the leak, always running
   }
 
-  // flow guides
   ctx.strokeStyle = css('--rule-2'); ctx.globalAlpha = .5; ctx.lineWidth = 1*sc;
   for (const k in FLOWS){
+    if (k.startsWith('inj_') && !atk.fab) continue;
     const pts = FLOWS[k]; ctx.beginPath();
     ctx.moveTo(pts[0].x*sc, pts[0].y*sc);
     for (let i=1;i<pts.length;i++) ctx.lineTo(pts[i].x*sc, pts[i].y*sc);
@@ -264,14 +367,12 @@ function frame(now){
   }
   ctx.setLineDash([]); ctx.globalAlpha = 1;
 
-  // the divider stops where the session begins -- that is the point
   ctx.strokeStyle = css('--rule-2'); ctx.globalAlpha = .8; ctx.lineWidth = 2*sc;
   ctx.setLineDash([8*sc,8*sc]); ctx.beginPath();
   ctx.moveTo(500*sc, 20*sc); ctx.lineTo(500*sc, (SEP.y-14)*sc); ctx.stroke();
   ctx.setLineDash([]); ctx.globalAlpha = 1;
 
-  // the leak
-  if (!paused){
+  if (!paused){                                              // the leak
     const wm = B.wm;
     for (let i=0;i<3;i++){
       const x = (wm.x+30+Math.random()*(wm.w-60))*sc;
@@ -283,17 +384,26 @@ function frame(now){
     ctx.globalAlpha = 1;
   }
 
-  for (const p of parts){
-    const pt = walk(FLOWS[p.leg], Math.min(p.t,1));
-    ctx.fillStyle = css(p.k==='mixed' ? '--mixed' : '--k-'+p.k);
-    ctx.beginPath(); ctx.arc(pt.x*sc, pt.y*sc, p.r*sc, 0, 7); ctx.fill();
+  for (const p of parts) drawParticle(p, sc);
+
+  for (const f of fx){                                       // catches and kills
+    const a = 1 - f.t/.45;
+    ctx.globalAlpha = a; ctx.strokeStyle = f.col; ctx.lineWidth = 2.2*sc;
+    ctx.beginPath(); ctx.arc(f.x*sc, f.y*sc, (5 + f.t*46)*sc, 0, 7); ctx.stroke();
   }
+  ctx.globalAlpha = 1;
 
   for (const b of BOXES){
     const el = document.getElementById('lvl-'+b.id); if (!el) continue;
-    el.style.height = (LEVEL[b.id].v*100).toFixed(1)+'%';
-    el.style.background = 'var(--'+(LEVEL[b.id].k==='mixed'?'mixed':'k-'+LEVEL[b.id].k)+')';
+    const L = LEVEL[b.id];
+    el.style.height = (L.v*100).toFixed(1)+'%';
+    el.style.background = 'var(--'+(L.k==='mixed'?'mixed':'k-'+L.k)+')';
+    const pe = document.getElementById('psn-'+b.id);
+    if (pe){ pe.style.height = (Math.min(L.bad, L.v)*100).toFixed(1)+'%';
+             pe.style.bottom = '0'; }
   }
+  ['caught','inStore','lost','disguised'].forEach((k,i) =>
+    document.getElementById(['s_caught','s_in','s_lost','s_dis'][i]).textContent = N[k]);
   requestAnimationFrame(frame);
 }
 
@@ -320,6 +430,23 @@ function setMode(m){
   document.getElementById('cap').textContent = CAPS[m==='sep'?'sep':'raw'];
   BOXES.forEach(b => { if (b.id!=='wm') LEVEL[b.id].k = m==='sep' ? b.k : 'mixed'; });
 }
+const BAN = {fab:'Fabricate — bogus traces arriving from outside, never touching the gate',
+             drop:'Drop — good work plucked out before it can land',
+             tamp:'Tamper — the label says clean, the content is not'};
+function banner(){
+  const on = Object.keys(atk).filter(k => atk[k]);
+  const el = document.getElementById('banner');
+  el.hidden = !on.length;
+  el.textContent = on.map(k => BAN[k]).join('   ·   ');
+}
+['fab','drop','tamp'].forEach(k => {
+  const b = document.getElementById(k);
+  b.onclick = () => { atk[k] = !atk[k]; b.setAttribute('aria-pressed', atk[k]); banner(); };
+});
+document.getElementById('clear').onclick = () => {
+  BOXES.forEach(b => { LEVEL[b.id].v = 0; LEVEL[b.id].bad = 0; });
+  N = {caught:0, inStore:0, lost:0, disguised:0}; parts = []; fx = [];
+};
 document.getElementById('mode').onclick = () => setMode(mode==='sep' ? 'raw' : 'sep');
 document.getElementById('pause').onclick = e => {
   paused = !paused; e.target.textContent = paused ? 'Play' : 'Pause';
