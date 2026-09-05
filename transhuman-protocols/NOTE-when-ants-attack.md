@@ -155,6 +155,55 @@ instrument that reads high while it fails.
 That is a better sentence about the trust trap than the one this note set out to write, and it came
 from taking the paper's third attack seriously instead of filing it as out of scope.
 
+## 6. The correction that mattered more than the attacks
+
+The first build had `sovereignty` as a fixed dial, and it made every attack a **ratchet**:
+`tamper = 1, sovereignty = 0` drove the store to 99.7% wrong and held it there for a thousand
+sessions; fabrication at `clearance = 0` did the same at 0.87. That is not a finding about
+people, it is a missing feedback loop — and a model whose every attack ends in total collapse is
+telling you about its own topology rather than about the world.
+
+Humans re-ground. Things break, a claim turns out false, a citation is not where it said it was,
+and they start reading again. So there is now a GROUND step and one parameter, `regrounding`,
+which does two things because it is one trait: **re-grounding** (go back to reading the content)
+and **course correction** (go back to the store and fix it).
+
+Two design points carried the weight. What is perceived is **not** the store's poisoned share —
+nobody is auditing the store, which is the whole trap — but the error in the work actually in
+front of you. And detection is **unconditional on sovereignty**: if noticing required looking,
+someone who had stopped looking could never come back, and the ratchet would simply have been
+rewritten. Reality pushes back whether or not you were checking.
+
+With it, the same attack oscillates instead of sliding. Poisoned share by session under
+`tamper = 1, sovereignty = 0`:
+
+| session | 0 | 50 | 100 | 150 | 200 | 250 | 300 | 350 | 400 | 450 | 500 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| `regrounding = 0` | 0.00 | 0.59 | 0.96 | 0.99 | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 |
+| `regrounding = 0.6` | 0.00 | 0.14 | 0.05 | 0.02 | 0.01 | 0.01 | 0.11 | 0.09 | 0.01 | 0.03 | 0.10 |
+
+**Where it settles is not the operator's detection threshold.** That was the attractive version
+and it was checked and is false: equilibrium alarm rises with `GROUND_HALF` but not
+proportionally, and differs by attack — 0.045 under tampering against 0.178 under fabrication at
+the same threshold. The reason is the one worth keeping: re-grounding restores attention **at the
+gate**, and fabrication never goes near the gate. It reaches fabrication only through course
+correction, and settles four times dirtier.
+
+### And the thing the gate suite said that none of this predicted
+
+Discernment — `disc_h`, `disc_a`, `rho`, the whole review apparatus — is worth **exactly nothing**
+against all three attack classes. The defence matrix puts the discernment column identical to the
+no-defence column in every row, to four decimals. A gate on the entrance does not defend a store
+being written to through the wall, and it does not help when the label it reads has been forged,
+and it never sees what the curator removed. Review skill defends against an honest counterparty
+making mistakes. That is its entire scope, and the surrounding protocol material leans on it as
+though it were more.
+
+A second one, from G6: the curation optimum survives six of eight attack backgrounds and goes to
+**zero** under exactly the two that forge the label while the reader is asleep. **Curation is only
+worth doing if the labels are honest** — selection on a forged claim is selection *for* the
+attacker's material.
+
 **Still true, and still the gap:** the model has no path from a contaminated AI store into human
 working memory. `Wh` carries no poison term. An attacker can take the whole right-hand side apart
 and the left-hand side stays clean, because there is no channel by which it could not. The attacks
